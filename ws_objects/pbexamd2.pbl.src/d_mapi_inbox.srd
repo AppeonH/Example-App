@@ -1,0 +1,41 @@
+﻿$PBExportHeader$d_mapi_inbox.srd
+$PBExportComments$Inbox used by the mapi examples
+release 9;
+datawindow(units=0 timer_interval=0 color=78682240 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=116 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(20) updatewhereclause=yes name=sender dbname="sender" )
+ column=(type=char(35) updatewhereclause=yes name=subject dbname="subject" )
+ column=(type=char(16) updatewhereclause=yes name=postmark dbname="postmark" )
+ column=(type=char(40) updatewhereclause=yes name=messageid dbname="messageid" )
+ column=(type=number updatewhereclause=yes name=attachment_number dbname="attachment_number" )
+ column=(type=number updatewhereclause=yes name=unread dbname="unread" )
+ column=(type=number updatewhereclause=yes name=receipt dbname="receipt" )
+ column=(type=number updatewhereclause=yes name=dwattached dbname="dwattached" )
+ )
+text(band=header alignment="2" text="
+Subject" border="6" color="33554592" x="475" y="8" height="100" width="800" html.valueishtml="0"  name=subject_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="
+Postmark" border="6" color="33554592" x="1285" y="8" height="100" width="443" html.valueishtml="0"  name=postmark_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="
+Unread" border="6" color="33554592" x="1737" y="8" height="100" width="215" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Receipt
+ Rqst'd" border="6" color="33554592" x="1961" y="8" height="100" width="215" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="DW
+Attached" border="6" color="33554592" x="2185" y="8" height="100" width="215" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="
+Sender" border="6" color="33554592" x="9" y="8" height="100" width="457" html.valueishtml="0"  name=sender_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="33554592" x="475" y="8" height="56" width="800" format="[general]" html.valueishtml="0"  name=subject visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="33554592" x="1285" y="8" height="56" width="443" format="[general]" html.valueishtml="0"  name=postmark visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+compute(band=detail alignment="0" expression="bitmap (if (unread = 1,~"check.bmp~",~"~"))"border="5" color="33554592" x="1737" y="8" height="56" width="215" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+compute(band=detail alignment="0" expression="bitmap ( if (receipt = 1,~"check.bmp~",~"~"))"border="5" color="33554592" x="1961" y="8" height="56" width="215" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+compute(band=detail alignment="0" expression="bitmap ( if (dwattached = 1,~"check.bmp~",~"~"))"border="5" color="33554592" x="2185" y="8" height="56" width="215" format="[GENERAL]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="33554592" x="9" y="8" height="56" width="457" format="[general]" html.valueishtml="0"  name=sender visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

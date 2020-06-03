@@ -1,0 +1,20 @@
+﻿$PBExportHeader$d_quick_column_list.srd
+$PBExportComments$DataWindow used in Quick Select example, this DataWindow show the list of columns for a selected table
+release 9;
+datawindow(units=0 timer_interval=0 color=1083244543 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 0 print.margin.right = 0 print.margin.top = 0 print.margin.bottom = 0 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=12 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=72 color="-1" )
+table(column=(type=char(30) updatewhereclause=yes name=pbc_cnam dbname="pbcatcol.pbc_cnam" )
+ column=(type=char(254) updatewhereclause=yes name=label dbname="pbcatcol.pbc_labl" )
+ column=(type=char(254) updatewhereclause=yes name=pbc_cmnt dbname="pbcatcol.pbc_cmnt" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"pbcatcol~" ) COLUMN(NAME=~"pbcatcol.pbc_cnam~") COLUMN(NAME=~"pbcatcol.pbc_labl~") COLUMN(NAME=~"pbcatcol.pbc_cmnt~")WHERE( EXP1 =~"pbcatcol.pbc_tnam~" OP =~"=~" EXP2 =~":aTableName~" ) ) ORDER(NAME=~"pbcatcol.pbc_hdr~" ASC=yes ) ARG(NAME = ~"aTableName~" TYPE = string) " arguments=(("aTableName", string)) )
+compute(band=detail alignment="0" expression="(  if( right(  label , 1 )=~":~", left(   label  , len(  label  ) -1 ),  label   ) )"border="0" color="33554592" x="9" y="4" height="60" width="859" format="[general]" html.valueishtml="0"  name=collabel visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="0" color="33554592" x="983" y="4" height="60" width="7369" format="[general]" html.valueishtml="0"  name=label visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="0" color="33554592" x="8370" y="56" height="52" width="9399" format="[general]" html.valueishtml="0"  name=pbc_cmnt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

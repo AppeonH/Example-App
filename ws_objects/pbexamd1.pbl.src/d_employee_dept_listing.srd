@@ -1,0 +1,37 @@
+﻿$PBExportHeader$d_employee_dept_listing.srd
+$PBExportComments$List of employee IDs and names in specified department
+release 9;
+datawindow(units=0 timer_interval=0 color=78682240 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=124 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=number update=yes updatewhereclause=yes key=yes name=emp_id dbname="employee.emp_id" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=emp_lname dbname="employee.emp_lname" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=emp_fname dbname="employee.emp_fname" )
+ column=(type=number update=yes updatewhereclause=yes name=manager_id dbname="employee.manager_id" )
+ column=(type=char(1) updatewhereclause=yes name=bene_health_ins dbname="employee.bene_health_ins" values="Health Insurance	Y/Health Insurance	N" )
+ column=(type=char(1) updatewhereclause=yes name=bene_life_ins dbname="employee.bene_life_ins" values="Life Insurance	Y/Life Insurance	N" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"employee~" ) COLUMN(NAME=~"employee.emp_id~") COLUMN(NAME=~"employee.emp_lname~") COLUMN(NAME=~"employee.emp_fname~") COLUMN(NAME=~"employee.manager_id~") COLUMN(NAME=~"employee.bene_health_ins~") COLUMN(NAME=~"employee.bene_life_ins~")WHERE( EXP1 =~"employee.dept_id~" OP =~"=~" EXP2 =~":department_id~" ) ) ORDER(NAME=~"employee.emp_id~" ASC=yes ) ARG(NAME = ~"department_id~" TYPE = number) " update="employee" updatewhere=0 updatekeyinplace=no arguments=(("department_id", number)) )
+text(band=header alignment="2" text="Employee
+ID" border="6" color="33554592" x="14" y="12" height="104" width="274" html.valueishtml="0"  name=emp_id_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Health
+Insurance" border="6" color="33554592" x="1637" y="12" height="104" width="270" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Last Name" border="6" color="33554592" x="320" y="12" height="104" width="530" html.valueishtml="0"  name=emp_lname_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="First Name" border="6" color="33554592" x="882" y="12" height="104" width="411" html.valueishtml="0"  name=emp_fname_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Manager
+ID" border="6" color="33554592" x="1330" y="12" height="104" width="256" html.valueishtml="0"  name=manager_id_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Life
+Insurance" border="6" color="33554592" x="1947" y="12" height="104" width="283" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554592" x="1733" y="8" height="60" width="69" format="[general]" html.valueishtml="0"  name=bene_health_ins visible="1" edit.name="Health Insurance" checkbox.text="Health Insurance" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554592" x="2048" y="8" height="60" width="64" format="[general]" html.valueishtml="0"  name=bene_life_ins visible="1" edit.name="Life Insurance" checkbox.text="Life Insurance" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="5" color="33554592" x="14" y="8" height="60" width="274" format="[general]" html.valueishtml="0"  name=emp_id  tag="Identification Number of the employee" visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="33554592" x="320" y="8" height="60" width="530" format="[general]" html.valueishtml="0"  name=emp_lname  tag="Last name of the employee" visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="33554592" x="882" y="8" height="60" width="411" format="[general]" html.valueishtml="0"  name=emp_fname  tag="First name of the employee" visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="5" color="33554592" x="1330" y="8" height="60" width="256" format="[general]" html.valueishtml="0"  name=manager_id  tag="Identification number of the employee's manager" visible="1" edit.name="employees" dddw.name=d_dddw_sales_reps dddw.displaycolumn=emp_id dddw.datacolumn=emp_id dddw.percentwidth=400 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

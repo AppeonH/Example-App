@@ -1,0 +1,242 @@
+﻿$PBExportHeader$m_lv_rmb.srm
+$PBExportComments$RMB menu for a listview
+forward
+global type m_lv_rmb from menu
+end type
+type m_action from menu within m_lv_rmb
+end type
+type m_openitem from menu within m_action
+end type
+type m_edititem from menu within m_action
+end type
+type m_- from menu within m_action
+end type
+type m_view from menu within m_action
+end type
+type m_largeicon from menu within m_view
+end type
+type m_smallicon from menu within m_view
+end type
+type m_list from menu within m_view
+end type
+type m_report from menu within m_view
+end type
+type m_view from menu within m_action
+m_largeicon m_largeicon
+m_smallicon m_smallicon
+m_list m_list
+m_report m_report
+end type
+type m_-1 from menu within m_action
+end type
+type m_lineupicons from menu within m_action
+end type
+type m_action from menu within m_lv_rmb
+m_openitem m_openitem
+m_edititem m_edititem
+m_- m_-
+m_view m_view
+m_-1 m_-1
+m_lineupicons m_lineupicons
+end type
+end forward
+
+global type m_lv_rmb from menu
+m_action m_action
+end type
+global m_lv_rmb m_lv_rmb
+
+type variables
+
+end variables
+
+on m_lv_rmb.create
+m_lv_rmb=this
+this.m_action=create m_action
+this.Item[]={this.m_action}
+end on
+
+on m_lv_rmb.destroy
+destroy(this.m_action)
+end on
+
+type m_action from menu within m_lv_rmb
+m_openitem m_openitem
+m_edititem m_edititem
+m_- m_-
+m_view m_view
+m_-1 m_-1
+m_lineupicons m_lineupicons
+end type
+
+on m_action.create
+this.Text="Action"
+this.m_openitem=create m_openitem
+this.m_edititem=create m_edititem
+this.m_-=create m_-
+this.m_view=create m_view
+this.m_-1=create m_-1
+this.m_lineupicons=create m_lineupicons
+this.Item[]={this.m_openitem, &
+this.m_edititem, &
+this.m_-, &
+this.m_view, &
+this.m_-1, &
+this.m_lineupicons}
+end on
+
+on m_action.destroy
+destroy(this.m_openitem)
+destroy(this.m_edititem)
+destroy(this.m_-)
+destroy(this.m_view)
+destroy(this.m_-1)
+destroy(this.m_lineupicons)
+end on
+
+type m_openitem from menu within m_action
+end type
+
+event clicked;ParentWindow.Post Dynamic Event ue_openitem()
+
+end event
+
+on m_openitem.create
+this.Text="Open Item"
+end on
+
+type m_edititem from menu within m_action
+end type
+
+event clicked;ParentWindow.Post Dynamic Event ue_edititem()
+
+end event
+
+on m_edititem.create
+this.Text="Edit Item"
+end on
+
+type m_- from menu within m_action
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_view from menu within m_action
+m_largeicon m_largeicon
+m_smallicon m_smallicon
+m_list m_list
+m_report m_report
+end type
+
+event clicked;ListViewView		llvv_Current
+
+ParentWindow.Dynamic of_getcurrentstyle(llvv_Current)
+
+Choose Case llvv_Current
+	Case ListViewLargeIcon!
+		This.m_largeicon.Checked = True
+		This.m_smallicon.Checked = False
+		This.m_list.Checked = False
+		This.m_report.Checked = False
+	Case ListViewSmallIcon!
+		This.m_smallicon.Checked = True
+		This.m_largeicon.Checked = False
+		This.m_list.Checked = False
+		This.m_report.Checked = False
+	Case ListViewList!
+		This.m_list.Checked = True
+		This.m_largeicon.Checked = False
+		This.m_smallicon.Checked = False
+		This.m_report.Checked = False
+	Case ListViewReport!
+		This.m_report.Checked = True
+		This.m_largeicon.Checked = False
+		This.m_smallicon.Checked = False
+		This.m_list.Checked = False
+End Choose
+
+end event
+
+on m_view.create
+this.Text="View"
+this.m_largeicon=create m_largeicon
+this.m_smallicon=create m_smallicon
+this.m_list=create m_list
+this.m_report=create m_report
+this.Item[]={this.m_largeicon, &
+this.m_smallicon, &
+this.m_list, &
+this.m_report}
+end on
+
+on m_view.destroy
+destroy(this.m_largeicon)
+destroy(this.m_smallicon)
+destroy(this.m_list)
+destroy(this.m_report)
+end on
+
+type m_largeicon from menu within m_view
+end type
+
+event clicked;ParentWindow.Post Dynamic Event ue_chglistview(ListViewLargeIcon!)
+
+end event
+
+on m_largeicon.create
+this.Text="Large Icon"
+end on
+
+type m_smallicon from menu within m_view
+end type
+
+event clicked;ParentWindow.Post Dynamic Event ue_chglistview(ListViewSmallIcon!)
+
+end event
+
+on m_smallicon.create
+this.Text="Small Icon"
+end on
+
+type m_list from menu within m_view
+end type
+
+event clicked;ParentWindow.Post Dynamic Event ue_chglistview(ListViewList!)
+
+end event
+
+on m_list.create
+this.Text="List"
+end on
+
+type m_report from menu within m_view
+end type
+
+event clicked;ParentWindow.Post Dynamic Event ue_chglistview(ListViewReport!)
+
+end event
+
+on m_report.create
+this.Text="Report"
+end on
+
+type m_-1 from menu within m_action
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_lineupicons from menu within m_action
+end type
+
+event clicked;ParentWindow.Post Dynamic Event ue_arrangeicons()
+
+end event
+
+on m_lineupicons.create
+this.Text="Li&ne Up Icons"
+end on
+

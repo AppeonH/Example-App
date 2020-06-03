@@ -1,0 +1,9 @@
+﻿$PBExportHeader$mdi_main_structure.srs
+$PBExportComments$MDI structure
+global type mdi_main_structure from structure
+    string title
+    string datawindow_name
+    integer dept
+    string dept_name
+end type
+

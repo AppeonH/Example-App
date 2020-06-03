@@ -1,0 +1,43 @@
+﻿$PBExportHeader$f_dept_lookup.srf
+$PBExportComments$Check if dept_id exists in department table
+global type f_dept_lookup from function_object
+end type
+
+forward prototypes
+global function boolean f_dept_lookup (string a_dept_num)
+end prototypes
+
+global function boolean f_dept_lookup (string a_dept_num);//**********************************************************************
+// Global Boolean Function f_dept_lookup (string a_dept_num )
+//
+// Checks if a_dept_num exists as a dept_id in the department table
+// by issuing an SQL SELECT statement
+//
+// Returns TRUE if a_dept_num is found; otherwise, returns FALSE
+//
+// Assumes that sqlca has been initialized and connected
+//**********************************************************************
+
+int		li_dept_id, li_dept_num
+
+If IsNull (a_dept_num) Then
+	MessageBox ("f_dept_lookup", "NULL argument received", Exclamation!)
+	return FALSE
+End If
+
+li_dept_num = Integer (a_dept_num)
+
+  SELECT department.dept_id  
+    INTO :li_dept_id  
+    FROM department  
+   WHERE department.dept_id = :li_dept_num   ;
+
+
+If sqlca.sqlcode < 0 or sqlca.sqlcode = 100 Then
+	return FALSE
+Else
+	return TRUE
+End If
+
+end function
+

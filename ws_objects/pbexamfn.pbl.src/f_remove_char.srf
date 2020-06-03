@@ -1,0 +1,37 @@
+﻿$PBExportHeader$f_remove_char.srf
+$PBExportComments$Removes all occurences of a specified character from a string
+global type f_remove_char from function_object
+end type
+
+forward prototypes
+global function string f_remove_char (string as_source, char as_char)
+end prototypes
+
+global function string f_remove_char (string as_source, char as_char);//////////////////////////////////////////////////////////////////////
+//
+// Function: f_remove_char
+//
+// Purpose: removes all occurrences of character as_char from the
+//				string as_source
+//
+//	Scope: public
+//
+//	Arguments: as_source {the string from which you want as_char removed}
+//				  as_char   {the character that you want removed from as_source}
+//
+//	Returns: string {as_source with all occurences of as_char removed}
+//
+//////////////////////////////////////////////////////////////////////
+
+int	li_pos
+
+li_pos = Pos (as_source, as_char, 1)
+do while li_pos > 0
+	as_source = Left (as_source, li_pos - 1) + &
+					Right (as_source, Len (as_source) - li_pos)
+	li_pos = Pos (as_source, as_char, 1)
+loop
+
+return as_source
+end function
+

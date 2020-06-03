@@ -1,0 +1,76 @@
+﻿$PBExportHeader$f_closest_date.srf
+$PBExportComments$Returns the date that is closest to the date that is passed to this function AND that has the same day name as the day name passed to this function.
+global type f_closest_date from function_object
+end type
+
+forward prototypes
+global function date f_closest_date (string as_dayname, date ad_testdate)
+end prototypes
+
+global function date f_closest_date (string as_dayname, date ad_testdate);//////////////////////////////////////////////////////////////////////
+//
+// Function: f_closest_date
+//
+// Purpose: returns the date that is the closest day name (as_dayname)
+//				to as_testdate
+//
+//	Scope: public	
+//
+//	Arguments: as_dayname	a valid name of a day (Sunday, Monday, ...)
+//				  ad_testdate	any valid date
+//
+//	Returns: date		the date which is:
+//							1) the closest date to as_test date AND
+//							2) which has the same day name as as_dayname
+//
+//////////////////////////////////////////////////////////////////////
+
+int		li_testdate, &
+			li_dayname, &
+			li_difference
+
+
+// Obtain the day number of ad_testdate and as_dayname
+
+li_testdate = DayNumber (ad_testdate)
+
+choose case as_dayname
+
+	case 'Sunday'
+		li_dayname = 1
+	case 'Monday'
+		li_dayname = 2
+	case 'Tuesday'
+		li_dayname = 3
+	case 'Wednesday'
+		li_dayname = 4
+	case 'Thursday'
+		li_dayname = 5
+	case 'Friday'
+		li_dayname = 6
+	case 'Saturday'
+		li_dayname = 7
+	
+end choose
+
+
+// If ad_testdate is already the same day name as as_dayname, then
+//	return ad_testdate, else calculate the closest date.
+
+if li_dayname = li_testdate then
+	return ad_testdate
+else
+	li_difference = li_dayname - li_testdate
+	if li_difference < -3 then
+		li_difference = li_difference + 7
+	else
+		if li_difference > 3 then
+			li_difference = li_difference - 7
+		end if
+	end if
+
+	return RelativeDate (ad_testdate, li_difference)			
+end if
+
+end function
+

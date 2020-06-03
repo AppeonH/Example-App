@@ -1,0 +1,423 @@
+﻿$PBExportHeader$m_quick_select.srm
+$PBExportComments$Menu for Mdi Frame w_quick_select
+forward
+global type m_quick_select from menu
+end type
+type m_file from menu within m_quick_select
+end type
+type m_quickselect from menu within m_file
+end type
+type m_- from menu within m_file
+end type
+type m_savedatawindow from menu within m_file
+end type
+type m_-4 from menu within m_file
+end type
+type m_closesheet from menu within m_file
+end type
+type m_-5 from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_quick_select
+m_quickselect m_quickselect
+m_- m_-
+m_savedatawindow m_savedatawindow
+m_-4 m_-4
+m_closesheet m_closesheet
+m_-5 m_-5
+m_exit m_exit
+end type
+type m_window from menu within m_quick_select
+end type
+type m_tile from menu within m_window
+end type
+type m_horizontal from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_cascade from menu within m_window
+end type
+type m_-1 from menu within m_window
+end type
+type m_arrangeicons from menu within m_window
+end type
+type m_-2 from menu within m_window
+end type
+type m_toolbars from menu within m_window
+end type
+type m_window from menu within m_quick_select
+m_tile m_tile
+m_horizontal m_horizontal
+m_layer m_layer
+m_cascade m_cascade
+m_-1 m_-1
+m_arrangeicons m_arrangeicons
+m_-2 m_-2
+m_toolbars m_toolbars
+end type
+type m_help from menu within m_quick_select
+end type
+type m_contents from menu within m_help
+end type
+type m_-3 from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_quick_select
+m_contents m_contents
+m_-3 m_-3
+m_about m_about
+end type
+end forward
+
+global type m_quick_select from menu
+m_file m_file
+m_window m_window
+m_help m_help
+end type
+global m_quick_select m_quick_select
+
+on m_quick_select.create
+m_quick_select=this
+this.m_file=create m_file
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_window, &
+this.m_help}
+end on
+
+on m_quick_select.destroy
+destroy(this.m_file)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_quick_select
+m_quickselect m_quickselect
+m_- m_-
+m_savedatawindow m_savedatawindow
+m_-4 m_-4
+m_closesheet m_closesheet
+m_-5 m_-5
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_quickselect=create m_quickselect
+this.m_-=create m_-
+this.m_savedatawindow=create m_savedatawindow
+this.m_-4=create m_-4
+this.m_closesheet=create m_closesheet
+this.m_-5=create m_-5
+this.m_exit=create m_exit
+this.Item[]={this.m_quickselect, &
+this.m_-, &
+this.m_savedatawindow, &
+this.m_-4, &
+this.m_closesheet, &
+this.m_-5, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_quickselect)
+destroy(this.m_-)
+destroy(this.m_savedatawindow)
+destroy(this.m_-4)
+destroy(this.m_closesheet)
+destroy(this.m_-5)
+destroy(this.m_exit)
+end on
+
+type m_quickselect from menu within m_file
+end type
+
+on clicked;//Window w_quick_select is open explicitly to demonstrate that only one
+//instance of this window should be opened at any given time
+open(w_quick_select)
+end on
+
+on m_quickselect.create
+this.Text="&Data Source~tCtrl+Q"
+this.Microhelp="Open the Quick Select window"
+this.ToolBarItemName="SelectReturn!"
+this.ToolBarItemText="Quick Select"
+this.Shortcut=337
+end on
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_savedatawindow from menu within m_file
+end type
+
+on clicked;//////////////////////////////////////////////////////////////////////
+// Save datawindow on Active sheet
+//////////////////////////////////////////////////////////////////////
+
+window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_savedw")
+end if
+end on
+
+on m_savedatawindow.create
+this.Text="&Save Datawindow~tCtrl+S"
+this.Microhelp="Save the DataWindow"
+this.ToolBarItemOrder=2
+this.Enabled=false
+this.Shortcut=339
+end on
+
+type m_-4 from menu within m_file
+end type
+
+on m_-4.create
+this.Text="-"
+end on
+
+type m_closesheet from menu within m_file
+end type
+
+on clicked;//////////////////////////////////////////////////////////////////////
+// Close a document (sheet)
+//////////////////////////////////////////////////////////////////////
+
+window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_closesheet")
+end if
+end on
+
+on m_closesheet.create
+this.Text="&Close Sheet~tCtrl+F4"
+this.Microhelp="Close sheet"
+this.Enabled=false
+this.Shortcut=371
+end on
+
+type m_-5 from menu within m_file
+end type
+
+on m_-5.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+on clicked;//Clicked script for m_close
+window win
+win = parentwindow.getactivesheet()
+if isvalid(win) then 
+	win = parentwindow(win)
+else
+	win = parentwindow
+end if
+
+Close(win)
+end on
+
+on m_exit.create
+this.Text="&Exit"
+this.Microhelp="Exit example"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=99
+this.ToolBarItemSpace=3
+end on
+
+type m_window from menu within m_quick_select
+m_tile m_tile
+m_horizontal m_horizontal
+m_layer m_layer
+m_cascade m_cascade
+m_-1 m_-1
+m_arrangeicons m_arrangeicons
+m_-2 m_-2
+m_toolbars m_toolbars
+end type
+
+on m_window.create
+this.Text="&Window"
+this.m_tile=create m_tile
+this.m_horizontal=create m_horizontal
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_-1=create m_-1
+this.m_arrangeicons=create m_arrangeicons
+this.m_-2=create m_-2
+this.m_toolbars=create m_toolbars
+this.Item[]={this.m_tile, &
+this.m_horizontal, &
+this.m_layer, &
+this.m_cascade, &
+this.m_-1, &
+this.m_arrangeicons, &
+this.m_-2, &
+this.m_toolbars}
+end on
+
+on m_window.destroy
+destroy(this.m_tile)
+destroy(this.m_horizontal)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_-1)
+destroy(this.m_arrangeicons)
+destroy(this.m_-2)
+destroy(this.m_toolbars)
+end on
+
+type m_tile from menu within m_window
+end type
+
+on clicked;parentwindow.ArrangeSheets(Tile!)
+end on
+
+on m_tile.create
+this.Text="&Tile Vertical"
+this.Microhelp="Arrange all as vertically tiled"
+this.ToolBarItemName="Tile!"
+this.ToolBarItemText="Tile Vertical"
+this.ToolBarItemSpace=2
+end on
+
+type m_horizontal from menu within m_window
+end type
+
+on clicked;parentwindow.ArrangeSheets(TileHorizontal!)
+end on
+
+on m_horizontal.create
+this.Text="Tile &Horizontal"
+this.Microhelp="Arrange all as horizontally tiled"
+this.ToolBarItemName="Horizontal!"
+this.ToolBarItemText="Tile Horizontal"
+end on
+
+type m_layer from menu within m_window
+end type
+
+on clicked;Parentwindow.ArrangeSheets(Layer!)
+end on
+
+on m_layer.create
+this.Text="&Layer"
+this.Microhelp="Arrange all as layered"
+this.ToolBarItemName="Layer!"
+this.ToolBarItemText="Layer"
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on clicked;Parentwindow.ArrangeSheets(Cascade!)
+end on
+
+on m_cascade.create
+this.Text="&Cascade"
+this.Microhelp="Arrange all as cascaded"
+this.ToolBarItemName="Cascade!"
+this.ToolBarItemText="Cascade"
+end on
+
+type m_-1 from menu within m_window
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_arrangeicons from menu within m_window
+end type
+
+on clicked;Parentwindow.ArrangeSheets (Icons!)
+end on
+
+on m_arrangeicons.create
+this.Text="Arrange &Icons"
+this.Microhelp="Arrange all icons"
+end on
+
+type m_-2 from menu within m_window
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_toolbars from menu within m_window
+end type
+
+on clicked;OpenWithParm (w_set_toolbars, parentwindow)
+end on
+
+on m_toolbars.create
+this.Text="Tool&bars..."
+this.Microhelp="Configure toolbars"
+end on
+
+type m_help from menu within m_quick_select
+m_contents m_contents
+m_-3 m_-3
+m_about m_about
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_contents=create m_contents
+this.m_-3=create m_-3
+this.m_about=create m_about
+this.Item[]={this.m_contents, &
+this.m_-3, &
+this.m_about}
+end on
+
+on m_help.destroy
+destroy(this.m_contents)
+destroy(this.m_-3)
+destroy(this.m_about)
+end on
+
+type m_contents from menu within m_help
+end type
+
+on clicked;f_open_help ('w_mdi_quick_select')
+end on
+
+on m_contents.create
+this.Text="&Contents...~tF1"
+this.Microhelp="Display help"
+this.Shortcut=112
+end on
+
+type m_-3 from menu within m_help
+end type
+
+on m_-3.create
+this.Text="-"
+end on
+
+type m_about from menu within m_help
+end type
+
+on clicked;OpenWithParm (w_about_with_parm, 'Runtime DataWindow Painter@')
+end on
+
+on m_about.create
+this.Text="&About Runtime DataWindow Painter..."
+this.Microhelp="Display copyright notice"
+end on
+

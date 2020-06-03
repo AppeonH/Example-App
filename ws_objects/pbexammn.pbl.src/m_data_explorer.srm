@@ -1,0 +1,383 @@
+﻿$PBExportHeader$m_data_explorer.srm
+$PBExportComments$Menu for the Data Explorer
+forward
+global type m_data_explorer from menu
+end type
+type m_file from menu within m_data_explorer
+end type
+type m_open from menu within m_file
+end type
+type m_edit from menu within m_file
+end type
+type m_- from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_file from menu within m_data_explorer
+m_open m_open
+m_edit m_edit
+m_- m_-
+m_close m_close
+end type
+type m_view from menu within m_data_explorer
+end type
+type m_largeicon from menu within m_view
+end type
+type m_smallicon from menu within m_view
+end type
+type m_list from menu within m_view
+end type
+type m_report from menu within m_view
+end type
+type m_-2 from menu within m_view
+end type
+type m_lineupicons from menu within m_view
+end type
+type m_view from menu within m_data_explorer
+m_largeicon m_largeicon
+m_smallicon m_smallicon
+m_list m_list
+m_report m_report
+m_-2 m_-2
+m_lineupicons m_lineupicons
+end type
+type m_help from menu within m_data_explorer
+end type
+type m_examplehelp from menu within m_help
+end type
+type m_-1 from menu within m_help
+end type
+type m_aboutthisexample from menu within m_help
+end type
+type m_help from menu within m_data_explorer
+m_examplehelp m_examplehelp
+m_-1 m_-1
+m_aboutthisexample m_aboutthisexample
+end type
+end forward
+
+global type m_data_explorer from menu
+m_file m_file
+m_view m_view
+m_help m_help
+end type
+global m_data_explorer m_data_explorer
+
+type variables
+
+end variables
+
+on m_data_explorer.create
+m_data_explorer=this
+this.m_file=create m_file
+this.m_view=create m_view
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_view, &
+this.m_help}
+end on
+
+on m_data_explorer.destroy
+destroy(this.m_file)
+destroy(this.m_view)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_data_explorer
+m_open m_open
+m_edit m_edit
+m_- m_-
+m_close m_close
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_open=create m_open
+this.m_edit=create m_edit
+this.m_-=create m_-
+this.m_close=create m_close
+this.Item[]={this.m_open, &
+this.m_edit, &
+this.m_-, &
+this.m_close}
+end on
+
+on m_file.destroy
+destroy(this.m_open)
+destroy(this.m_edit)
+destroy(this.m_-)
+destroy(this.m_close)
+end on
+
+event clicked;Integer				li_Index
+Long					ll_Current
+TreeViewItem		ltvi_Current
+w_data_explorer	lw_Parent
+GraphicObject	lgo_Current
+
+lw_Parent = ParentWindow
+
+ll_Current = lw_Parent.tv_1.FindItem(CurrentTreeItem!, 0)
+lw_Parent.tv_1.GetItem(ll_Current, ltvi_Current)
+
+lgo_Current = GetFocus()
+
+If lgo_Current.TypeOf() = treeview! Then
+	If ltvi_Current.Expanded Then
+		This.m_open.Text = "Collapse"
+	Else
+		This.m_open.Text = "Expand"
+	End If
+	
+	If ltvi_Current.Level = 1 Then
+		This.m_edit.Enabled = False
+	Else
+		This.m_edit.Enabled = True
+		If ltvi_Current.Level = 4 Then
+			This.m_open.Enabled = False
+		Else
+			This.m_open.Enabled = True
+		End If
+	End If
+Else
+	This.m_open.Text = "Open"
+	li_Index = lw_Parent.lv_1.SelectedIndex()
+	
+	If li_Index <= 0 Then
+		This.m_open.Enabled = False
+		This.m_edit.Enabled = False
+	Else
+		This.m_edit.Enabled = True
+		If ltvi_Current.Level = 4 Then
+			This.m_open.Enabled = False
+		Else
+			This.m_open.Enabled = True
+		End If
+	End If
+End If
+
+end event
+
+type m_open from menu within m_file
+end type
+
+on m_open.create
+this.Text="&Open"
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_openitem()
+
+end event
+
+type m_edit from menu within m_file
+end type
+
+on m_edit.create
+this.Text="&Edit"
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_edititem()
+
+end event
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_close from menu within m_file
+end type
+
+event clicked;Close(ParentWindow)
+
+end event
+
+on m_close.create
+this.Text="&Close"
+end on
+
+type m_view from menu within m_data_explorer
+m_largeicon m_largeicon
+m_smallicon m_smallicon
+m_list m_list
+m_report m_report
+m_-2 m_-2
+m_lineupicons m_lineupicons
+end type
+
+on m_view.create
+this.Text="&View"
+this.m_largeicon=create m_largeicon
+this.m_smallicon=create m_smallicon
+this.m_list=create m_list
+this.m_report=create m_report
+this.m_-2=create m_-2
+this.m_lineupicons=create m_lineupicons
+this.Item[]={this.m_largeicon, &
+this.m_smallicon, &
+this.m_list, &
+this.m_report, &
+this.m_-2, &
+this.m_lineupicons}
+end on
+
+on m_view.destroy
+destroy(this.m_largeicon)
+destroy(this.m_smallicon)
+destroy(this.m_list)
+destroy(this.m_report)
+destroy(this.m_-2)
+destroy(this.m_lineupicons)
+end on
+
+event clicked;ListViewView		llvv_Current
+
+ParentWindow.Dynamic of_getcurrentstyle(llvv_Current)
+
+Choose Case llvv_Current
+	Case ListViewLargeIcon!
+		This.m_largeicon.Checked = True
+		This.m_smallicon.Checked = False
+		This.m_list.Checked = False
+		This.m_report.Checked = False
+		This.m_lineupicons.Enabled = True
+	Case ListViewSmallIcon!
+		This.m_smallicon.Checked = True
+		This.m_largeicon.Checked = False
+		This.m_list.Checked = False
+		This.m_report.Checked = False
+		This.m_lineupicons.Enabled = True
+	Case ListViewList!
+		This.m_list.Checked = True
+		This.m_largeicon.Checked = False
+		This.m_smallicon.Checked = False
+		This.m_report.Checked = False
+		This.m_lineupicons.Enabled = False
+	Case ListViewReport!
+		This.m_report.Checked = True
+		This.m_largeicon.Checked = False
+		This.m_smallicon.Checked = False
+		This.m_list.Checked = False
+		This.m_lineupicons.Enabled = False
+End Choose
+
+end event
+
+type m_largeicon from menu within m_view
+end type
+
+on m_largeicon.create
+this.Text="&Large Icon"
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_chglistview(ListViewLargeIcon!)
+
+end event
+
+type m_smallicon from menu within m_view
+end type
+
+on m_smallicon.create
+this.Text="&Small Icon"
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_chglistview(ListViewSmallIcon!)
+
+end event
+
+type m_list from menu within m_view
+end type
+
+on m_list.create
+this.Text="L&ist"
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_chglistview(ListViewList!)
+
+end event
+
+type m_report from menu within m_view
+end type
+
+on m_report.create
+this.Text="&Report"
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_chglistview(ListViewReport!)
+
+end event
+
+type m_-2 from menu within m_view
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_lineupicons from menu within m_view
+end type
+
+on m_lineupicons.create
+this.Text="Li&ne Up Icons"
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_arrangeicons()
+
+end event
+
+type m_help from menu within m_data_explorer
+m_examplehelp m_examplehelp
+m_-1 m_-1
+m_aboutthisexample m_aboutthisexample
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_examplehelp=create m_examplehelp
+this.m_-1=create m_-1
+this.m_aboutthisexample=create m_aboutthisexample
+this.Item[]={this.m_examplehelp, &
+this.m_-1, &
+this.m_aboutthisexample}
+end on
+
+on m_help.destroy
+destroy(this.m_examplehelp)
+destroy(this.m_-1)
+destroy(this.m_aboutthisexample)
+end on
+
+type m_examplehelp from menu within m_help
+end type
+
+on m_examplehelp.create
+this.Text="&Example Help"
+end on
+
+event clicked;f_open_help ("w_data_explorer")
+
+end event
+
+type m_-1 from menu within m_help
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_aboutthisexample from menu within m_help
+end type
+
+on m_aboutthisexample.create
+this.Text="&About Data Explorer"
+end on
+
+event clicked;OpenWithParm(w_about_with_parm, "Data Explorer@" + &
+						"This example demonstrates populating TreeView and " + &
+						"ListView controls with data from DataStores.  It also shows " + &
+						"how to link these two controls together using their standard events.")
+
+end event
+

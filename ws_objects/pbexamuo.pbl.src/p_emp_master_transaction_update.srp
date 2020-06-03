@@ -1,0 +1,18 @@
+﻿$PBExportHeader$p_emp_master_transaction_update.srp
+$PBExportComments$Update the master table with a transaction table
+PIPELINE(source_connect=PB Demo DB V2019,destination_connect=PB Demo DB V2019,type=update,commit=100,errors=100,keyname="emp_pipe_master")
+SOURCE(name="emp_pipe_transaction",COLUMN(type=long,name="emp_id",dbtype="integer",key=yes,nulls_allowed=no)
+ COLUMN(type=string,name="emp_fname",dbtype="long varchar",nulls_allowed=yes)
+ COLUMN(type=string,name="emp_lname",dbtype="long varchar",nulls_allowed=yes)
+ COLUMN(type=long,name="dept_id",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=string,name="bene_health_ins",dbtype="long varchar",nulls_allowed=yes)
+ COLUMN(type=string,name="bene_life_ins",dbtype="long varchar",nulls_allowed=yes)
+ COLUMN(type=string,name="bene_day_care",dbtype="long varchar",nulls_allowed=yes))
+RETRIEVE(statement="PBSELECT( VERSION(400) TABLE(NAME=~"emp_pipe_transaction~" ) COLUMN(NAME=~"emp_pipe_transaction.emp_id~") COLUMN(NAME=~"emp_pipe_transaction.emp_fname~") COLUMN(NAME=~"emp_pipe_transaction.emp_lname~") COLUMN(NAME=~"emp_pipe_transaction.dept_id~") COLUMN(NAME=~"emp_pipe_transaction.bene_health_ins~") COLUMN(NAME=~"emp_pipe_transaction.bene_life_ins~") COLUMN(NAME=~"emp_pipe_transaction.bene_day_care~")WHERE( EXP1 =~"emp_pipe_transaction.dept_id~" OP =~"=~" EXP2 =~":department_id~" ) ) ARG(NAME = ~"department_id~" TYPE = number)",arguments((department_id,Number)))
+DESTINATION(name="emp_pipe_master",COLUMN(type=long,name="emp_id",dbtype="integer",key=yes,nulls_allowed=no,initial_value="0")
+ COLUMN(type=char,name="emp_fname",dbtype="char(20)",nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=char,name="emp_lname",dbtype="char(20)",nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=long,name="dept_id",dbtype="integer",nulls_allowed=no,initial_value="0")
+ COLUMN(type=char,name="bene_health_ins",dbtype="char(1)",nulls_allowed=yes)
+ COLUMN(type=char,name="bene_life_ins",dbtype="char(1)",nulls_allowed=yes)
+ COLUMN(type=char,name="bene_day_care",dbtype="char(1)",nulls_allowed=yes))

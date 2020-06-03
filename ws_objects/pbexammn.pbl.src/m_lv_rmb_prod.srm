@@ -1,0 +1,26 @@
+﻿$PBExportHeader$m_lv_rmb_prod.srm
+$PBExportComments$Product ListView RMB menu (inherited from m_lv_rmb)
+forward
+global type m_lv_rmb_prod from m_lv_rmb
+end type
+end forward
+
+global type m_lv_rmb_prod from m_lv_rmb
+end type
+global m_lv_rmb_prod m_lv_rmb_prod
+
+on m_lv_rmb_prod.create
+m_lv_rmb_prod=this
+call m_lv_rmb::create
+end on
+
+on m_lv_rmb_prod.destroy
+call m_lv_rmb::destroy
+end on
+
+on m_openitem.create
+call m_lv_rmb`m_openitem::create
+this.Visible=false
+this.Enabled=false
+end on
+

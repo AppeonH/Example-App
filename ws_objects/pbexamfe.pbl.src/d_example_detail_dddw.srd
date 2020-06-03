@@ -1,0 +1,20 @@
+﻿$PBExportHeader$d_example_detail_dddw.srd
+$PBExportComments$Used by Example Report
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 145 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=92 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(128) updatewhereclause=yes name=xref_info_object_ref_type dbname="exam_xref_info.object_ref_type" )
+ column=(type=char(128) updatewhereclause=yes name=object_ref dbname="exam_xref_info.object_ref" )
+ column=(type=char(128) updatewhereclause=yes name=event dbname="exam_xref_info.event" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"exam_xref_info~" ) COLUMN(NAME=~"exam_xref_info.object_ref_type~") COLUMN(NAME=~"exam_xref_info.object_ref~") COLUMN(NAME=~"exam_xref_info.event~")WHERE( EXP1 =~"( exam_xref_info.application~" OP =~"=~" EXP2 =~":app )~" LOGIC =~"and~" ) WHERE( EXP1 =~"(exam_xref_info.referenced_in~" OP =~"=~" EXP2 =~":refer_in)~" LOGIC =~"and~" ) WHERE( EXP1 =~"(event~" OP =~"like~" EXP2 =~"'is a %')~" ) ) ARG(NAME = ~"app~" TYPE = string) ARG(NAME = ~"refer_in~" TYPE = string) " arguments=(("app", string),("refer_in", string))  sort="object_ref A " )
+text(band=header alignment="0" text="DropDown && Nested DataWindows" border="4" color="0" x="23" y="20" height="60" width="1024" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression=" object_ref + ~", ~" + left( event, (len ( event ) - 3 ) )"border="0" color="0" x="23" y="4" height="52" width="2962" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

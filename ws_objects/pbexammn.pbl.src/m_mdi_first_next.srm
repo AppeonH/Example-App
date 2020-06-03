@@ -1,0 +1,441 @@
+﻿$PBExportHeader$m_mdi_first_next.srm
+$PBExportComments$Shows usage of getfirstsheet and getnextsheet functions.
+forward
+global type m_mdi_first_next from menu
+end type
+type m_file from menu within m_mdi_first_next
+end type
+type m_window1 from menu within m_file
+end type
+type m_window2 from menu within m_file
+end type
+type m_window3 from menu within m_file
+end type
+type m_window4 from menu within m_file
+end type
+type m_window5 from menu within m_file
+end type
+type m_-1 from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_mdi_first_next
+m_window1 m_window1
+m_window2 m_window2
+m_window3 m_window3
+m_window4 m_window4
+m_window5 m_window5
+m_-1 m_-1
+m_close m_close
+m_exit m_exit
+end type
+type m_window from menu within m_mdi_first_next
+end type
+type m_tile from menu within m_window
+end type
+type m_horizontal from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_cascade from menu within m_window
+end type
+type m_- from menu within m_window
+end type
+type m_arrangeicons from menu within m_window
+end type
+type m_window from menu within m_mdi_first_next
+m_tile m_tile
+m_horizontal m_horizontal
+m_layer m_layer
+m_cascade m_cascade
+m_- m_-
+m_arrangeicons m_arrangeicons
+end type
+type m_help from menu within m_mdi_first_next
+end type
+type m_contents from menu within m_help
+end type
+type m_-2 from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_mdi_first_next
+m_contents m_contents
+m_-2 m_-2
+m_about m_about
+end type
+end forward
+
+global type m_mdi_first_next from menu
+m_file m_file
+m_window m_window
+m_help m_help
+end type
+global m_mdi_first_next m_mdi_first_next
+
+forward prototypes
+public function boolean mf_is_open (string open_title)
+public subroutine mf_open_sheet (string name)
+public function int mf_list_sheets (ref window list[])
+end prototypes
+
+public function boolean mf_is_open (string open_title);window win
+// get the first sheet
+win = parentwindow.getfirstsheet()
+do while isvalid(win) // if we got a valid sheet
+	if win.title = open_title then return true // if the titles match then return true
+	win = parentwindow.getnextsheet(win) // get the next sheet
+loop
+return false
+
+end function
+
+public subroutine mf_open_sheet (string name);w_mdi_first_next_sheet w_instance
+window list[]
+integer cnt,i
+string temp
+
+
+if mf_is_open(name) then // if it is already open then list the open sheets
+	cnt = mf_list_sheets(list)
+	for i = 1 to cnt
+		temp = temp + list[i].title + '~r~n'
+	next
+	messagebox('Warning',name +' is already open. The list of open sheets is below.~r~n~r~n'+temp,exclamation!)
+else
+	opensheetwithparm(w_instance,name,parentwindow,0,original!)
+end if
+end subroutine
+
+public function int mf_list_sheets (ref window list[]);// place a pointer to each open sheet into the array 'list'.
+window win
+integer cnt
+// get the first sheet
+win = parentwindow.getfirstsheet()
+do while isvalid(win) // if we got a valid sheet
+	cnt++
+	list[cnt] = win
+	win = parentwindow.getnextsheet(win) // get the next sheet
+loop
+return cnt
+
+end function
+
+on m_mdi_first_next.create
+m_mdi_first_next=this
+this.m_file=create m_file
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_window, &
+this.m_help}
+end on
+
+on m_mdi_first_next.destroy
+destroy(this.m_file)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_mdi_first_next
+m_window1 m_window1
+m_window2 m_window2
+m_window3 m_window3
+m_window4 m_window4
+m_window5 m_window5
+m_-1 m_-1
+m_close m_close
+m_exit m_exit
+end type
+
+on selected;// are there any open sheets?
+window win
+win = parentwindow.getactivesheet()
+// if there are then enable the close menu item else disable it
+m_file.m_close.enabled = isvalid(win)
+
+end on
+
+on m_file.create
+this.Text="&File"
+this.Microhelp="Select a Report or Exit Application"
+this.m_window1=create m_window1
+this.m_window2=create m_window2
+this.m_window3=create m_window3
+this.m_window4=create m_window4
+this.m_window5=create m_window5
+this.m_-1=create m_-1
+this.m_close=create m_close
+this.m_exit=create m_exit
+this.Item[]={this.m_window1, &
+this.m_window2, &
+this.m_window3, &
+this.m_window4, &
+this.m_window5, &
+this.m_-1, &
+this.m_close, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_window1)
+destroy(this.m_window2)
+destroy(this.m_window3)
+destroy(this.m_window4)
+destroy(this.m_window5)
+destroy(this.m_-1)
+destroy(this.m_close)
+destroy(this.m_exit)
+end on
+
+type m_window1 from menu within m_file
+end type
+
+on clicked;mf_open_sheet( 'Window #1')
+
+end on
+
+on m_window1.create
+this.Text="Window &1"
+end on
+
+type m_window2 from menu within m_file
+end type
+
+on clicked;mf_open_sheet( 'Window #2')
+end on
+
+on m_window2.create
+this.Text="Window &2"
+end on
+
+type m_window3 from menu within m_file
+end type
+
+on clicked;mf_open_sheet( 'Window #3')
+end on
+
+on m_window3.create
+this.Text="Window &3"
+end on
+
+type m_window4 from menu within m_file
+end type
+
+on clicked;mf_open_sheet( 'Window #4')
+end on
+
+on m_window4.create
+this.Text="Window &4"
+end on
+
+type m_window5 from menu within m_file
+end type
+
+on clicked;mf_open_sheet( 'Window #5')
+end on
+
+on m_window5.create
+this.Text="Window &5"
+end on
+
+type m_-1 from menu within m_file
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_close from menu within m_file
+end type
+
+on clicked;// close the current sheet
+window win
+win = parentwindow.getactivesheet()
+if isvalid(win) then close(win)
+end on
+
+on m_close.create
+this.Text="&Close ~tCtrl+F4"
+this.Microhelp="Close the current report"
+this.Shortcut=371
+end on
+
+type m_exit from menu within m_file
+end type
+
+on clicked;//Clicked script for m_close
+window win
+win = parentwindow.getactivesheet()
+if isvalid(win) then 
+	win = parentwindow(win)
+else
+	win = parentwindow
+end if
+
+Close(win)
+end on
+
+on m_exit.create
+this.Text="E&xit"
+this.Microhelp="Exit this example"
+end on
+
+type m_window from menu within m_mdi_first_next
+m_tile m_tile
+m_horizontal m_horizontal
+m_layer m_layer
+m_cascade m_cascade
+m_- m_-
+m_arrangeicons m_arrangeicons
+end type
+
+on m_window.create
+this.Text="&Window"
+this.m_tile=create m_tile
+this.m_horizontal=create m_horizontal
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_-=create m_-
+this.m_arrangeicons=create m_arrangeicons
+this.Item[]={this.m_tile, &
+this.m_horizontal, &
+this.m_layer, &
+this.m_cascade, &
+this.m_-, &
+this.m_arrangeicons}
+end on
+
+on m_window.destroy
+destroy(this.m_tile)
+destroy(this.m_horizontal)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_-)
+destroy(this.m_arrangeicons)
+end on
+
+type m_tile from menu within m_window
+end type
+
+on clicked;//Clicked script for m_tile
+
+ParentWindow.ArrangeSheets(Tile!)
+end on
+
+on m_tile.create
+this.Text="&Tile Vertical"
+this.Microhelp="Arrange all as vertically tiled"
+end on
+
+type m_horizontal from menu within m_window
+end type
+
+on clicked;ParentWindow.ArrangeSheets(TileHorizontal!)
+end on
+
+on m_horizontal.create
+this.Text="Tile &Horizontal"
+this.Microhelp="Arrange all as horizontally tiled"
+end on
+
+type m_layer from menu within m_window
+end type
+
+on clicked;//Clicked script for m_layer
+
+ParentWindow.ArrangeSheets(Layer!)
+end on
+
+on m_layer.create
+this.Text="&Layer"
+this.Microhelp="Arrange all as layered"
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on clicked;//Clicked script for m_cascade
+
+ParentWindow.ArrangeSheets(Cascade!)
+end on
+
+on m_cascade.create
+this.Text="&Cascade"
+this.Microhelp="Arrange all as cascaded"
+end on
+
+type m_- from menu within m_window
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_arrangeicons from menu within m_window
+end type
+
+on clicked;//Clicked script for m_arrangeicons
+
+ParentWindow.ArrangeSheets(Icons!)
+end on
+
+on m_arrangeicons.create
+this.Text="Arrange &Icons"
+this.Microhelp="Arrange all icons"
+end on
+
+type m_help from menu within m_mdi_first_next
+m_contents m_contents
+m_-2 m_-2
+m_about m_about
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_contents=create m_contents
+this.m_-2=create m_-2
+this.m_about=create m_about
+this.Item[]={this.m_contents, &
+this.m_-2, &
+this.m_about}
+end on
+
+on m_help.destroy
+destroy(this.m_contents)
+destroy(this.m_-2)
+destroy(this.m_about)
+end on
+
+type m_contents from menu within m_help
+end type
+
+on clicked;f_open_help ("w_mdi_first_next")
+end on
+
+on m_contents.create
+this.Text="&Contents...~tF1"
+this.Microhelp="Display help for this example"
+this.Shortcut=112
+end on
+
+type m_-2 from menu within m_help
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_about from menu within m_help
+end type
+
+on clicked;OpenWithParm (w_about_with_parm, 'MDI First Next@')
+end on
+
+on m_about.create
+this.Text="&About..."
+this.Microhelp="Display copyright notice"
+end on
+

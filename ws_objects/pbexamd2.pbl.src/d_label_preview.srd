@@ -1,0 +1,21 @@
+﻿$PBExportHeader$d_label_preview.srd
+$PBExportComments$Label DataWindow used for the labels example
+release 9;
+datawindow(units=2 timer_interval=0 color=1083244543 processing=2 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 281 print.margin.right = 280 print.margin.top = 500 print.margin.bottom = 500 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no label.name="Laser Address 0.50 x 1.75 5267" label.width=1750 label.height=500 label.rows=20 label.rows.spacing=0 label.columns=4 label.columns.spacing=313 label.topdown=no label.sheet=yes label.shape=roundrectangle label.ellipse_height=83 label.ellipse_width=83 )
+detail(height=500 color="536870912" )
+table(column=(type=char(20) updatewhereclause=yes name=emp_fname dbname="employee.emp_fname" )
+ column=(type=char(20) updatewhereclause=yes name=emp_lname dbname="employee.emp_lname" )
+ column=(type=char(40) updatewhereclause=yes name=street dbname="employee.street" )
+ column=(type=char(20) updatewhereclause=yes name=city dbname="employee.city" )
+ column=(type=char(4) updatewhereclause=yes name=state dbname="employee.state" )
+ column=(type=char(9) updatewhereclause=yes name=zip_code dbname="employee.zip_code" )
+ retrieve="PBSELECT(TABLE(NAME='employee') COLUMN(NAME='employee.emp_fname') COLUMN(NAME='employee.emp_lname') COLUMN(NAME='employee.street') COLUMN(NAME='employee.city') COLUMN(NAME='employee.state') COLUMN(NAME='employee.zip_code') )" )
+compute(band=detail alignment="0" expression="upper( emp_fname )+~" ~"+upper(  emp_lname  )"border="0" color="33554592" x="62" y="20" height="135" width="2333" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554592" x="62" y="177" height="166" width="1958" format="[general]" html.valueishtml="0"  name=street visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+compute(band=detail alignment="0" expression="trim(  city  )+~", ~"+~" ~"+trim(upper( state )) + ~"  ~"+trim ( zip_code )"border="0" color="33554592" x="62" y="343" height="135" width="2270" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

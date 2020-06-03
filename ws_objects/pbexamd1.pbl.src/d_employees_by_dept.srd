@@ -1,0 +1,37 @@
+﻿$PBExportHeader$d_employees_by_dept.srd
+$PBExportComments$Tabular: list of employees, sorted by department, with saalries and total salary; used as data source to produce printed report in w_print_employee_roster
+release 9;
+datawindow(units=0 timer_interval=0 color=78682240 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 0 print.margin.right = 0 print.margin.top = 0 print.margin.bottom = 0 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=120 color="536870912" )
+summary(height=96 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=emp_id dbname="employee.emp_id" )
+ column=(type=number updatewhereclause=yes name=dept_id dbname="employee.dept_id" )
+ column=(type=char(20) updatewhereclause=yes name=emp_lname dbname="employee.emp_lname" )
+ column=(type=char(20) updatewhereclause=yes name=emp_fname dbname="employee.emp_fname" )
+ column=(type=decimal(3) updatewhereclause=yes name=salary dbname="employee.salary" validation=" real(gettext())  > 0" )
+ retrieve="SELECT employee.emp_id, employee.dept_id, employee.emp_lname, employee.emp_fname, employee.salary FROM employee ORDER BY employee.dept_id ASC, employee.emp_lname ASC, employee.emp_fname ASC "  sort="lookupdisplay(dept_id) A " )
+group(level=1 header.height=0 trailer.height=92 by=("lookupdisplay(dept_id)" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="2" text="Employee
+ID" border="6" color="33554592" x="5" y="8" height="100" width="288" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Department" border="6" color="33554592" x="311" y="8" height="100" width="315" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="  Last Name" border="6" color="33554592" x="649" y="8" height="100" width="585" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="  First Name" border="6" color="33554592" x="1248" y="8" height="100" width="430" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="
+Salary" border="6" color="33554592" x="1691" y="8" height="100" width="489" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="5" color="33554592" x="5" y="12" height="56" width="288" format="[general]" html.valueishtml="0"  name=emp_id visible="1" edit.limit=0 edit.case=any edit.autoselect=no edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="33554592" x="311" y="8" height="56" width="315" format="[general]" html.valueishtml="0"  name=dept_id visible="1" dddw.name=d_dddw_dept dddw.displaycolumn=dept_name dddw.datacolumn=dept_id dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="33554592" x="649" y="8" height="56" width="585" format="[general]" html.valueishtml="0"  name=emp_lname visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="33554592" x="1248" y="8" height="56" width="430" format="[general]" html.valueishtml="0"  name=emp_fname visible="1" edit.limit=20 edit.case=any edit.autoselect=no edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="5" color="33554592" x="1691" y="8" height="56" width="489" format="$#,##0;($#,##0)" html.valueishtml="0"  name=salary visible="1" edit.limit=0 edit.case=any edit.autoselect=no edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+compute(band=trailer.1 alignment="1" expression="'Total for '+lookupdisplay( dept_id )"border="0" color="33554592" x="1161" y="16" height="60" width="489" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+compute(band=trailer.1 alignment="1" expression="sum(salary for group 1)"border="5" color="33554592" x="1691" y="8" height="68" width="489" format="" html.valueishtml="0"  name=compute_2 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=summary alignment="1" text="Report Total:" border="0" color="33554592" x="1280" y="16" height="52" width="370" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+compute(band=summary alignment="1" expression="sum(  salary  )"border="5" color="33554592" x="1691" y="12" height="60" width="489" format="[currency]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

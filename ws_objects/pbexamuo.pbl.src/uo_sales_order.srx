@@ -1,0 +1,52 @@
+﻿$PBExportHeader$uo_sales_order.srx
+$PBExportComments$Sales Order Proxy
+global type uo_sales_order from NonVisualObject
+   private string ProxyName = "uo_sales_order"
+public:
+// public instance variables
+   nvo_transaction invo_transaction
+   boolean ib_connected
+   datastore ids_product
+   datastore ids_sales_order
+   datastore ids_customer
+   datastore ids_employees
+   datastore ids_lib_list
+   datastore ids_sales_order_item
+   datastore ids_data
+   string is_reportfile
+// events
+end type
+
+forward prototypes
+public:
+   function long SetConnect (connection theConnection)
+
+   // public scripts from uo_sales_order
+   function boolean of_set_datasource (string as_datasource)
+   subroutine of_get_trans (Ref transaction atr_trans)
+   function boolean of_get_sales_order (integer ai_order_id, Ref s_sales_order astr_order)
+   function integer of_get_all_sales_orders (Ref s_sales_order astr_order[])
+   function integer of_get_customers (Ref s_customer astr_cuntomer[])
+   function integer of_retrieve_customers ()
+   function integer of_retrieve_employees ()
+   function integer of_get_all_sales_reps (Ref string as_reps[])
+   function string of_get_all_sales_orders (date adt_date, integer ai_direction)
+   function string of_get_all_sales_orders ()
+   function integer of_get_all_sales_orders (Ref s_sales_order astr_order[], date adt_date, integer ai_direction)
+   function string of_get_all_sales_orders (date adt_date, integer ai_direction, integer ai_option)
+   function string of_get_all_sales_reps (integer al_sales_order)
+   function string of_get_customers (integer al_sales_order)
+   function string of_get_all_sales_reps (string as_rep)
+   function string of_get_product_info (long al_id)
+   function string of_get_sales_order (integer ai_order_id)
+   function string of_retrieve_report (string as_datasource)
+   function integer of_get_all_saleorders_id (Ref long al_id[])
+   function integer of_get_all_saleorders_id (date adt_date, integer ai_direction, Ref long al_id[])
+   function string of_get_syntax (string as_datasource)
+   function integer of_get_report_list (Ref string as_datasource[], Ref string as_comment[])
+end prototypes
+
+public function long SetConnect (connection theConnection)
+   return theConnection.CreateInstanceFromProxy(this)
+end function
+

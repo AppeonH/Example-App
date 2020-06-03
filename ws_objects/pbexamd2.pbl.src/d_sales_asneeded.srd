@@ -1,0 +1,26 @@
+﻿$PBExportHeader$d_sales_asneeded.srd
+$PBExportComments$Tabular:  Sales Orders using Retrieve as Needed
+release 9;
+datawindow(units=0 timer_interval=0 color=78682240 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=80 color="536870912" )
+summary(height=0 color="-1" )
+footer(height=88 color="-1" )
+detail(height=92 color="-1" )
+table(column=(type=number updatewhereclause=yes name=id dbname="sales_order.id" )
+ column=(type=number updatewhereclause=yes name=cust_id dbname="sales_order.cust_id" )
+ column=(type=datetime updatewhereclause=yes name=order_date dbname="sales_order.order_date" initial="" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"sales_order~" ) COLUMN(NAME=~"sales_order.id~") COLUMN(NAME=~"sales_order.cust_id~") COLUMN(NAME=~"sales_order.order_date~")) " retrieve.asneeded=yes )
+text(band=header alignment="2" text="Order ID" border="6" color="33554592" x="9" y="12" height="52" width="238" html.valueishtml="0"  name=id_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Customer ID" border="6" color="33554592" x="279" y="12" height="52" width="338" html.valueishtml="0"  name=cust_id_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Order Date" border="6" color="33554592" x="645" y="12" height="52" width="315" html.valueishtml="0"  name=order_date_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="33554592" x="9" y="8" height="68" width="238" format="[general]" html.valueishtml="0"  name=id  tag="Enter sales order id." visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="33554592" x="279" y="8" height="68" width="338" format="[general]" html.valueishtml="0"  name=cust_id  tag="Enter customer ID.  Links the sales order to the customer table." visible="1" dddw.name=d_dddw_customers dddw.displaycolumn=id dddw.datacolumn=id dddw.percentwidth=300 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="33554592" x="645" y="8" height="68" width="315" format="mm/dd/yy" html.valueishtml="0"  name=order_date  tag="Enter date that sale was made." visible="1" edit.name="MM/DD/YY" editmask.mask="MM/DD/YY" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=footer alignment="1" text="0" border="5" color="33554592" x="581" y="8" height="52" width="133" html.valueishtml="0"  name=count_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=footer alignment="1" text="Total Sales Orders:" border="0" color="33554592" x="137" y="8" height="52" width="411" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

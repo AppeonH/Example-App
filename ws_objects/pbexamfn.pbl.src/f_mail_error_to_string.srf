@@ -1,0 +1,67 @@
+﻿$PBExportHeader$f_mail_error_to_string.srf
+$PBExportComments$Convert Mail Return Code (enumerated) to a string
+global type f_mail_error_to_string from function_object
+end type
+
+forward prototypes
+global function string f_mail_error_to_string (mailreturncode a_mailreturncode, string a_message, boolean a_display)
+end prototypes
+
+global function string f_mail_error_to_string (mailreturncode a_mailreturncode, string a_message, boolean a_display);// Function  f_mail_error_to_string ( a_MailReturnCode, a_Display)
+// where:	a_MailReturnCode	MailReturnCode value
+//			a_Message			Error message to prepend to return string
+//			a_Display			Boolean (TRUE=display error messagebox)
+
+string	s
+
+choose case a_MailReturnCode
+	case mailReturnAccessDenied!
+		s = 'Access Denied'
+	case mailReturnAttachmentNotFound!
+		s = 'Attachment Not Found'
+	case mailReturnAttachmentOpenFailure!
+		s = 'Attachment Open Failure'
+	case mailReturnAttachmentWriteFailure!
+		s = 'Attachment Write Failure'
+	case mailReturnDiskFull!
+		s = 'Disk Full'
+	case mailReturnFailure!
+		s = 'Failure'
+	case mailReturnInsufficientMemory!
+		s = 'Insufficient Memory'
+	case mailReturnInvalidMessage!
+		s = 'Invalid Message'
+	case mailReturnLoginFailure!
+		s = 'Login Failure'
+	case mailReturnMessageInUse!
+		s = 'Message In Use'
+	case mailReturnNoMessages!
+		s = 'No Messages'
+	case mailReturnSuccess!
+		s = 'Success'
+	case mailReturnTextTooLarge!
+		s = 'Text Too Large'
+	case mailReturnTooManyFiles!
+		s = 'Too Many Files'
+	case mailReturnTooManyRecipients!
+		s = 'Too Many Recipients'
+	case mailReturnTooManySessions!
+		s = 'Too Many Sessions'
+	case mailReturnUnknownRecipient!
+		s = 'Unknown Recipient'
+	case mailReturnUserAbort!
+		s = 'User Abort'
+
+	case else
+		s = 'Other'
+end choose
+
+if a_Display then MessageBox ( 'Mail Return Code', a_Message + ' ' + s, Exclamation!)
+
+return s
+
+
+
+
+end function
+

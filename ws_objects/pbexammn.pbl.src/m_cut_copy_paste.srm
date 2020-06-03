@@ -1,0 +1,186 @@
+﻿$PBExportHeader$m_cut_copy_paste.srm
+$PBExportComments$Menu for cut, copy, paste example
+forward
+global type m_cut_copy_paste from menu
+end type
+type m_file from menu within m_cut_copy_paste
+end type
+type m_- from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_cut_copy_paste
+m_- m_-
+m_exit m_exit
+end type
+type m_edit from menu within m_cut_copy_paste
+end type
+type m_cut from menu within m_edit
+end type
+type m_copy from menu within m_edit
+end type
+type m_paste from menu within m_edit
+end type
+type m_edit from menu within m_cut_copy_paste
+m_cut m_cut
+m_copy m_copy
+m_paste m_paste
+end type
+type m_help from menu within m_cut_copy_paste
+end type
+type m_examplehelp from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_cut_copy_paste
+m_examplehelp m_examplehelp
+m_about m_about
+end type
+end forward
+
+global type m_cut_copy_paste from menu
+m_file m_file
+m_edit m_edit
+m_help m_help
+end type
+global m_cut_copy_paste m_cut_copy_paste
+
+on m_cut_copy_paste.create
+m_cut_copy_paste=this
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_edit, &
+this.m_help}
+end on
+
+on m_cut_copy_paste.destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_cut_copy_paste
+m_- m_-
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_-=create m_-
+this.m_exit=create m_exit
+this.Item[]={this.m_-, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_-)
+destroy(this.m_exit)
+end on
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+event clicked;Close(ParentWindow)
+
+end event
+
+on m_exit.create
+this.Text="E&xit"
+end on
+
+type m_edit from menu within m_cut_copy_paste
+m_cut m_cut
+m_copy m_copy
+m_paste m_paste
+end type
+
+on m_edit.create
+this.Text="&Edit"
+this.m_cut=create m_cut
+this.m_copy=create m_copy
+this.m_paste=create m_paste
+this.Item[]={this.m_cut, &
+this.m_copy, &
+this.m_paste}
+end on
+
+on m_edit.destroy
+destroy(this.m_cut)
+destroy(this.m_copy)
+destroy(this.m_paste)
+end on
+
+type m_cut from menu within m_edit
+end type
+
+event clicked;ParentWindow.Post Dynamic of_cut()
+
+end event
+
+on m_cut.create
+this.Text="C&ut"
+end on
+
+type m_copy from menu within m_edit
+end type
+
+event clicked;ParentWindow.Post Dynamic of_copy()
+
+end event
+
+on m_copy.create
+this.Text="&Copy"
+end on
+
+type m_paste from menu within m_edit
+end type
+
+event clicked;ParentWindow.Post Dynamic of_paste()
+
+end event
+
+on m_paste.create
+this.Text="&Paste"
+end on
+
+type m_help from menu within m_cut_copy_paste
+m_examplehelp m_examplehelp
+m_about m_about
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_examplehelp=create m_examplehelp
+this.m_about=create m_about
+this.Item[]={this.m_examplehelp, &
+this.m_about}
+end on
+
+on m_help.destroy
+destroy(this.m_examplehelp)
+destroy(this.m_about)
+end on
+
+type m_examplehelp from menu within m_help
+end type
+
+on m_examplehelp.create
+this.Text="Example He&lp"
+end on
+
+type m_about from menu within m_help
+end type
+
+on m_about.create
+this.Text="&About..."
+end on
+

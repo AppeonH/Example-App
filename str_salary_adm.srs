@@ -1,0 +1,12 @@
+$PBExportHeader$str_salary_adm.srs
+$PBExportComments$Tabular datawindow with employee id, name, status, start date, and salary
+global type 	str_salary_adm from structure
+	long	employee_emp_id
+	string	employee_emp_lname
+	string	employee_emp_fname
+	string	department_dept_name
+	string	employee_status
+	datetime	employee_start_date
+	decimal {3}	employee_salary
+	long	employee_dept_id
+end type

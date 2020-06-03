@@ -1,0 +1,44 @@
+﻿$PBExportHeader$d_employee_data_list.srd
+$PBExportComments$Tabular:  Empl. ID, SSN, DOB, PH, Status, Sal., StartDate
+release 9;
+datawindow(units=0 timer_interval=0 color=74481808 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 1 print.margin.right = 1 print.margin.top = 1 print.margin.bottom = 1 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=dept_id dbname="employee.dept_id" )
+ column=(type=number updatewhereclause=yes name=emp_id dbname="employee.emp_id" )
+ column=(type=char(11) updatewhereclause=yes name=ss_number dbname="employee.ss_number" validation="isNumber(  gettext()  )" )
+ column=(type=datetime updatewhereclause=yes name=birth_date dbname="employee.birth_date" )
+ column=(type=char(10) updatewhereclause=yes name=phone dbname="employee.phone" validation="isNumber(  gettext()  )" )
+ column=(type=char(1) updatewhereclause=yes name=status dbname="employee.status" initial="A" values="Active	A/On Leave	L/Terminated	T/" validation="match( gettext() , ~"^[ALTD]$~")" )
+ column=(type=number updatewhereclause=yes name=salary dbname="employee.salary" validation=" real(gettext())  > 0" )
+ column=(type=datetime updatewhereclause=yes name=start_date dbname="employee.start_date" )
+ column=(type=char(20) updatewhereclause=yes name=emp_lname dbname="employee.emp_lname" )
+ column=(type=char(20) updatewhereclause=yes name=emp_fname dbname="employee.emp_fname" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"employee~" ) COLUMN(NAME=~"employee.dept_id~") COLUMN(NAME=~"employee.emp_id~") COLUMN(NAME=~"employee.ss_number~") COLUMN(NAME=~"employee.birth_date~") COLUMN(NAME=~"employee.phone~") COLUMN(NAME=~"employee.status~") COLUMN(NAME=~"employee.salary~") COLUMN(NAME=~"employee.start_date~") COLUMN(NAME=~"employee.emp_lname~") COLUMN(NAME=~"employee.emp_fname~")) ORDER(NAME=~"employee.emp_lname~" ASC=yes )  ORDER(NAME=~"employee.emp_fname~" ASC=yes ) " )
+text(band=header alignment="2" text="Department
+ID" border="6" color="33554592" x="9" y="8" height="100" width="421" html.valueishtml="0"  name=dept_id_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Start Date" border="6" color="33554592" x="3003" y="8" height="100" width="453" html.valueishtml="0"  name=start_date_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Employee
+ID" border="6" color="33554592" x="453" y="8" height="100" width="357" html.valueishtml="0"  name=emp_id_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Social Security
+Number" border="6" color="33554592" x="827" y="8" height="100" width="562" html.valueishtml="0"  name=ss_number_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Birth Date" border="6" color="33554592" x="1413" y="8" height="100" width="457" html.valueishtml="0"  name=birth_date_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Phone" border="6" color="33554592" x="1897" y="8" height="100" width="462" html.valueishtml="0"  name=phone_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Status" border="6" color="33554592" x="2377" y="8" height="100" width="265" html.valueishtml="0"  name=status_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Salary" border="6" color="33554592" x="2665" y="8" height="100" width="315" html.valueishtml="0"  name=salary_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="5" color="33554592" x="9" y="8" height="60" width="421" format="[general]" html.valueishtml="0"  name=dept_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="5" color="33554592" x="453" y="8" height="60" width="357" format="[general]" html.valueishtml="0"  name=emp_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="5" color="33554592" x="827" y="8" height="60" width="562" format="@@@-@@-@@@@" html.valueishtml="0"  name=ss_number visible="1" edit.limit=11 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="33554592" x="1413" y="8" height="60" width="457" format="mmmm d, yyyy" html.valueishtml="0"  name=birth_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="33554592" x="1897" y="8" height="60" width="462" format="(@@@) @@@-@@@@" html.valueishtml="0"  name=phone visible="1" edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="5" color="33554592" x="2377" y="8" height="60" width="265" format="[general]" html.valueishtml="0"  name=status visible="1" edit.name="statusedit" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0 edit.displayonly=yes edit.codetable=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="5" color="33554592" x="2665" y="8" height="60" width="315" format="$#,##0;($#,##0)" html.valueishtml="0"  name=salary visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="33554592" x="3003" y="8" height="60" width="453" format="mmmm d, yyyy" html.valueishtml="0"  name=start_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

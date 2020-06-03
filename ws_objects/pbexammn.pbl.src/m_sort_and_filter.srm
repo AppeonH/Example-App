@@ -1,0 +1,207 @@
+﻿$PBExportHeader$m_sort_and_filter.srm
+$PBExportComments$Menu to control lots of datawindow functions
+forward
+global type m_sort_and_filter from menu
+end type
+type m_rows from menu within m_sort_and_filter
+end type
+type m_update from menu within m_rows
+end type
+type m_insertrow from menu within m_rows
+end type
+type m_deleterow from menu within m_rows
+end type
+type m_retrieve from menu within m_rows
+end type
+type m_-1 from menu within m_rows
+end type
+type m_print from menu within m_rows
+end type
+type m_printsetup from menu within m_rows
+end type
+type m_- from menu within m_rows
+end type
+type m_close from menu within m_rows
+end type
+type m_rows from menu within m_sort_and_filter
+m_update m_update
+m_insertrow m_insertrow
+m_deleterow m_deleterow
+m_retrieve m_retrieve
+m_-1 m_-1
+m_print m_print
+m_printsetup m_printsetup
+m_- m_-
+m_close m_close
+end type
+end forward
+
+global type m_sort_and_filter from menu
+m_rows m_rows
+end type
+global m_sort_and_filter m_sort_and_filter
+
+on m_sort_and_filter.create
+m_sort_and_filter=this
+this.m_rows=create m_rows
+this.Item[]={this.m_rows}
+end on
+
+on m_sort_and_filter.destroy
+destroy(this.m_rows)
+end on
+
+type m_rows from menu within m_sort_and_filter
+m_update m_update
+m_insertrow m_insertrow
+m_deleterow m_deleterow
+m_retrieve m_retrieve
+m_-1 m_-1
+m_print m_print
+m_printsetup m_printsetup
+m_- m_-
+m_close m_close
+end type
+
+on m_rows.create
+this.Text="&Rows"
+this.m_update=create m_update
+this.m_insertrow=create m_insertrow
+this.m_deleterow=create m_deleterow
+this.m_retrieve=create m_retrieve
+this.m_-1=create m_-1
+this.m_print=create m_print
+this.m_printsetup=create m_printsetup
+this.m_-=create m_-
+this.m_close=create m_close
+this.Item[]={this.m_update, &
+this.m_insertrow, &
+this.m_deleterow, &
+this.m_retrieve, &
+this.m_-1, &
+this.m_print, &
+this.m_printsetup, &
+this.m_-, &
+this.m_close}
+end on
+
+on m_rows.destroy
+destroy(this.m_update)
+destroy(this.m_insertrow)
+destroy(this.m_deleterow)
+destroy(this.m_retrieve)
+destroy(this.m_-1)
+destroy(this.m_print)
+destroy(this.m_printsetup)
+destroy(this.m_-)
+destroy(this.m_close)
+end on
+
+type m_update from menu within m_rows
+end type
+
+on clicked;//Clicked script for m_update
+
+ParentWindow.TriggerEvent("ue_update_dw")
+end on
+
+on m_update.create
+this.Text="&Update"
+this.Microhelp="Update DataWindow"
+end on
+
+type m_insertrow from menu within m_rows
+end type
+
+on clicked;//Clicked script for w_insertrow
+
+ParentWindow.TriggerEvent("ue_insert_dw")
+end on
+
+on m_insertrow.create
+this.Text="&Insert Row"
+this.Microhelp="Insert a new row into the DataWindow"
+end on
+
+type m_deleterow from menu within m_rows
+end type
+
+on clicked;//Clicked script for m_deleterow
+
+ParentWindow.TriggerEvent("ue_delete_dw")
+end on
+
+on m_deleterow.create
+this.Text="&Delete Row"
+this.Microhelp="Delete current row from the DataWindow"
+end on
+
+type m_retrieve from menu within m_rows
+end type
+
+on clicked;//Clicked script for m_retrieve
+
+ParentWindow.TriggerEvent("ue_retrieve_dw")
+end on
+
+on m_retrieve.create
+this.Text="&Retrieve"
+this.Microhelp="Retrieve DataWindow"
+end on
+
+type m_-1 from menu within m_rows
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_print from menu within m_rows
+end type
+
+on clicked;//Clicked script for m_print
+
+Parentwindow.TriggerEvent("ue_print_dw")
+end on
+
+on m_print.create
+this.Text="Prin&t..."
+this.Microhelp="Print DataWindow"
+end on
+
+type m_printsetup from menu within m_rows
+end type
+
+on clicked;//Clicked script for m_printsetup
+
+if PrintSetup( ) = -1 then
+	MessageBox("Error!","PrintSetup Failed")
+end if
+end on
+
+on m_printsetup.create
+this.Text="Pr&inter Setup..."
+this.Microhelp="Set printer options"
+end on
+
+type m_- from menu within m_rows
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_close from menu within m_rows
+end type
+
+on clicked;//Clicked script for m_close
+
+Close(ParentWindow)
+end on
+
+on m_close.create
+this.Text="&Close~tCtrl+F4"
+this.Microhelp="Close window"
+this.Shortcut=371
+end on
+

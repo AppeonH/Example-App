@@ -1,0 +1,26 @@
+﻿$PBExportHeader$d_sales_rep.srd
+$PBExportComments$Distributed PB example Datawindow used to display sales rep data
+release 9;
+datawindow(units=0 timer_interval=0 color=78682240 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=4 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=476 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=emp_id dbname="employee.emp_id" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=emp_fname dbname="employee.emp_fname" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=emp_lname dbname="employee.emp_lname" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=phone dbname="employee.phone" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"employee~" ) COLUMN(NAME=~"employee.emp_id~") COLUMN(NAME=~"employee.emp_fname~") COLUMN(NAME=~"employee.emp_lname~") COLUMN(NAME=~"employee.phone~")) " update="employee" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="384" y="268" height="60" width="530" format="[general]" html.valueishtml="0"  name=emp_lname  tag="Last name of the employee" visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="384" y="392" height="60" width="402" format="[general]" html.valueishtml="0"  name=phone  tag="Phone number of the employee" visible="1" edit.name="TelephoneNumber" editmask.mask="(###) ###-####" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="5" color="0" x="384" y="24" height="60" width="210" format="[general]" html.valueishtml="0"  name=emp_id  tag="Identification Number of the employee" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="384" y="148" height="60" width="416" format="[general]" html.valueishtml="0"  name=emp_fname  tag="First name of the employee" visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="First Name:" border="0" color="0" x="41" y="148" height="56" width="325" html.valueishtml="0"  name=emp_fname_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Last Name:" border="0" color="0" x="41" y="268" height="52" width="325" html.valueishtml="0"  name=emp_lname_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Phone:" border="0" color="0" x="41" y="392" height="52" width="325" html.valueishtml="0"  name=phone_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Employee ID:" border="0" color="0" x="41" y="24" height="52" width="325" html.valueishtml="0"  name=emp_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_search_events.srd
+$PBExportComments$Used for Example Search
+release 9;
+datawindow(units=0 timer_interval=0 color=78748035 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=76 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(128) updatewhereclause=yes name=event dbname="short_event" )
+ retrieve="SELECT exam_xref_info.short_event FROM exam_xref_info" )
+text(band=header alignment="2" text="Events" border="6" color="41943040" x="9" y="8" height="60" width="928" html.valueishtml="0"  name=event_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="33554432" x="9" y="8" height="56" width="928" format="[general]" html.valueishtml="0"  name=event visible="1" dddw.name=d_search_event_list_dddw dddw.displaycolumn=event dddw.datacolumn=event dddw.percentwidth=100 dddw.lines=0 dddw.limit=128 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

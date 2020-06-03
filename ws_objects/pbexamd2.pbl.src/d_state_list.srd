@@ -1,0 +1,27 @@
+﻿$PBExportHeader$d_state_list.srd
+$PBExportComments$Tabular list of state ID, name, capital, and country
+release 9;
+datawindow(units=0 timer_interval=0 color=78682240 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no pointer="point.cur" )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(3) update=yes updatewhereclause=yes key=yes name=state_id dbname="states.state_id" )
+ column=(type=char(24) update=yes updatewhereclause=yes name=state_name dbname="states.state_name" )
+ column=(type=char(24) update=yes updatewhereclause=yes key=yes name=state_capital dbname="states.state_capital" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=country dbname="states.country" )
+ retrieve="PBSELECT(TABLE(NAME=~"states~" ) COLUMN(NAME=~"states.state_id~") COLUMN(NAME=~"states.state_name~") COLUMN(NAME=~"states.state_capital~") COLUMN(NAME=~"states.country~")) ORDER(NAME=~"states.state_name~" ASC=yes ) " update="states" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="State ID" border="6" color="33554592" x="9" y="12" height="52" width="233" html.valueishtml="0"  name=state_id_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Name" border="6" color="33554592" x="265" y="12" height="52" width="558" html.valueishtml="0"  name=state_name_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Capital" border="6" color="33554592" x="855" y="12" height="52" width="439" html.valueishtml="0"  name=state_capital_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Country" border="6" color="33554592" x="1321" y="12" height="52" width="247" html.valueishtml="0"  name=country_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="33554592" x="9" y="4" height="64" width="233" format="[general]" html.valueishtml="0"  name=state_id visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="33554592" x="265" y="4" height="64" width="558" format="[general]" html.valueishtml="0"  name=state_name visible="1" edit.limit=24 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="33554592" x="855" y="4" height="64" width="439" format="[general]" html.valueishtml="0"  name=state_capital visible="1" edit.limit=24 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="33554592" x="1321" y="4" height="64" width="247" format="[general]" html.valueishtml="0"  name=country visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

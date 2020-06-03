@@ -1,0 +1,190 @@
+﻿$PBExportHeader$m_tag_help.srm
+$PBExportComments$Menu for sheets on Context-Sensitive MicroHelp example.
+forward
+global type m_tag_help from m_tag_help_frame
+end type
+end forward
+
+global type m_tag_help from m_tag_help_frame
+end type
+global m_tag_help m_tag_help
+
+on m_tag_help.create
+m_tag_help=this
+call m_tag_help_frame::create
+end on
+
+on m_tag_help.destroy
+call m_tag_help_frame::destroy
+end on
+
+on m_filemenu.create
+call m_tag_help_frame`m_filemenu::create
+end on
+
+on m_opencustomers::clicked;//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Open the example window for microhelp using tags, passing the "customers" DataWindow
+// in the message object.
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window		lw_win, &
+			lw_frame
+
+lw_frame = parentwindow.ParentWindow()
+
+if IsValid (lw_frame) then
+	OpenSheetWithParm (lw_win, "d_cust", "w_tag_help", lw_frame, 0, original!)
+end if
+end on
+
+on m_opencustomers.create
+call m_tag_help_frame`m_opencustomers::create
+end on
+
+on m_opensalesorders::clicked;//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Open the example window for microhelp using tags, passing the "Sales Orders" DataWindow
+// in the message object.
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window		lw_win, &
+			lw_frame
+
+lw_frame = parentwindow.ParentWindow()
+
+if IsValid (lw_frame) then
+	OpenSheetWithParm (lw_win, "d_sales_orders", "w_tag_help", lw_frame, 0, original!)
+end if
+end on
+
+on m_opensalesorders.create
+call m_tag_help_frame`m_opensalesorders::create
+end on
+
+on m_close.create
+call m_tag_help_frame`m_close::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_-4.create
+call m_tag_help_frame`m_-4::create
+end on
+
+on m_print.create
+call m_tag_help_frame`m_print::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_printersetup.create
+call m_tag_help_frame`m_printersetup::create
+end on
+
+on m_-5.create
+call m_tag_help_frame`m_-5::create
+end on
+
+on m_exit::clicked;window		lw_frame
+
+
+lw_frame = parentwindow.ParentWindow()
+
+if IsValid (lw_frame) then
+	Close (lw_frame)
+end if
+end on
+
+on m_exit.create
+call m_tag_help_frame`m_exit::create
+end on
+
+on m_rows.create
+call m_tag_help_frame`m_rows::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_retrieve.create
+call m_tag_help_frame`m_retrieve::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_update.create
+call m_tag_help_frame`m_update::create
+this.Visible=true
+end on
+
+on m_-6.create
+call m_tag_help_frame`m_-6::create
+this.Visible=true
+end on
+
+on m_insertrow.create
+call m_tag_help_frame`m_insertrow::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_deleterow.create
+call m_tag_help_frame`m_deleterow::create
+this.Visible=true
+end on
+
+on m_window.create
+call m_tag_help_frame`m_window::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_tile.create
+call m_tag_help_frame`m_tile::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_horizontal.create
+call m_tag_help_frame`m_horizontal::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_layer.create
+call m_tag_help_frame`m_layer::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_cascade.create
+call m_tag_help_frame`m_cascade::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_-2.create
+call m_tag_help_frame`m_-2::create
+this.Visible=true
+end on
+
+on m_arrangeicons.create
+call m_tag_help_frame`m_arrangeicons::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_help.create
+call m_tag_help_frame`m_help::create
+end on
+
+on m_contents.create
+call m_tag_help_frame`m_contents::create
+end on
+
+on m_2.create
+call m_tag_help_frame`m_2::create
+end on
+
+on m_aboutexample.create
+call m_tag_help_frame`m_aboutexample::create
+end on
+

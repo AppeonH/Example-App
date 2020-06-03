@@ -1,0 +1,23 @@
+﻿$PBExportHeader$d_ole_blob.srd
+$PBExportComments$DataWindow using an OLE 2.0 blob
+release 9;
+datawindow(units=0 timer_interval=0 color=74481808 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 107 print.margin.right = 107 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no ole.client.class="DataWindow" ole.client.name="Untitled" )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1160 color="536870912" )
+table(column=(type=char(20) update=yes updatewhereclause=yes key=yes name=id dbname="ole.id" )
+ column=(type=char(32765) update=yes updatewhereclause=yes name=description dbname="ole.description" )
+ column=(type=blob name=blob_1 dbname="object" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"ole~" ) COLUMN(NAME=~"ole.id~") COLUMN(NAME=~"ole.description~")) " update="ole" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="0" text="ID" border="0" color="41943040" x="18" y="20" height="52" width="64" html.valueishtml="0"  name=id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Description" border="0" color="41943040" x="581" y="20" height="52" width="338" html.valueishtml="0"  name=description_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="41943040" x="18" y="4" height="68" width="526" format="[general]" html.valueishtml="0"  name=id  tag="Identification Code" visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="41943040" x="581" y="4" height="68" width="1216" format="[general]" html.valueishtml="0"  name=description  tag="description of the blob" visible="1" edit.limit=32000 edit.case=any edit.autoselect=yes edit.autovscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+tableblob (band=detail table="ole" keyclause="id = :id" template="" id=3 x="18" y="92" height="1052" width="1765" border="5"  oleclass="PBrush" clientname="~"object~"" name=blob_1 visible="1" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

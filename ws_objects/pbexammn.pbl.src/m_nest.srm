@@ -1,0 +1,613 @@
+﻿$PBExportHeader$m_nest.srm
+$PBExportComments$Menu for the sheets on Nested Reports Example.
+forward
+global type m_nest from m_nest_frame
+end type
+end forward
+
+global type m_nest from m_nest_frame
+end type
+global m_nest m_nest
+
+on m_nest.create
+m_nest=this
+call m_nest_frame::create
+end on
+
+on m_nest.destroy
+call m_nest_frame::destroy
+end on
+
+on m_file.create
+call m_nest_frame`m_file::create
+end on
+
+on m_open.create
+call m_nest_frame`m_open::create
+end on
+
+on m_open1.create
+call m_nest_frame`m_open1::create
+end on
+
+on m_openproductsvendorsreport.create
+call m_nest_frame`m_openproductsvendorsreport::create
+end on
+
+on m_openvendorspurcaseordersreport.create
+call m_nest_frame`m_openvendorspurcaseordersreport::create
+end on
+
+on m_close::clicked;call m_nest_frame`m_close::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Close the active sheet
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		Close (lw_sheet)
+	end if
+end if
+end on
+
+on m_close.create
+call m_nest_frame`m_close::create
+this.ToolBarItemName="Custom039!"
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_-4.create
+call m_nest_frame`m_-4::create
+this.Visible=true
+end on
+
+on m_print::clicked;call m_nest_frame`m_print::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Print the active report
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_print")
+	end if
+end if
+end on
+
+on m_print.create
+call m_nest_frame`m_print::create
+this.ToolBarItemName="Print!"
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_printsetup.create
+call m_nest_frame`m_printsetup::create
+end on
+
+on m_-.create
+call m_nest_frame`m_-::create
+end on
+
+on m_exit::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Exit the example
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	Close (lw_frame)
+end if
+end on
+
+on m_exit.create
+call m_nest_frame`m_exit::create
+this.ToolBarItemName="Exit!"
+this.ToolBarItemOrder=15
+end on
+
+on m_display.create
+call m_nest_frame`m_display::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_firstpage::clicked;call m_nest_frame`m_firstpage::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Go to the first page of the active report
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_first")
+	end if
+end if
+end on
+
+on m_firstpage.create
+call m_nest_frame`m_firstpage::create
+this.ToolBarItemName="VCRFirst!"
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_priorpage::clicked;call m_nest_frame`m_priorpage::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Go to the prior page of the active report
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_prior")
+	end if
+end if
+end on
+
+on m_priorpage.create
+call m_nest_frame`m_priorpage::create
+this.ToolBarItemName="VCRPrior!"
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_nextpage::clicked;call m_nest_frame`m_nextpage::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Go to the next page of the active report
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_next")
+	end if
+end if
+end on
+
+on m_nextpage.create
+call m_nest_frame`m_nextpage::create
+this.ToolBarItemName="VCRNext!"
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_lastpage::clicked;call m_nest_frame`m_lastpage::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Go to the last page of the active report
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_last")
+	end if
+end if
+end on
+
+on m_lastpage.create
+call m_nest_frame`m_lastpage::create
+this.ToolBarItemName="VCRLast!"
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_-1.create
+call m_nest_frame`m_-1::create
+end on
+
+on m_zoom.create
+call m_nest_frame`m_zoom::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_20%::clicked;call m_nest_frame`m_20%::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Scale the display area to 20%
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+// uncheck all zoom menu items
+parent.m_20%.checked = false
+parent.m_40%.checked = false
+parent.m_60%.checked = false
+parent.m_80%.checked = false
+parent.m_100%.checked = false
+parent.m_200%.checked = false
+
+this.checked = not this.checked
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_zoom")
+	end if
+end if
+end on
+
+on m_20%.create
+call m_nest_frame`m_20%::create
+end on
+
+on m_40%::clicked;call m_nest_frame`m_40%::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Scale the display area to 40%
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+// uncheck all zoom menu items
+parent.m_20%.checked = false
+parent.m_40%.checked = false
+parent.m_60%.checked = false
+parent.m_80%.checked = false
+parent.m_100%.checked = false
+parent.m_200%.checked = false
+
+this.checked = not this.checked
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_zoom")
+	end if
+end if
+end on
+
+on m_40%.create
+call m_nest_frame`m_40%::create
+end on
+
+on m_60%::clicked;call m_nest_frame`m_60%::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Scale the display area to 60%
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+// uncheck all zoom menu items
+parent.m_20%.checked = false
+parent.m_40%.checked = false
+parent.m_60%.checked = false
+parent.m_80%.checked = false
+parent.m_100%.checked = false
+parent.m_200%.checked = false
+
+this.checked = not this.checked
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_zoom")
+	end if
+end if
+end on
+
+on m_60%.create
+call m_nest_frame`m_60%::create
+end on
+
+on m_80%::clicked;call m_nest_frame`m_80%::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Scale the display area to 80%
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+// uncheck all zoom menu items
+parent.m_20%.checked = false
+parent.m_40%.checked = false
+parent.m_60%.checked = false
+parent.m_80%.checked = false
+parent.m_100%.checked = false
+parent.m_200%.checked = false
+
+this.checked = not this.checked
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_zoom")
+	end if
+end if
+end on
+
+on m_80%.create
+call m_nest_frame`m_80%::create
+end on
+
+on m_100%::clicked;call m_nest_frame`m_100%::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Scale the display area to 100%
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+// uncheck all zoom menu items
+parent.m_20%.checked = false
+parent.m_40%.checked = false
+parent.m_60%.checked = false
+parent.m_80%.checked = false
+parent.m_100%.checked = false
+parent.m_200%.checked = false
+
+this.checked = not this.checked
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_zoom")
+	end if
+end if
+end on
+
+on m_100%.create
+call m_nest_frame`m_100%::create
+end on
+
+on m_200%::clicked;call m_nest_frame`m_200%::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Scale the display area to 200%
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+// uncheck all zoom menu items
+parent.m_20%.checked = false
+parent.m_40%.checked = false
+parent.m_60%.checked = false
+parent.m_80%.checked = false
+parent.m_100%.checked = false
+parent.m_200%.checked = false
+
+this.checked = not this.checked
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_zoom")
+	end if
+end if
+end on
+
+on m_200%.create
+call m_nest_frame`m_200%::create
+end on
+
+on m_zoomdown::clicked;call m_nest_frame`m_zoomdown::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Scale the display area down
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_zoom_down")
+	end if
+end if
+end on
+
+on m_zoomdown.create
+call m_nest_frame`m_zoomdown::create
+this.Microhelp="Scale the display area down"
+this.ToolBarItemName="Custom034!"
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_zoomup::clicked;call m_nest_frame`m_zoomup::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Scale the display area up
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_zoom_up")
+	end if
+end if
+end on
+
+on m_zoomup.create
+call m_nest_frame`m_zoomup::create
+this.Microhelp="Scale the display area up"
+this.ToolBarItemName="Custom033!"
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_-2.create
+call m_nest_frame`m_-2::create
+this.Visible=true
+end on
+
+on m_rulers::clicked;call m_nest_frame`m_rulers::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Show/Hide Rulers
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+this.checked = not this.checked
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_rulers")
+	end if
+end if
+end on
+
+on m_rulers.create
+call m_nest_frame`m_rulers::create
+this.Visible=true
+this.Enabled=true
+this.Checked=false
+end on
+
+on m_window.create
+call m_nest_frame`m_window::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_tile::clicked;call m_nest_frame`m_tile::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Vertically Tile open sheets
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_frame.ArrangeSheets (tile!)
+end if
+end on
+
+on m_tile.create
+call m_nest_frame`m_tile::create
+this.ToolBarItemName="Tile!"
+this.ToolBarItemText="Tile Vertical"
+end on
+
+on m_horizontal::clicked;call m_nest_frame`m_horizontal::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Horizontally Tile open sheets
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_frame.ArrangeSheets (TileHorizontal!)
+end if
+end on
+
+on m_horizontal.create
+call m_nest_frame`m_horizontal::create
+this.ToolBarItemName="Horizontal!"
+this.ToolBarItemText="Tile Horizontal"
+this.ToolBarItemOrder=10
+end on
+
+on m_cascade::clicked;call m_nest_frame`m_cascade::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Cascade open sheets
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_frame.ArrangeSheets (cascade!)
+end if
+end on
+
+on m_cascade.create
+call m_nest_frame`m_cascade::create
+this.ToolBarItemName="Cascade!"
+this.ToolBarItemOrder=11
+end on
+
+on m_layer::clicked;call m_nest_frame`m_layer::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Layer open sheets
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_frame.ArrangeSheets (layer!)
+end if
+end on
+
+on m_layer.create
+call m_nest_frame`m_layer::create
+this.ToolBarItemName="Layer!"
+this.ToolBarItemOrder=12
+end on
+
+on m_-7.create
+call m_nest_frame`m_-7::create
+end on
+
+on m_arrangeicons::clicked;call m_nest_frame`m_arrangeicons::clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Arrange minimized icons
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_frame.ArrangeSheets (icons!)
+end if
+end on
+
+on m_arrangeicons.create
+call m_nest_frame`m_arrangeicons::create
+this.ToolBarItemName="ArrangeIcons!"
+this.ToolBarItemOrder=13
+end on
+
+on m_-3.create
+call m_nest_frame`m_-3::create
+end on
+
+on m_toolbar1::clicked;call m_nest_frame`m_toolbar1::clicked;OpenWithParm (w_set_toolbars, parentwindow)
+end on
+
+on m_toolbar1.create
+call m_nest_frame`m_toolbar1::create
+end on
+
+on m_help.create
+call m_nest_frame`m_help::create
+end on
+
+on m_contents.create
+call m_nest_frame`m_contents::create
+this.ToolBarItemName="Help!"
+this.ToolBarItemOrder=14
+end on
+
+on m_-8.create
+call m_nest_frame`m_-8::create
+end on
+
+on m_about.create
+call m_nest_frame`m_about::create
+end on
+

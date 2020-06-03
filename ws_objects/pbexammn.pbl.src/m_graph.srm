@@ -1,0 +1,687 @@
+﻿$PBExportHeader$m_graph.srm
+$PBExportComments$Generalized menu to be used to set graph attributes.
+forward
+global type m_graph from menu
+end type
+type m_file from menu within m_graph
+end type
+type m_balancebycustomer from menu within m_file
+end type
+type m_empsalarybydept from menu within m_file
+end type
+type m_statsbycust from menu within m_file
+end type
+type m_statsbydept from menu within m_file
+end type
+type m_empsalarybydeptdw from menu within m_file
+end type
+type m_-3 from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_-2 from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_graph
+m_balancebycustomer m_balancebycustomer
+m_empsalarybydept m_empsalarybydept
+m_statsbycust m_statsbycust
+m_statsbydept m_statsbydept
+m_empsalarybydeptdw m_empsalarybydeptdw
+m_-3 m_-3
+m_close m_close
+m_-2 m_-2
+m_exit m_exit
+end type
+type m_edit from menu within m_graph
+end type
+type m_60 from menu within m_edit
+end type
+type m_-4 from menu within m_edit
+end type
+type m_openclipboard from menu within m_edit
+end type
+type m_edit from menu within m_graph
+m_60 m_60
+m_-4 m_-4
+m_openclipboard m_openclipboard
+end type
+type m_options from menu within m_graph
+end type
+type m_graphtype from menu within m_options
+end type
+type m_changetitle from menu within m_options
+end type
+type m_color from menu within m_options
+end type
+type m_spacing from menu within m_options
+end type
+type m_options from menu within m_graph
+m_graphtype m_graphtype
+m_changetitle m_changetitle
+m_color m_color
+m_spacing m_spacing
+end type
+type m_options1 from menu within m_graph
+end type
+type m_tile from menu within m_options1
+end type
+type m_tilehorizontal from menu within m_options1
+end type
+type m_layer from menu within m_options1
+end type
+type m_cascade from menu within m_options1
+end type
+type m_-1 from menu within m_options1
+end type
+type m_arrangeicons from menu within m_options1
+end type
+type m_- from menu within m_options1
+end type
+type m_toolbar from menu within m_options1
+end type
+type m_options1 from menu within m_graph
+m_tile m_tile
+m_tilehorizontal m_tilehorizontal
+m_layer m_layer
+m_cascade m_cascade
+m_-1 m_-1
+m_arrangeicons m_arrangeicons
+m_- m_-
+m_toolbar m_toolbar
+end type
+type m_help from menu within m_graph
+end type
+type m_contents from menu within m_help
+end type
+type m_-5 from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_graph
+m_contents m_contents
+m_-5 m_-5
+m_about m_about
+end type
+end forward
+
+global type m_graph from menu
+m_file m_file
+m_edit m_edit
+m_options m_options
+m_options1 m_options1
+m_help m_help
+end type
+global m_graph m_graph
+
+on m_graph.create
+m_graph=this
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.m_options=create m_options
+this.m_options1=create m_options1
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_edit, &
+this.m_options, &
+this.m_options1, &
+this.m_help}
+end on
+
+on m_graph.destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+destroy(this.m_options)
+destroy(this.m_options1)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_graph
+m_balancebycustomer m_balancebycustomer
+m_empsalarybydept m_empsalarybydept
+m_statsbycust m_statsbycust
+m_statsbydept m_statsbydept
+m_empsalarybydeptdw m_empsalarybydeptdw
+m_-3 m_-3
+m_close m_close
+m_-2 m_-2
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_balancebycustomer=create m_balancebycustomer
+this.m_empsalarybydept=create m_empsalarybydept
+this.m_statsbycust=create m_statsbycust
+this.m_statsbydept=create m_statsbydept
+this.m_empsalarybydeptdw=create m_empsalarybydeptdw
+this.m_-3=create m_-3
+this.m_close=create m_close
+this.m_-2=create m_-2
+this.m_exit=create m_exit
+this.Item[]={this.m_balancebycustomer, &
+this.m_empsalarybydept, &
+this.m_statsbycust, &
+this.m_statsbydept, &
+this.m_empsalarybydeptdw, &
+this.m_-3, &
+this.m_close, &
+this.m_-2, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_balancebycustomer)
+destroy(this.m_empsalarybydept)
+destroy(this.m_statsbycust)
+destroy(this.m_statsbydept)
+destroy(this.m_empsalarybydeptdw)
+destroy(this.m_-3)
+destroy(this.m_close)
+destroy(this.m_-2)
+destroy(this.m_exit)
+end on
+
+type m_balancebycustomer from menu within m_file
+end type
+
+event clicked;SetPointer(HourGlass!)
+
+//Open the sheet not an instance.
+//If the window is already open, it will bring it to the foreground
+//othewise the window is opened
+OpenSheet (w_customer_graph,ParentWindow, 4,layered!)
+
+end event
+
+on m_balancebycustomer.create
+this.Text="Balance By Customer"
+this.Microhelp="Open the Balance by Customer graph"
+end on
+
+type m_empsalarybydept from menu within m_file
+end type
+
+event clicked;SetPointer(HourGlass!)
+
+//Open the sheet not an instance.
+//If the window is already open, it will bring it to the foreground
+//othewise the window is opened
+OpenSheet (w_employee_graph, ParentWindow, 4,layered!)
+
+end event
+
+on m_empsalarybydept.create
+this.Text="Emp Salary By Dept"
+this.Microhelp="Open the Employee Salary by Department graph"
+end on
+
+type m_statsbycust from menu within m_file
+end type
+
+event clicked;SetPointer(HourGlass!)
+
+//Open the sheet not an instance.
+//If the window is already open, it will bring it to the foreground
+//othewise the window is opened
+OpenSheet (w_orders_graph_list_sheet, ParentWindow, 4,layered!)
+end event
+
+on m_statsbycust.create
+this.Text="Order Stats By  Month#"
+this.Microhelp="Open the Stats by Customer graph"
+end on
+
+type m_statsbydept from menu within m_file
+end type
+
+event clicked;SetPointer(HourGlass!)
+
+//Open the sheet not an instance.
+//If the window is already open, it will bring it to the foreground
+//othewise the window is opened
+OpenSheet (w_employee_graph_list_sheet,ParentWindow, 4,layered!)
+
+end event
+
+on m_statsbydept.create
+this.Text="Stats By Dept #"
+this.Microhelp="Open the Stats by Department graph"
+end on
+
+type m_empsalarybydeptdw from menu within m_file
+end type
+
+event clicked;SetPointer(HourGlass!)
+
+//Open the sheet not an instance.
+//If the window is already open, it will bring it to the foreground
+//othewise the window is opened
+OpenSheet (w_employee_graph_sheet_dw , ParentWindow, 4,layered!)
+
+end event
+
+on m_empsalarybydeptdw.create
+this.Text="Emp Salary By Dept (DW)"
+this.Microhelp="Open the Employee Salary by Department (DW) graph"
+end on
+
+type m_-3 from menu within m_file
+end type
+
+on m_-3.create
+this.Text="-"
+this.Visible=false
+end on
+
+type m_close from menu within m_file
+end type
+
+on clicked;//close the active sheet
+Close(ParentWindow.GetActiveSheet())
+end on
+
+on m_close.create
+this.Text="&Close Sheet~tCtrl+F4"
+this.Microhelp="Close sheet"
+this.Visible=false
+this.Enabled=false
+this.Shortcut=371
+end on
+
+type m_-2 from menu within m_file
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+on clicked;//Close Mdi Frame (EXIT)  All sheets will be closed also
+
+window lw_win
+lw_win = ParentWindow.GetActiveSheet( )
+if isvalid(lw_win) then  // if there is a sheet then get it's parent
+	lw_win = parentwindow(lw_win)
+else  // otherwise close the frame
+	lw_win = parentwindow
+end if
+Close(lw_win)
+end on
+
+on m_exit.create
+this.Text="E&xit"
+this.Microhelp="Exit this Example"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=90
+this.ToolBarItemSpace=2
+end on
+
+type m_edit from menu within m_graph
+m_60 m_60
+m_-4 m_-4
+m_openclipboard m_openclipboard
+end type
+
+on m_edit.create
+this.Text="&Edit"
+this.m_60=create m_60
+this.m_-4=create m_-4
+this.m_openclipboard=create m_openclipboard
+this.Item[]={this.m_60, &
+this.m_-4, &
+this.m_openclipboard}
+end on
+
+on m_edit.destroy
+destroy(this.m_60)
+destroy(this.m_-4)
+destroy(this.m_openclipboard)
+end on
+
+type m_60 from menu within m_edit
+end type
+
+on clicked;
+ParentWindow.GetActiveSheet().triggerevent("Copy_To_Clipboard")
+end on
+
+on m_60.create
+this.Text="&Copy~tCtrl+C"
+this.Microhelp="Copy graph to the clipboard"
+this.ToolBarItemName="Custom017!"
+this.ToolBarItemText="Copy"
+this.Visible=false
+this.ToolBarItemOrder=30
+this.ToolBarItemSpace=2
+this.Enabled=false
+this.Shortcut=323
+end on
+
+type m_-4 from menu within m_edit
+end type
+
+on m_-4.create
+this.Text="-"
+this.Visible=false
+end on
+
+type m_openclipboard from menu within m_edit
+end type
+
+on clicked;Run ("clipbrd.exe")
+end on
+
+on m_openclipboard.create
+this.Text="Open Clip&Board..."
+this.Microhelp="Open the clipboard viewer"
+this.ToolBarItemName="Custom014!"
+this.ToolBarItemText="Clipboard"
+this.ToolBarItemOrder=31
+end on
+
+type m_options from menu within m_graph
+m_graphtype m_graphtype
+m_changetitle m_changetitle
+m_color m_color
+m_spacing m_spacing
+end type
+
+on m_options.create
+this.Text="&Style"
+this.Visible=false
+this.Enabled=false
+this.m_graphtype=create m_graphtype
+this.m_changetitle=create m_changetitle
+this.m_color=create m_color
+this.m_spacing=create m_spacing
+this.Item[]={this.m_graphtype, &
+this.m_changetitle, &
+this.m_color, &
+this.m_spacing}
+end on
+
+on m_options.destroy
+destroy(this.m_graphtype)
+destroy(this.m_changetitle)
+destroy(this.m_color)
+destroy(this.m_spacing)
+end on
+
+type m_graphtype from menu within m_options
+end type
+
+on clicked;// Tell the sheet to take care of setting the graph type. This is
+// done in the "graph_type" event of the sheet
+ParentWindow.GetActiveSheet().TriggerEvent ("graph_type")
+end on
+
+on m_graphtype.create
+this.Text="Graph T&ype..."
+this.Microhelp="Change graph type"
+this.ToolBarItemName="Graph!"
+this.ToolBarItemText="Type"
+this.Visible=false
+this.ToolBarItemOrder=10
+this.Enabled=false
+end on
+
+on m_graphtype.destroy
+end on
+
+type m_changetitle from menu within m_options
+end type
+
+on clicked;// Tell the sheet to take care of setting the title. This is done in
+// the "graph_title" event of the active sheet
+ParentWindow.GetActiveSheet().TriggerEvent ( "graph_title")
+end on
+
+on m_changetitle.create
+this.Text="&Title..."
+this.Microhelp="Change graph title"
+this.ToolBarItemName="StaticText!"
+this.ToolBarItemText="Title"
+this.Visible=false
+this.ToolBarItemOrder=20
+this.Enabled=false
+end on
+
+type m_color from menu within m_options
+end type
+
+event clicked;// Tell the sheet to take care of setting the graph color. This is
+// done in the "graph_color" event of the sheet 
+ParentWindow.GetActiveSheet().TriggerEvent ( "graph_color")
+
+end event
+
+on m_color.create
+this.Text="&Color..."
+this.Microhelp="Change various graph colors"
+this.ToolBarItemName="CreateRuntime!"
+this.ToolBarItemText="Colors"
+this.Visible=false
+this.ToolBarItemOrder=21
+this.Enabled=false
+end on
+
+type m_spacing from menu within m_options
+end type
+
+event clicked;// Tell the sheet to take care of setting the graph spacing. This is
+// done in the "spacing" event of the sheet 
+ParentWindow.GetActiveSheet().TriggerEvent ("spacing", 0, 0)
+
+end event
+
+on m_spacing.create
+this.Text="&Spacing..."
+this.Microhelp="Change graph spacing"
+this.Visible=false
+this.Enabled=false
+end on
+
+on m_spacing.destroy
+end on
+
+type m_options1 from menu within m_graph
+m_tile m_tile
+m_tilehorizontal m_tilehorizontal
+m_layer m_layer
+m_cascade m_cascade
+m_-1 m_-1
+m_arrangeicons m_arrangeicons
+m_- m_-
+m_toolbar m_toolbar
+end type
+
+on m_options1.create
+this.Text="&Window"
+this.m_tile=create m_tile
+this.m_tilehorizontal=create m_tilehorizontal
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_-1=create m_-1
+this.m_arrangeicons=create m_arrangeicons
+this.m_-=create m_-
+this.m_toolbar=create m_toolbar
+this.Item[]={this.m_tile, &
+this.m_tilehorizontal, &
+this.m_layer, &
+this.m_cascade, &
+this.m_-1, &
+this.m_arrangeicons, &
+this.m_-, &
+this.m_toolbar}
+end on
+
+on m_options1.destroy
+destroy(this.m_tile)
+destroy(this.m_tilehorizontal)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_-1)
+destroy(this.m_arrangeicons)
+destroy(this.m_-)
+destroy(this.m_toolbar)
+end on
+
+type m_tile from menu within m_options1
+end type
+
+on clicked;//click script for m_tile
+
+ParentWindow.ArrangeSheets(Tile!)
+end on
+
+on m_tile.create
+this.Text="&Tile Vertical"
+this.Microhelp="Arrange all as vertically tiled"
+this.ToolBarItemName="Tile!"
+this.ToolBarItemText="Tile Vertical"
+this.ToolBarItemOrder=80
+this.ToolBarItemSpace=2
+end on
+
+type m_tilehorizontal from menu within m_options1
+end type
+
+on clicked;ParentWindow.ArrangeSheets (TileHorizontal!)
+end on
+
+on m_tilehorizontal.create
+this.Text="Tile &Horizontal"
+this.Microhelp="Arrange all as horizontally tiled"
+this.ToolBarItemName="Horizontal!"
+this.ToolBarItemText="Tile Horizontal"
+this.ToolBarItemOrder=81
+end on
+
+type m_layer from menu within m_options1
+end type
+
+on clicked;//click script for m_layer
+ParentWindow.ArrangeSheets(Layer!)
+end on
+
+on m_layer.create
+this.Text="&Layer"
+this.Microhelp="Arrange all as layered"
+this.ToolBarItemName="Layer!"
+this.ToolBarItemText="Layer"
+this.ToolBarItemOrder=82
+end on
+
+type m_cascade from menu within m_options1
+end type
+
+on clicked;//clicked script for m_cascade
+ParentWindow.ArrangeSheets(Cascade!)
+end on
+
+on m_cascade.create
+this.Text="&Cascade"
+this.Microhelp="Arrange all as cascaded"
+this.ToolBarItemName="Cascade!"
+this.ToolBarItemText="Cascade"
+this.ToolBarItemOrder=83
+end on
+
+type m_-1 from menu within m_options1
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_arrangeicons from menu within m_options1
+end type
+
+on clicked;//Arrange any minimized icons in mdi frame
+ParentWindow.ArrangeSheets(Icons!)
+end on
+
+on m_arrangeicons.create
+this.Text="Arrange &Icons"
+this.Microhelp="Arrange all icons"
+end on
+
+type m_- from menu within m_options1
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_toolbar from menu within m_options1
+end type
+
+on clicked;OpenWithParm (w_set_toolbars, GetActiveSheet(ParentWindow))
+
+
+end on
+
+on m_toolbar.create
+this.Text="Tool&bars..."
+this.Microhelp="Configure toolbars"
+this.Enabled=false
+end on
+
+type m_help from menu within m_graph
+m_contents m_contents
+m_-5 m_-5
+m_about m_about
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_contents=create m_contents
+this.m_-5=create m_-5
+this.m_about=create m_about
+this.Item[]={this.m_contents, &
+this.m_-5, &
+this.m_about}
+end on
+
+on m_help.destroy
+destroy(this.m_contents)
+destroy(this.m_-5)
+destroy(this.m_about)
+end on
+
+type m_contents from menu within m_help
+end type
+
+on clicked;//open example apps general help window
+f_open_help ( "w_graph_example_frame" )
+end on
+
+on m_contents.create
+this.Text="&Contents...~tF1"
+this.Microhelp="Display help for this example"
+this.Shortcut=112
+end on
+
+type m_-5 from menu within m_help
+end type
+
+on m_-5.create
+this.Text="-"
+end on
+
+type m_about from menu within m_help
+end type
+
+on clicked;OpenWithParm(w_about_with_parm,"PowerBuilder Graph Examples")
+end on
+
+on m_about.create
+this.Text="&About Graph Examples..."
+this.Microhelp="Display copyright notice"
+end on
+

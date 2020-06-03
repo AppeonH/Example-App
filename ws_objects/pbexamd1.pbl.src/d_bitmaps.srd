@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_bitmaps.srd
+$PBExportComments$Contains all bitmaps and bitmap file names
+release 9;
+datawindow(units=0 timer_interval=0 color=1090519039 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(12) updatewhereclause=yes name=bitmapname dbname="toolbarname" )
+ )
+data("all.bmp","beach.bmp","cascade1.bmp","cascade2.bmp","cdrom.bmp","check.bmp","clear1.bmp","clear2.bmp","copy1.bmp","copy2.bmp","cut1.bmp","cut2.bmp","ddlb.bmp","diskdriv.bmp","disksave.bmp","emp2.bmp","enhanced.bmp","exam.bmp","exampl.bmp","example.bmp","exit.bmp","exit1.bmp","exit2.bmp","exitdoor.bmp","fish1l.bmp","fish1r.bmp","fish2l.bmp","fish2r.bmp","fish3l.bmp","fish3r.bmp","fish4l.bmp","fish4r.bmp","fish5l.bmp","fish5r.bmp","folder.bmp","foldopen.bmp","greycol2.bmp","harddriv.bmp","indicatr.bmp","indicat2.bmp","nautilus.bmp","netdriv.bmp","newex.bmp","next1.bmp","paste1.bmp","paste2.bmp","pb_b_dn.bmp","pb_b_up.bmp","pb_c_dn.bmp","pb_c_up.bmp","pb_i_dn.bmp","pb_i_up.bmp","pb_l_dn.bmp","pb_l_up.bmp","pb_r_dn.bmp","pb_r_up.bmp","pb_u_dn.bmp","pb_u_up.bmp","prior1.bmp","shortsb.bmp","tile1.bmp","tile2.bmp","train1.bmp","train2.bmp","train3.bmp","train4.bmp","undo1.bmp","undo2.bmp","update.bmp",) 
+compute(band=detail alignment="0" expression="bitmap (  bitmapname  )"border="0" color="33554432" x="9" y="4" height="72" width="87" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="137" y="4" height="72" width="466" format="[general]" html.valueishtml="0"  name=bitmapname visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0 edit.displayonly=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

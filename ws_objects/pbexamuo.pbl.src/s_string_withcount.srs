@@ -1,0 +1,7 @@
+﻿$PBExportHeader$s_string_withcount.srs
+$PBExportComments$Distributed PB example Structure used to hold strings and count
+global type s_string_withcount from structure
+	long		i_count
+	string		s_string_data
+end type
+

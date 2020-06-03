@@ -1,0 +1,40 @@
+﻿$PBExportHeader$f_create_external_func_uo.srf
+$PBExportComments$New! function call made that will return a user object for making external calls for the correct platform
+global type f_create_external_func_uo from function_object
+end type
+
+forward prototypes
+global function boolean f_create_external_func_uo (ref u_external_function auo_extension)
+end prototypes
+
+global function boolean f_create_external_func_uo (ref u_external_function auo_extension);string	ls_wintype = "u_external_function"
+
+if ge_environment.charSet = CharSetUnicode! then
+	ls_wintype = ls_wintype + "_unicode"
+else
+	choose case ge_environment.ostype
+		case sol2!
+			ls_wintype = ls_wintype + "_sol2"
+		case hpux!
+			ls_wintype = ls_wintype + "_hpux"
+		case aix!
+			ls_wintype = ls_wintype + "_aix"
+		case else
+			if ge_Environment.Win16 then
+				ls_wintype = ls_wintype + "_win16"
+			else
+				ls_wintype = ls_wintype + "_win32"
+			end if
+	end choose
+end if
+
+auo_extension = create using ls_wintype
+
+if IsNull(auo_extension) then
+	return false
+else
+	return true
+end if
+
+end function
+

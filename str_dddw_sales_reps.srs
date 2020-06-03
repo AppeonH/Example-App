@@ -1,0 +1,7 @@
+$PBExportHeader$str_dddw_sales_reps.srs
+$PBExportComments$Grid:  Employee ID, name
+global type 	str_dddw_sales_reps from structure
+	integer	emp_id
+	string	emp_lname
+	string	emp_fname
+end type

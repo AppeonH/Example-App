@@ -1,0 +1,173 @@
+﻿$PBExportHeader$m_tv_dw_link.srm
+$PBExportComments$Menu for the TreeView / DataWindow linking example
+forward
+global type m_tv_dw_link from menu
+end type
+type m_file from menu within m_tv_dw_link
+end type
+type m_save from menu within m_file
+end type
+type m_- from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_tv_dw_link
+m_save m_save
+m_- m_-
+m_exit m_exit
+end type
+type m_help from menu within m_tv_dw_link
+end type
+type m_examplehelp from menu within m_help
+end type
+type m_-1 from menu within m_help
+end type
+type m_aboutthisexample from menu within m_help
+end type
+type m_help from menu within m_tv_dw_link
+m_examplehelp m_examplehelp
+m_-1 m_-1
+m_aboutthisexample m_aboutthisexample
+end type
+end forward
+
+global type m_tv_dw_link from menu
+m_file m_file
+m_help m_help
+end type
+global m_tv_dw_link m_tv_dw_link
+
+on m_tv_dw_link.create
+m_tv_dw_link=this
+this.m_file=create m_file
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_help}
+end on
+
+on m_tv_dw_link.destroy
+destroy(this.m_file)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_tv_dw_link
+m_save m_save
+m_- m_-
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_save=create m_save
+this.m_-=create m_-
+this.m_exit=create m_exit
+this.Item[]={this.m_save, &
+this.m_-, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_save)
+destroy(this.m_-)
+destroy(this.m_exit)
+end on
+
+event clicked;Integer				li_Cnt
+w_tv_dw_link		lw_Parent
+
+lw_Parent = ParentWindow
+
+For li_Cnt = 1 To 4
+	If lw_Parent.ib_Changed[li_Cnt] Then
+		This.m_save.Enabled = True
+		Return
+	End If
+Next
+
+This.m_save.Enabled = False
+
+end event
+
+type m_save from menu within m_file
+end type
+
+event clicked;ParentWindow.Post Dynamic Event ue_save()
+
+end event
+
+on m_save.create
+this.Text="&Save"
+end on
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+event clicked;Close(ParentWindow)
+
+end event
+
+on m_exit.create
+this.Text="E&xit"
+end on
+
+type m_help from menu within m_tv_dw_link
+m_examplehelp m_examplehelp
+m_-1 m_-1
+m_aboutthisexample m_aboutthisexample
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_examplehelp=create m_examplehelp
+this.m_-1=create m_-1
+this.m_aboutthisexample=create m_aboutthisexample
+this.Item[]={this.m_examplehelp, &
+this.m_-1, &
+this.m_aboutthisexample}
+end on
+
+on m_help.destroy
+destroy(this.m_examplehelp)
+destroy(this.m_-1)
+destroy(this.m_aboutthisexample)
+end on
+
+type m_examplehelp from menu within m_help
+end type
+
+on m_examplehelp.create
+this.Text="&Example Help"
+end on
+
+event clicked;f_open_help ("w_tv_dw_link")
+
+end event
+
+type m_-1 from menu within m_help
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_aboutthisexample from menu within m_help
+end type
+
+on m_aboutthisexample.create
+this.Text="&About this example"
+end on
+
+event clicked;OpenWithParm(w_about_with_parm, "TreeView / DataWindow Linking@" + &
+						"This example demonstrates populating a TreeView " + &
+						"with data from a DataStore and linking the levels of the " + &
+						"TreeView to DataWindows.")
+
+end event
+

@@ -1,0 +1,28 @@
+﻿$PBExportHeader$d_sp_order_items.srd
+$PBExportComments$Line items for a Sales Order - DOES NOT USE STORED PROCEDURE ON ORACLE
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=64 color="-1" )
+summary(height=0 color="-1" )
+footer(height=0 color="-1" )
+detail(height=76 color="-1" )
+table(column=(type=number updatewhereclause=yes name=line_id dbname="line_id" )
+ column=(type=number updatewhereclause=yes name=prod_id dbname="prod_id" )
+ column=(type=number updatewhereclause=yes name=quantity dbname="quantity" )
+ column=(type=datetime updatewhereclause=yes name=ship_date dbname="ship_date" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"sales_order_items~" ) COLUMN(NAME=~"sales_order_items.line_id~") COLUMN(NAME=~"sales_order_items.prod_id~") COLUMN(NAME=~"sales_order_items.quantity~") COLUMN(NAME=~"sales_order_items.ship_date~")WHERE( EXP1 =~"id~" OP =~"=~" EXP2 =~":ord_id~" ) ) ARG(NAME = ~"ord_id~" TYPE = number) ARG(NAME = ~"product~" TYPE = number) " arguments=(("ord_id", number),("product", number)) )
+text(band=header alignment="2" text="Line ID" border="0" color="0" x="9" y="4" height="56" width="274" html.valueishtml="0"  name=line_id_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Product ID" border="0" color="0" x="293" y="4" height="56" width="293" html.valueishtml="0"  name=prod_id_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Quantity" border="0" color="0" x="594" y="4" height="56" width="274" html.valueishtml="0"  name=quantity_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Ship Date" border="0" color="0" x="878" y="4" height="56" width="329" html.valueishtml="0"  name=ship_date_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+rectangle(band=detail x="0" y="4" height="60" width="1207~tif (prod_id = product, 1200, 0)"  name=r_1 visible="1" brush.hatch="6" brush.color="65535" pen.style="0" pen.width="5" pen.color="65535"  background.mode="2" background.color="-2147418113" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="9" y="4" height="60" width="274" format="[general]" html.valueishtml="0"  name=line_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="293" y="4" height="60" width="293" format="[general]" html.valueishtml="0"  name=prod_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="594" y="4" height="60" width="274" format="###,##0" html.valueishtml="0"  name=quantity visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="878" y="4" height="60" width="329" format="mm-dd-yyyy" html.valueishtml="0"  name=ship_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

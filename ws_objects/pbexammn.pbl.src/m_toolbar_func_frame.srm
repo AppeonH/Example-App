@@ -1,0 +1,105 @@
+﻿$PBExportHeader$m_toolbar_func_frame.srm
+$PBExportComments$Frame menu to test new toolbar functionality
+forward
+global type m_toolbar_func_frame from m_toolbar_func
+end type
+end forward
+
+global type m_toolbar_func_frame from m_toolbar_func
+end type
+global m_toolbar_func_frame m_toolbar_func_frame
+
+on m_toolbar_func_frame.create
+m_toolbar_func_frame=this
+call m_toolbar_func::create
+end on
+
+on m_toolbar_func_frame.destroy
+call m_toolbar_func::destroy
+end on
+
+on m_close.create
+call m_toolbar_func`m_close::create
+this.Visible=false
+this.ToolBarItemBarIndex=0
+end on
+
+on m_save.create
+call m_toolbar_func`m_save::create
+this.Visible=false
+this.ToolBarItemBarIndex=0
+end on
+
+on m_delete.create
+call m_toolbar_func`m_delete::create
+this.Visible=false
+this.ToolBarItemBarIndex=0
+end on
+
+on m_-1.create
+call m_toolbar_func`m_-1::create
+this.Visible=false
+end on
+
+on m_print.create
+call m_toolbar_func`m_print::create
+this.Visible=false
+this.ToolBarItemBarIndex=0
+end on
+
+on m_printersetup.create
+call m_toolbar_func`m_printersetup::create
+this.Visible=false
+this.ToolBarItemBarIndex=0
+end on
+
+on m_-2.create
+call m_toolbar_func`m_-2::create
+this.Visible=false
+end on
+
+on m_edit.create
+call m_toolbar_func`m_edit::create
+this.Visible=false
+this.ToolBarItemBarIndex=0
+end on
+
+on m_cut.create
+call m_toolbar_func`m_cut::create
+this.ToolBarItemBarIndex=0
+end on
+
+on m_copy.create
+call m_toolbar_func`m_copy::create
+this.ToolBarItemBarIndex=0
+end on
+
+on m_paste.create
+call m_toolbar_func`m_paste::create
+this.ToolBarItemBarIndex=0
+end on
+
+on m_tilehorizontal.create
+call m_toolbar_func`m_tilehorizontal::create
+this.Visible=false
+this.ToolBarItemBarIndex=0
+end on
+
+on m_tilevertical.create
+call m_toolbar_func`m_tilevertical::create
+this.Visible=false
+this.ToolBarItemBarIndex=0
+end on
+
+on m_layer.create
+call m_toolbar_func`m_layer::create
+this.Visible=false
+this.ToolBarItemBarIndex=0
+end on
+
+on m_cascade.create
+call m_toolbar_func`m_cascade::create
+this.Visible=false
+this.ToolBarItemBarIndex=0
+end on
+

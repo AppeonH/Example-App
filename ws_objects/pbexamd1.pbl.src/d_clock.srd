@@ -1,0 +1,17 @@
+﻿$PBExportHeader$d_clock.srd
+$PBExportComments$Clock  using datawindow refresh timer
+release 9;
+datawindow(units=0 timer_interval=1000 color=78682240 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 1 print.margin.right = 1 print.margin.top = 1 print.margin.bottom = 1 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=12 color="536870912" )
+table(column=(type=date updatewhereclause=yes name=x dbname="x" )
+ )
+compute(band=header alignment="0" expression="today()"border="0" color="33554432" x="23" y="16" height="52" width="754" format="mm/dd/yyyy h:mm:ss AM/PM" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

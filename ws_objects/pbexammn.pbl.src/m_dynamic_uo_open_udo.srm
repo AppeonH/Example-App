@@ -1,0 +1,776 @@
+﻿$PBExportHeader$m_dynamic_uo_open_udo.srm
+$PBExportComments$Menu: Used in the Dynamic User Object Example
+forward
+global type m_dynamic_uo_open_udo from menu
+end type
+type m_file from menu within m_dynamic_uo_open_udo
+end type
+type m_newwindow from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_-6 from menu within m_file
+end type
+type m_exit1 from menu within m_file
+end type
+type m_file from menu within m_dynamic_uo_open_udo
+m_newwindow m_newwindow
+m_close m_close
+m_-6 m_-6
+m_exit1 m_exit1
+end type
+type m_udos from menu within m_dynamic_uo_open_udo
+end type
+type m_dw from menu within m_udos
+end type
+type m_-1 from menu within m_udos
+end type
+type m_retrieve from menu within m_udos
+end type
+type m_insert from menu within m_udos
+end type
+type m_delete from menu within m_udos
+end type
+type m_update from menu within m_udos
+end type
+type m_- from menu within m_udos
+end type
+type m_first from menu within m_udos
+end type
+type m_last from menu within m_udos
+end type
+type m_next from menu within m_udos
+end type
+type m_prior from menu within m_udos
+end type
+type m_-2 from menu within m_udos
+end type
+type m_reset from menu within m_udos
+end type
+type m_print from menu within m_udos
+end type
+type m_exit from menu within m_udos
+end type
+type m_udos from menu within m_dynamic_uo_open_udo
+m_dw m_dw
+m_-1 m_-1
+m_retrieve m_retrieve
+m_insert m_insert
+m_delete m_delete
+m_update m_update
+m_- m_-
+m_first m_first
+m_last m_last
+m_next m_next
+m_prior m_prior
+m_-2 m_-2
+m_reset m_reset
+m_print m_print
+m_exit m_exit
+end type
+type m_window from menu within m_dynamic_uo_open_udo
+end type
+type m_vertical from menu within m_window
+end type
+type m_tile from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_cascade from menu within m_window
+end type
+type m_-4 from menu within m_window
+end type
+type m_arrangeicons from menu within m_window
+end type
+type m_-3 from menu within m_window
+end type
+type m_toolbar from menu within m_window
+end type
+type m_window from menu within m_dynamic_uo_open_udo
+m_vertical m_vertical
+m_tile m_tile
+m_layer m_layer
+m_cascade m_cascade
+m_-4 m_-4
+m_arrangeicons m_arrangeicons
+m_-3 m_-3
+m_toolbar m_toolbar
+end type
+type m_help from menu within m_dynamic_uo_open_udo
+end type
+type m_contents from menu within m_help
+end type
+type m_-5 from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_dynamic_uo_open_udo
+m_contents m_contents
+m_-5 m_-5
+m_about m_about
+end type
+end forward
+
+global type m_dynamic_uo_open_udo from menu
+m_file m_file
+m_udos m_udos
+m_window m_window
+m_help m_help
+end type
+global m_dynamic_uo_open_udo m_dynamic_uo_open_udo
+
+type variables
+w_dynamic_uo_work_area iw_sheet
+end variables
+
+on m_dynamic_uo_open_udo.create
+m_dynamic_uo_open_udo=this
+this.m_file=create m_file
+this.m_udos=create m_udos
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_udos, &
+this.m_window, &
+this.m_help}
+end on
+
+on m_dynamic_uo_open_udo.destroy
+destroy(this.m_file)
+destroy(this.m_udos)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_dynamic_uo_open_udo
+m_newwindow m_newwindow
+m_close m_close
+m_-6 m_-6
+m_exit1 m_exit1
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_newwindow=create m_newwindow
+this.m_close=create m_close
+this.m_-6=create m_-6
+this.m_exit1=create m_exit1
+this.Item[]={this.m_newwindow, &
+this.m_close, &
+this.m_-6, &
+this.m_exit1}
+end on
+
+on m_file.destroy
+destroy(this.m_newwindow)
+destroy(this.m_close)
+destroy(this.m_-6)
+destroy(this.m_exit1)
+end on
+
+type m_newwindow from menu within m_file
+end type
+
+on clicked;w_dynamic_uo_work_area w_sheet
+
+opensheet(w_sheet,parentwindow,0,original!)
+end on
+
+on m_newwindow.create
+this.Text="&New Sheet"
+this.Microhelp="Open a new sheet"
+end on
+
+type m_close from menu within m_file
+end type
+
+on clicked;// close the current sheet
+close(getactivesheet(parentwindow))
+end on
+
+on m_close.create
+this.Text="&Close~tCtrl+F4"
+this.Microhelp="Close sheet"
+this.Visible=false
+this.Enabled=false
+this.Shortcut=371
+end on
+
+type m_-6 from menu within m_file
+end type
+
+on m_-6.create
+this.Text="-"
+end on
+
+type m_exit1 from menu within m_file
+end type
+
+on clicked;// close the frame
+window win
+win = getactivesheet(parentwindow)
+if isvalid(win) then  // if there is a sheet then get it's parent
+	win = parentwindow(win)
+else  // otherwise close the frame
+	win = parentwindow
+end if
+close(win)
+end on
+
+on m_exit1.create
+this.Text="E&xit"
+this.Microhelp="Exit this example"
+end on
+
+type m_udos from menu within m_dynamic_uo_open_udo
+m_dw m_dw
+m_-1 m_-1
+m_retrieve m_retrieve
+m_insert m_insert
+m_delete m_delete
+m_update m_update
+m_- m_-
+m_first m_first
+m_last m_last
+m_next m_next
+m_prior m_prior
+m_-2 m_-2
+m_reset m_reset
+m_print m_print
+m_exit m_exit
+end type
+
+on m_udos.create
+this.Text="&User Objects"
+this.Visible=false
+this.Enabled=false
+this.m_dw=create m_dw
+this.m_-1=create m_-1
+this.m_retrieve=create m_retrieve
+this.m_insert=create m_insert
+this.m_delete=create m_delete
+this.m_update=create m_update
+this.m_-=create m_-
+this.m_first=create m_first
+this.m_last=create m_last
+this.m_next=create m_next
+this.m_prior=create m_prior
+this.m_-2=create m_-2
+this.m_reset=create m_reset
+this.m_print=create m_print
+this.m_exit=create m_exit
+this.Item[]={this.m_dw, &
+this.m_-1, &
+this.m_retrieve, &
+this.m_insert, &
+this.m_delete, &
+this.m_update, &
+this.m_-, &
+this.m_first, &
+this.m_last, &
+this.m_next, &
+this.m_prior, &
+this.m_-2, &
+this.m_reset, &
+this.m_print, &
+this.m_exit}
+end on
+
+on m_udos.destroy
+destroy(this.m_dw)
+destroy(this.m_-1)
+destroy(this.m_retrieve)
+destroy(this.m_insert)
+destroy(this.m_delete)
+destroy(this.m_update)
+destroy(this.m_-)
+destroy(this.m_first)
+destroy(this.m_last)
+destroy(this.m_next)
+destroy(this.m_prior)
+destroy(this.m_-2)
+destroy(this.m_reset)
+destroy(this.m_print)
+destroy(this.m_exit)
+end on
+
+type m_dw from menu within m_udos
+end type
+
+on clicked;
+	iw_sheet.ib_place = TRUE
+	iw_sheet.ii_udo_nmbr	=	1
+
+	If ge_Environment.OSType <> sol2! Then
+		parentwindow.pointer = 'point.cur'
+	End if
+
+end on
+
+on m_dw.create
+this.Text="&DataWindow~tCtrl+D"
+this.Microhelp="Open a DataWindow"
+this.ToolBarItemName="DataWindow!"
+this.ToolBarItemText="DataWindow"
+this.ToolBarItemOrder=1
+this.Checked=true
+this.Shortcut=324
+end on
+
+type m_-1 from menu within m_udos
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_retrieve from menu within m_udos
+end type
+
+on clicked;	iw_sheet.ib_place = TRUE
+	iw_sheet.ii_udo_nmbr	=	2
+
+	If ge_Environment.OSType <> sol2! Then
+		parentwindow.pointer = 'point.cur'
+	End if
+
+end on
+
+on m_retrieve.create
+this.Text="&Retrieve~tCtrl+R"
+this.Microhelp="Retrieve data into DataWindow"
+this.ToolBarItemName="Retrieve!"
+this.ToolBarItemText="Retrieve"
+this.ToolBarItemOrder=2
+this.ToolBarItemSpace=1
+this.Shortcut=338
+end on
+
+type m_insert from menu within m_udos
+end type
+
+on clicked;	
+	iw_sheet.ib_place = TRUE
+	iw_sheet.ii_udo_nmbr	=	3
+
+	If ge_Environment.OSType <> sol2! Then
+		parentwindow.pointer = 'point.cur'
+	End if
+
+end on
+
+on m_insert.create
+this.Text="&Insert~tCtrl+I"
+this.Microhelp="Insert a new row"
+this.ToolBarItemName="Insert!"
+this.ToolBarItemText="Insert"
+this.ToolBarItemOrder=3
+this.Shortcut=329
+end on
+
+type m_delete from menu within m_udos
+end type
+
+on clicked;
+	iw_sheet.ib_place = TRUE
+	iw_sheet.ii_udo_nmbr	=	4
+
+	If ge_Environment.OSType <> sol2! Then
+		parentwindow.pointer = 'point.cur'
+	End if
+
+end on
+
+on m_delete.create
+this.Text="De&lete~tCtrl+L"
+this.Microhelp="Delete current row from DataWindow"
+this.ToolBarItemName="Clear!"
+this.ToolBarItemText="Delete"
+this.ToolBarItemOrder=4
+this.Shortcut=332
+end on
+
+type m_update from menu within m_udos
+end type
+
+on clicked;
+	iw_sheet.ib_place = TRUE
+	iw_sheet.ii_udo_nmbr	=	5
+
+	If ge_Environment.OSType <> sol2! Then
+		parentwindow.pointer = 'point.cur'
+	End if
+
+end on
+
+on m_update.create
+this.Text="&Update~tCtrl+U"
+this.Microhelp="Save DataWindow changes to the database"
+this.ToolBarItemName="Update!"
+this.ToolBarItemText="Update"
+this.ToolBarItemOrder=5
+this.Shortcut=341
+end on
+
+type m_- from menu within m_udos
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_first from menu within m_udos
+end type
+
+on clicked;	
+	iw_sheet.ib_place = TRUE
+	iw_sheet.ii_udo_nmbr	=	6
+
+	If ge_Environment.OSType <> sol2! Then
+		parentwindow.pointer = 'point.cur'
+	End if
+
+end on
+
+on m_first.create
+this.Text="&First"
+this.Microhelp="Scroll to the first row"
+this.ToolBarItemName="VCRFirst!"
+this.ToolBarItemText="First"
+this.ToolBarItemOrder=6
+this.ToolBarItemSpace=1
+end on
+
+type m_last from menu within m_udos
+end type
+
+on clicked;	
+	iw_sheet.ib_place = TRUE
+	iw_sheet.ii_udo_nmbr	=	7
+
+	If ge_Environment.OSType <> sol2! Then
+		parentwindow.pointer = 'point.cur'
+	End if
+
+end on
+
+on m_last.create
+this.Text="Las&t"
+this.Microhelp="Scroll to the last row"
+this.ToolBarItemName="VCRLast!"
+this.ToolBarItemText="Last"
+this.ToolBarItemOrder=9
+end on
+
+type m_next from menu within m_udos
+end type
+
+on clicked;
+	iw_sheet.ib_place = TRUE
+	iw_sheet.ii_udo_nmbr	=	8
+
+	If ge_Environment.OSType <> sol2! Then
+		parentwindow.pointer = 'point.cur'
+	End if
+
+end on
+
+on m_next.create
+this.Text="&Next"
+this.Microhelp="Scroll to the next row"
+this.ToolBarItemName="VCRNext!"
+this.ToolBarItemText="Next"
+this.ToolBarItemOrder=8
+end on
+
+type m_prior from menu within m_udos
+end type
+
+on clicked;	
+	iw_sheet.ib_place = TRUE
+	iw_sheet.ii_udo_nmbr	=	9
+
+	If ge_Environment.OSType <> sol2! Then
+		parentwindow.pointer = 'point.cur'
+	End if
+
+end on
+
+on m_prior.create
+this.Text="Pri&or"
+this.Microhelp="Scroll to the prior row"
+this.ToolBarItemName="VCRPrior!"
+this.ToolBarItemText="Prior"
+this.ToolBarItemOrder=7
+end on
+
+type m_-2 from menu within m_udos
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_reset from menu within m_udos
+end type
+
+on clicked;	
+	iw_sheet.ib_place = TRUE
+	iw_sheet.ii_udo_nmbr	=	10
+
+	If ge_Environment.OSType <> sol2! Then
+		parentwindow.pointer = 'point.cur'
+	End if
+
+end on
+
+on m_reset.create
+this.Text="Re&set~tCtrl+S"
+this.Microhelp="Reset DataWindow"
+this.ToolBarItemName="Custom045!"
+this.ToolBarItemText="Reset"
+this.ToolBarItemOrder=10
+this.ToolBarItemSpace=1
+this.Shortcut=339
+end on
+
+type m_print from menu within m_udos
+end type
+
+on clicked;	
+	iw_sheet.ib_place = TRUE
+	iw_sheet.ii_udo_nmbr	=	11
+
+	If ge_Environment.OSType <> sol2! Then
+		parentwindow.pointer = 'point.cur'
+	End if
+
+end on
+
+on m_print.create
+this.Text="&Print"
+this.Microhelp="Print DataWindow"
+this.ToolBarItemName="Print!"
+this.ToolBarItemText="Print"
+this.ToolBarItemOrder=11
+this.ToolBarItemSpace=1
+end on
+
+type m_exit from menu within m_udos
+end type
+
+event clicked;	iw_sheet.ib_place = TRUE
+	iw_sheet.ii_udo_nmbr	=	12
+
+	If ge_Environment.OSType <> sol2! Then
+		parentwindow.pointer = 'point.cur'
+	End if
+
+end event
+
+on m_exit.create
+this.Text="E&xit~tCtrl+X"
+this.Microhelp="Exit this example"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=12
+this.ToolBarItemSpace=1
+this.Shortcut=344
+end on
+
+type m_window from menu within m_dynamic_uo_open_udo
+m_vertical m_vertical
+m_tile m_tile
+m_layer m_layer
+m_cascade m_cascade
+m_-4 m_-4
+m_arrangeicons m_arrangeicons
+m_-3 m_-3
+m_toolbar m_toolbar
+end type
+
+on m_window.create
+this.Text="&Window"
+this.m_vertical=create m_vertical
+this.m_tile=create m_tile
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_-4=create m_-4
+this.m_arrangeicons=create m_arrangeicons
+this.m_-3=create m_-3
+this.m_toolbar=create m_toolbar
+this.Item[]={this.m_vertical, &
+this.m_tile, &
+this.m_layer, &
+this.m_cascade, &
+this.m_-4, &
+this.m_arrangeicons, &
+this.m_-3, &
+this.m_toolbar}
+end on
+
+on m_window.destroy
+destroy(this.m_vertical)
+destroy(this.m_tile)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_-4)
+destroy(this.m_arrangeicons)
+destroy(this.m_-3)
+destroy(this.m_toolbar)
+end on
+
+type m_vertical from menu within m_window
+end type
+
+on clicked;parentwindow.arrangesheets(tile!)
+end on
+
+on m_vertical.create
+this.Text="&Tile Vertical"
+this.Microhelp="Arrange all as vertically tiled"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_tile from menu within m_window
+end type
+
+on clicked;parentwindow.arrangesheets(TileHorizontal!)
+end on
+
+on m_tile.create
+this.Text="Tile &Horizontal"
+this.Microhelp="Arrange all as horizontally tiled"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_layer from menu within m_window
+end type
+
+on clicked;parentwindow.arrangesheets(layer!)
+end on
+
+on m_layer.create
+this.Text="&Layer"
+this.Microhelp="Arrange all as layered"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on clicked;parentwindow.arrangesheets(cascade!)
+end on
+
+on m_cascade.create
+this.Text="&Cascade"
+this.Microhelp="Arrange all as cascaded"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_-4 from menu within m_window
+end type
+
+on m_-4.create
+this.Text="-"
+this.Visible=false
+end on
+
+type m_arrangeicons from menu within m_window
+end type
+
+on clicked;parentwindow.arrangesheets(icons!)
+end on
+
+on m_arrangeicons.create
+this.Text="&Arrange Icons"
+this.Microhelp="Arrange all icons"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_-3 from menu within m_window
+end type
+
+on m_-3.create
+this.Text="-"
+this.Visible=false
+end on
+
+type m_toolbar from menu within m_window
+end type
+
+on clicked;OpenWithParm (w_set_toolbars, ParentWindow)
+end on
+
+on m_toolbar.create
+this.Text="Tool&bar..."
+this.Microhelp="Configure toolbars"
+end on
+
+type m_help from menu within m_dynamic_uo_open_udo
+m_contents m_contents
+m_-5 m_-5
+m_about m_about
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_contents=create m_contents
+this.m_-5=create m_-5
+this.m_about=create m_about
+this.Item[]={this.m_contents, &
+this.m_-5, &
+this.m_about}
+end on
+
+on m_help.destroy
+destroy(this.m_contents)
+destroy(this.m_-5)
+destroy(this.m_about)
+end on
+
+type m_contents from menu within m_help
+end type
+
+on clicked;f_open_help ('w_dynamic_uo_open_uo_frame')
+end on
+
+on m_contents.create
+this.Text="&Contents...~tF1"
+this.Microhelp="Display help for this example"
+this.Shortcut=112
+end on
+
+type m_-5 from menu within m_help
+end type
+
+on m_-5.create
+this.Text="-"
+end on
+
+type m_about from menu within m_help
+end type
+
+on clicked;string lAboutMsg
+
+lAboutMsg = "Dynamic User Objects@This shows how to open " &
+				+"custom user objects and combining them with window events create " &
+				+"the functionality within a window on an 'As Needed' basis. ~r~n" &
+				+"You need to create the Datawindow first so click on the first "&
+				+"toolbar icon then click inside the Work Area Window. To remove a " &
+				+"button once added click the 'Right Mouse Button' on the area between " &
+				+"the button and the border of the User Object."
+
+OpenSheetWithParm(w_about_with_parm, lAboutMsg, parentwindow, 1, original!)
+end on
+
+on m_about.create
+this.Text="About Dynamic User Objects..."
+this.Microhelp="Display copyright notice"
+end on
+

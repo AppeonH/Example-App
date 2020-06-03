@@ -1,0 +1,12 @@
+﻿$PBExportHeader$s_product.srs
+$PBExportComments$Distributed PB example Structure used to hold product data
+global type s_product from structure
+	int		id
+	string		name
+	string		description
+	string		prod_size
+	string		color
+	int		quanity
+	decimal {2}	uint_price
+end type
+

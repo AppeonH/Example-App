@@ -1,0 +1,96 @@
+﻿$PBExportHeader$m_date_datawindow.srm
+$PBExportComments$Menu for Year 2000 DataWindow example
+forward
+global type m_date_datawindow from m_date_ancestor
+end type
+end forward
+
+global type m_date_datawindow from m_date_ancestor
+end type
+global m_date_datawindow m_date_datawindow
+
+on m_date_datawindow.create
+m_date_datawindow=this
+call super::create
+end on
+
+on m_date_datawindow.destroy
+call super::destroy
+end on
+
+on m_file.create
+call super::create
+this.MergeOption=Exclude!
+end on
+
+on m_datesorting.create
+call super::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+end on
+
+on m_datesindatawindows.create
+call super::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+end on
+
+on m_datesinwindows.create
+call super::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+end on
+
+on m_-1.create
+call super::create
+this.MergeOption=Exclude!
+end on
+
+on m_close.create
+call super::create
+this.ToolBarItemVisible=true
+end on
+
+on m_exit2.create
+call super::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+this.ToolBarItemSpace=0
+end on
+
+on m_action.create
+call super::create
+this.Text="&InsertRow"
+end on
+
+event m_action::clicked;call super::clicked;ParentWindow.Post Dynamic of_insertrow()
+
+end event
+
+on m_exit.create
+call super::create
+this.MergeOption=Exclude!
+end on
+
+on m_help.create
+call super::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+this.ToolBarItemSpace=0
+end on
+
+on m_-.create
+call super::create
+this.MergeOption=Exclude!
+end on
+
+on m_about.create
+call super::create
+this.ToolBarItemText=""
+end on
+

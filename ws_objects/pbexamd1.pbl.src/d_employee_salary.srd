@@ -1,0 +1,27 @@
+﻿$PBExportHeader$d_employee_salary.srd
+$PBExportComments$Tabular: list of employees with name and salary
+release 9;
+datawindow(units=0 timer_interval=0 color=74481808 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 0 print.margin.right = 0 print.margin.top = 0 print.margin.bottom = 0 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=116 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=76 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(20) updatewhereclause=yes dbname="employee.emp_lname" )
+ column=(type=char(20) updatewhereclause=yes dbname="employee.emp_fname" )
+ column=(type=number updatewhereclause=yes dbname="employee.salary" validation=" real(gettext())  > 0" )
+ retrieve="SELECT employee.emp_lname, employee.emp_fname, employee.salary FROM employee ORDER BY employee.emp_lname ASC, employee.emp_fname ASC " )
+text(band=header alignment="2" text="AboveAverage" border="6" color="33554592" x="1417" y="4" height="104" width="233" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text=" Last Name" border="6" color="33554592" x="5" y="4" height="104" width="466" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text=" First  Name" border="6" color="33554592" x="494" y="4" height="104" width="421" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Salary" border="6" color="33554592" x="937" y="4" height="104" width="462" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="bitmap (if(#3 > avg(#3), ~"indicat2.bmp~",~"~"))"border="0" color="33554592" x="1431" y="4" height="88" width="151" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="5" color="33554592" x="937" y="12" height="72" width="462" format="[currency]" html.valueishtml="0" visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="33554592" x="494" y="12" height="72" width="421" format="[general]" html.valueishtml="0" visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="33554592" x="5" y="12" height="72" width="466" format="[general]" html.valueishtml="0" visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="~"Average Salary = ~"+string(avg(#3),~"[currency]~")"border="0" color="33554592" x="480" y="4" height="64" width="914" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

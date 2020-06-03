@@ -1,0 +1,47 @@
+﻿$PBExportHeader$f_return_selected.srf
+$PBExportComments$Returns the row numbers of the selected rows of a DataWindow.
+global type f_return_selected from function_object
+end type
+
+forward prototypes
+global function integer f_return_selected (datawindow adw_control, ref long al_row[])
+end prototypes
+
+global function integer f_return_selected (datawindow adw_control, ref long al_row[]);//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Function: f_return_selected
+//
+// Purpose: Returns the selected rows of a DataWindow into an array
+//
+// Scope: public
+//
+// Arguments: adw_control	the DataWindow control that has rows selected
+//			   al_row[]		an array of type long passed by reference that will contain
+//							the row numbers of the selected rows in the DataWindow
+//
+// Returns: long		the number of selected rows in the DataWindow
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+long	ll_row, &
+		ll_selected_count, &
+		ll_index = 1
+
+
+ll_row = adw_control.GetSelectedRow (0)
+if ll_row = 0 then
+	// If no rows are selected, return zero
+	return 0
+else
+	// Loop through the DataWindow rows and add each row number that is selected to the array.
+	do
+		al_row[ll_index] = ll_row
+		ll_index++
+		ll_row = adw_control.GetSelectedRow (ll_row)
+	loop while ll_row > 0
+	
+	return ll_index - 1
+end if
+
+end function
+

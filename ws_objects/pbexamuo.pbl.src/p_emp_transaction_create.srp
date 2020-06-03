@@ -1,0 +1,18 @@
+﻿$PBExportHeader$p_emp_transaction_create.srp
+$PBExportComments$Create employee transaction table
+PIPELINE(source_connect=PB Demo DB V2019,destination_connect=PB Demo DB V2019,type=replace,commit=100,errors=100,keyname="emp_pipe_transaction_x")
+SOURCE(name="employee",COLUMN(type=long,name="emp_id",dbtype="integer",key=yes,nulls_allowed=yes)
+ COLUMN(type=string,name="emp_fname",dbtype="long varchar",nulls_allowed=yes)
+ COLUMN(type=string,name="emp_lname",dbtype="long varchar",nulls_allowed=yes)
+ COLUMN(type=long,name="dept_id",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=string,name="bene_health_ins",dbtype="long varchar",nulls_allowed=yes)
+ COLUMN(type=string,name="bene_life_ins",dbtype="long varchar",nulls_allowed=yes)
+ COLUMN(type=string,name="bene_day_care",dbtype="long varchar",nulls_allowed=yes))
+RETRIEVE(statement="SELECT employee.emp_id, employee.emp_fname, employee.emp_lname, employee.dept_id,employee.bene_health_ins, employee.bene_life_ins, employee.bene_day_care FROM employee Where 1 = 0 Union Select 102,	'Fran',	'Whitney',100,	'Y','Y','Y' From employee Union Select 	105,	'Matthew',	'Cobb',	100,	'Y',	'N',	'N' From employee Union Select 	1157,	'Hing',	'Soo',	100,	'N',	'Y',	'N' From employee Union Select 	1250,	'Emilio','Diaz',	100,	'N',	'N',	'N' From employee Union Select 	129,'Philip','Chin',	200,'Y','Y','Y' From employee Union Select 195,'Marc','Dill', 200 ,'Y', 'Y', 'Y' From employee Union Select 1596,	'Catherine',	'Pickett',	200,	'Y',	'Y','N' From employee Union Select 	148,	'Julie',	'Jordan',	300,	'Y',	'Y',	'Y' From employee Union Select 	390,	'Jo Ann',	'Davidson',	300,	'N',	'N',	'Y' From employee Union Select 	586,	'James',	'Coleman',	300,	'Y',	'Y',	 'Y' From employee Union Select 	409,	'Bruce',	'Weaver',	400,	'Y',	'Y',	'Y' From employee Union Select 	591,	'Irene',	'Barletta',	400,	'N',	'N','N' From employee Union Select 	888,	'Doug',	'Charlton',	400,	'N',	'Y','Y' From employee Union Select 	992,	'Joyce',	'Butterfield',	400,	'Y',	'Y',	'Y' From employee Union Select 	1062,	'Barbara',	'Blaikie',	400,	'N',	'Y',	'Y' From employee Union Select 1355,	'Joe',	'Overbey',	401,'Y','Y','N' From employee Union Select	1354,	'Joe',	'Morris',	500,	'Y',	'Y',	'Y' From employee")
+DESTINATION(name="emp_pipe_transaction",COLUMN(type=long,name="emp_id",dbtype="integer",key=yes,nulls_allowed=no,initial_value="0")
+ COLUMN(type=string,name="emp_fname",dbtype="long varchar",nulls_allowed=yes)
+ COLUMN(type=string,name="emp_lname",dbtype="long varchar",nulls_allowed=yes)
+ COLUMN(type=long,name="dept_id",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=string,name="bene_health_ins",dbtype="long varchar",nulls_allowed=yes)
+ COLUMN(type=string,name="bene_life_ins",dbtype="long varchar",nulls_allowed=yes)
+ COLUMN(type=string,name="bene_day_care",dbtype="long varchar",nulls_allowed=yes))

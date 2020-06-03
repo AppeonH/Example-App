@@ -1,0 +1,73 @@
+﻿$PBExportHeader$f_save_toolbar_profile.srf
+$PBExportComments$Save toolbar preferences to the registry or the example.ini file
+global type f_save_toolbar_profile from function_object
+end type
+
+forward prototypes
+global subroutine f_save_toolbar_profile (window aw_window)
+end prototypes
+
+global subroutine f_save_toolbar_profile (window aw_window);//////////////////////////////////////////////////////////////////////////////
+//
+//	Function:  		f_save_toolbar_profile
+//
+//	Access:  		public
+//
+//	Arguments:
+//	aw_Window			The window whose toolbars are being saved.
+//
+//	Returns:  		None.
+//
+//	Description: 	Save the current toolbar information.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+String		ls_WindowName, ls_Visible, ls_Align
+Integer		li_Indexes, li_Index[], li_Cnt, li_X, li_Y, li_Width, li_Height
+Boolean		lb_Visible
+ToolbarAlignment	lta_Alignment
+
+ls_WindowName = aw_Window.ClassName()
+
+// Get all the indexes for this window's menu
+li_Indexes = f_get_toolbar_indexes(aw_Window.Menuid, li_Index)
+
+// Save the toolbar information for each index
+For li_Cnt = 1 To li_Indexes
+	aw_Window.GetToolbar(li_Index[li_Cnt], lb_Visible, lta_Alignment)
+	
+	If lb_Visible Then
+		ls_Visible = "yes"
+	Else
+		ls_Visible = "no"
+	End If
+
+	Choose Case lta_Alignment
+		Case alignatbottom!
+			ls_Align = "bottom"
+		Case alignatleft!
+			ls_Align = "left"
+		Case alignatright!
+			ls_Align = "right"
+		Case alignattop!
+			ls_Align = "top"
+		Case floating!
+			ls_Align = "floating"
+	End Choose
+
+	If ls_Align = "floating" Then
+		aw_Window.GetToolbarPos(li_Index[li_Cnt], li_X, li_Y, li_Width, li_Height)
+	Else
+		aw_Window.GetToolbarPos(li_Index[li_Cnt], li_X, li_Y)
+	End If
+	
+	f_set_profile(ls_WindowName, "toolbarvisible" + String(li_Index[li_Cnt]), ls_Visible)
+	f_set_profile(ls_WindowName, "toolbaralignment" + String(li_Index[li_Cnt]), ls_Align)
+	f_set_profile(ls_WindowName, "toolbarx" + String(li_Index[li_Cnt]), String(li_X))
+	f_set_profile(ls_WindowName, "toolbary" + String(li_Index[li_Cnt]), String(li_Y))
+	f_set_profile(ls_WindowName, "toolbarwidth" + String(li_Index[li_Cnt]), String(li_Width))
+	f_set_profile(ls_WindowName, "toolbarheight" + String(li_Index[li_Cnt]), String(li_Height))
+Next
+
+end subroutine
+

@@ -1,0 +1,636 @@
+﻿$PBExportHeader$m_test.srm
+$PBExportComments$Generic test menu for PB examples
+forward
+global type m_test from menu
+end type
+type m_file from menu within m_test
+end type
+type m_close from menu within m_file
+end type
+type m_-2 from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_test
+m_close m_close
+m_-2 m_-2
+m_exit m_exit
+end type
+type m_settings from menu within m_test
+end type
+type m_windowbackgroundcolor from menu within m_settings
+end type
+type m_black from menu within m_windowbackgroundcolor
+end type
+type m_white from menu within m_windowbackgroundcolor
+end type
+type m_gray from menu within m_windowbackgroundcolor
+end type
+type m_red from menu within m_windowbackgroundcolor
+end type
+type m_green from menu within m_windowbackgroundcolor
+end type
+type m_blue from menu within m_windowbackgroundcolor
+end type
+type m_magenta from menu within m_windowbackgroundcolor
+end type
+type m_cyan from menu within m_windowbackgroundcolor
+end type
+type m_yellow from menu within m_windowbackgroundcolor
+end type
+type m_brown from menu within m_windowbackgroundcolor
+end type
+type m_buttonface from menu within m_windowbackgroundcolor
+end type
+type m_windowbackgroundcolor from menu within m_settings
+m_black m_black
+m_white m_white
+m_gray m_gray
+m_red m_red
+m_green m_green
+m_blue m_blue
+m_magenta m_magenta
+m_cyan m_cyan
+m_yellow m_yellow
+m_brown m_brown
+m_buttonface m_buttonface
+end type
+type m_settings from menu within m_test
+m_windowbackgroundcolor m_windowbackgroundcolor
+end type
+type m_window from menu within m_test
+end type
+type m_tile from menu within m_window
+end type
+type m_horizontal from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_cascade from menu within m_window
+end type
+type m_-3 from menu within m_window
+end type
+type m_arrangeicons from menu within m_window
+end type
+type m_-4 from menu within m_window
+end type
+type m_toolbars from menu within m_window
+end type
+type m_window from menu within m_test
+m_tile m_tile
+m_horizontal m_horizontal
+m_layer m_layer
+m_cascade m_cascade
+m_-3 m_-3
+m_arrangeicons m_arrangeicons
+m_-4 m_-4
+m_toolbars m_toolbars
+end type
+type m_help from menu within m_test
+end type
+type m_contents from menu within m_help
+end type
+type m_- from menu within m_help
+end type
+type m_aboutexample from menu within m_help
+end type
+type m_help from menu within m_test
+m_contents m_contents
+m_- m_-
+m_aboutexample m_aboutexample
+end type
+end forward
+
+global type m_test from menu
+m_file m_file
+m_settings m_settings
+m_window m_window
+m_help m_help
+end type
+global m_test m_test
+
+on m_test.create
+m_test=this
+this.m_file=create m_file
+this.m_settings=create m_settings
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_settings, &
+this.m_window, &
+this.m_help}
+end on
+
+on m_test.destroy
+destroy(this.m_file)
+destroy(this.m_settings)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_test
+m_close m_close
+m_-2 m_-2
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_close=create m_close
+this.m_-2=create m_-2
+this.m_exit=create m_exit
+this.Item[]={this.m_close, &
+this.m_-2, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_close)
+destroy(this.m_-2)
+destroy(this.m_exit)
+end on
+
+type m_close from menu within m_file
+end type
+
+on clicked;Close (parentwindow)
+end on
+
+on m_close.create
+this.Text="&Close~tCtrl+F4"
+this.Microhelp="Close window"
+this.ToolBarItemName="Custom039!"
+this.ToolBarItemText="Close"
+this.ToolBarItemOrder=1
+this.Shortcut=371
+end on
+
+type m_-2 from menu within m_file
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+on m_exit.create
+this.Text="E&xit"
+this.Microhelp="Exit example"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=3
+this.ToolBarItemSpace=1
+end on
+
+type m_settings from menu within m_test
+m_windowbackgroundcolor m_windowbackgroundcolor
+end type
+
+on m_settings.create
+this.Text="&Settings"
+this.m_windowbackgroundcolor=create m_windowbackgroundcolor
+this.Item[]={this.m_windowbackgroundcolor}
+end on
+
+on m_settings.destroy
+destroy(this.m_windowbackgroundcolor)
+end on
+
+type m_windowbackgroundcolor from menu within m_settings
+m_black m_black
+m_white m_white
+m_gray m_gray
+m_red m_red
+m_green m_green
+m_blue m_blue
+m_magenta m_magenta
+m_cyan m_cyan
+m_yellow m_yellow
+m_brown m_brown
+m_buttonface m_buttonface
+end type
+
+on m_windowbackgroundcolor.create
+this.Text="Window &Background Color"
+this.Microhelp="Change background color of window"
+this.m_black=create m_black
+this.m_white=create m_white
+this.m_gray=create m_gray
+this.m_red=create m_red
+this.m_green=create m_green
+this.m_blue=create m_blue
+this.m_magenta=create m_magenta
+this.m_cyan=create m_cyan
+this.m_yellow=create m_yellow
+this.m_brown=create m_brown
+this.m_buttonface=create m_buttonface
+this.Item[]={this.m_black, &
+this.m_white, &
+this.m_gray, &
+this.m_red, &
+this.m_green, &
+this.m_blue, &
+this.m_magenta, &
+this.m_cyan, &
+this.m_yellow, &
+this.m_brown, &
+this.m_buttonface}
+end on
+
+on m_windowbackgroundcolor.destroy
+destroy(this.m_black)
+destroy(this.m_white)
+destroy(this.m_gray)
+destroy(this.m_red)
+destroy(this.m_green)
+destroy(this.m_blue)
+destroy(this.m_magenta)
+destroy(this.m_cyan)
+destroy(this.m_yellow)
+destroy(this.m_brown)
+destroy(this.m_buttonface)
+end on
+
+type m_black from menu within m_windowbackgroundcolor
+end type
+
+on clicked;int	i, &
+		li_size
+
+li_size = UpperBound (parent.item[])
+for i = 1 to li_size
+	parent.item[i].checked = false
+next
+
+parent.m_black.checked = true
+parentwindow.backcolor = 0
+end on
+
+on m_black.create
+this.Text="&Black"
+this.Microhelp="Change window background color to black"
+end on
+
+type m_white from menu within m_windowbackgroundcolor
+end type
+
+on clicked;int	i, &
+		li_size
+
+li_size = UpperBound (parent.item[])
+for i = 1 to li_size
+	parent.item[i].checked = false
+next
+
+parent.m_white.checked = true
+parentwindow.backcolor = RGB (255, 255, 255)
+end on
+
+on m_white.create
+this.Text="&White"
+this.Microhelp="Change window background color to white"
+end on
+
+type m_gray from menu within m_windowbackgroundcolor
+end type
+
+on clicked;int	i, &
+		li_size
+
+li_size = UpperBound (parent.item[])
+for i = 1 to li_size
+	parent.item[i].checked = false
+next
+
+parent.m_gray.checked = true
+parentwindow.backcolor = RGB (192, 192, 192)
+end on
+
+on m_gray.create
+this.Text="&Gray"
+this.Microhelp="Change window background color to gray"
+end on
+
+type m_red from menu within m_windowbackgroundcolor
+end type
+
+on clicked;int	i, &
+		li_size
+
+li_size = UpperBound (parent.item[])
+for i = 1 to li_size
+	parent.item[i].checked = false
+next
+
+parent.m_red.checked = true
+parentwindow.backcolor = RGB (255, 0, 0)
+end on
+
+on m_red.create
+this.Text="&Red"
+this.Microhelp="Change window background color to red"
+end on
+
+type m_green from menu within m_windowbackgroundcolor
+end type
+
+on clicked;int	i, &
+		li_size
+
+li_size = UpperBound (parent.item[])
+for i = 1 to li_size
+	parent.item[i].checked = false
+next
+
+parent.m_green.checked = true
+parentwindow.backcolor = RGB (0, 255, 0)
+end on
+
+on m_green.create
+this.Text="Gr&een"
+this.Microhelp="Change window background color to green"
+end on
+
+type m_blue from menu within m_windowbackgroundcolor
+end type
+
+on clicked;int	i, &
+		li_size
+
+li_size = UpperBound (parent.item[])
+for i = 1 to li_size
+	parent.item[i].checked = false
+next
+
+parent.m_blue.checked = true
+parentwindow.backcolor = RGB (0, 0, 255)
+end on
+
+on m_blue.create
+this.Text="B&lue"
+this.Microhelp="Change window background color to blue"
+end on
+
+type m_magenta from menu within m_windowbackgroundcolor
+end type
+
+on clicked;int	i, &
+		li_size
+
+li_size = UpperBound (parent.item[])
+for i = 1 to li_size
+	parent.item[i].checked = false
+next
+
+parent.m_magenta.checked = true
+parentwindow.backcolor = RGB (255, 0, 255)
+end on
+
+on m_magenta.create
+this.Text="&Magenta"
+this.Microhelp="Change window background color to magenta"
+end on
+
+type m_cyan from menu within m_windowbackgroundcolor
+end type
+
+on clicked;int	i, &
+		li_size
+
+li_size = UpperBound (parent.item[])
+for i = 1 to li_size
+	parent.item[i].checked = false
+next
+
+parent.m_cyan.checked = true
+parentwindow.backcolor = RGB (0, 255, 255)
+end on
+
+on m_cyan.create
+this.Text="&Cyan"
+this.Microhelp="Change window background color to cyan"
+end on
+
+type m_yellow from menu within m_windowbackgroundcolor
+end type
+
+on clicked;int	i, &
+		li_size
+
+li_size = UpperBound (parent.item[])
+for i = 1 to li_size
+	parent.item[i].checked = false
+next
+
+parent.m_yellow.checked = true
+parentwindow.backcolor = RGB (255, 255, 0)
+end on
+
+on m_yellow.create
+this.Text="&Yellow"
+this.Microhelp="Change window background color to yellow"
+end on
+
+type m_brown from menu within m_windowbackgroundcolor
+end type
+
+on clicked;int	i, &
+		li_size
+
+li_size = UpperBound (parent.item[])
+for i = 1 to li_size
+	parent.item[i].checked = false
+next
+
+parent.m_brown.checked = true
+parentwindow.backcolor = RGB (128, 128, 0)
+end on
+
+on m_brown.create
+this.Text="Br&own"
+this.Microhelp="Change window background color to brown"
+end on
+
+type m_buttonface from menu within m_windowbackgroundcolor
+end type
+
+event clicked;int	i, &
+		li_size
+w_menu_functions	lw_Parent
+
+li_size = UpperBound (parent.item[])
+for i = 1 to li_size
+	parent.item[i].checked = false
+next
+
+parent.m_buttonface.checked = true
+
+lw_Parent = ParentWindow
+lw_Parent.backcolor = lw_Parent.il_ButtonFace
+
+end event
+
+on m_buttonface.create
+this.Text="Button &Face"
+this.Checked=true
+end on
+
+type m_window from menu within m_test
+m_tile m_tile
+m_horizontal m_horizontal
+m_layer m_layer
+m_cascade m_cascade
+m_-3 m_-3
+m_arrangeicons m_arrangeicons
+m_-4 m_-4
+m_toolbars m_toolbars
+end type
+
+on m_window.create
+this.Text="&Window"
+this.m_tile=create m_tile
+this.m_horizontal=create m_horizontal
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_-3=create m_-3
+this.m_arrangeicons=create m_arrangeicons
+this.m_-4=create m_-4
+this.m_toolbars=create m_toolbars
+this.Item[]={this.m_tile, &
+this.m_horizontal, &
+this.m_layer, &
+this.m_cascade, &
+this.m_-3, &
+this.m_arrangeicons, &
+this.m_-4, &
+this.m_toolbars}
+end on
+
+on m_window.destroy
+destroy(this.m_tile)
+destroy(this.m_horizontal)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_-3)
+destroy(this.m_arrangeicons)
+destroy(this.m_-4)
+destroy(this.m_toolbars)
+end on
+
+type m_tile from menu within m_window
+end type
+
+on m_tile.create
+this.Text="&Tile Vertical"
+this.Microhelp="Arrange all as vertically tiled"
+end on
+
+type m_horizontal from menu within m_window
+end type
+
+on m_horizontal.create
+this.Text="Tile &Horizontal"
+this.Microhelp="Arrange all as horizontally tiled"
+end on
+
+type m_layer from menu within m_window
+end type
+
+on m_layer.create
+this.Text="&Layer"
+this.Microhelp="Arrange all as layered"
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on m_cascade.create
+this.Text="&Cascade"
+this.Microhelp="Arrange all as cascaded"
+end on
+
+type m_-3 from menu within m_window
+end type
+
+on m_-3.create
+this.Text="-"
+end on
+
+type m_arrangeicons from menu within m_window
+end type
+
+on m_arrangeicons.create
+this.Text="Arrange &Icons"
+this.Microhelp="Arrange all icons"
+end on
+
+type m_-4 from menu within m_window
+end type
+
+on m_-4.create
+this.Text="-"
+end on
+
+type m_toolbars from menu within m_window
+end type
+
+on clicked;OpenWithParm (w_set_toolbars, parentwindow)
+end on
+
+on m_toolbars.create
+this.Text="Tool&bars..."
+this.Microhelp="Configure toolbars"
+end on
+
+type m_help from menu within m_test
+m_contents m_contents
+m_- m_-
+m_aboutexample m_aboutexample
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_contents=create m_contents
+this.m_-=create m_-
+this.m_aboutexample=create m_aboutexample
+this.Item[]={this.m_contents, &
+this.m_-, &
+this.m_aboutexample}
+end on
+
+on m_help.destroy
+destroy(this.m_contents)
+destroy(this.m_-)
+destroy(this.m_aboutexample)
+end on
+
+type m_contents from menu within m_help
+end type
+
+on m_contents.create
+this.Text="&Contents...~tF1"
+this.Microhelp="Display help"
+this.ToolBarItemName="Help!"
+this.ToolBarItemText="Help"
+this.ToolBarItemOrder=2
+this.ToolBarItemSpace=1
+this.Shortcut=112
+end on
+
+type m_- from menu within m_help
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_aboutexample from menu within m_help
+end type
+
+on m_aboutexample.create
+this.Text="&About Example..."
+this.Microhelp="Display copyright notice"
+end on
+

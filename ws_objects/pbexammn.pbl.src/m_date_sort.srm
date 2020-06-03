@@ -1,0 +1,212 @@
+﻿$PBExportHeader$m_date_sort.srm
+$PBExportComments$Menu for Year 2000 sorting example
+forward
+global type m_date_sort from m_date_ancestor
+end type
+type m_bystartdate from menu within m_action
+end type
+type m_ascending from menu within m_bystartdate
+end type
+type m_descending from menu within m_bystartdate
+end type
+type m_bystartdate from menu within m_action
+m_ascending m_ascending
+m_descending m_descending
+end type
+type m_byvestingdate from menu within m_action
+end type
+type m_ascending1 from menu within m_byvestingdate
+end type
+type m_descending1 from menu within m_byvestingdate
+end type
+type m_byvestingdate from menu within m_action
+m_ascending1 m_ascending1
+m_descending1 m_descending1
+end type
+end forward
+
+global type m_date_sort from m_date_ancestor
+end type
+global m_date_sort m_date_sort
+
+on m_date_sort.create
+m_date_sort=this
+call super::create
+end on
+
+on m_date_sort.destroy
+call super::destroy
+end on
+
+on m_file.create
+call super::create
+this.MergeOption=Exclude!
+end on
+
+on m_datesorting.create
+call super::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+end on
+
+on m_datesindatawindows.create
+call super::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+end on
+
+on m_datesinwindows.create
+call super::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+end on
+
+on m_-1.create
+call super::create
+this.MergeOption=Exclude!
+end on
+
+on m_close.create
+call super::create
+this.ToolBarItemVisible=true
+end on
+
+on m_exit2.create
+call super::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+this.ToolBarItemSpace=0
+end on
+
+type m_action from m_date_ancestor`m_action within m_date_sort
+m_bystartdate m_bystartdate
+m_byvestingdate m_byvestingdate
+end type
+
+on m_action.create
+call super::create
+this.Text="&Sort"
+this.m_bystartdate=create m_bystartdate
+this.m_byvestingdate=create m_byvestingdate
+this.Item[UpperBound(this.item)+1]=this.m_bystartdate
+this.Item[UpperBound(this.item)+1]=this.m_byvestingdate
+end on
+
+on m_action.destroy
+call super::destroy
+destroy(this.m_bystartdate)
+destroy(this.m_byvestingdate)
+end on
+
+on m_exit.create
+call super::create
+this.MergeOption=Exclude!
+end on
+
+on m_help.create
+call super::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+this.ToolBarItemSpace=0
+end on
+
+on m_-.create
+call super::create
+this.MergeOption=Exclude!
+end on
+
+on m_about.create
+call super::create
+this.ToolBarItemText=""
+end on
+
+type m_bystartdate from menu within m_action
+m_ascending m_ascending
+m_descending m_descending
+end type
+
+on m_bystartdate.create
+this.Text="By &Start Date"
+this.ToolBarItemVisible=false
+this.m_ascending=create m_ascending
+this.m_descending=create m_descending
+this.Item[]={this.m_ascending, &
+this.m_descending}
+end on
+
+on m_bystartdate.destroy
+destroy(this.m_ascending)
+destroy(this.m_descending)
+end on
+
+type m_ascending from menu within m_bystartdate
+end type
+
+on m_ascending.create
+this.Text="&Ascending"
+this.ToolBarItemVisible=false
+end on
+
+event clicked;ParentWindow.Post Dynamic of_sort("start_date", "A")
+
+end event
+
+type m_descending from menu within m_bystartdate
+end type
+
+on m_descending.create
+this.Text="&Descending"
+this.ToolBarItemVisible=false
+end on
+
+event clicked;ParentWindow.Post Dynamic of_sort("start_date", "D")
+
+end event
+
+type m_byvestingdate from menu within m_action
+m_ascending1 m_ascending1
+m_descending1 m_descending1
+end type
+
+on m_byvestingdate.create
+this.Text="By &Vesting Date"
+this.m_ascending1=create m_ascending1
+this.m_descending1=create m_descending1
+this.Item[]={this.m_ascending1, &
+this.m_descending1}
+end on
+
+on m_byvestingdate.destroy
+destroy(this.m_ascending1)
+destroy(this.m_descending1)
+end on
+
+type m_ascending1 from menu within m_byvestingdate
+end type
+
+on m_ascending1.create
+this.Text="&Ascending"
+this.ToolBarItemVisible=false
+end on
+
+event clicked;ParentWindow.Post Dynamic of_sort("vesting_date", "A")
+
+end event
+
+type m_descending1 from menu within m_byvestingdate
+end type
+
+on m_descending1.create
+this.Text="&Descending"
+this.ToolBarItemVisible=false
+end on
+
+event clicked;ParentWindow.Post Dynamic of_sort("vesting_date", "D")
+
+end event
+

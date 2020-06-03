@@ -1,0 +1,31 @@
+﻿$PBExportHeader$f_check_dayname.srf
+$PBExportComments$Function that determines whether a date has the same day name as the day name specified.
+global type f_check_dayname from function_object
+end type
+
+forward prototypes
+global function boolean f_check_dayname (string as_dayname, date ad_testdate)
+end prototypes
+
+global function boolean f_check_dayname (string as_dayname, date ad_testdate);//////////////////////////////////////////////////////////////////////
+//
+// Function: f_check_dayname
+//
+// Purpose: determines whether the ad_testdate argument has the same
+//				day name (Monday, Tuesday, etc.) as the as_dayname argument.
+//
+//	Scope:  public
+//
+//	Arguments: as_dayname	the name of the day (Sunday, Monday, etc.)
+//									that you want to test as_testdate against.
+//				  ad_testdate	any valid date
+//		
+//	Returns: true		if ad_testdate has the same day name as as_dayname
+//				false		if ad_testdate has a different day name than as_dayname
+//
+//////////////////////////////////////////////////////////////////////
+
+return DayName (ad_testdate) = as_dayname
+
+end function
+

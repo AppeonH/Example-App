@@ -1,0 +1,1078 @@
+﻿$PBExportHeader$m_dwbuffers.srm
+$PBExportComments$MDI Frame menu for DataWindow buffers example
+forward
+global type m_dwbuffers from menu
+end type
+type m_file from menu within m_dwbuffers
+end type
+type m_retrieve from menu within m_file
+end type
+type m_-5 from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_dwbuffers
+m_retrieve m_retrieve
+m_-5 m_-5
+m_exit m_exit
+end type
+type m_edit from menu within m_dwbuffers
+end type
+type m_insert from menu within m_edit
+end type
+type m_delete from menu within m_edit
+end type
+type m_filter from menu within m_edit
+end type
+type m_update from menu within m_edit
+end type
+type m_-1 from menu within m_edit
+end type
+type m_undo from menu within m_edit
+end type
+type m_edit from menu within m_dwbuffers
+m_insert m_insert
+m_delete m_delete
+m_filter m_filter
+m_update m_update
+m_-1 m_-1
+m_undo m_undo
+end type
+type m_status from menu within m_dwbuffers
+end type
+type m_openstatus from menu within m_status
+end type
+type m_refreshstatus from menu within m_status
+end type
+type m_status from menu within m_dwbuffers
+m_openstatus m_openstatus
+m_refreshstatus m_refreshstatus
+end type
+type m_buffers from menu within m_dwbuffers
+end type
+type m_primary from menu within m_buffers
+end type
+type m_openprimary from menu within m_primary
+end type
+type m_refresh3 from menu within m_primary
+end type
+type m_primary from menu within m_buffers
+m_openprimary m_openprimary
+m_refresh3 m_refresh3
+end type
+type m_filter1 from menu within m_buffers
+end type
+type m_openfilter from menu within m_filter1
+end type
+type m_refresh1 from menu within m_filter1
+end type
+type m_filter1 from menu within m_buffers
+m_openfilter m_openfilter
+m_refresh1 m_refresh1
+end type
+type m_delete1 from menu within m_buffers
+end type
+type m_opendelete from menu within m_delete1
+end type
+type m_refresh2 from menu within m_delete1
+end type
+type m_delete1 from menu within m_buffers
+m_opendelete m_opendelete
+m_refresh2 m_refresh2
+end type
+type m_original from menu within m_buffers
+end type
+type m_openoriginal from menu within m_original
+end type
+type m_refresh from menu within m_original
+end type
+type m_original from menu within m_buffers
+m_openoriginal m_openoriginal
+m_refresh m_refresh
+end type
+type m_-3 from menu within m_buffers
+end type
+type m_openall from menu within m_buffers
+end type
+type m_closeall from menu within m_buffers
+end type
+type m_buffers from menu within m_dwbuffers
+m_primary m_primary
+m_filter1 m_filter1
+m_delete1 m_delete1
+m_original m_original
+m_-3 m_-3
+m_openall m_openall
+m_closeall m_closeall
+end type
+type m_options from menu within m_dwbuffers
+end type
+type m_keycolumnsonly from menu within m_options
+end type
+type m_keyandupdateable from menu within m_options
+end type
+type m_keyandmodified from menu within m_options
+end type
+type m_-4 from menu within m_options
+end type
+type m_insertdeletekey from menu within m_options
+end type
+type m_updatekey from menu within m_options
+end type
+type m_-2 from menu within m_options
+end type
+type m_resetflags from menu within m_options
+end type
+type m_showsqlpreview from menu within m_options
+end type
+type m_options from menu within m_dwbuffers
+m_keycolumnsonly m_keycolumnsonly
+m_keyandupdateable m_keyandupdateable
+m_keyandmodified m_keyandmodified
+m_-4 m_-4
+m_insertdeletekey m_insertdeletekey
+m_updatekey m_updatekey
+m_-2 m_-2
+m_resetflags m_resetflags
+m_showsqlpreview m_showsqlpreview
+end type
+type m_window from menu within m_dwbuffers
+end type
+type m_tile from menu within m_window
+end type
+type m_tilehorizontal from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_cascade from menu within m_window
+end type
+type m_- from menu within m_window
+end type
+type m_arrangeicons from menu within m_window
+end type
+type m_window from menu within m_dwbuffers
+m_tile m_tile
+m_tilehorizontal m_tilehorizontal
+m_layer m_layer
+m_cascade m_cascade
+m_- m_-
+m_arrangeicons m_arrangeicons
+end type
+type m_help from menu within m_dwbuffers
+end type
+type m_helpindex from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_dwbuffers
+m_helpindex m_helpindex
+m_about m_about
+end type
+end forward
+
+global type m_dwbuffers from menu
+m_file m_file
+m_edit m_edit
+m_status m_status
+m_buffers m_buffers
+m_options m_options
+m_window m_window
+m_help m_help
+end type
+global m_dwbuffers m_dwbuffers
+
+on m_dwbuffers.create
+m_dwbuffers=this
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.m_status=create m_status
+this.m_buffers=create m_buffers
+this.m_options=create m_options
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_edit, &
+this.m_status, &
+this.m_buffers, &
+this.m_options, &
+this.m_window, &
+this.m_help}
+end on
+
+on m_dwbuffers.destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+destroy(this.m_status)
+destroy(this.m_buffers)
+destroy(this.m_options)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_dwbuffers
+m_retrieve m_retrieve
+m_-5 m_-5
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_retrieve=create m_retrieve
+this.m_-5=create m_-5
+this.m_exit=create m_exit
+this.Item[]={this.m_retrieve, &
+this.m_-5, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_retrieve)
+destroy(this.m_-5)
+destroy(this.m_exit)
+end on
+
+type m_retrieve from menu within m_file
+end type
+
+event clicked;SetPointer(HourGlass!)
+
+If IsValid(w_dwbuffers_primary) Then
+	w_dwbuffers_primary.Post Event ue_retrieve()
+Else
+	MessageBox("Sheet Not Open", "Please Open Sheet before executing retrieve!")
+End If
+
+end event
+
+on m_retrieve.create
+this.Text="&Retrieve"
+this.ToolBarItemName="Retrieve!"
+this.ToolBarItemText="Retrieve"
+this.ToolBarItemOrder=1
+end on
+
+type m_-5 from menu within m_file
+end type
+
+on m_-5.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+event clicked;Close(ParentWindow)
+end event
+
+on m_exit.create
+this.Text="E&xit"
+this.Microhelp="Exit the application"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=99
+this.ToolBarItemSpace=1
+end on
+
+type m_edit from menu within m_dwbuffers
+m_insert m_insert
+m_delete m_delete
+m_filter m_filter
+m_update m_update
+m_-1 m_-1
+m_undo m_undo
+end type
+
+on m_edit.create
+this.Text="&Edit"
+this.m_insert=create m_insert
+this.m_delete=create m_delete
+this.m_filter=create m_filter
+this.m_update=create m_update
+this.m_-1=create m_-1
+this.m_undo=create m_undo
+this.Item[]={this.m_insert, &
+this.m_delete, &
+this.m_filter, &
+this.m_update, &
+this.m_-1, &
+this.m_undo}
+end on
+
+on m_edit.destroy
+destroy(this.m_insert)
+destroy(this.m_delete)
+destroy(this.m_filter)
+destroy(this.m_update)
+destroy(this.m_-1)
+destroy(this.m_undo)
+end on
+
+type m_insert from menu within m_edit
+end type
+
+event clicked;w_dwbuffers_primary.Post Event ue_insert()
+
+end event
+
+on m_insert.create
+this.Text="&Insert"
+this.Microhelp="Insert a row a the bottom of teachers DataWindow"
+this.ToolBarItemName="Insert!"
+this.ToolBarItemText="Insert"
+this.ToolBarItemOrder=2
+this.ToolBarItemSpace=1
+end on
+
+type m_delete from menu within m_edit
+end type
+
+event clicked;w_dwbuffers_primary.Post Event ue_delete()
+
+
+end event
+
+on m_delete.create
+this.Text="&Delete"
+this.Microhelp="Delete the current row from Teachers"
+this.ToolBarItemName="Clear!"
+this.ToolBarItemText="Delete"
+this.ToolBarItemOrder=3
+end on
+
+type m_filter from menu within m_edit
+end type
+
+event clicked;w_dwbuffers_primary.Post Event ue_filter()
+
+end event
+
+on m_filter.create
+this.Text="&Filter"
+this.Microhelp="Filter rows"
+this.ToolBarItemName="DefaultFonts!"
+this.ToolBarItemText="Filter"
+this.ToolBarItemOrder=4
+end on
+
+type m_update from menu within m_edit
+end type
+
+event clicked;w_dwbuffers_primary.Post Event ue_update()
+
+end event
+
+on m_update.create
+this.Text="&Update"
+this.ToolBarItemName="Update!"
+this.ToolBarItemText="Update"
+this.ToolBarItemOrder=5
+this.ToolBarItemSpace=1
+end on
+
+type m_-1 from menu within m_edit
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_undo from menu within m_edit
+end type
+
+event clicked;w_dwbuffers_primary.Post Event ue_undo()
+
+end event
+
+on m_undo.create
+this.Text="Undo"
+this.Microhelp="Rollback any updates"
+end on
+
+type m_status from menu within m_dwbuffers
+m_openstatus m_openstatus
+m_refreshstatus m_refreshstatus
+end type
+
+on m_status.create
+this.Text="&Status"
+this.m_openstatus=create m_openstatus
+this.m_refreshstatus=create m_refreshstatus
+this.Item[]={this.m_openstatus, &
+this.m_refreshstatus}
+end on
+
+on m_status.destroy
+destroy(this.m_openstatus)
+destroy(this.m_refreshstatus)
+end on
+
+type m_openstatus from menu within m_status
+end type
+
+event clicked;OpenSheet(w_dwbuffers_status, ParentWindow, 6,Original!)
+
+end event
+
+on m_openstatus.create
+this.Text="&Open Status~tCtrl+S"
+this.Microhelp="Open Row/Column status window"
+this.Shortcut=339
+end on
+
+type m_refreshstatus from menu within m_status
+end type
+
+event clicked;If IsValid(w_dwbuffers_status) Then
+	w_dwbuffers_status.Post Event ue_refresh()
+Else
+	Beep(1)
+	MessageBox("Not Open", "Row/Column Status Window is currently Not open!")
+End If
+
+end event
+
+on m_refreshstatus.create
+this.Text="&Refresh Status"
+this.Microhelp="Refresh Row/Column status window"
+end on
+
+type m_buffers from menu within m_dwbuffers
+m_primary m_primary
+m_filter1 m_filter1
+m_delete1 m_delete1
+m_original m_original
+m_-3 m_-3
+m_openall m_openall
+m_closeall m_closeall
+end type
+
+on m_buffers.create
+this.Text="&Buffers"
+this.m_primary=create m_primary
+this.m_filter1=create m_filter1
+this.m_delete1=create m_delete1
+this.m_original=create m_original
+this.m_-3=create m_-3
+this.m_openall=create m_openall
+this.m_closeall=create m_closeall
+this.Item[]={this.m_primary, &
+this.m_filter1, &
+this.m_delete1, &
+this.m_original, &
+this.m_-3, &
+this.m_openall, &
+this.m_closeall}
+end on
+
+on m_buffers.destroy
+destroy(this.m_primary)
+destroy(this.m_filter1)
+destroy(this.m_delete1)
+destroy(this.m_original)
+destroy(this.m_-3)
+destroy(this.m_openall)
+destroy(this.m_closeall)
+end on
+
+type m_primary from menu within m_buffers
+m_openprimary m_openprimary
+m_refresh3 m_refresh3
+end type
+
+on m_primary.create
+this.Text="&Primary"
+this.m_openprimary=create m_openprimary
+this.m_refresh3=create m_refresh3
+this.Item[]={this.m_openprimary, &
+this.m_refresh3}
+end on
+
+on m_primary.destroy
+destroy(this.m_openprimary)
+destroy(this.m_refresh3)
+end on
+
+type m_openprimary from menu within m_primary
+end type
+
+event clicked;OpenSheet(w_dwbuffers_primary, ParentWindow, 6, cascaded! )
+
+end event
+
+on m_openprimary.create
+this.Text="Open"
+end on
+
+type m_refresh3 from menu within m_primary
+end type
+
+event clicked;If IsValid(w_dwbuffers_primary) Then
+	w_dwbuffers_primary.Post Event ue_refresh()
+Else
+	Beep(1)
+	MessageBox("Not Open", "Primary buffer Window is currently Not open!")
+End If
+
+end event
+
+on m_refresh3.create
+this.Text="Refresh"
+end on
+
+type m_filter1 from menu within m_buffers
+m_openfilter m_openfilter
+m_refresh1 m_refresh1
+end type
+
+on m_filter1.create
+this.Text="&Filter"
+this.m_openfilter=create m_openfilter
+this.m_refresh1=create m_refresh1
+this.Item[]={this.m_openfilter, &
+this.m_refresh1}
+end on
+
+on m_filter1.destroy
+destroy(this.m_openfilter)
+destroy(this.m_refresh1)
+end on
+
+type m_openfilter from menu within m_filter1
+end type
+
+event clicked;OpenSheet( w_dwbuffers_filter, ParentWindow, 6, Cascaded! )
+
+end event
+
+on m_openfilter.create
+this.Text="Open"
+end on
+
+type m_refresh1 from menu within m_filter1
+end type
+
+event clicked;If IsValid(w_dwbuffers_filter) Then
+	w_dwbuffers_filter.Post Event ue_refresh()
+Else
+	Beep(1)
+	MessageBox("Not Open", "Filter buffer Window is currently Not open!")
+End If
+
+end event
+
+on m_refresh1.create
+this.Text="Refresh"
+end on
+
+type m_delete1 from menu within m_buffers
+m_opendelete m_opendelete
+m_refresh2 m_refresh2
+end type
+
+on m_delete1.create
+this.Text="&Delete"
+this.m_opendelete=create m_opendelete
+this.m_refresh2=create m_refresh2
+this.Item[]={this.m_opendelete, &
+this.m_refresh2}
+end on
+
+on m_delete1.destroy
+destroy(this.m_opendelete)
+destroy(this.m_refresh2)
+end on
+
+type m_opendelete from menu within m_delete1
+end type
+
+event clicked;OpenSheet(w_dwbuffers_delete, ParentWindow, 6, cascaded! )
+
+end event
+
+on m_opendelete.create
+this.Text="Open"
+end on
+
+type m_refresh2 from menu within m_delete1
+end type
+
+event clicked;If IsValid(w_dwbuffers_delete) Then
+	w_dwbuffers_delete.Post Event ue_refresh()
+Else
+	Beep(1)
+	MessageBox("Not Open", "Delete buffer Window is currently Not open!")
+End If
+
+end event
+
+on m_refresh2.create
+this.Text="Refresh"
+end on
+
+type m_original from menu within m_buffers
+m_openoriginal m_openoriginal
+m_refresh m_refresh
+end type
+
+on m_original.create
+this.Text="&Original"
+this.m_openoriginal=create m_openoriginal
+this.m_refresh=create m_refresh
+this.Item[]={this.m_openoriginal, &
+this.m_refresh}
+end on
+
+on m_original.destroy
+destroy(this.m_openoriginal)
+destroy(this.m_refresh)
+end on
+
+type m_openoriginal from menu within m_original
+end type
+
+event clicked;OpenSheet(w_dwbuffers_original, ParentWindow, 6, cascaded! )
+
+end event
+
+on m_openoriginal.create
+this.Text="Open"
+end on
+
+type m_refresh from menu within m_original
+end type
+
+event clicked;If IsValid(w_dwbuffers_original) Then
+	w_dwbuffers_original.Post Event ue_refresh()
+Else
+	Beep(1)
+	MessageBox("Not Open", "Original buffer Window is currently Not open!")
+End If
+
+end event
+
+on m_refresh.create
+this.Text="Refresh"
+end on
+
+type m_-3 from menu within m_buffers
+end type
+
+on m_-3.create
+this.Text="-"
+end on
+
+type m_openall from menu within m_buffers
+end type
+
+event clicked;SetPointer(HourGlass!)
+
+OpenSheet(w_dwbuffers_primary, ParentWindow, 6, original! )
+OpenSheet(w_dwbuffers_filter, ParentWindow, 6, original! )
+OpenSheet(w_dwbuffers_delete, ParentWindow, 6, original! )
+OpenSheet(w_dwbuffers_original, ParentWindow, 6, original! )
+OpenSheet(w_dwbuffers_status, ParentWindow, 6,Original! )
+
+w_dwbuffers_primary.SetFocus()
+
+end event
+
+on m_openall.create
+this.Text="Open All"
+this.Microhelp="Open all Buffer windows"
+end on
+
+type m_closeall from menu within m_buffers
+end type
+
+event clicked;Window		lw_ActiveSheet
+
+lw_ActiveSheet = ParentWindow.GetActiveSheet()
+
+Do While IsValid(lw_ActiveSheet)
+	Close(lw_ActiveSheet)
+	lw_ActiveSheet = ParentWindow.GetActiveSheet()
+Loop
+
+end event
+
+on m_closeall.create
+this.Text="Close All"
+this.ToolBarItemSpace=1
+end on
+
+type m_options from menu within m_dwbuffers
+m_keycolumnsonly m_keycolumnsonly
+m_keyandupdateable m_keyandupdateable
+m_keyandmodified m_keyandmodified
+m_-4 m_-4
+m_insertdeletekey m_insertdeletekey
+m_updatekey m_updatekey
+m_-2 m_-2
+m_resetflags m_resetflags
+m_showsqlpreview m_showsqlpreview
+end type
+
+on m_options.create
+this.Text="&Options"
+this.m_keycolumnsonly=create m_keycolumnsonly
+this.m_keyandupdateable=create m_keyandupdateable
+this.m_keyandmodified=create m_keyandmodified
+this.m_-4=create m_-4
+this.m_insertdeletekey=create m_insertdeletekey
+this.m_updatekey=create m_updatekey
+this.m_-2=create m_-2
+this.m_resetflags=create m_resetflags
+this.m_showsqlpreview=create m_showsqlpreview
+this.Item[]={this.m_keycolumnsonly, &
+this.m_keyandupdateable, &
+this.m_keyandmodified, &
+this.m_-4, &
+this.m_insertdeletekey, &
+this.m_updatekey, &
+this.m_-2, &
+this.m_resetflags, &
+this.m_showsqlpreview}
+end on
+
+on m_options.destroy
+destroy(this.m_keycolumnsonly)
+destroy(this.m_keyandupdateable)
+destroy(this.m_keyandmodified)
+destroy(this.m_-4)
+destroy(this.m_insertdeletekey)
+destroy(this.m_updatekey)
+destroy(this.m_-2)
+destroy(this.m_resetflags)
+destroy(this.m_showsqlpreview)
+end on
+
+type m_keycolumnsonly from menu within m_options
+end type
+
+event clicked;String			ls_Ret
+DataWindow	ldw_1
+
+If IsValid(w_dwbuffers_primary) Then
+	ldw_1 = w_dwbuffers_primary.dw_data
+Else
+	Beep(3)
+	Return
+End If
+
+ls_Ret = ldw_1.Modify("datawindow.table.updatewhere = 0")
+
+If ls_Ret <> "" Then
+	MessageBox("Modify Error", ls_Ret)
+Else
+	m_options.m_keycolumnsonly.Check()
+	m_options.m_keyandupdateable.Checked = Not This.Checked
+	m_options.m_keyandmodified.Checked = Not This.Checked
+End If
+
+end event
+
+on m_keycolumnsonly.create
+this.Text="Key Columns Only"
+this.Microhelp="Where Clause:  Key columns only"
+end on
+
+type m_keyandupdateable from menu within m_options
+end type
+
+event clicked;String			ls_Ret
+DataWindow	ldw_1
+
+If IsValid(w_dwbuffers_primary) Then
+	ldw_1 = w_dwbuffers_primary.dw_data
+Else
+	Beep(3)
+	Return
+End If
+
+ls_Ret = ldw_1.Modify("datawindow.table.updatewhere = 1")
+
+If ls_Ret <> "" Then
+	MessageBox("Modify Error", ls_Ret)
+Else
+	m_options.m_keyandupdateable.Check()
+	m_options.m_keycolumnsonly.Checked = Not This.Checked
+	m_options.m_keyandmodified.Checked = Not This.Checked
+End If
+
+end event
+
+on m_keyandupdateable.create
+this.Text="Key and Updateable"
+this.Microhelp="Where Clause:  Key columns and Updateable columns"
+this.Checked=true
+end on
+
+type m_keyandmodified from menu within m_options
+end type
+
+event clicked;String			ls_Ret
+DataWindow	ldw_1
+
+If IsValid(w_dwbuffers_primary) Then
+	ldw_1 = w_dwbuffers_primary.dw_data
+Else
+	Beep(3)
+	Return
+End If
+
+ls_Ret = ldw_1.Modify("datawindow.table.updatewhere = 2")
+
+If ls_Ret <> "" Then
+	MessageBox("Modify Error", ls_Ret)
+Else
+	m_options.m_keyandmodified.Check ( )
+	m_options.m_keycolumnsonly.Checked = Not This.Checked
+	m_options.m_keyandupdateable.Checked = Not This.Checked
+End If
+
+end event
+
+on m_keyandmodified.create
+this.Text="Key and Modified"
+this.Microhelp="Where Clause:  Key columns and Modified columns"
+end on
+
+type m_-4 from menu within m_options
+end type
+
+on m_-4.create
+this.Text="-"
+end on
+
+type m_insertdeletekey from menu within m_options
+end type
+
+event clicked;String			ls_Ret
+DataWindow	ldw_1
+
+If IsValid(w_dwbuffers_primary) Then
+	ldw_1 = w_dwbuffers_primary.dw_data
+Else
+	Beep(3)
+	Return
+End If
+
+ls_Ret = ldw_1.Modify("datawindow.table.updatekeyinplace = no")
+
+If ls_Ret <> "" Then
+	MessageBox("Modify Error", ls_Ret)
+Else
+	m_options.m_insertdeletekey.Check ( )
+	m_options.m_updatekey.Checked = Not This.Checked
+End If
+
+end event
+
+on m_insertdeletekey.create
+this.Text="Delete/Insert Key"
+this.Microhelp="Changing Key Columns: Insert then Delete"
+end on
+
+type m_updatekey from menu within m_options
+end type
+
+event clicked;String			ls_Ret
+DataWindow	ldw_1
+
+If IsValid(w_dwbuffers_primary) Then
+	ldw_1 = w_dwbuffers_primary.dw_data
+Else
+	Beep(3)
+	Return
+End If
+
+ls_Ret = ldw_1.Modify("datawindow.table.updatekeyinplace = yes")
+
+If ls_Ret <> "" Then
+	MessageBox("Modify Error", ls_Ret)
+Else
+	m_options.m_updatekey.Check ()
+	m_options.m_insertdeletekey.Checked = Not This.Checked
+End If
+
+end event
+
+on m_updatekey.create
+this.Text="Update Key"
+this.Microhelp="Changing Key Columns: Update in Place"
+this.Checked=true
+end on
+
+type m_-2 from menu within m_options
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_resetflags from menu within m_options
+end type
+
+event clicked;This.Checked = Not This.Checked
+
+end event
+
+on m_resetflags.create
+this.Text="Reset Flags"
+this.Microhelp="Reset DataWindow Row/Column Status"
+this.Checked=true
+end on
+
+type m_showsqlpreview from menu within m_options
+end type
+
+event clicked;This.Checked = Not This.Checked
+
+end event
+
+on m_showsqlpreview.create
+this.Text="Show SQLPreview"
+this.Microhelp="Toggle view of SQLPreview event"
+this.Checked=true
+end on
+
+type m_window from menu within m_dwbuffers
+m_tile m_tile
+m_tilehorizontal m_tilehorizontal
+m_layer m_layer
+m_cascade m_cascade
+m_- m_-
+m_arrangeicons m_arrangeicons
+end type
+
+on m_window.create
+this.Text="&Window"
+this.m_tile=create m_tile
+this.m_tilehorizontal=create m_tilehorizontal
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_-=create m_-
+this.m_arrangeicons=create m_arrangeicons
+this.Item[]={this.m_tile, &
+this.m_tilehorizontal, &
+this.m_layer, &
+this.m_cascade, &
+this.m_-, &
+this.m_arrangeicons}
+end on
+
+on m_window.destroy
+destroy(this.m_tile)
+destroy(this.m_tilehorizontal)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_-)
+destroy(this.m_arrangeicons)
+end on
+
+type m_tile from menu within m_window
+end type
+
+event clicked;ParentWindow.ArrangeSheets(Tile!)
+
+end event
+
+on m_tile.create
+this.Text="&Tile"
+this.Microhelp="Tile sheets"
+end on
+
+type m_tilehorizontal from menu within m_window
+end type
+
+event clicked;ParentWindow.ArrangeSheets(TileHorizontal!)
+
+end event
+
+on m_tilehorizontal.create
+this.Text="Tile Hori&zontal"
+end on
+
+type m_layer from menu within m_window
+end type
+
+event clicked;ParentWindow.ArrangeSheets(Layer!)
+
+end event
+
+on m_layer.create
+this.Text="&Layer"
+this.Microhelp="Layer sheets"
+end on
+
+type m_cascade from menu within m_window
+end type
+
+event clicked;ParentWindow.ArrangeSheets(Cascade!)
+
+end event
+
+on m_cascade.create
+this.Text="&Cascade"
+this.Microhelp="Cascade sheets"
+end on
+
+type m_- from menu within m_window
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_arrangeicons from menu within m_window
+end type
+
+event clicked;ParentWindow.ArrangeSheets(Icons!)
+
+end event
+
+on m_arrangeicons.create
+this.Text="Arrange &Icons"
+end on
+
+type m_help from menu within m_dwbuffers
+m_helpindex m_helpindex
+m_about m_about
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_helpindex=create m_helpindex
+this.m_about=create m_about
+this.Item[]={this.m_helpindex, &
+this.m_about}
+end on
+
+on m_help.destroy
+destroy(this.m_helpindex)
+destroy(this.m_about)
+end on
+
+type m_helpindex from menu within m_help
+end type
+
+on m_helpindex.create
+this.Text="Example &Help"
+end on
+
+event clicked;f_open_help ("w_dwbuffers_frame")
+
+end event
+
+type m_about from menu within m_help
+end type
+
+on m_about.create
+this.Text="&About..."
+end on
+
+event clicked;OpenWithParm(w_about_with_parm, "DataWindow Buffers@" + &
+						"This example the various DataWindow buffers and their relationships.")
+
+end event
+

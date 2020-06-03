@@ -1,0 +1,189 @@
+﻿$PBExportHeader$m_menu_functions_main.srm
+$PBExportComments$Main menu for w_menu_functions (Menu Techniques example)
+forward
+global type m_menu_functions_main from m_test
+end type
+end forward
+
+global type m_menu_functions_main from m_test
+end type
+global m_menu_functions_main m_menu_functions_main
+
+type variables
+
+end variables
+
+on m_menu_functions_main.create
+m_menu_functions_main=this
+call m_test::create
+end on
+
+on m_menu_functions_main.destroy
+call m_test::destroy
+end on
+
+on m_file.create
+call m_test`m_file::create
+end on
+
+on m_close.create
+call m_test`m_close::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+end on
+
+on m_-2.create
+call m_test`m_-2::create
+end on
+
+on m_exit::clicked;call m_test`m_exit::clicked;parentwindow.PostEvent ('ue_exit')
+end on
+
+on m_exit.create
+call m_test`m_exit::create
+this.ToolBarItemName="exit1.bmp"
+this.ToolBarItemDownName="exit2.bmp"
+end on
+
+on m_settings.create
+call m_test`m_settings::create
+end on
+
+on m_windowbackgroundcolor.create
+call m_test`m_windowbackgroundcolor::create
+end on
+
+on m_black.create
+call m_test`m_black::create
+end on
+
+on m_white.create
+call m_test`m_white::create
+end on
+
+on m_gray.create
+call m_test`m_gray::create
+end on
+
+on m_red.create
+call m_test`m_red::create
+end on
+
+on m_green.create
+call m_test`m_green::create
+end on
+
+on m_blue.create
+call m_test`m_blue::create
+end on
+
+on m_magenta.create
+call m_test`m_magenta::create
+end on
+
+on m_cyan.create
+call m_test`m_cyan::create
+end on
+
+on m_yellow.create
+call m_test`m_yellow::create
+end on
+
+on m_brown.create
+call m_test`m_brown::create
+end on
+
+on m_window.create
+call m_test`m_window::create
+end on
+
+on m_tile::clicked;call m_test`m_tile::clicked;parentwindow.PostEvent ('ue_tile')
+
+end on
+
+on m_tile.create
+call m_test`m_tile::create
+this.Text="&Tile Vertical"
+this.ToolBarItemName="tile1.bmp"
+this.ToolBarItemDownName="tile2.bmp"
+this.ToolBarItemText="Tile"
+this.ToolBarItemOrder=1
+end on
+
+on m_horizontal::clicked;call m_test`m_horizontal::clicked;parentwindow.PostEvent ('ue_htile')
+end on
+
+on m_horizontal.create
+call m_test`m_horizontal::create
+this.Text="Tile &Horizontal"
+end on
+
+on m_layer::clicked;call m_test`m_layer::clicked;parentwindow.PostEvent ('ue_layer')
+
+end on
+
+on m_layer.create
+call m_test`m_layer::create
+end on
+
+on m_cascade::clicked;call m_test`m_cascade::clicked;parentwindow.PostEvent ('ue_cascade')
+
+end on
+
+on m_cascade.create
+call m_test`m_cascade::create
+this.ToolBarItemName="cascade1.bmp"
+this.ToolBarItemDownName="cascade2.bmp"
+this.ToolBarItemText="Cascade"
+this.ToolBarItemOrder=2
+end on
+
+on m_-3.create
+call m_test`m_-3::create
+end on
+
+on m_arrangeicons::clicked;call m_test`m_arrangeicons::clicked;parentwindow.PostEvent ('ue_arrange')
+
+end on
+
+on m_arrangeicons.create
+call m_test`m_arrangeicons::create
+end on
+
+on m_-4.create
+call m_test`m_-4::create
+end on
+
+on m_toolbars.create
+call m_test`m_toolbars::create
+end on
+
+on m_help.create
+call m_test`m_help::create
+end on
+
+on m_contents::clicked;call m_test`m_contents::clicked;f_open_help ('w_frame_menu_functions')
+end on
+
+on m_contents.create
+call m_test`m_contents::create
+this.Microhelp="Display help for this example"
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+this.ToolBarItemSpace=0
+end on
+
+on m_-.create
+call m_test`m_-::create
+end on
+
+on m_aboutexample::clicked;call m_test`m_aboutexample::clicked;OpenWithParm (w_about_with_parm, 'MenuItem Attributes@')
+end on
+
+on m_aboutexample.create
+call m_test`m_aboutexample::create
+this.Text="&About MenuItem Attributes..."
+end on
+

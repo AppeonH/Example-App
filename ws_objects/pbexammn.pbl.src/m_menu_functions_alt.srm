@@ -1,0 +1,184 @@
+﻿$PBExportHeader$m_menu_functions_alt.srm
+$PBExportComments$Alternate/second menu used for w_menu_functions (Menu Techniques example)
+forward
+global type m_menu_functions_alt from m_menu
+end type
+end forward
+
+global type m_menu_functions_alt from m_menu
+end type
+global m_menu_functions_alt m_menu_functions_alt
+
+type variables
+
+end variables
+
+on m_menu_functions_alt.create
+m_menu_functions_alt=this
+call m_menu::create
+end on
+
+on m_menu_functions_alt.destroy
+call m_menu::destroy
+end on
+
+on m_filemenu.create
+call m_menu`m_filemenu::create
+end on
+
+on m_close.create
+call m_menu`m_close::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+this.ToolBarItemVisible=false
+end on
+
+on m_-1.create
+call m_menu`m_-1::create
+end on
+
+on m_exit::clicked;call m_menu`m_exit::clicked;parentwindow.PostEvent ('ue_exit')
+end on
+
+on m_exit.create
+call m_menu`m_exit::create
+this.ToolBarItemName="exit!"
+this.ToolBarItemDownName=""
+end on
+
+on m_edit.create
+call m_menu`m_edit::create
+end on
+
+on m_undo.create
+call m_menu`m_undo::create
+this.ToolBarItemName="undo1.bmp"
+this.ToolBarItemDownName="undo2.bmp"
+this.ToolBarItemOrder=1
+this.ToolBarItemSpace=0
+end on
+
+on m_-.create
+call m_menu`m_-::create
+end on
+
+on m_cut.create
+call m_menu`m_cut::create
+this.ToolBarItemName="cut1.bmp"
+this.ToolBarItemDownName="cut2.bmp"
+this.ToolBarItemOrder=2
+end on
+
+on m_copy.create
+call m_menu`m_copy::create
+this.ToolBarItemName="copy1.bmp"
+this.ToolBarItemDownName="copy2.bmp"
+this.ToolBarItemOrder=3
+end on
+
+on m_paste.create
+call m_menu`m_paste::create
+this.ToolBarItemName="paste1.bmp"
+this.ToolBarItemDownName="paste2.bmp"
+this.ToolBarItemOrder=4
+end on
+
+on m_clear.create
+call m_menu`m_clear::create
+this.ToolBarItemName="clear1.bmp"
+this.ToolBarItemDownName="clear2.bmp"
+this.ToolBarItemOrder=5
+end on
+
+on m_window.create
+call m_menu`m_window::create
+end on
+
+on m_tile::clicked;call m_menu`m_tile::clicked;parentwindow.PostEvent ('ue_tile')
+
+end on
+
+on m_tile.create
+call m_menu`m_tile::create
+this.ToolBarItemName="tile1.bmp"
+this.ToolBarItemDownName="tile2.bmp"
+this.ToolBarItemText="Tile"
+this.ToolBarItemOrder=6
+this.ToolBarItemSpace=1
+end on
+
+on m_horizontal::clicked;call m_menu`m_horizontal::clicked;parentwindow.PostEvent ('ue_htile')
+end on
+
+on m_horizontal.create
+call m_menu`m_horizontal::create
+end on
+
+on m_layer::clicked;call m_menu`m_layer::clicked;parentwindow.PostEvent ('ue_layer')
+
+end on
+
+on m_layer.create
+call m_menu`m_layer::create
+end on
+
+on m_cascade::clicked;call m_menu`m_cascade::clicked;parentwindow.PostEvent ('ue_cascade')
+
+end on
+
+on m_cascade.create
+call m_menu`m_cascade::create
+this.ToolBarItemName="cascade1.bmp"
+this.ToolBarItemDownName="cascade2.bmp"
+this.ToolBarItemText="Cascade"
+this.ToolBarItemOrder=7
+end on
+
+on m_-2.create
+call m_menu`m_-2::create
+end on
+
+on m_arrangeicons::clicked;call m_menu`m_arrangeicons::clicked;parentwindow.PostEvent ('ue_arrange')
+
+end on
+
+on m_arrangeicons.create
+call m_menu`m_arrangeicons::create
+end on
+
+on m_-3.create
+call m_menu`m_-3::create
+end on
+
+on m_toolbars.create
+call m_menu`m_toolbars::create
+end on
+
+on m_help.create
+call m_menu`m_help::create
+end on
+
+on m_contents::clicked;call m_menu`m_contents::clicked;f_open_help ('w_frame_menu_functions')
+end on
+
+on m_contents.create
+call m_menu`m_contents::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+this.ToolBarItemOrder=0
+this.ToolBarItemSpace=0
+end on
+
+on m_2.create
+call m_menu`m_2::create
+end on
+
+on m_aboutexample::clicked;call m_menu`m_aboutexample::clicked;OpenWithParm (w_about_with_parm, 'MenuItem Attributes@')
+end on
+
+on m_aboutexample.create
+call m_menu`m_aboutexample::create
+this.Text="&About MenuItem Attributes..."
+end on
+

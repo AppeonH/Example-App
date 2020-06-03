@@ -1,0 +1,1156 @@
+﻿$PBExportHeader$m_notepad.srm
+$PBExportComments$Menu for Notepad
+forward
+global type m_notepad from menu
+end type
+type m_file from menu within m_notepad
+end type
+type m_new from menu within m_file
+end type
+type m_open from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_-4 from menu within m_file
+end type
+type m_save from menu within m_file
+end type
+type m_delete from menu within m_file
+end type
+type m_-2 from menu within m_file
+end type
+type m_print from menu within m_file
+end type
+type m_printsetup from menu within m_file
+end type
+type m_- from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_notepad
+m_new m_new
+m_open m_open
+m_close m_close
+m_-4 m_-4
+m_save m_save
+m_delete m_delete
+m_-2 m_-2
+m_print m_print
+m_printsetup m_printsetup
+m_- m_-
+m_exit m_exit
+end type
+type m_edit from menu within m_notepad
+end type
+type m_undo from menu within m_edit
+end type
+type m_-5 from menu within m_edit
+end type
+type m_cut from menu within m_edit
+end type
+type m_copy from menu within m_edit
+end type
+type m_paste from menu within m_edit
+end type
+type m_delete1 from menu within m_edit
+end type
+type m_-6 from menu within m_edit
+end type
+type m_selectall from menu within m_edit
+end type
+type m_edit from menu within m_notepad
+m_undo m_undo
+m_-5 m_-5
+m_cut m_cut
+m_copy m_copy
+m_paste m_paste
+m_delete1 m_delete1
+m_-6 m_-6
+m_selectall m_selectall
+end type
+type m_search from menu within m_notepad
+end type
+type m_findtext from menu within m_search
+end type
+type m_findnexttext from menu within m_search
+end type
+type m_replacetext from menu within m_search
+end type
+type m_-1 from menu within m_search
+end type
+type m_gotoline from menu within m_search
+end type
+type m_search from menu within m_notepad
+m_findtext m_findtext
+m_findnexttext m_findnexttext
+m_replacetext m_replacetext
+m_-1 m_-1
+m_gotoline m_gotoline
+end type
+type m_options from menu within m_notepad
+end type
+type m_statusindicator from menu within m_options
+end type
+type m_clock from menu within m_options
+end type
+type m_font from menu within m_options
+end type
+type m_helv from menu within m_font
+end type
+type m_system from menu within m_font
+end type
+type m_courier from menu within m_font
+end type
+type m_tmsroman from menu within m_font
+end type
+type m_font from menu within m_options
+m_helv m_helv
+m_system m_system
+m_courier m_courier
+m_tmsroman m_tmsroman
+end type
+type m_color from menu within m_options
+end type
+type m_options from menu within m_notepad
+m_statusindicator m_statusindicator
+m_clock m_clock
+m_font m_font
+m_color m_color
+end type
+type m_window from menucascade within m_notepad
+end type
+type m_tile from menu within m_window
+end type
+type m_horizontal from menu within m_window
+end type
+type m_cascade from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_-7 from menu within m_window
+end type
+type m_arrangeicons from menu within m_window
+end type
+type m_-3 from menu within m_window
+end type
+type m_toolbar1 from menu within m_window
+end type
+type m_window from menucascade within m_notepad
+m_tile m_tile
+m_horizontal m_horizontal
+m_cascade m_cascade
+m_layer m_layer
+m_-7 m_-7
+m_arrangeicons m_arrangeicons
+m_-3 m_-3
+m_toolbar1 m_toolbar1
+end type
+type m_help from menu within m_notepad
+end type
+type m_contents from menu within m_help
+end type
+type m_-8 from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_notepad
+m_contents m_contents
+m_-8 m_-8
+m_about m_about
+end type
+end forward
+
+global type m_notepad from menu
+m_file m_file
+m_edit m_edit
+m_search m_search
+m_options m_options
+m_window m_window
+m_help m_help
+end type
+global m_notepad m_notepad
+
+on m_notepad.create
+m_notepad=this
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.m_search=create m_search
+this.m_options=create m_options
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_edit, &
+this.m_search, &
+this.m_options, &
+this.m_window, &
+this.m_help}
+end on
+
+on m_notepad.destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+destroy(this.m_search)
+destroy(this.m_options)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_notepad
+m_new m_new
+m_open m_open
+m_close m_close
+m_-4 m_-4
+m_save m_save
+m_delete m_delete
+m_-2 m_-2
+m_print m_print
+m_printsetup m_printsetup
+m_- m_-
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_new=create m_new
+this.m_open=create m_open
+this.m_close=create m_close
+this.m_-4=create m_-4
+this.m_save=create m_save
+this.m_delete=create m_delete
+this.m_-2=create m_-2
+this.m_print=create m_print
+this.m_printsetup=create m_printsetup
+this.m_-=create m_-
+this.m_exit=create m_exit
+this.Item[]={this.m_new, &
+this.m_open, &
+this.m_close, &
+this.m_-4, &
+this.m_save, &
+this.m_delete, &
+this.m_-2, &
+this.m_print, &
+this.m_printsetup, &
+this.m_-, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_new)
+destroy(this.m_open)
+destroy(this.m_close)
+destroy(this.m_-4)
+destroy(this.m_save)
+destroy(this.m_delete)
+destroy(this.m_-2)
+destroy(this.m_print)
+destroy(this.m_printsetup)
+destroy(this.m_-)
+destroy(this.m_exit)
+end on
+
+type m_new from menu within m_file
+end type
+
+on clicked;//////////////////////////////////////////////////////////////////////
+// Open a new document (sheet)
+//////////////////////////////////////////////////////////////////////
+
+w_notepad w_sheet
+OpenSheet (w_sheet, parentwindow, 5, cascaded!)
+end on
+
+on m_new.create
+this.Text="&New"
+this.Microhelp="Create a new document"
+this.ToolBarItemName="ScriptNo!"
+this.ToolBarItemText="New"
+this.ToolBarItemOrder=1
+end on
+
+type m_open from menu within m_file
+end type
+
+on clicked;//////////////////////////////////////////////////////////////////////
+// Open a document (sheet)
+//////////////////////////////////////////////////////////////////////
+
+window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_openfile")
+end if
+end on
+
+on m_open.create
+this.Text="&Open..."
+this.Microhelp="Open a new file"
+this.ToolBarItemName="Custom050!"
+this.ToolBarItemText="Open"
+this.ToolBarItemOrder=2
+end on
+
+type m_close from menu within m_file
+end type
+
+on clicked;//////////////////////////////////////////////////////////////////////
+// Close a document (sheet)
+//////////////////////////////////////////////////////////////////////
+
+window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_closefile")
+end if
+end on
+
+on m_close.create
+this.Text="&Close~tCtrl+F4"
+this.Microhelp="Close document"
+this.ToolBarItemName="Custom039!"
+this.ToolBarItemText="Close"
+this.ToolBarItemOrder=3
+this.Shortcut=371
+end on
+
+type m_-4 from menu within m_file
+end type
+
+on m_-4.create
+this.Text="-"
+end on
+
+type m_save from menu within m_file
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_savefile")
+end if
+end on
+
+on m_save.create
+this.Text="&Save..."
+this.Microhelp="Save document"
+this.ToolBarItemName="Custom008!"
+this.ToolBarItemText="Save"
+this.ToolBarItemOrder=1
+this.ToolBarItemBarIndex=2
+end on
+
+type m_delete from menu within m_file
+end type
+
+on clicked;window	lw_active
+
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_deletefile")
+end if
+end on
+
+on m_delete.create
+this.Text="&Delete..."
+this.Microhelp="Delete a file"
+end on
+
+type m_-2 from menu within m_file
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_print from menu within m_file
+end type
+
+on clicked;window	lw_active
+
+
+lw_active = parentwindow.GetActiveSheet()
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_printfile")
+end if
+end on
+
+on m_print.create
+this.Text="Prin&t"
+this.Microhelp="Print document"
+this.ToolBarItemName="Print!"
+this.ToolBarItemText="Print"
+this.ToolBarItemOrder=2
+this.ToolBarItemBarIndex=2
+end on
+
+type m_printsetup from menu within m_file
+end type
+
+on clicked;if PrintSetup() = -1 then
+	MessageBox ("Error!", "PrintSetup Failed", exclamation!)
+end if
+end on
+
+on m_printsetup.create
+this.Text="Pr&inter Setup..."
+this.Microhelp="Set printer options"
+end on
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+on clicked;Close (ParentWindow)
+end on
+
+on m_exit.create
+this.Text="E&xit"
+this.Microhelp="Exit this example"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=2
+this.ToolBarItemBarIndex=5
+this.ToolBarItemSpace=1
+end on
+
+type m_edit from menu within m_notepad
+m_undo m_undo
+m_-5 m_-5
+m_cut m_cut
+m_copy m_copy
+m_paste m_paste
+m_delete1 m_delete1
+m_-6 m_-6
+m_selectall m_selectall
+end type
+
+on m_edit.create
+this.Text="&Edit"
+this.m_undo=create m_undo
+this.m_-5=create m_-5
+this.m_cut=create m_cut
+this.m_copy=create m_copy
+this.m_paste=create m_paste
+this.m_delete1=create m_delete1
+this.m_-6=create m_-6
+this.m_selectall=create m_selectall
+this.Item[]={this.m_undo, &
+this.m_-5, &
+this.m_cut, &
+this.m_copy, &
+this.m_paste, &
+this.m_delete1, &
+this.m_-6, &
+this.m_selectall}
+end on
+
+on m_edit.destroy
+destroy(this.m_undo)
+destroy(this.m_-5)
+destroy(this.m_cut)
+destroy(this.m_copy)
+destroy(this.m_paste)
+destroy(this.m_delete1)
+destroy(this.m_-6)
+destroy(this.m_selectall)
+end on
+
+type m_undo from menu within m_edit
+end type
+
+on clicked;window	lw_active
+
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_edit_actions", 0, "undo")
+end if
+
+
+
+end on
+
+on m_undo.create
+this.Text="&Undo~tCtrl+Z"
+this.Microhelp="Undo"
+this.ToolBarItemName="Undo!"
+this.ToolBarItemText="Undo"
+this.ToolBarItemOrder=1
+this.ToolBarItemBarIndex=3
+this.Shortcut=346
+end on
+
+type m_-5 from menu within m_edit
+end type
+
+on m_-5.create
+this.Text="-"
+end on
+
+type m_cut from menu within m_edit
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_edit_actions", 0, "cut")
+end if
+
+end on
+
+on m_cut.create
+this.Text="Cu&t~tCtrl+X"
+this.Microhelp="Cut selected text to clipboard"
+this.ToolBarItemName="Cut!"
+this.ToolBarItemText="Cut"
+this.ToolBarItemOrder=2
+this.ToolBarItemBarIndex=3
+this.Shortcut=344
+end on
+
+type m_copy from menu within m_edit
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_edit_actions", 0, "copy")
+end if
+
+
+
+
+
+end on
+
+on m_copy.create
+this.Text="&Copy~tCtrl+C"
+this.Microhelp="Copy selected text to clipboard"
+this.ToolBarItemName="Copy!"
+this.ToolBarItemText="Copy"
+this.ToolBarItemOrder=3
+this.ToolBarItemBarIndex=3
+this.Shortcut=323
+end on
+
+type m_paste from menu within m_edit
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_edit_actions", 0, "paste")
+end if
+
+
+end on
+
+on m_paste.create
+this.Text="&Paste~tCtrl+V"
+this.Microhelp="Paste from clipboard"
+this.ToolBarItemName="Paste!"
+this.ToolBarItemText="Paste"
+this.ToolBarItemOrder=4
+this.ToolBarItemBarIndex=3
+this.Shortcut=342
+end on
+
+type m_delete1 from menu within m_edit
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_edit_actions", 0, "clear")
+end if
+
+
+
+end on
+
+on m_delete1.create
+this.Text="C&lear~tDel"
+this.Microhelp="Clear selected text"
+this.ToolBarItemName="Clear!"
+this.ToolBarItemText="Clear"
+this.ToolBarItemOrder=5
+this.ToolBarItemBarIndex=3
+this.Shortcut=46
+end on
+
+type m_-6 from menu within m_edit
+end type
+
+on m_-6.create
+this.Text="-"
+end on
+
+type m_selectall from menu within m_edit
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_edit_actions", 0, "selectall")
+end if
+
+
+
+
+
+end on
+
+on m_selectall.create
+this.Text="Select &All~tCtrl+A"
+this.Microhelp="Select entire document"
+this.ToolBarItemName="SelectAll!"
+this.ToolBarItemText="Select All"
+this.ToolBarItemOrder=6
+this.ToolBarItemBarIndex=3
+this.Shortcut=321
+end on
+
+type m_search from menu within m_notepad
+m_findtext m_findtext
+m_findnexttext m_findnexttext
+m_replacetext m_replacetext
+m_-1 m_-1
+m_gotoline m_gotoline
+end type
+
+on m_search.create
+this.Text="&Search"
+this.m_findtext=create m_findtext
+this.m_findnexttext=create m_findnexttext
+this.m_replacetext=create m_replacetext
+this.m_-1=create m_-1
+this.m_gotoline=create m_gotoline
+this.Item[]={this.m_findtext, &
+this.m_findnexttext, &
+this.m_replacetext, &
+this.m_-1, &
+this.m_gotoline}
+end on
+
+on m_search.destroy
+destroy(this.m_findtext)
+destroy(this.m_findnexttext)
+destroy(this.m_replacetext)
+destroy(this.m_-1)
+destroy(this.m_gotoline)
+end on
+
+type m_findtext from menu within m_search
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_find_text")
+end if
+end on
+
+on m_findtext.create
+this.Text="&Find Text...~tCtrl+F"
+this.Microhelp="Find specific text"
+this.Shortcut=326
+end on
+
+type m_findnexttext from menu within m_search
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_find_next_text")
+end if
+
+
+
+end on
+
+on m_findnexttext.create
+this.Text="Find &Next Text~tCtrl+N"
+this.Microhelp="Find next occurence of the specified text"
+this.Shortcut=334
+end on
+
+type m_replacetext from menu within m_search
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_replace_text")
+end if
+
+
+
+end on
+
+on m_replacetext.create
+this.Text="&Replace Text...~tCtrl+R"
+this.Microhelp="Replace text"
+this.Shortcut=338
+end on
+
+type m_-1 from menu within m_search
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_gotoline from menu within m_search
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_go_to_line")
+end if
+
+
+
+
+end on
+
+on m_gotoline.create
+this.Text="&Go To Line~tCtrl+G"
+this.Microhelp="Go to a specific line in the document"
+this.Shortcut=327
+end on
+
+type m_options from menu within m_notepad
+m_statusindicator m_statusindicator
+m_clock m_clock
+m_font m_font
+m_color m_color
+end type
+
+on m_options.create
+this.Text="&Options"
+this.m_statusindicator=create m_statusindicator
+this.m_clock=create m_clock
+this.m_font=create m_font
+this.m_color=create m_color
+this.Item[]={this.m_statusindicator, &
+this.m_clock, &
+this.m_font, &
+this.m_color}
+end on
+
+on m_options.destroy
+destroy(this.m_statusindicator)
+destroy(this.m_clock)
+destroy(this.m_font)
+destroy(this.m_color)
+end on
+
+type m_statusindicator from menu within m_options
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_status_indicator")
+
+	if this.checked = false then
+		Check (this)
+	else
+		UnCheck (this)
+	end if
+end if
+
+
+end on
+
+on m_statusindicator.create
+this.Text="&Status Indicator"
+this.Microhelp="Show/Hide status indicator"
+end on
+
+type m_clock from menu within m_options
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_clock")
+
+	if this.checked = false then
+		Check (this)
+	else
+		UnCheck (this)
+	end if
+end if
+
+end on
+
+on m_clock.create
+this.Text="&Clock"
+this.Microhelp="Show/Hide clock"
+end on
+
+type m_font from menu within m_options
+m_helv m_helv
+m_system m_system
+m_courier m_courier
+m_tmsroman m_tmsroman
+end type
+
+on m_font.create
+this.Text="&Font"
+this.Microhelp="Change text font"
+this.m_helv=create m_helv
+this.m_system=create m_system
+this.m_courier=create m_courier
+this.m_tmsroman=create m_tmsroman
+this.Item[]={this.m_helv, &
+this.m_system, &
+this.m_courier, &
+this.m_tmsroman}
+end on
+
+on m_font.destroy
+destroy(this.m_helv)
+destroy(this.m_system)
+destroy(this.m_courier)
+destroy(this.m_tmsroman)
+end on
+
+type m_helv from menu within m_font
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_change_fonts", 0, Right(This.Text, (Len(This.Text) - 1)))
+end if
+
+end on
+
+on m_helv.create
+this.Text="&Helvetica"
+this.Microhelp="Change text to Helv font"
+end on
+
+type m_system from menu within m_font
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_change_fonts", 0, Right(This.Text, (Len(This.Text) - 1)))
+end if
+
+
+
+end on
+
+on m_system.create
+this.Text="&System"
+this.Microhelp="Change text to System font"
+end on
+
+type m_courier from menu within m_font
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_change_fonts", 0, Right(This.Text, (Len(This.Text) - 1)))
+end if
+
+
+
+end on
+
+on m_courier.create
+this.Text="&Courier"
+this.Microhelp="Change text to Courier font"
+end on
+
+type m_tmsroman from menu within m_font
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_change_fonts", 0, Right(This.Text, (Len(This.Text) - 1)))
+end if
+
+
+
+end on
+
+on m_tmsroman.create
+this.Text="&Times"
+this.Microhelp="Change text to Times Roman font"
+end on
+
+type m_color from menu within m_options
+end type
+
+on clicked;window	lw_active
+
+lw_active = parentwindow.GetActiveSheet()
+
+if IsValid (lw_active) then
+	lw_active.TriggerEvent ("ue_set_text_color" )
+end if
+end on
+
+on m_color.create
+this.Text="Colo&r..."
+this.Microhelp="Change text color"
+end on
+
+on m_color.destroy
+end on
+
+type m_window from menucascade within m_notepad
+m_tile m_tile
+m_horizontal m_horizontal
+m_cascade m_cascade
+m_layer m_layer
+m_-7 m_-7
+m_arrangeicons m_arrangeicons
+m_-3 m_-3
+m_toolbar1 m_toolbar1
+end type
+
+on m_window.create
+this.Text="&Window"
+this.ToolBarItemOrder=1
+this.ToolBarItemBarIndex=4
+this.Columns=2
+this.m_tile=create m_tile
+this.m_horizontal=create m_horizontal
+this.m_cascade=create m_cascade
+this.m_layer=create m_layer
+this.m_-7=create m_-7
+this.m_arrangeicons=create m_arrangeicons
+this.m_-3=create m_-3
+this.m_toolbar1=create m_toolbar1
+this.Item[]={this.m_tile, &
+this.m_horizontal, &
+this.m_cascade, &
+this.m_layer, &
+this.m_-7, &
+this.m_arrangeicons, &
+this.m_-3, &
+this.m_toolbar1}
+end on
+
+on m_window.destroy
+destroy(this.m_tile)
+destroy(this.m_horizontal)
+destroy(this.m_cascade)
+destroy(this.m_layer)
+destroy(this.m_-7)
+destroy(this.m_arrangeicons)
+destroy(this.m_-3)
+destroy(this.m_toolbar1)
+end on
+
+type m_tile from menu within m_window
+end type
+
+on clicked;parentwindow.arrangesheets (tile!)
+end on
+
+on m_tile.create
+this.Text="&Tile Vertical"
+this.Microhelp="Arrange all as vertically tiled"
+this.ToolBarItemName="Tile!"
+this.ToolBarItemText="Tile Vertical"
+this.ToolBarItemOrder=1
+this.ToolBarItemBarIndex=4
+end on
+
+type m_horizontal from menu within m_window
+end type
+
+on clicked;parentwindow.arrangesheets (TileHorizontal!)
+end on
+
+on m_horizontal.create
+this.Text="Tile &Horizontal"
+this.Microhelp="Arrange all as horizontally tiled"
+this.ToolBarItemName="Horizontal!"
+this.ToolBarItemText="Tile Horizontal"
+this.ToolBarItemOrder=2
+this.ToolBarItemBarIndex=4
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on clicked;parentwindow.arrangesheets (cascade!)
+end on
+
+on m_cascade.create
+this.Text="&Cascade"
+this.Microhelp="Arrange all sheets as cascaded"
+this.ToolBarItemName="Cascade!"
+this.ToolBarItemText="Cascade"
+this.ToolBarItemOrder=3
+this.ToolBarItemBarIndex=4
+end on
+
+type m_layer from menu within m_window
+end type
+
+on clicked;parentwindow.arrangesheets (layer!)
+end on
+
+on m_layer.create
+this.Text="&Layer"
+this.Microhelp="Arrange all sheets as layered"
+this.ToolBarItemName="Layer!"
+this.ToolBarItemText="Layer"
+this.ToolBarItemOrder=4
+this.ToolBarItemBarIndex=4
+end on
+
+type m_-7 from menu within m_window
+end type
+
+on m_-7.create
+this.Text="-"
+end on
+
+type m_arrangeicons from menu within m_window
+end type
+
+on clicked;parentwindow.arrangesheets (icons!)
+end on
+
+on m_arrangeicons.create
+this.Text="Arrange &Icons"
+this.Microhelp="Arrange all icons"
+this.ToolBarItemName="ArrangeIcons!"
+this.ToolBarItemText="Arrange"
+this.ToolBarItemOrder=5
+this.ToolBarItemBarIndex=4
+end on
+
+type m_-3 from menu within m_window
+end type
+
+on m_-3.create
+this.Text="-"
+end on
+
+type m_toolbar1 from menu within m_window
+end type
+
+event clicked;OpenWithParm (w_set_toolbars, parentwindow)
+
+end event
+
+on m_toolbar1.create
+this.Text="Tool&bar..."
+this.Microhelp="Configure toolbars"
+end on
+
+type m_help from menu within m_notepad
+m_contents m_contents
+m_-8 m_-8
+m_about m_about
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_contents=create m_contents
+this.m_-8=create m_-8
+this.m_about=create m_about
+this.Item[]={this.m_contents, &
+this.m_-8, &
+this.m_about}
+end on
+
+on m_help.destroy
+destroy(this.m_contents)
+destroy(this.m_-8)
+destroy(this.m_about)
+end on
+
+type m_contents from menu within m_help
+end type
+
+on clicked;f_open_help ('w_notepad_frame')
+end on
+
+on m_contents.create
+this.Text="&Contents...~tF1"
+this.Microhelp="Display help"
+this.ToolBarItemName="Help!"
+this.ToolBarItemText="Help"
+this.ToolBarItemOrder=1
+this.ToolBarItemBarIndex=5
+this.Shortcut=112
+end on
+
+type m_-8 from menu within m_help
+end type
+
+on m_-8.create
+this.Text="-"
+end on
+
+type m_about from menu within m_help
+end type
+
+on clicked;OpenWithParm (w_about_with_parm, 'PowerBuilt NotePad@')
+end on
+
+on m_about.create
+this.Text="&About PowerBuilt NotePad..."
+this.Microhelp="Display copyright notice"
+end on
+

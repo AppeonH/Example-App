@@ -1,0 +1,371 @@
+﻿$PBExportHeader$m_datawindow_style.srm
+$PBExportComments$Menu for DataWindow style examples
+forward
+global type m_datawindow_style from menu
+end type
+type m_file from menu within m_datawindow_style
+end type
+type m_print from menu within m_file
+end type
+type m_printersetup from menu within m_file
+end type
+type m_-2 from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_datawindow_style
+m_print m_print
+m_printersetup m_printersetup
+m_-2 m_-2
+m_exit m_exit
+end type
+type m_options1 from menu within m_datawindow_style
+end type
+type m_tile from menu within m_options1
+end type
+type m_horizontal from menu within m_options1
+end type
+type m_layer from menu within m_options1
+end type
+type m_cascade from menu within m_options1
+end type
+type m_-1 from menu within m_options1
+end type
+type m_arrangeicons from menu within m_options1
+end type
+type m_- from menu within m_options1
+end type
+type m_toolbar from menu within m_options1
+end type
+type m_options1 from menu within m_datawindow_style
+m_tile m_tile
+m_horizontal m_horizontal
+m_layer m_layer
+m_cascade m_cascade
+m_-1 m_-1
+m_arrangeicons m_arrangeicons
+m_- m_-
+m_toolbar m_toolbar
+end type
+type m_help from menu within m_datawindow_style
+end type
+type m_contents from menu within m_help
+end type
+type m_-5 from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_datawindow_style
+m_contents m_contents
+m_-5 m_-5
+m_about m_about
+end type
+end forward
+
+global type m_datawindow_style from menu
+m_file m_file
+m_options1 m_options1
+m_help m_help
+end type
+global m_datawindow_style m_datawindow_style
+
+on m_datawindow_style.create
+m_datawindow_style=this
+this.m_file=create m_file
+this.m_options1=create m_options1
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_options1, &
+this.m_help}
+end on
+
+on m_datawindow_style.destroy
+destroy(this.m_file)
+destroy(this.m_options1)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_datawindow_style
+m_print m_print
+m_printersetup m_printersetup
+m_-2 m_-2
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_print=create m_print
+this.m_printersetup=create m_printersetup
+this.m_-2=create m_-2
+this.m_exit=create m_exit
+this.Item[]={this.m_print, &
+this.m_printersetup, &
+this.m_-2, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_print)
+destroy(this.m_printersetup)
+destroy(this.m_-2)
+destroy(this.m_exit)
+end on
+
+type m_print from menu within m_file
+end type
+
+on clicked;w_datawindow_style_sheet lw_temp
+
+//get active sheet
+lw_temp = Parentwindow.getactivesheet()
+//print the datawindow on that sheet
+lw_temp.dw_1.Print()
+end on
+
+on m_print.create
+this.Text="Prin&t..."
+this.ToolBarItemName="Print!"
+this.ToolBarItemText="Print"
+end on
+
+type m_printersetup from menu within m_file
+end type
+
+on clicked;printsetup()
+end on
+
+on m_printersetup.create
+this.Text="Pr&inter Setup..."
+end on
+
+type m_-2 from menu within m_file
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+on clicked;//Close Mdi Frame (EXIT)  All sheets will be closed also
+
+window lw_win
+lw_win = ParentWindow.GetActiveSheet( )
+if isvalid(lw_win) then  // if there is a sheet then get it's parent
+	lw_win = parentwindow(lw_win)
+else  // otherwise close the frame
+	lw_win = parentwindow
+end if
+Close(lw_win)
+end on
+
+on m_exit.create
+this.Text="E&xit"
+this.Microhelp="Exit this Example"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=90
+this.ToolBarItemSpace=2
+end on
+
+type m_options1 from menu within m_datawindow_style
+m_tile m_tile
+m_horizontal m_horizontal
+m_layer m_layer
+m_cascade m_cascade
+m_-1 m_-1
+m_arrangeicons m_arrangeicons
+m_- m_-
+m_toolbar m_toolbar
+end type
+
+on m_options1.create
+this.Text="&Window"
+this.m_tile=create m_tile
+this.m_horizontal=create m_horizontal
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_-1=create m_-1
+this.m_arrangeicons=create m_arrangeicons
+this.m_-=create m_-
+this.m_toolbar=create m_toolbar
+this.Item[]={this.m_tile, &
+this.m_horizontal, &
+this.m_layer, &
+this.m_cascade, &
+this.m_-1, &
+this.m_arrangeicons, &
+this.m_-, &
+this.m_toolbar}
+end on
+
+on m_options1.destroy
+destroy(this.m_tile)
+destroy(this.m_horizontal)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_-1)
+destroy(this.m_arrangeicons)
+destroy(this.m_-)
+destroy(this.m_toolbar)
+end on
+
+type m_tile from menu within m_options1
+end type
+
+on clicked;//click script for m_tile
+
+ParentWindow.ArrangeSheets(Tile!)
+end on
+
+on m_tile.create
+this.Text="&Tile Vertical"
+this.Microhelp="Arrange all as vertically tiled"
+this.ToolBarItemName="Tile!"
+this.ToolBarItemText="Tile Vertical"
+this.ToolBarItemOrder=80
+this.ToolBarItemSpace=2
+end on
+
+type m_horizontal from menu within m_options1
+end type
+
+on clicked;ParentWindow.ArrangeSheets (TileHorizontal!)
+end on
+
+on m_horizontal.create
+this.Text="Tile &Horizontal"
+this.Microhelp="Arrange all as horizontally tiled"
+this.ToolBarItemName="Horizontal!"
+this.ToolBarItemText="Tile Horizontal"
+this.ToolBarItemOrder=81
+end on
+
+type m_layer from menu within m_options1
+end type
+
+on clicked;//click script for m_layer
+ParentWindow.ArrangeSheets(Layer!)
+end on
+
+on m_layer.create
+this.Text="&Layer"
+this.Microhelp="Arrange all as layered"
+this.ToolBarItemName="Layer!"
+this.ToolBarItemText="Layer"
+this.ToolBarItemOrder=82
+end on
+
+type m_cascade from menu within m_options1
+end type
+
+on clicked;//clicked script for m_cascade
+ParentWindow.ArrangeSheets(Cascade!)
+end on
+
+on m_cascade.create
+this.Text="&Cascade"
+this.Microhelp="Arrange all as cascaded"
+this.ToolBarItemName="Cascade!"
+this.ToolBarItemText="Cascade"
+this.ToolBarItemOrder=83
+end on
+
+type m_-1 from menu within m_options1
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_arrangeicons from menu within m_options1
+end type
+
+on clicked;//Arrange any minimized icons in mdi frame
+ParentWindow.ArrangeSheets(Icons!)
+end on
+
+on m_arrangeicons.create
+this.Text="Arrange &Icons"
+this.Microhelp="Arrange all icons"
+end on
+
+type m_- from menu within m_options1
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_toolbar from menu within m_options1
+end type
+
+on clicked;OpenWithParm (w_set_toolbars, GetActiveSheet(ParentWindow))
+
+
+end on
+
+on m_toolbar.create
+this.Text="Tool&bars..."
+this.Microhelp="Configure toolbars"
+this.Enabled=false
+end on
+
+type m_help from menu within m_datawindow_style
+m_contents m_contents
+m_-5 m_-5
+m_about m_about
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_contents=create m_contents
+this.m_-5=create m_-5
+this.m_about=create m_about
+this.Item[]={this.m_contents, &
+this.m_-5, &
+this.m_about}
+end on
+
+on m_help.destroy
+destroy(this.m_contents)
+destroy(this.m_-5)
+destroy(this.m_about)
+end on
+
+type m_contents from menu within m_help
+end type
+
+on clicked;//open example apps general help window
+f_open_help ( parentwindow.classname() )
+end on
+
+on m_contents.create
+this.Text="&Contents...~tF1"
+this.Microhelp="Display help for this example"
+this.ToolBarItemName="Help!"
+this.ToolBarItemText="Help"
+this.ToolBarItemOrder=99
+this.ToolBarItemSpace=2
+this.Shortcut=112
+end on
+
+type m_-5 from menu within m_help
+end type
+
+on m_-5.create
+this.Text="-"
+end on
+
+type m_about from menu within m_help
+end type
+
+on clicked;OpenWithParm(w_about_with_parm, "DataWindow Presentation Styles")
+end on
+
+on m_about.create
+this.Text="&About Presentation Styles..."
+this.Microhelp="Display copyright notice"
+end on
+

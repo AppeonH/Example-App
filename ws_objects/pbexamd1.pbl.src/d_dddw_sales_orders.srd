@@ -1,0 +1,24 @@
+﻿$PBExportHeader$d_dddw_sales_orders.srd
+$PBExportComments$Grid:  Sales Order ID, Customer ID, Order Date
+release 9;
+datawindow(units=0 timer_interval=0 color=1083244543 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+header(height=64 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=number update=yes updatewhereclause=yes key=yes name=id dbname="sales_order.id" )
+ column=(type=number update=yes updatewhereclause=yes name=cust_id dbname="sales_order.cust_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=order_date dbname="sales_order.order_date" )
+ retrieve="PBSELECT(TABLE(NAME=~"sales_order~" ) COLUMN(NAME=~"sales_order.id~") COLUMN(NAME=~"sales_order.cust_id~") COLUMN(NAME=~"sales_order.order_date~")) ORDER(NAME=~"sales_order.id~" ASC=yes ) " update="sales_order" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Customer ID" border="0" color="33554592" x="402" y="8" height="52" width="352" html.valueishtml="0"  name=cust_id_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+text(band=header alignment="2" text="Order Date" border="0" color="33554592" x="763" y="8" height="52" width="370" html.valueishtml="0"  name=order_date_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+text(band=header alignment="2" text="Sales Order ID" border="0" color="33554592" x="9" y="8" height="52" width="384" html.valueishtml="0"  name=id_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554592" x="9" y="4" height="60" width="384" format="[general]" html.valueishtml="0"  name=id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554592" x="402" y="4" height="60" width="352" format="[general]" html.valueishtml="0"  name=cust_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="33554592" x="763" y="4" height="60" width="370" format="mm-dd-yyyy" html.valueishtml="0"  name=order_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

@@ -1,0 +1,48 @@
+﻿$PBExportHeader$f_populate_ddlb_from_db.srf
+$PBExportComments$Populate a DropDownListBox with data from a table in the database.
+global type f_populate_ddlb_from_db from function_object
+end type
+
+forward prototypes
+global function int f_populate_ddlb_from_db (string tab_parm, string col_parm, dropdownlistbox ddlb_parm)
+end prototypes
+
+global function int f_populate_ddlb_from_db (string tab_parm, string col_parm, dropdownlistbox ddlb_parm);string ls_add_string, ls_select_string
+
+int li_pos
+
+
+
+// Set up select statement using passed parameters
+ls_select_string = "SELECT DISTINCT " + col_parm + " FROM " + tab_parm
+PREPARE sqlsa FROM :ls_select_string;
+
+DECLARE dyn_cursor DYNAMIC CURSOR FOR sqlsa;
+
+OPEN DYNAMIC dyn_cursor;  
+if sqlca.sqlcode < 0 then
+	MessageBox("DataBase Error!", sqlca.sqlerrtext)
+	return sqlca.sqlcode
+end if 
+
+ddlb_parm.SetRedraw(false)
+ddlb_parm.Reset( )
+
+Do While sqlca.sqlcode = 0
+	Fetch dyn_cursor into :ls_add_string;
+	if sqlca.sqlcode = 0 then
+		ddlb_parm.AddItem(ls_add_string)
+	elseif sqlca.sqlcode < 0 then
+		MessageBox("DataBase Error", sqlca.sqlerrtext)
+		return sqlca.sqlcode
+	else
+		exit
+	end if
+Loop
+
+ddlb_parm.SetRedraw(true)
+Close dyn_cursor;
+
+return 0
+end function
+

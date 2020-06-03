@@ -1,0 +1,55 @@
+﻿$PBExportHeader$f_get_toolbar_indexes.srf
+$PBExportComments$Function to get all the indexes in a menu
+global type f_get_toolbar_indexes from function_object
+end type
+
+forward prototypes
+global function integer f_get_toolbar_indexes (menu am_source, ref integer ai_index[])
+end prototypes
+
+global function integer f_get_toolbar_indexes (menu am_source, ref integer ai_index[]);//////////////////////////////////////////////////////////////////////////////
+//
+//	Function:  		f_get_toolbar_indexes
+//
+//	Access:  		public
+//
+//	Arguments:		
+//	am_Source		The menu whose indexes are wanted.
+//	ai_Index[]			Array to hold all unique toolbar indexes found.
+//
+//	Returns:  		integer
+//						The number of indexes found or -1 if an error occurs.
+//
+//	Description:	Get all the toolbar indexes for the menu associated
+//						with a window.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+Integer	li_Limit, li_Cnt, li_ToolbarItembarindex
+Boolean	lb_Found
+
+// Check if this item has a toolbar
+If Len(am_Source.ToolbarItemName) > 0 Then
+	If am_Source.ToolbarItemBarIndex > 0 Then
+		// Check if it has already been added to the array
+		li_Limit = UpperBound(ai_Index)
+		lb_Found = False
+		For li_Cnt = 1 To li_Limit
+			If ai_Index[li_Cnt] = am_Source.ToolbarItemBarIndex Then lb_Found = True
+		Next
+	
+		// If not in array, add it
+		If Not lb_Found Then ai_Index[li_Limit + 1] = am_Source.ToolbarItemBarIndex
+	End If
+End If
+	
+// Search through the rest of the menu	
+li_Limit = UpperBound (am_Source.Item)
+For li_Cnt = 1 To li_Limit
+	f_get_toolbar_indexes(am_Source.Item[li_Cnt], ai_Index)
+Next
+
+Return UpperBound(ai_Index)
+
+end function
+

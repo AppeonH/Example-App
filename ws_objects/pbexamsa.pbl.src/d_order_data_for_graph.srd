@@ -1,0 +1,40 @@
+﻿$PBExportHeader$d_order_data_for_graph.srd
+$PBExportComments$Datawindow Used by Order Graph List Window to proudce ad hoc graphs
+release 9;
+datawindow(units=0 timer_interval=0 color=74481808 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 0 print.margin.right = 0 print.margin.top = 0 print.margin.bottom = 0 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=decimal(6) updatewhereclause=yes name=avg_order dbname="avg_order" )
+ column=(type=long updatewhereclause=yes name=count_order dbname="count_order" )
+ column=(type=decimal(6) updatewhereclause=yes name=total_order dbname="total_order" )
+ column=(type=decimal(2) updatewhereclause=yes name=min_order dbname="min_order" )
+ column=(type=decimal(2) updatewhereclause=yes name=max_order dbname="max_order" )
+ column=(type=char(7) updatewhereclause=yes name=orders_per_period dbname="order_month" )
+ retrieve="SELECT avg(sales_order_items.quantity*product.unit_price) as avg_order,
+count(sales_order_items.quantity) as count_order,
+sum(sales_order_items.quantity*product.unit_price) as total_order,
+min(sales_order_items.quantity*product.unit_price) as min_order,
+max(sales_order_items.quantity*product.unit_price) as max_order,
+max(dateformat(sales_order.order_date,'Mmmm yy')) as order_month 
+FROM sales_order, sales_order_items, product 
+WHERE ( sales_order.id = sales_order_items.id ) and 
+( product.id =sales_order_items.prod_id ) 	 and 
+year(order_date) = '1995' 
+group by dateformat(sales_order.order_date,'Mmmm yy')	 order by max(sales_order.order_date)" )
+text(band=header alignment="2" text="Customer #" border="6" color="0" x="50" y="20" height="52" width="311" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="Avg Item Cost" border="6" color="0" x="375" y="20" height="52" width="389" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="Total Items" border="6" color="0" x="891" y="20" height="52" width="315" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="Total Order $" border="6" color="0" x="1513" y="20" height="52" width="370" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="41943040" x="1385" y="4" height="56" width="325" format="[general]" html.valueishtml="0"  name=max_order visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1086902488" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="41943040" x="1737" y="4" height="56" width="233" format="[general]" html.valueishtml="0"  name=orders_per_period visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1086902488" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="41943040" x="18" y="4" height="56" width="270" format="[general]" html.valueishtml="0"  name=avg_order visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1086902488" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="41943040" x="329" y="4" height="56" width="229" format="[general]" html.valueishtml="0"  name=count_order visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1086902488" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="41943040" x="594" y="4" height="56" width="311" format="[general]" html.valueishtml="0"  name=total_order visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1086902488" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="41943040" x="942" y="4" height="56" width="421" format="[general]" html.valueishtml="0"  name=min_order visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1086902488" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

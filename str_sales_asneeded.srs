@@ -1,0 +1,7 @@
+$PBExportHeader$str_sales_asneeded.srs
+$PBExportComments$Tabular:  Sales Orders using Retrieve as Needed
+global type 	str_sales_asneeded from structure
+	integer	id
+	integer	cust_id
+	datetime	order_date
+end type

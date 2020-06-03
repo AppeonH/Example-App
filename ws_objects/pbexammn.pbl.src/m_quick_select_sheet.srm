@@ -1,0 +1,117 @@
+﻿$PBExportHeader$m_quick_select_sheet.srm
+$PBExportComments$Sheet used to hold the DataWindow that is created dynamically
+forward
+global type m_quick_select_sheet from m_quick_select
+end type
+end forward
+
+global type m_quick_select_sheet from m_quick_select
+end type
+global m_quick_select_sheet m_quick_select_sheet
+
+on m_quick_select_sheet.create
+m_quick_select_sheet=this
+call m_quick_select::create
+end on
+
+on m_quick_select_sheet.destroy
+call m_quick_select::destroy
+end on
+
+on m_file.create
+call m_quick_select`m_file::create
+end on
+
+on m_quickselect.create
+call m_quick_select`m_quickselect::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+end on
+
+on m_-.create
+call m_quick_select`m_-::create
+end on
+
+on m_savedatawindow.create
+call m_quick_select`m_savedatawindow::create
+end on
+
+on m_-4.create
+call m_quick_select`m_-4::create
+end on
+
+on m_closesheet.create
+call m_quick_select`m_closesheet::create
+this.Enabled=true
+end on
+
+on m_-5.create
+call m_quick_select`m_-5::create
+end on
+
+on m_exit.create
+call m_quick_select`m_exit::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+end on
+
+on m_window.create
+call m_quick_select`m_window::create
+end on
+
+on m_tile.create
+call m_quick_select`m_tile::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+end on
+
+on m_horizontal.create
+call m_quick_select`m_horizontal::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+end on
+
+on m_layer.create
+call m_quick_select`m_layer::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+end on
+
+on m_cascade.create
+call m_quick_select`m_cascade::create
+this.ToolBarItemName=""
+this.ToolBarItemText=""
+end on
+
+on m_-1.create
+call m_quick_select`m_-1::create
+end on
+
+on m_arrangeicons.create
+call m_quick_select`m_arrangeicons::create
+end on
+
+on m_-2.create
+call m_quick_select`m_-2::create
+end on
+
+on m_toolbars.create
+call m_quick_select`m_toolbars::create
+end on
+
+on m_help.create
+call m_quick_select`m_help::create
+end on
+
+on m_contents.create
+call m_quick_select`m_contents::create
+end on
+
+on m_-3.create
+call m_quick_select`m_-3::create
+end on
+
+on m_about.create
+call m_quick_select`m_about::create
+end on
+

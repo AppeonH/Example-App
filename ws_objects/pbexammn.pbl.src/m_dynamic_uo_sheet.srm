@@ -1,0 +1,172 @@
+﻿$PBExportHeader$m_dynamic_uo_sheet.srm
+$PBExportComments$Descendent of m_dynamic_uo_open_udo
+forward
+global type m_dynamic_uo_sheet from m_dynamic_uo_open_udo
+end type
+end forward
+
+global type m_dynamic_uo_sheet from m_dynamic_uo_open_udo
+end type
+global m_dynamic_uo_sheet m_dynamic_uo_sheet
+
+on m_dynamic_uo_sheet.create
+m_dynamic_uo_sheet=this
+call m_dynamic_uo_open_udo::create
+end on
+
+on m_dynamic_uo_sheet.destroy
+call m_dynamic_uo_open_udo::destroy
+end on
+
+on m_file.create
+call m_dynamic_uo_open_udo`m_file::create
+end on
+
+on m_newwindow.create
+call m_dynamic_uo_open_udo`m_newwindow::create
+end on
+
+on m_close.create
+call m_dynamic_uo_open_udo`m_close::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_-6.create
+call m_dynamic_uo_open_udo`m_-6::create
+end on
+
+on m_exit1.create
+call m_dynamic_uo_open_udo`m_exit1::create
+end on
+
+on m_udos.create
+call m_dynamic_uo_open_udo`m_udos::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_dw.create
+call m_dynamic_uo_open_udo`m_dw::create
+end on
+
+on m_-1.create
+call m_dynamic_uo_open_udo`m_-1::create
+end on
+
+on m_retrieve.create
+call m_dynamic_uo_open_udo`m_retrieve::create
+end on
+
+on m_insert.create
+call m_dynamic_uo_open_udo`m_insert::create
+end on
+
+on m_delete.create
+call m_dynamic_uo_open_udo`m_delete::create
+end on
+
+on m_update.create
+call m_dynamic_uo_open_udo`m_update::create
+end on
+
+on m_-.create
+call m_dynamic_uo_open_udo`m_-::create
+end on
+
+on m_first.create
+call m_dynamic_uo_open_udo`m_first::create
+end on
+
+on m_last.create
+call m_dynamic_uo_open_udo`m_last::create
+end on
+
+on m_next.create
+call m_dynamic_uo_open_udo`m_next::create
+end on
+
+on m_prior.create
+call m_dynamic_uo_open_udo`m_prior::create
+end on
+
+on m_-2.create
+call m_dynamic_uo_open_udo`m_-2::create
+end on
+
+on m_reset.create
+call m_dynamic_uo_open_udo`m_reset::create
+end on
+
+on m_print.create
+call m_dynamic_uo_open_udo`m_print::create
+end on
+
+on m_exit.create
+call m_dynamic_uo_open_udo`m_exit::create
+end on
+
+on m_window.create
+call m_dynamic_uo_open_udo`m_window::create
+end on
+
+on m_vertical.create
+call m_dynamic_uo_open_udo`m_vertical::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_tile.create
+call m_dynamic_uo_open_udo`m_tile::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_layer.create
+call m_dynamic_uo_open_udo`m_layer::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_cascade.create
+call m_dynamic_uo_open_udo`m_cascade::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_-4.create
+call m_dynamic_uo_open_udo`m_-4::create
+this.Visible=true
+end on
+
+on m_arrangeicons.create
+call m_dynamic_uo_open_udo`m_arrangeicons::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_-3.create
+call m_dynamic_uo_open_udo`m_-3::create
+this.Visible=true
+end on
+
+on m_toolbar.create
+call m_dynamic_uo_open_udo`m_toolbar::create
+end on
+
+on m_help.create
+call m_dynamic_uo_open_udo`m_help::create
+end on
+
+on m_contents.create
+call m_dynamic_uo_open_udo`m_contents::create
+end on
+
+on m_-5.create
+call m_dynamic_uo_open_udo`m_-5::create
+end on
+
+on m_about.create
+call m_dynamic_uo_open_udo`m_about::create
+end on
+

@@ -1,0 +1,437 @@
+﻿$PBExportHeader$m_item_status.srm
+$PBExportComments$Menu used for Get/SetItemStatus Example.
+forward
+global type m_item_status from menu
+end type
+type m_file from menu within m_item_status
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_item_status
+m_exit m_exit
+end type
+type m_rows from menu within m_item_status
+end type
+type m_retrieve from menu within m_rows
+end type
+type m_updatesyntax from menu within m_rows
+end type
+type m_- from menu within m_rows
+end type
+type m_insertrow from menu within m_rows
+end type
+type m_deleterow from menu within m_rows
+end type
+type m_-1 from menu within m_rows
+end type
+type m_setitemstatus from menu within m_rows
+end type
+type m_row from menu within m_setitemstatus
+end type
+type m_new from menu within m_row
+end type
+type m_newmodified from menu within m_row
+end type
+type m_datamodified from menu within m_row
+end type
+type m_notmodified from menu within m_row
+end type
+type m_row from menu within m_setitemstatus
+m_new m_new
+m_newmodified m_newmodified
+m_datamodified m_datamodified
+m_notmodified m_notmodified
+end type
+type m_column from menu within m_setitemstatus
+end type
+type m_datamodified1 from menu within m_column
+end type
+type m_notmodified1 from menu within m_column
+end type
+type m_column from menu within m_setitemstatus
+m_datamodified1 m_datamodified1
+m_notmodified1 m_notmodified1
+end type
+type m_setitemstatus from menu within m_rows
+m_row m_row
+m_column m_column
+end type
+type m_rows from menu within m_item_status
+m_retrieve m_retrieve
+m_updatesyntax m_updatesyntax
+m_- m_-
+m_insertrow m_insertrow
+m_deleterow m_deleterow
+m_-1 m_-1
+m_setitemstatus m_setitemstatus
+end type
+type m_help from menu within m_item_status
+end type
+type m_contents from menu within m_help
+end type
+type m_-2 from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_item_status
+m_contents m_contents
+m_-2 m_-2
+m_about m_about
+end type
+end forward
+
+global type m_item_status from menu
+m_file m_file
+m_rows m_rows
+m_help m_help
+end type
+global m_item_status m_item_status
+
+on m_item_status.create
+m_item_status=this
+this.m_file=create m_file
+this.m_rows=create m_rows
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_rows, &
+this.m_help}
+end on
+
+on m_item_status.destroy
+destroy(this.m_file)
+destroy(this.m_rows)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_item_status
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_exit=create m_exit
+this.Item[]={this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_exit)
+end on
+
+type m_exit from menu within m_file
+end type
+
+on clicked;close (parentwindow)
+end on
+
+on m_exit.create
+this.Text="&Exit"
+this.Microhelp="Exit this example"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=16
+this.ToolBarItemSpace=2
+end on
+
+type m_rows from menu within m_item_status
+m_retrieve m_retrieve
+m_updatesyntax m_updatesyntax
+m_- m_-
+m_insertrow m_insertrow
+m_deleterow m_deleterow
+m_-1 m_-1
+m_setitemstatus m_setitemstatus
+end type
+
+on m_rows.create
+this.Text="&Rows"
+this.m_retrieve=create m_retrieve
+this.m_updatesyntax=create m_updatesyntax
+this.m_-=create m_-
+this.m_insertrow=create m_insertrow
+this.m_deleterow=create m_deleterow
+this.m_-1=create m_-1
+this.m_setitemstatus=create m_setitemstatus
+this.Item[]={this.m_retrieve, &
+this.m_updatesyntax, &
+this.m_-, &
+this.m_insertrow, &
+this.m_deleterow, &
+this.m_-1, &
+this.m_setitemstatus}
+end on
+
+on m_rows.destroy
+destroy(this.m_retrieve)
+destroy(this.m_updatesyntax)
+destroy(this.m_-)
+destroy(this.m_insertrow)
+destroy(this.m_deleterow)
+destroy(this.m_-1)
+destroy(this.m_setitemstatus)
+end on
+
+type m_retrieve from menu within m_rows
+end type
+
+on clicked;parentwindow.TriggerEvent ("ue_retrieve")
+end on
+
+on m_retrieve.create
+this.Text="&Retrieve"
+this.Microhelp="Retrieves the DataWindow"
+this.ToolBarItemName="Retrieve!"
+this.ToolBarItemText="Retrieve"
+this.ToolBarItemOrder=2
+end on
+
+type m_updatesyntax from menu within m_rows
+end type
+
+on clicked;parentwindow.TriggerEvent ("ue_update_syntax")
+end on
+
+on m_updatesyntax.create
+this.Text="&Update Syntax"
+this.ToolBarItemName="Update!"
+this.ToolBarItemText="Update Syntax"
+this.ToolBarItemOrder=4
+end on
+
+type m_- from menu within m_rows
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_insertrow from menu within m_rows
+end type
+
+on clicked;parentwindow.TriggerEvent ("ue_insertrow")
+end on
+
+on m_insertrow.create
+this.Text="&Insert Row~tCtrl+Ins"
+this.Microhelp="Inserts a new row into the DataWindow"
+this.ToolBarItemName="Insert!"
+this.ToolBarItemText="Insert Row"
+this.ToolBarItemOrder=6
+this.ToolBarItemSpace=1
+this.Shortcut=301
+end on
+
+type m_deleterow from menu within m_rows
+end type
+
+on clicked;parentwindow.TriggerEvent ("ue_deleterow")
+end on
+
+on m_deleterow.create
+this.Text="&Delete Row~tCtrl+Del"
+this.Microhelp="Deletes the current row from the DataWindow"
+this.ToolBarItemName="Clear!"
+this.ToolBarItemText="Delete Row"
+this.ToolBarItemOrder=8
+this.Enabled=false
+this.Shortcut=302
+end on
+
+type m_-1 from menu within m_rows
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_setitemstatus from menu within m_rows
+m_row m_row
+m_column m_column
+end type
+
+on m_setitemstatus.create
+this.Text="Set Item &Status"
+this.Microhelp="Sets the item status of the current row or column of the DataWindow."
+this.ToolBarItemName="SetVariable!"
+this.ToolBarItemText="Set Item Status"
+this.ToolBarItemOrder=10
+this.ToolBarItemSpace=1
+this.Enabled=false
+this.m_row=create m_row
+this.m_column=create m_column
+this.Item[]={this.m_row, &
+this.m_column}
+end on
+
+on m_setitemstatus.destroy
+destroy(this.m_row)
+destroy(this.m_column)
+end on
+
+type m_row from menu within m_setitemstatus
+m_new m_new
+m_newmodified m_newmodified
+m_datamodified m_datamodified
+m_notmodified m_notmodified
+end type
+
+on m_row.create
+this.Text="&Row"
+this.Microhelp="Change the status of the current row of the DataWindow"
+this.m_new=create m_new
+this.m_newmodified=create m_newmodified
+this.m_datamodified=create m_datamodified
+this.m_notmodified=create m_notmodified
+this.Item[]={this.m_new, &
+this.m_newmodified, &
+this.m_datamodified, &
+this.m_notmodified}
+end on
+
+on m_row.destroy
+destroy(this.m_new)
+destroy(this.m_newmodified)
+destroy(this.m_datamodified)
+destroy(this.m_notmodified)
+end on
+
+type m_new from menu within m_row
+end type
+
+on clicked;parentwindow.TriggerEvent ("ue_setitemstatus", 0, 1)
+end on
+
+on m_new.create
+this.Text="ne&w!"
+this.Microhelp="Change the status of the current row of the DataWindow to new!"
+end on
+
+type m_newmodified from menu within m_row
+end type
+
+on clicked;parentwindow.TriggerEvent ("ue_setitemstatus", 0, 2)
+end on
+
+on m_newmodified.create
+this.Text="new&modified!"
+this.Microhelp="Change the status of the current row of the DataWindow to newmodified!"
+end on
+
+type m_datamodified from menu within m_row
+end type
+
+on clicked;parentwindow.TriggerEvent ("ue_setitemstatus", 0, 3)
+end on
+
+on m_datamodified.create
+this.Text="&datamodified"
+this.Microhelp="Change the status of the current row of the DataWindow to datamodified!"
+end on
+
+type m_notmodified from menu within m_row
+end type
+
+on clicked;parentwindow.TriggerEvent ("ue_setitemstatus", 0, 4)
+end on
+
+on m_notmodified.create
+this.Text="&notmodified!"
+this.Microhelp="Change the status of the current row of the DataWindow to notmodified!"
+end on
+
+type m_column from menu within m_setitemstatus
+m_datamodified1 m_datamodified1
+m_notmodified1 m_notmodified1
+end type
+
+on m_column.create
+this.Text="&Column"
+this.Microhelp="Change the status of the current column of the current row in the DataWindow"
+this.m_datamodified1=create m_datamodified1
+this.m_notmodified1=create m_notmodified1
+this.Item[]={this.m_datamodified1, &
+this.m_notmodified1}
+end on
+
+on m_column.destroy
+destroy(this.m_datamodified1)
+destroy(this.m_notmodified1)
+end on
+
+type m_datamodified1 from menu within m_column
+end type
+
+on clicked;parentwindow.TriggerEvent ("ue_setitemstatus", 1, 3)
+end on
+
+on m_datamodified1.create
+this.Text="&datamodified!"
+this.Microhelp="Change the status of the current column of the current row in the DataWindow to datamodified!"
+end on
+
+type m_notmodified1 from menu within m_column
+end type
+
+on clicked;parentwindow.TriggerEvent ("ue_setitemstatus", 1, 4)
+end on
+
+on m_notmodified1.create
+this.Text="not&modified!"
+this.Microhelp="Change the status of the current column of the current row in the DataWindow to notmodified!"
+end on
+
+type m_help from menu within m_item_status
+m_contents m_contents
+m_-2 m_-2
+m_about m_about
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_contents=create m_contents
+this.m_-2=create m_-2
+this.m_about=create m_about
+this.Item[]={this.m_contents, &
+this.m_-2, &
+this.m_about}
+end on
+
+on m_help.destroy
+destroy(this.m_contents)
+destroy(this.m_-2)
+destroy(this.m_about)
+end on
+
+type m_contents from menu within m_help
+end type
+
+on clicked;f_open_help (parentwindow.ClassName())
+end on
+
+on m_contents.create
+this.Text="&Contents...~tF1"
+this.Microhelp="Display help"
+this.ToolBarItemName="Help!"
+this.ToolBarItemText="Help"
+this.ToolBarItemOrder=14
+this.ToolBarItemSpace=2
+this.Shortcut=112
+end on
+
+type m_-2 from menu within m_help
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_about from menu within m_help
+end type
+
+on clicked;OpenWithParm (w_about_with_parm, "Item Status and Updating")
+end on
+
+on m_about.create
+this.Text="&About Item Status && Updating..."
+this.Microhelp="Display copyright notice"
+end on
+

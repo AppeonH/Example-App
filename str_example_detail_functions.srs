@@ -1,0 +1,7 @@
+$PBExportHeader$str_example_detail_functions.srs
+$PBExportComments$Used by Example Report
+global type 	str_example_detail_functions from structure
+	string	exam_xref_info_event
+	string	exam_xref_info_object_ref
+	string	exam_xref_info_object_ref_type
+end type

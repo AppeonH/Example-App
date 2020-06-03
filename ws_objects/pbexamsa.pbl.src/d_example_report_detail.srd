@@ -1,0 +1,39 @@
+﻿$PBExportHeader$d_example_report_detail.srd
+$PBExportComments$Example Report
+release 9;
+datawindow(units=0 timer_interval=60000 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="-1" )
+footer(height=0 color="-1" )
+detail(height=264 color="536870912"  height.autosize=yes)
+table(column=(type=char(40) updatewhereclause=yes name=refer dbname="exam_xref_list.refer" )
+ column=(type=char(10) updatewhereclause=yes name=app dbname="exam_xref_list.application" )
+ column=(type=char(40) updatewhereclause=yes name=object dbname="exam_xref_list.object" )
+ column=(type=char(32767) updatewhereclause=yes name=exam_xref_info_referenced_in dbname="exam_xref_info.referenced_in" )
+ retrieve="SELECT DISTINCT exam_xref_list.refer, 	exam_xref_list.application, 	exam_xref_list.object, 	exam_xref_info_b.referenced_in 
+FROM {oj exam_xref_list LEFT OUTER JOIN exam_xref_info exam_xref_info_b ON 			exam_xref_list.refer = exam_xref_info_b.object_ref}, 
+exam_xref_info exam_xref_info_a 	 
+WHERE ( exam_xref_list.application = exam_xref_info_a.application ) and 	
+( exam_xref_list.refer = exam_xref_info_a.referenced_in ) and 	
+( exam_xref_list.application = :app) AND 	
+(exam_xref_list.object = :object) AND 	
+(exam_xref_info_b.event like '%inherit%') 
+UNION SELECT DISTINCT exam_xref_list.refer, 	exam_xref_list.application, 	exam_xref_list.object, 	NULL 
+FROM exam_xref_info, 		exam_xref_list 
+WHERE ( exam_xref_list.application = exam_xref_info.application ) and 	
+( exam_xref_list.refer = exam_xref_info.referenced_in ) and 	
+( exam_xref_list.application = :app) AND 	
+(exam_xref_list.object = :object) AND 	
+(exam_xref_list.refer NOT IN 	(SELECT object_ref 		FROM exam_xref_info			WHERE (event like '%inherit%')))" arguments=(("app", string),("object", string))  sort="refer A " )
+report(band=detail dataobject="d_example_detail_dddw" x="96" y="80" height="44" width="3200" border="0"  height.autosize=yes criteria="" nest_arguments=(("app"),("refer")) trail_footer = yes  name=n_dddw visible="1"  slideup=allabove )
+report(band=detail dataobject="d_example_detail_declared" x="96" y="124" height="44" width="3200" border="0"  height.autosize=yes criteria="" nest_arguments=(("app"),("refer")) trail_footer = yes  name=n_declared visible="1"  slideup=allabove )
+report(band=detail dataobject="d_example_detail_events" x="96" y="168" height="40" width="3200" border="0"  height.autosize=yes criteria="" nest_arguments=(("app"),("refer")) trail_footer = yes  name=n_events visible="1"  slideup=allabove )
+report(band=detail dataobject="d_example_detail_functions" x="96" y="208" height="44" width="3200" border="0"  height.autosize=yes criteria="" nest_arguments=(("app"),("refer")) trail_footer = yes  name=n_functions visible="1"  slideup=allabove )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="215" y="16" height="60" width="978" format="[general]" html.valueishtml="0"  name=refer visible="1" height.autosize=yes edit.limit=128 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' is inherited from ' +  exam_xref_info_referenced_in"border="0" color="0" x="1239" y="16" height="60" width="2062" format="[GENERAL]" html.valueishtml="0"  name=ancestor visible="1"  slideleft=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Object:" border="0" color="0" x="5" y="16" height="64" width="197" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127"  height.autosize=yes)
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

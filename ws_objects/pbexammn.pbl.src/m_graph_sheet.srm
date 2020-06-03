@@ -1,0 +1,160 @@
+﻿$PBExportHeader$m_graph_sheet.srm
+$PBExportComments$Sheet menu for the graph examples
+forward
+global type m_graph_sheet from m_graph
+end type
+end forward
+
+global type m_graph_sheet from m_graph
+end type
+global m_graph_sheet m_graph_sheet
+
+on m_graph_sheet.create
+m_graph_sheet=this
+call m_graph::create
+end on
+
+on m_graph_sheet.destroy
+call m_graph::destroy
+end on
+
+on m_file.create
+call m_graph`m_file::create
+end on
+
+on m_balancebycustomer.create
+call m_graph`m_balancebycustomer::create
+end on
+
+on m_empsalarybydept.create
+call m_graph`m_empsalarybydept::create
+end on
+
+on m_statsbycust.create
+call m_graph`m_statsbycust::create
+end on
+
+on m_statsbydept.create
+call m_graph`m_statsbydept::create
+end on
+
+on m_empsalarybydeptdw.create
+call m_graph`m_empsalarybydeptdw::create
+end on
+
+on m_-3.create
+call m_graph`m_-3::create
+this.Visible=true
+end on
+
+on m_close.create
+call m_graph`m_close::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_-2.create
+call m_graph`m_-2::create
+end on
+
+on m_exit.create
+call m_graph`m_exit::create
+end on
+
+on m_edit.create
+call m_graph`m_edit::create
+end on
+
+on m_60.create
+call m_graph`m_60::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_-4.create
+call m_graph`m_-4::create
+end on
+
+on m_openclipboard.create
+call m_graph`m_openclipboard::create
+end on
+
+on m_options.create
+call m_graph`m_options::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_graphtype.create
+call m_graph`m_graphtype::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_changetitle.create
+call m_graph`m_changetitle::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_color.create
+call m_graph`m_color::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_spacing.create
+call m_graph`m_spacing::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_options1.create
+call m_graph`m_options1::create
+end on
+
+on m_tile.create
+call m_graph`m_tile::create
+end on
+
+on m_layer.create
+call m_graph`m_layer::create
+end on
+
+on m_cascade.create
+call m_graph`m_cascade::create
+end on
+
+on m_-1.create
+call m_graph`m_-1::create
+end on
+
+on m_arrangeicons.create
+call m_graph`m_arrangeicons::create
+end on
+
+on m_-.create
+call m_graph`m_-::create
+end on
+
+on m_toolbar.create
+call m_graph`m_toolbar::create
+this.Enabled=true
+end on
+
+on m_help.create
+call m_graph`m_help::create
+end on
+
+on m_contents.create
+call m_graph`m_contents::create
+end on
+
+on m_-5.create
+call m_graph`m_-5::create
+end on
+
+on m_about.create
+call m_graph`m_about::create
+end on
+

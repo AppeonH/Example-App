@@ -1,0 +1,26 @@
+﻿$PBExportHeader$d_snake_slide_columns.srd
+$PBExportComments$Datawindow containing snaking and sliding columns
+release 9;
+datawindow(units=0 timer_interval=0 color=1083244543 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no print.columns=3 print.columns.width=1150 )
+header(height=164 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(20) updatewhereclause=yes name=lname dbname="customer.lname" )
+ column=(type=char(15) updatewhereclause=yes name=fname dbname="customer.fname" )
+ column=(type=char(12) updatewhereclause=yes name=phone dbname="customer.phone" )
+ retrieve="PBSELECT(TABLE(NAME=~"customer~" ) COLUMN(NAME=~"customer.lname~") COLUMN(NAME=~"customer.fname~") COLUMN(NAME=~"customer.phone~")) ORDER(NAME=~"customer.lname~" ASC=yes ) " )
+text(band=header alignment="0" text="Customer Phone Number by Last Name" border="1" color="33554592" x="14" y="8" height="64" width="1184" html.valueishtml="0"  name=t_1 visible="1"  hidesnaked=1  font.face="MS Sans Serif" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+compute(band=header alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="33554592" x="3145" y="12" height="64" width="361" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  hidesnaked=1  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+text(band=header alignment="0" text="Customer Name" border="0" color="33554592" x="18" y="104" height="52" width="347" html.valueishtml="0"  name=fname_t visible="1"  slideleft=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="1083244543" )
+text(band=header alignment="0" text="Phone Number" border="0" color="33554592" x="768" y="104" height="52" width="325" html.valueishtml="0"  name=phone_t visible="1"  slideleft=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="1083244543" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554592" x="14" y="8" height="52" width="398" format="[general]" html.valueishtml="0"  name=lname  tag="Enter the customer contact last name." visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+text(band=detail alignment="0" text=", " border="0" color="33554592" x="421" y="8" height="52" width="27" html.valueishtml="0"  name=t_2 visible="1"  slideleft=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554592" x="462" y="8" height="56" width="306" format="[general]" html.valueishtml="0"  name=fname  tag="Enter the customer contact first name." visible="1"  slideleft=yes edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554592" x="786" y="8" height="56" width="389" format="[general]" html.valueishtml="0"  name=phone  tag="Enter the customer contact's phone number." visible="1" edit.name="TelephoneNumber" editmask.mask="(###) ###-####" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

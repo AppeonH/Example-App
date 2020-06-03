@@ -1,0 +1,292 @@
+﻿$PBExportHeader$m_report.srm
+$PBExportComments$Menu for Examples Report
+forward
+global type m_report from menu
+end type
+type m_file from menu within m_report
+end type
+type m_printersetup from menu within m_file
+end type
+type m_print from menu within m_file
+end type
+type m_- from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_report
+m_printersetup m_printersetup
+m_print m_print
+m_- m_-
+m_exit m_exit
+end type
+type m_display from menu within m_report
+end type
+type m_firstpage from menu within m_display
+end type
+type m_previouspage from menu within m_display
+end type
+type m_nextpage from menu within m_display
+end type
+type m_lastpage from menu within m_display
+end type
+type m_-1 from menu within m_display
+end type
+type m_customzoom from menu within m_display
+end type
+type m_zoomout from menu within m_display
+end type
+type m_zoomin from menu within m_display
+end type
+type m_display from menu within m_report
+m_firstpage m_firstpage
+m_previouspage m_previouspage
+m_nextpage m_nextpage
+m_lastpage m_lastpage
+m_-1 m_-1
+m_customzoom m_customzoom
+m_zoomout m_zoomout
+m_zoomin m_zoomin
+end type
+end forward
+
+global type m_report from menu
+m_file m_file
+m_display m_display
+end type
+global m_report m_report
+
+on m_report.create
+m_report=this
+this.m_file=create m_file
+this.m_display=create m_display
+this.Item[]={this.m_file, &
+this.m_display}
+end on
+
+on m_report.destroy
+destroy(this.m_file)
+destroy(this.m_display)
+end on
+
+type m_file from menu within m_report
+m_printersetup m_printersetup
+m_print m_print
+m_- m_-
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_printersetup=create m_printersetup
+this.m_print=create m_print
+this.m_-=create m_-
+this.m_exit=create m_exit
+this.Item[]={this.m_printersetup, &
+this.m_print, &
+this.m_-, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_printersetup)
+destroy(this.m_print)
+destroy(this.m_-)
+destroy(this.m_exit)
+end on
+
+type m_printersetup from menu within m_file
+end type
+
+on m_printersetup.create
+this.Text="Printer &Setup..."
+end on
+
+event clicked;PrintSetup()
+
+end event
+
+type m_print from menu within m_file
+end type
+
+on m_print.create
+this.Text="&Print..."
+this.ToolBarItemName="Print!"
+this.ToolBarItemText="Print"
+this.ToolBarItemOrder=1
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_print()
+
+end event
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+on m_exit.create
+this.Text="E&xit"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=10
+this.ToolBarItemSpace=2
+end on
+
+event clicked;Close(ParentWindow)
+
+end event
+
+type m_display from menu within m_report
+m_firstpage m_firstpage
+m_previouspage m_previouspage
+m_nextpage m_nextpage
+m_lastpage m_lastpage
+m_-1 m_-1
+m_customzoom m_customzoom
+m_zoomout m_zoomout
+m_zoomin m_zoomin
+end type
+
+on m_display.create
+this.Text="&Display"
+this.m_firstpage=create m_firstpage
+this.m_previouspage=create m_previouspage
+this.m_nextpage=create m_nextpage
+this.m_lastpage=create m_lastpage
+this.m_-1=create m_-1
+this.m_customzoom=create m_customzoom
+this.m_zoomout=create m_zoomout
+this.m_zoomin=create m_zoomin
+this.Item[]={this.m_firstpage, &
+this.m_previouspage, &
+this.m_nextpage, &
+this.m_lastpage, &
+this.m_-1, &
+this.m_customzoom, &
+this.m_zoomout, &
+this.m_zoomin}
+end on
+
+on m_display.destroy
+destroy(this.m_firstpage)
+destroy(this.m_previouspage)
+destroy(this.m_nextpage)
+destroy(this.m_lastpage)
+destroy(this.m_-1)
+destroy(this.m_customzoom)
+destroy(this.m_zoomout)
+destroy(this.m_zoomin)
+end on
+
+type m_firstpage from menu within m_display
+end type
+
+on m_firstpage.create
+this.Text="&First Page"
+this.ToolBarItemName="VCRFirst!"
+this.ToolBarItemText="First Page"
+this.ToolBarItemOrder=2
+this.ToolBarItemSpace=2
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_scroll(0)
+
+end event
+
+type m_previouspage from menu within m_display
+end type
+
+on m_previouspage.create
+this.Text="&Previous Page"
+this.ToolBarItemName="VCRPrior!"
+this.ToolBarItemText="Prev. Page"
+this.ToolBarItemOrder=3
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_scroll(-1)
+
+end event
+
+type m_nextpage from menu within m_display
+end type
+
+on m_nextpage.create
+this.Text="&Next Page"
+this.ToolBarItemName="VCRNext!"
+this.ToolBarItemText="Next Page"
+this.ToolBarItemOrder=4
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_scroll(1)
+
+end event
+
+type m_lastpage from menu within m_display
+end type
+
+on m_lastpage.create
+this.Text="&Last Page"
+this.ToolBarItemName="VCRLast!"
+this.ToolBarItemText="Last Page"
+this.ToolBarItemOrder=5
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_scroll(9999999)
+
+end event
+
+type m_-1 from menu within m_display
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_customzoom from menu within m_display
+end type
+
+on m_customzoom.create
+this.Text="Custom &Zoom..."
+this.ToolBarItemName="Browse!"
+this.ToolBarItemText="Zoom"
+this.ToolBarItemOrder=6
+this.ToolBarItemSpace=2
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_zoom(0)
+
+end event
+
+type m_zoomout from menu within m_display
+end type
+
+on m_zoomout.create
+this.Text="Zoom &Out"
+this.ToolBarItemName="Custom034!"
+this.ToolBarItemText="Zoom Out"
+this.ToolBarItemOrder=7
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_zoom(-1)
+
+end event
+
+type m_zoomin from menu within m_display
+end type
+
+on m_zoomin.create
+this.Text="Zoom &In"
+this.ToolBarItemName="Custom033!"
+this.ToolBarItemText="Zoom In"
+this.ToolBarItemOrder=8
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_zoom(1)
+
+end event
+

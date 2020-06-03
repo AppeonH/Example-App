@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_emp_list_by_dept.srd
+$PBExportComments$Display list of employees using department as retrieve argument
+release 9;
+datawindow(units=0 timer_interval=0 color=1083244543 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 0 print.margin.right = 0 print.margin.top = 0 print.margin.bottom = 0 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no pointer="point.cur" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(20) updatewhereclause=yes name=emp_lname dbname="employee.emp_lname" )
+ column=(type=char(20) updatewhereclause=yes name=emp_fname dbname="employee.emp_fname" )
+ column=(type=number updatewhereclause=yes key=yes name=emp_id dbname="employee.emp_id" )
+ retrieve="SELECT employee.emp_lname, employee.emp_fname, employee.emp_id FROM employee where employee.dept_id = :dept ORDER BY employee.emp_lname ASC " update="employee" updatewhere=0 updatekeyinplace=no arguments=(("dept", number)) )
+compute(band=detail alignment="0" expression=" emp_lname +', '+  emp_fname "border="0" color="33554592" x="9" y="4" height="64" width="814" format="[GENERAL]" html.valueishtml="0"  name=employee_name visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

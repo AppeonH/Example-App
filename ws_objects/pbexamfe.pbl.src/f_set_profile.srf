@@ -1,0 +1,13 @@
+﻿$PBExportHeader$f_set_profile.srf
+$PBExportComments$Function to write to an INI file or the registry
+global type f_set_profile from function_object
+end type
+
+forward prototypes
+global function integer f_set_profile (string as_section, string as_name, string as_value)
+end prototypes
+
+global function integer f_set_profile (string as_section, string as_name, string as_value);Return RegistrySet(sREGKEY + "\Code Examples\" + as_Section, as_Name, as_Value)
+
+end function
+

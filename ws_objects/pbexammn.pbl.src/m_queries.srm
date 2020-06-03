@@ -1,0 +1,165 @@
+﻿$PBExportHeader$m_queries.srm
+$PBExportComments$Menu for descendant sheets in Assorted Queries example.
+forward
+global type m_queries from m_frame_queries
+end type
+end forward
+
+global type m_queries from m_frame_queries
+end type
+global m_queries m_queries
+
+type variables
+
+end variables
+
+on m_queries.create
+m_queries=this
+call m_frame_queries::create
+end on
+
+on m_queries.destroy
+call m_frame_queries::destroy
+end on
+
+on m_file.create
+call m_frame_queries`m_file::create
+end on
+
+on m_departmentlist::clicked;// Open the department list window
+
+parentwindow.TriggerEvent ('ue_dept')
+end on
+
+on m_departmentlist.create
+call m_frame_queries`m_departmentlist::create
+end on
+
+on m_departmentlistwithsalaries::clicked;// open the department list with salaries window
+
+parentwindow.TriggerEvent ('ue_dept_salary')
+
+end on
+
+on m_departmentlistwithsalaries.create
+call m_frame_queries`m_departmentlistwithsalaries::create
+end on
+
+on m_customerlist::clicked;// open the customer list window
+
+parentwindow.TriggerEvent ('ue_cust')
+end on
+
+on m_customerlist.create
+call m_frame_queries`m_customerlist::create
+end on
+
+on m_customerdetailsincludingorders::clicked;// open the customer orders window
+
+parentwindow.TriggerEvent ('ue_cust_order')
+end on
+
+on m_customerdetailsincludingorders.create
+call m_frame_queries`m_customerdetailsincludingorders::create
+end on
+
+on m_employeeaddressinfo::clicked;// open the employee address window
+
+parentwindow.TriggerEvent ('ue_emp')
+end on
+
+on m_employeeaddressinfo.create
+call m_frame_queries`m_employeeaddressinfo::create
+end on
+
+on m_close.create
+call m_frame_queries`m_close::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_-.create
+call m_frame_queries`m_-::create
+end on
+
+on m_exit::clicked;// exit the example
+
+parentwindow.TriggerEvent ('ue_exit')
+end on
+
+on m_exit.create
+call m_frame_queries`m_exit::create
+end on
+
+on m_window.create
+call m_frame_queries`m_window::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_tile::clicked;call m_frame_queries`m_tile::clicked;parentwindow.TriggerEvent ('ue_tile')
+end on
+
+on m_tile.create
+call m_frame_queries`m_tile::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_horizontal::clicked;call m_frame_queries`m_horizontal::clicked;parentwindow.TriggerEvent ('ue_htile')
+end on
+
+on m_horizontal.create
+call m_frame_queries`m_horizontal::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_layer::clicked;call m_frame_queries`m_layer::clicked;parentwindow.TriggerEvent ('ue_layer')
+end on
+
+on m_layer.create
+call m_frame_queries`m_layer::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_cascade::clicked;call m_frame_queries`m_cascade::clicked;parentwindow.TriggerEvent ('ue_cascade')
+end on
+
+on m_cascade.create
+call m_frame_queries`m_cascade::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_-2.create
+call m_frame_queries`m_-2::create
+this.Visible=true
+end on
+
+on m_arrangeicons::clicked;call m_frame_queries`m_arrangeicons::clicked;parentwindow.TriggerEvent ('ue_icons')
+end on
+
+on m_arrangeicons.create
+call m_frame_queries`m_arrangeicons::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_help.create
+call m_frame_queries`m_help::create
+end on
+
+on m_contents.create
+call m_frame_queries`m_contents::create
+end on
+
+on m_-1.create
+call m_frame_queries`m_-1::create
+end on
+
+on m_aboutthissample.create
+call m_frame_queries`m_aboutthissample::create
+end on
+

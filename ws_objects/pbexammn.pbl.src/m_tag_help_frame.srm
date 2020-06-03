@@ -1,0 +1,620 @@
+﻿$PBExportHeader$m_tag_help_frame.srm
+$PBExportComments$Menu for frame window of Context-Sensitive MicroHelp example.
+forward
+global type m_tag_help_frame from menu
+end type
+type m_filemenu from menu within m_tag_help_frame
+end type
+type m_opencustomers from menu within m_filemenu
+end type
+type m_opensalesorders from menu within m_filemenu
+end type
+type m_close from menu within m_filemenu
+end type
+type m_-4 from menu within m_filemenu
+end type
+type m_print from menu within m_filemenu
+end type
+type m_printersetup from menu within m_filemenu
+end type
+type m_-5 from menu within m_filemenu
+end type
+type m_exit from menu within m_filemenu
+end type
+type m_filemenu from menu within m_tag_help_frame
+m_opencustomers m_opencustomers
+m_opensalesorders m_opensalesorders
+m_close m_close
+m_-4 m_-4
+m_print m_print
+m_printersetup m_printersetup
+m_-5 m_-5
+m_exit m_exit
+end type
+type m_rows from menu within m_tag_help_frame
+end type
+type m_retrieve from menu within m_rows
+end type
+type m_update from menu within m_rows
+end type
+type m_-6 from menu within m_rows
+end type
+type m_insertrow from menu within m_rows
+end type
+type m_deleterow from menu within m_rows
+end type
+type m_rows from menu within m_tag_help_frame
+m_retrieve m_retrieve
+m_update m_update
+m_-6 m_-6
+m_insertrow m_insertrow
+m_deleterow m_deleterow
+end type
+type m_window from menu within m_tag_help_frame
+end type
+type m_tile from menu within m_window
+end type
+type m_horizontal from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_cascade from menu within m_window
+end type
+type m_-2 from menu within m_window
+end type
+type m_arrangeicons from menu within m_window
+end type
+type m_window from menu within m_tag_help_frame
+m_tile m_tile
+m_horizontal m_horizontal
+m_layer m_layer
+m_cascade m_cascade
+m_-2 m_-2
+m_arrangeicons m_arrangeicons
+end type
+type m_help from menu within m_tag_help_frame
+end type
+type m_contents from menu within m_help
+end type
+type m_2 from menu within m_help
+end type
+type m_aboutexample from menu within m_help
+end type
+type m_help from menu within m_tag_help_frame
+m_contents m_contents
+m_2 m_2
+m_aboutexample m_aboutexample
+end type
+end forward
+
+global type m_tag_help_frame from menu
+m_filemenu m_filemenu
+m_rows m_rows
+m_window m_window
+m_help m_help
+end type
+global m_tag_help_frame m_tag_help_frame
+
+on m_tag_help_frame.create
+m_tag_help_frame=this
+this.m_filemenu=create m_filemenu
+this.m_rows=create m_rows
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[]={this.m_filemenu, &
+this.m_rows, &
+this.m_window, &
+this.m_help}
+end on
+
+on m_tag_help_frame.destroy
+destroy(this.m_filemenu)
+destroy(this.m_rows)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_filemenu from menu within m_tag_help_frame
+m_opencustomers m_opencustomers
+m_opensalesorders m_opensalesorders
+m_close m_close
+m_-4 m_-4
+m_print m_print
+m_printersetup m_printersetup
+m_-5 m_-5
+m_exit m_exit
+end type
+
+on m_filemenu.create
+this.Text="&File"
+this.m_opencustomers=create m_opencustomers
+this.m_opensalesorders=create m_opensalesorders
+this.m_close=create m_close
+this.m_-4=create m_-4
+this.m_print=create m_print
+this.m_printersetup=create m_printersetup
+this.m_-5=create m_-5
+this.m_exit=create m_exit
+this.Item[]={this.m_opencustomers, &
+this.m_opensalesorders, &
+this.m_close, &
+this.m_-4, &
+this.m_print, &
+this.m_printersetup, &
+this.m_-5, &
+this.m_exit}
+end on
+
+on m_filemenu.destroy
+destroy(this.m_opencustomers)
+destroy(this.m_opensalesorders)
+destroy(this.m_close)
+destroy(this.m_-4)
+destroy(this.m_print)
+destroy(this.m_printersetup)
+destroy(this.m_-5)
+destroy(this.m_exit)
+end on
+
+type m_opencustomers from menu within m_filemenu
+end type
+
+on clicked;//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Open the example window for microhelp using tags, passing the "customers" DataWindow
+// in the message object.
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window		lw_win
+
+OpenSheetWithParm (lw_win, "d_cust", "w_tag_help", parentwindow, 0, original!)
+end on
+
+on m_opencustomers.create
+this.Text="Open C&ustomers"
+this.Microhelp="Open the customers sheet"
+end on
+
+type m_opensalesorders from menu within m_filemenu
+end type
+
+on clicked;//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Open the example window for microhelp using tags, passing the "sales orders" DataWindow
+// in the message object.
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window		lw_win
+
+OpenSheetWithParm (lw_win, "d_sales_orders", "w_tag_help", parentwindow, 0, original!)
+end on
+
+on m_opensalesorders.create
+this.Text="Open &Sales Orders"
+this.Microhelp="Open the sales orders sheet"
+end on
+
+type m_close from menu within m_filemenu
+end type
+
+on clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Close the active sheet
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		Close (lw_sheet)
+	end if
+end if
+end on
+
+on m_close.create
+this.Text="&Close~tCtrl+F4"
+this.Microhelp="Close sheet"
+this.Visible=false
+this.Enabled=false
+this.Shortcut=371
+end on
+
+type m_-4 from menu within m_filemenu
+end type
+
+on m_-4.create
+this.Text="-"
+end on
+
+type m_print from menu within m_filemenu
+end type
+
+on clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Print the DataWindow on the active sheet
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_print")
+	end if
+end if
+end on
+
+on m_print.create
+this.Text="Prin&t"
+this.Microhelp="Print sheet"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_printersetup from menu within m_filemenu
+end type
+
+on clicked;if PrintSetup() = -1 then
+	MessageBox ("Error", "Printer Setup failed", exclamation!)
+end if
+end on
+
+on m_printersetup.create
+this.Text="Pr&inter Setup..."
+this.Microhelp="Set printer options"
+end on
+
+type m_-5 from menu within m_filemenu
+end type
+
+on m_-5.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_filemenu
+end type
+
+on clicked;close (parentwindow)
+end on
+
+on m_exit.create
+this.Text="E&xit"
+this.Microhelp="Exit this example"
+end on
+
+type m_rows from menu within m_tag_help_frame
+m_retrieve m_retrieve
+m_update m_update
+m_-6 m_-6
+m_insertrow m_insertrow
+m_deleterow m_deleterow
+end type
+
+on m_rows.create
+this.Text="&Rows"
+this.Visible=false
+this.Enabled=false
+this.m_retrieve=create m_retrieve
+this.m_update=create m_update
+this.m_-6=create m_-6
+this.m_insertrow=create m_insertrow
+this.m_deleterow=create m_deleterow
+this.Item[]={this.m_retrieve, &
+this.m_update, &
+this.m_-6, &
+this.m_insertrow, &
+this.m_deleterow}
+end on
+
+on m_rows.destroy
+destroy(this.m_retrieve)
+destroy(this.m_update)
+destroy(this.m_-6)
+destroy(this.m_insertrow)
+destroy(this.m_deleterow)
+end on
+
+type m_retrieve from menu within m_rows
+end type
+
+on clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Retrieve the DataWindow on the active sheet
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_retrieve")
+	end if
+end if
+end on
+
+on m_retrieve.create
+this.Text="&Retrieve"
+this.Microhelp="Retrieves data for the current sheet"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_update from menu within m_rows
+end type
+
+on clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Update the DataWindow on the active sheet
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_update")
+	end if
+end if
+end on
+
+on m_update.create
+this.Text="&Update"
+this.Microhelp="Updates the database with any changes made"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_-6 from menu within m_rows
+end type
+
+on m_-6.create
+this.Text="-"
+this.Visible=false
+end on
+
+type m_insertrow from menu within m_rows
+end type
+
+on clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Insert a row into the DataWindow on the active sheet.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_insert_row")
+	end if
+end if
+end on
+
+on m_insertrow.create
+this.Text="&Insert Row"
+this.Microhelp="Inserts a row prior to the current row."
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_deleterow from menu within m_rows
+end type
+
+on clicked;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Delete the current row of the DataWindow on the active sheet
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_delete_row")
+	end if
+end if
+end on
+
+on m_deleterow.create
+this.Text="&Delete Row"
+this.Microhelp="Deletes the current row"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_window from menu within m_tag_help_frame
+m_tile m_tile
+m_horizontal m_horizontal
+m_layer m_layer
+m_cascade m_cascade
+m_-2 m_-2
+m_arrangeicons m_arrangeicons
+end type
+
+on m_window.create
+this.Text="&Window"
+this.Visible=false
+this.Enabled=false
+this.m_tile=create m_tile
+this.m_horizontal=create m_horizontal
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_-2=create m_-2
+this.m_arrangeicons=create m_arrangeicons
+this.Item[]={this.m_tile, &
+this.m_horizontal, &
+this.m_layer, &
+this.m_cascade, &
+this.m_-2, &
+this.m_arrangeicons}
+end on
+
+on m_window.destroy
+destroy(this.m_tile)
+destroy(this.m_horizontal)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_-2)
+destroy(this.m_arrangeicons)
+end on
+
+type m_tile from menu within m_window
+end type
+
+on clicked;window		lw_frame
+
+
+lw_frame = parentwindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_frame.ArrangeSheets (Tile!)
+end if
+end on
+
+on m_tile.create
+this.Text="&Tile Vertical"
+this.Microhelp="Arrange all as vertically tiled"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_horizontal from menu within m_window
+end type
+
+on clicked;window		lw_frame
+
+
+lw_frame = parentwindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_frame.ArrangeSheets (TileHorizontal!)
+end if
+end on
+
+on m_horizontal.create
+this.Text="Tile &Horizontal"
+this.Microhelp="Arrange all as horizontally tiled"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_layer from menu within m_window
+end type
+
+on clicked;window		lw_frame
+
+
+lw_frame = parentwindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_frame.ArrangeSheets (Layer!)
+end if
+end on
+
+on m_layer.create
+this.Text="&Layer"
+this.Microhelp="Arrange all as layered"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on clicked;window		lw_frame
+
+
+lw_frame = parentwindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_frame.ArrangeSheets (Cascade!)
+end if
+end on
+
+on m_cascade.create
+this.Text="&Cascade"
+this.Microhelp="Arrange all as cascaded"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_-2 from menu within m_window
+end type
+
+on m_-2.create
+this.Text="-"
+this.Visible=false
+end on
+
+type m_arrangeicons from menu within m_window
+end type
+
+on clicked;window		lw_frame
+
+
+lw_frame = parentwindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_frame.ArrangeSheets (Icons!)
+end if
+end on
+
+on m_arrangeicons.create
+this.Text="Arrange &Icons"
+this.Microhelp="Arrange all icons"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_help from menu within m_tag_help_frame
+m_contents m_contents
+m_2 m_2
+m_aboutexample m_aboutexample
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_contents=create m_contents
+this.m_2=create m_2
+this.m_aboutexample=create m_aboutexample
+this.Item[]={this.m_contents, &
+this.m_2, &
+this.m_aboutexample}
+end on
+
+on m_help.destroy
+destroy(this.m_contents)
+destroy(this.m_2)
+destroy(this.m_aboutexample)
+end on
+
+type m_contents from menu within m_help
+end type
+
+on clicked;f_open_help ("w_tag_help_frame")
+end on
+
+on m_contents.create
+this.Text="&Contents...~tF1"
+this.Microhelp="Display help"
+this.Shortcut=112
+end on
+
+type m_2 from menu within m_help
+end type
+
+on m_2.create
+this.Text="-"
+end on
+
+type m_aboutexample from menu within m_help
+end type
+
+on clicked;OpenWithParm (w_about_with_parm, "Context-Sensitive MicroHelp")
+end on
+
+on m_aboutexample.create
+this.Text="&About Context-Sensitive MicroHelp..."
+this.Microhelp="Display copyright notice"
+end on
+

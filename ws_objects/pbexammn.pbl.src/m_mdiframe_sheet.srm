@@ -1,0 +1,78 @@
+﻿$PBExportHeader$m_mdiframe_sheet.srm
+$PBExportComments$MDI frame menu
+forward
+global type m_mdiframe_sheet from m_mdiframe
+end type
+end forward
+
+global type m_mdiframe_sheet from m_mdiframe
+end type
+global m_mdiframe_sheet m_mdiframe_sheet
+
+on m_mdiframe_sheet.create
+m_mdiframe_sheet=this
+call m_mdiframe::create
+end on
+
+on m_mdiframe_sheet.destroy
+call m_mdiframe::destroy
+end on
+
+on m_file.create
+call m_mdiframe`m_file::create
+end on
+
+on m_totalsalaryreport.create
+call m_mdiframe`m_totalsalaryreport::create
+end on
+
+on m_open.create
+call m_mdiframe`m_open::create
+end on
+
+on m_controlbreakreport.create
+call m_mdiframe`m_controlbreakreport::create
+end on
+
+on m_-1.create
+call m_mdiframe`m_-1::create
+end on
+
+on m_close.create
+call m_mdiframe`m_close::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_exit.create
+call m_mdiframe`m_exit::create
+end on
+
+on m_window.create
+call m_mdiframe`m_window::create
+end on
+
+on m_tile.create
+call m_mdiframe`m_tile::create
+end on
+
+on m_layer.create
+call m_mdiframe`m_layer::create
+end on
+
+on m_cascade.create
+call m_mdiframe`m_cascade::create
+end on
+
+on m_arrangeicons.create
+call m_mdiframe`m_arrangeicons::create
+end on
+
+on m_help.create
+call m_mdiframe`m_help::create
+end on
+
+on m_about.create
+call m_mdiframe`m_about::create
+end on
+

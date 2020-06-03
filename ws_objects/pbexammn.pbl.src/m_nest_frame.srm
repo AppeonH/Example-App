@@ -1,0 +1,753 @@
+﻿$PBExportHeader$m_nest_frame.srm
+$PBExportComments$Frame menu for Nested Reports example.
+forward
+global type m_nest_frame from menu
+end type
+type m_file from menu within m_nest_frame
+end type
+type m_open from menu within m_file
+end type
+type m_open1 from menu within m_file
+end type
+type m_openproductsvendorsreport from menu within m_file
+end type
+type m_openvendorspurcaseordersreport from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_-4 from menu within m_file
+end type
+type m_print from menu within m_file
+end type
+type m_printsetup from menu within m_file
+end type
+type m_- from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_nest_frame
+m_open m_open
+m_open1 m_open1
+m_openproductsvendorsreport m_openproductsvendorsreport
+m_openvendorspurcaseordersreport m_openvendorspurcaseordersreport
+m_close m_close
+m_-4 m_-4
+m_print m_print
+m_printsetup m_printsetup
+m_- m_-
+m_exit m_exit
+end type
+type m_display from menu within m_nest_frame
+end type
+type m_firstpage from menu within m_display
+end type
+type m_priorpage from menu within m_display
+end type
+type m_nextpage from menu within m_display
+end type
+type m_lastpage from menu within m_display
+end type
+type m_-1 from menu within m_display
+end type
+type m_zoom from menu within m_display
+end type
+type m_20% from menu within m_zoom
+end type
+type m_40% from menu within m_zoom
+end type
+type m_60% from menu within m_zoom
+end type
+type m_80% from menu within m_zoom
+end type
+type m_100% from menu within m_zoom
+end type
+type m_200% from menu within m_zoom
+end type
+type m_zoom from menu within m_display
+m_20% m_20%
+m_40% m_40%
+m_60% m_60%
+m_80% m_80%
+m_100% m_100%
+m_200% m_200%
+end type
+type m_zoomdown from menu within m_display
+end type
+type m_zoomup from menu within m_display
+end type
+type m_-2 from menu within m_display
+end type
+type m_rulers from menu within m_display
+end type
+type m_display from menu within m_nest_frame
+m_firstpage m_firstpage
+m_priorpage m_priorpage
+m_nextpage m_nextpage
+m_lastpage m_lastpage
+m_-1 m_-1
+m_zoom m_zoom
+m_zoomdown m_zoomdown
+m_zoomup m_zoomup
+m_-2 m_-2
+m_rulers m_rulers
+end type
+type m_window from menu within m_nest_frame
+end type
+type m_tile from menu within m_window
+end type
+type m_horizontal from menu within m_window
+end type
+type m_cascade from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_-7 from menu within m_window
+end type
+type m_arrangeicons from menu within m_window
+end type
+type m_-3 from menu within m_window
+end type
+type m_toolbar1 from menu within m_window
+end type
+type m_window from menu within m_nest_frame
+m_tile m_tile
+m_horizontal m_horizontal
+m_cascade m_cascade
+m_layer m_layer
+m_-7 m_-7
+m_arrangeicons m_arrangeicons
+m_-3 m_-3
+m_toolbar1 m_toolbar1
+end type
+type m_help from menu within m_nest_frame
+end type
+type m_contents from menu within m_help
+end type
+type m_-8 from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_nest_frame
+m_contents m_contents
+m_-8 m_-8
+m_about m_about
+end type
+end forward
+
+global type m_nest_frame from menu
+m_file m_file
+m_display m_display
+m_window m_window
+m_help m_help
+end type
+global m_nest_frame m_nest_frame
+
+on m_nest_frame.create
+m_nest_frame=this
+this.m_file=create m_file
+this.m_display=create m_display
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_display, &
+this.m_window, &
+this.m_help}
+end on
+
+on m_nest_frame.destroy
+destroy(this.m_file)
+destroy(this.m_display)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_nest_frame
+m_open m_open
+m_open1 m_open1
+m_openproductsvendorsreport m_openproductsvendorsreport
+m_openvendorspurcaseordersreport m_openvendorspurcaseordersreport
+m_close m_close
+m_-4 m_-4
+m_print m_print
+m_printsetup m_printsetup
+m_- m_-
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_open=create m_open
+this.m_open1=create m_open1
+this.m_openproductsvendorsreport=create m_openproductsvendorsreport
+this.m_openvendorspurcaseordersreport=create m_openvendorspurcaseordersreport
+this.m_close=create m_close
+this.m_-4=create m_-4
+this.m_print=create m_print
+this.m_printsetup=create m_printsetup
+this.m_-=create m_-
+this.m_exit=create m_exit
+this.Item[]={this.m_open, &
+this.m_open1, &
+this.m_openproductsvendorsreport, &
+this.m_openvendorspurcaseordersreport, &
+this.m_close, &
+this.m_-4, &
+this.m_print, &
+this.m_printsetup, &
+this.m_-, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_open)
+destroy(this.m_open1)
+destroy(this.m_openproductsvendorsreport)
+destroy(this.m_openvendorspurcaseordersreport)
+destroy(this.m_close)
+destroy(this.m_-4)
+destroy(this.m_print)
+destroy(this.m_printsetup)
+destroy(this.m_-)
+destroy(this.m_exit)
+end on
+
+type m_open from menu within m_file
+end type
+
+event clicked;window	lw_win
+
+SetPointer(HourGlass!)
+OpenSheet (lw_win, "w_nested_related", parentwindow, 0, layered!)
+
+end event
+
+on m_open.create
+this.Text="&Related Nested Report"
+this.Microhelp="Open the Departments DataWindow containing a nested report of Employees."
+end on
+
+type m_open1 from menu within m_file
+end type
+
+event clicked;window	lw_win
+
+SetPointer(HourGlass!)
+OpenSheet (lw_win, "w_nested_criteria", parentwindow, 0, layered!)
+
+end event
+
+on m_open1.create
+this.Text="Related Nested Report w/ &Criteria"
+this.Microhelp="Opens the Departments DataWindow w/ Employees nested report; criteria of salary > $50,000 is specified for the nested report."
+end on
+
+type m_openproductsvendorsreport from menu within m_file
+end type
+
+event clicked;window	lw_win
+
+SetPointer(HourGlass!)
+OpenSheet (lw_win, "w_nested_composite", parentwindow, 0, layered!)
+
+end event
+
+on m_openproductsvendorsreport.create
+this.Text="C&omposite Style DataWindow"
+this.Microhelp="Open the Composite Presentation Style DataWindow containing reports of products, vendors, and purchase orders."
+end on
+
+type m_openvendorspurcaseordersreport from menu within m_file
+end type
+
+event clicked;window	lw_win
+
+SetPointer(HourGlass!)
+OpenSheet (lw_win, "w_customer_report", parentwindow, 0, layered!)
+end event
+
+on m_openvendorspurcaseordersreport.create
+this.Text="DataWindow w/ Retrieval &Arguments"
+this.Microhelp="Opens a Vendors DataWindow with a vendor name retrieval argument that contains a nested report of purchase orders."
+end on
+
+type m_close from menu within m_file
+end type
+
+on m_close.create
+this.Text="&Close~tCtrl+F4"
+this.Microhelp="Close report"
+this.ToolBarItemText="Close"
+this.Visible=false
+this.ToolBarItemOrder=1
+this.Enabled=false
+this.Shortcut=371
+end on
+
+type m_-4 from menu within m_file
+end type
+
+on m_-4.create
+this.Text="-"
+this.Visible=false
+end on
+
+type m_print from menu within m_file
+end type
+
+on m_print.create
+this.Text="Prin&t"
+this.Microhelp="Print report"
+this.ToolBarItemText="Print"
+this.Visible=false
+this.ToolBarItemOrder=2
+this.ToolBarItemSpace=1
+this.Enabled=false
+end on
+
+type m_printsetup from menu within m_file
+end type
+
+on clicked;if PrintSetup() = -1 then
+	MessageBox ("Error!", "PrintSetup Failed", exclamation!)
+end if
+end on
+
+on m_printsetup.create
+this.Text="Pr&inter Setup..."
+this.Microhelp="Set printer options"
+end on
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+on clicked;close (parentwindow)
+end on
+
+on m_exit.create
+this.Text="E&xit"
+this.Microhelp="Exit this example"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=14
+this.ToolBarItemSpace=2
+end on
+
+type m_display from menu within m_nest_frame
+m_firstpage m_firstpage
+m_priorpage m_priorpage
+m_nextpage m_nextpage
+m_lastpage m_lastpage
+m_-1 m_-1
+m_zoom m_zoom
+m_zoomdown m_zoomdown
+m_zoomup m_zoomup
+m_-2 m_-2
+m_rulers m_rulers
+end type
+
+on m_display.create
+this.Text="&Display"
+this.Visible=false
+this.Enabled=false
+this.m_firstpage=create m_firstpage
+this.m_priorpage=create m_priorpage
+this.m_nextpage=create m_nextpage
+this.m_lastpage=create m_lastpage
+this.m_-1=create m_-1
+this.m_zoom=create m_zoom
+this.m_zoomdown=create m_zoomdown
+this.m_zoomup=create m_zoomup
+this.m_-2=create m_-2
+this.m_rulers=create m_rulers
+this.Item[]={this.m_firstpage, &
+this.m_priorpage, &
+this.m_nextpage, &
+this.m_lastpage, &
+this.m_-1, &
+this.m_zoom, &
+this.m_zoomdown, &
+this.m_zoomup, &
+this.m_-2, &
+this.m_rulers}
+end on
+
+on m_display.destroy
+destroy(this.m_firstpage)
+destroy(this.m_priorpage)
+destroy(this.m_nextpage)
+destroy(this.m_lastpage)
+destroy(this.m_-1)
+destroy(this.m_zoom)
+destroy(this.m_zoomdown)
+destroy(this.m_zoomup)
+destroy(this.m_-2)
+destroy(this.m_rulers)
+end on
+
+type m_firstpage from menu within m_display
+end type
+
+on m_firstpage.create
+this.Text="&First Page"
+this.Microhelp="Go to the first page of the report"
+this.ToolBarItemText="First Page"
+this.Visible=false
+this.ToolBarItemOrder=3
+this.ToolBarItemSpace=2
+this.Enabled=false
+end on
+
+type m_priorpage from menu within m_display
+end type
+
+on m_priorpage.create
+this.Text="&Prior Page"
+this.Microhelp="Go to the prior page of the report"
+this.ToolBarItemText="Prior Page"
+this.Visible=false
+this.ToolBarItemOrder=4
+this.Enabled=false
+end on
+
+type m_nextpage from menu within m_display
+end type
+
+on m_nextpage.create
+this.Text="&Next Page"
+this.Microhelp="Go to the next page of the report"
+this.ToolBarItemText="Next Page"
+this.Visible=false
+this.ToolBarItemOrder=5
+this.Enabled=false
+end on
+
+type m_lastpage from menu within m_display
+end type
+
+on m_lastpage.create
+this.Text="&Last Page"
+this.Microhelp="Go to the last page of the report"
+this.ToolBarItemText="Last Page"
+this.Visible=false
+this.ToolBarItemOrder=6
+this.Enabled=false
+end on
+
+type m_-1 from menu within m_display
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_zoom from menu within m_display
+m_20% m_20%
+m_40% m_40%
+m_60% m_60%
+m_80% m_80%
+m_100% m_100%
+m_200% m_200%
+end type
+
+on m_zoom.create
+this.Text="&Zoom"
+this.Microhelp="Scale the display area"
+this.Visible=false
+this.Enabled=false
+this.m_20%=create m_20%
+this.m_40%=create m_40%
+this.m_60%=create m_60%
+this.m_80%=create m_80%
+this.m_100%=create m_100%
+this.m_200%=create m_200%
+this.Item[]={this.m_20%, &
+this.m_40%, &
+this.m_60%, &
+this.m_80%, &
+this.m_100%, &
+this.m_200%}
+end on
+
+on m_zoom.destroy
+destroy(this.m_20%)
+destroy(this.m_40%)
+destroy(this.m_60%)
+destroy(this.m_80%)
+destroy(this.m_100%)
+destroy(this.m_200%)
+end on
+
+type m_20% from menu within m_zoom
+end type
+
+on m_20%.create
+this.Text="20%"
+this.Microhelp="Scale the display area to 20%"
+end on
+
+type m_40% from menu within m_zoom
+end type
+
+on m_40%.create
+this.Text="40%"
+this.Microhelp="Scale the display area to 40%"
+end on
+
+type m_60% from menu within m_zoom
+end type
+
+on m_60%.create
+this.Text="60%"
+this.Microhelp="Scale the display area to 60%"
+end on
+
+type m_80% from menu within m_zoom
+end type
+
+on m_80%.create
+this.Text="80%"
+this.Microhelp="Scale the display area to 80%"
+end on
+
+type m_100% from menu within m_zoom
+end type
+
+on m_100%.create
+this.Text="100%"
+this.Microhelp="Scale the display area to 100%"
+this.Checked=true
+end on
+
+type m_200% from menu within m_zoom
+end type
+
+on m_200%.create
+this.Text="200%"
+this.Microhelp="Scale the display area to 200%"
+end on
+
+type m_zoomdown from menu within m_display
+end type
+
+on m_zoomdown.create
+this.Text="Zoom Down"
+this.ToolBarItemText="Zoom Down"
+this.Visible=false
+this.ToolBarItemOrder=7
+this.ToolBarItemSpace=1
+this.Enabled=false
+end on
+
+type m_zoomup from menu within m_display
+end type
+
+on m_zoomup.create
+this.Text="Zoom Up"
+this.ToolBarItemText="Zoom Up"
+this.Visible=false
+this.ToolBarItemOrder=8
+this.Enabled=false
+end on
+
+type m_-2 from menu within m_display
+end type
+
+on m_-2.create
+this.Text="-"
+this.Visible=false
+end on
+
+type m_rulers from menu within m_display
+end type
+
+on m_rulers.create
+this.Text="&Rulers"
+this.Microhelp="Show/Hide Rulers"
+this.Visible=false
+this.Enabled=false
+this.Checked=true
+end on
+
+type m_window from menu within m_nest_frame
+m_tile m_tile
+m_horizontal m_horizontal
+m_cascade m_cascade
+m_layer m_layer
+m_-7 m_-7
+m_arrangeicons m_arrangeicons
+m_-3 m_-3
+m_toolbar1 m_toolbar1
+end type
+
+on m_window.create
+this.Text="&Window"
+this.Visible=false
+this.Enabled=false
+this.m_tile=create m_tile
+this.m_horizontal=create m_horizontal
+this.m_cascade=create m_cascade
+this.m_layer=create m_layer
+this.m_-7=create m_-7
+this.m_arrangeicons=create m_arrangeicons
+this.m_-3=create m_-3
+this.m_toolbar1=create m_toolbar1
+this.Item[]={this.m_tile, &
+this.m_horizontal, &
+this.m_cascade, &
+this.m_layer, &
+this.m_-7, &
+this.m_arrangeicons, &
+this.m_-3, &
+this.m_toolbar1}
+end on
+
+on m_window.destroy
+destroy(this.m_tile)
+destroy(this.m_horizontal)
+destroy(this.m_cascade)
+destroy(this.m_layer)
+destroy(this.m_-7)
+destroy(this.m_arrangeicons)
+destroy(this.m_-3)
+destroy(this.m_toolbar1)
+end on
+
+type m_tile from menu within m_window
+end type
+
+on m_tile.create
+this.Text="&Tile Vertical"
+this.Microhelp="Arrange all as vertically tiled"
+this.ToolBarItemText="Tile"
+this.ToolBarItemOrder=9
+this.ToolBarItemSpace=2
+end on
+
+type m_horizontal from menu within m_window
+end type
+
+on m_horizontal.create
+this.Text="Tile &Horizontal"
+this.Microhelp="Arrange all as horizontally tiled"
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on m_cascade.create
+this.Text="&Cascade"
+this.Microhelp="Arrange all as cascaded"
+this.ToolBarItemText="Cascade"
+this.ToolBarItemOrder=10
+end on
+
+type m_layer from menu within m_window
+end type
+
+on m_layer.create
+this.Text="&Layer"
+this.Microhelp="Arrange all as layered"
+this.ToolBarItemText="Layer"
+this.ToolBarItemOrder=11
+end on
+
+type m_-7 from menu within m_window
+end type
+
+on m_-7.create
+this.Text="-"
+end on
+
+type m_arrangeicons from menu within m_window
+end type
+
+on m_arrangeicons.create
+this.Text="Arrange &Icons"
+this.Microhelp="Arrange all icons"
+this.ToolBarItemText="Arrange"
+this.ToolBarItemOrder=12
+this.ToolBarItemSpace=1
+end on
+
+type m_-3 from menu within m_window
+end type
+
+on m_-3.create
+this.Text="-"
+end on
+
+type m_toolbar1 from menu within m_window
+end type
+
+on clicked;OpenWithParm (w_set_toolbars, parentwindow)
+
+
+
+end on
+
+on m_toolbar1.create
+this.Text="Tool&bar..."
+this.Microhelp="Configure toolbars"
+end on
+
+type m_help from menu within m_nest_frame
+m_contents m_contents
+m_-8 m_-8
+m_about m_about
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_contents=create m_contents
+this.m_-8=create m_-8
+this.m_about=create m_about
+this.Item[]={this.m_contents, &
+this.m_-8, &
+this.m_about}
+end on
+
+on m_help.destroy
+destroy(this.m_contents)
+destroy(this.m_-8)
+destroy(this.m_about)
+end on
+
+type m_contents from menu within m_help
+end type
+
+on clicked;f_open_help ("w_nested_frame")
+end on
+
+on m_contents.create
+this.Text="&Contents...~tF1"
+this.Microhelp="Display help"
+this.ToolBarItemText="Help"
+this.ToolBarItemOrder=13
+this.ToolBarItemSpace=2
+this.Shortcut=112
+end on
+
+type m_-8 from menu within m_help
+end type
+
+on m_-8.create
+this.Text="-"
+end on
+
+type m_about from menu within m_help
+end type
+
+on clicked;OpenWithParm (w_about_with_parm, 'Nested Reports Example@')
+end on
+
+on m_about.create
+this.Text="&About Nested Reports Example..."
+this.Microhelp="Display copyright notice"
+end on
+

@@ -1,0 +1,26 @@
+﻿$PBExportHeader$d_sales_order.srd
+$PBExportComments$Distributed PB example Datawindow used to display sales orders
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=id dbname="sales_order.id" )
+ column=(type=long update=yes updatewhereclause=yes name=cust_id dbname="sales_order.cust_id" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=fin_code_id dbname="sales_order.fin_code_id" )
+ column=(type=char(7) update=yes updatewhereclause=yes name=region dbname="sales_order.region" )
+ column=(type=long update=yes updatewhereclause=yes name=sales_rep dbname="sales_order.sales_rep" )
+ column=(type=datetime update=yes updatewhereclause=yes name=order_date dbname="sales_order.order_date" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"sales_order~" ) COLUMN(NAME=~"sales_order.id~") COLUMN(NAME=~"sales_order.cust_id~") COLUMN(NAME=~"sales_order.fin_code_id~") COLUMN(NAME=~"sales_order.region~") COLUMN(NAME=~"sales_order.sales_rep~") COLUMN(NAME=~"sales_order.order_date~")) " update="sales_order" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="0" x="9" y="8" height="60" width="219" format="[general]" html.valueishtml="0"  name=id  tag="Unique Identification Number of the sales order" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="0" x="238" y="8" height="60" width="265" format="[general]" html.valueishtml="0"  name=cust_id  tag="Identification Number of the customer that the sales order is for" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=30 border="0" color="0" x="512" y="8" height="60" width="302" format="[general]" html.valueishtml="0"  name=order_date  tag="Date Ordered" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=40 border="0" color="0" x="823" y="8" height="60" width="233" format="[general]" html.valueishtml="0"  name=fin_code_id  tag="Financial Code" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=50 border="0" color="0" x="1065" y="8" height="60" width="293" format="[general]" html.valueishtml="0"  name=region  tag="Sales Region" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=60 border="0" color="0" x="1367" y="8" height="60" width="251" format="[general]" html.valueishtml="0"  name=sales_rep  tag="Identification Number of the Sales Representative" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

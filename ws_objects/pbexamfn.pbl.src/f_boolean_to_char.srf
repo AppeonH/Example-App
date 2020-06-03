@@ -1,0 +1,30 @@
+﻿$PBExportHeader$f_boolean_to_char.srf
+$PBExportComments$Returns the 'character representation' of a boolean value
+global type f_boolean_to_char from function_object
+end type
+
+forward prototypes
+global function char f_boolean_to_char (boolean ab_boolean)
+end prototypes
+
+global function char f_boolean_to_char (boolean ab_boolean);//////////////////////////////////////////////////////////////////////
+//
+// Function: f_boolean_to_char
+//
+// Purpose: returns the character 'representation' of a boolean
+//
+//	Scope: public
+//
+//	Arguments: ab_boolean
+//
+//	Returns: character	'Y' when ab_boolean is true
+//								'N' when ab_boolean is false
+//////////////////////////////////////////////////////////////////////
+
+if ab_boolean then
+	return 'Y'
+else
+	return 'N'
+end if
+end function
+

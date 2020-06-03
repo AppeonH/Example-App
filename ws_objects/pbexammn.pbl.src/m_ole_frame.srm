@@ -1,0 +1,643 @@
+﻿$PBExportHeader$m_ole_frame.srm
+$PBExportComments$Used by w_ole_frame for OLE 2.0 examples
+forward
+global type m_ole_frame from menu
+end type
+type m_file from menu within m_ole_frame
+end type
+type m_openoleexamples from menu within m_file
+end type
+type m_-3 from menu within m_file
+end type
+type m_open from menu within m_file
+end type
+type m_open1 from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_- from menu within m_file
+end type
+type m_savetodatabase from menu within m_file
+end type
+type m_-2 from menu within m_file
+end type
+type m_activate from menu within m_file
+end type
+type m_inplace from menu within m_activate
+end type
+type m_offsite from menu within m_activate
+end type
+type m_activate from menu within m_file
+m_inplace m_inplace
+m_offsite m_offsite
+end type
+type m_-4 from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_ole_frame
+m_openoleexamples m_openoleexamples
+m_-3 m_-3
+m_open m_open
+m_open1 m_open1
+m_close m_close
+m_- m_-
+m_savetodatabase m_savetodatabase
+m_-2 m_-2
+m_activate m_activate
+m_-4 m_-4
+m_exit m_exit
+end type
+type m_edit from menu within m_ole_frame
+end type
+type m_copy from menu within m_edit
+end type
+type m_paste from menu within m_edit
+end type
+type m_pastespecial from menu within m_edit
+end type
+type m_pastelink from menu within m_edit
+end type
+type m_edit from menu within m_ole_frame
+m_copy m_copy
+m_paste m_paste
+m_pastespecial m_pastespecial
+m_pastelink m_pastelink
+end type
+type m_window from menu within m_ole_frame
+end type
+type m_win from menu within m_window
+end type
+type m_tilehorizontal from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_cascade from menu within m_window
+end type
+type m_-1 from menu within m_window
+end type
+type m_arrangeicons from menu within m_window
+end type
+type m_window from menu within m_ole_frame
+m_win m_win
+m_tilehorizontal m_tilehorizontal
+m_layer m_layer
+m_cascade m_cascade
+m_-1 m_-1
+m_arrangeicons m_arrangeicons
+end type
+type m_help from menu within m_ole_frame
+end type
+type m_contents from menu within m_help
+end type
+type m_-5 from menu within m_help
+end type
+type m_aboutoleexamples from menu within m_help
+end type
+type m_help from menu within m_ole_frame
+m_contents m_contents
+m_-5 m_-5
+m_aboutoleexamples m_aboutoleexamples
+end type
+end forward
+
+global type m_ole_frame from menu
+m_file m_file
+m_edit m_edit
+m_window m_window
+m_help m_help
+end type
+global m_ole_frame m_ole_frame
+
+on m_ole_frame.create
+m_ole_frame=this
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_edit, &
+this.m_window, &
+this.m_help}
+end on
+
+on m_ole_frame.destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_ole_frame
+m_openoleexamples m_openoleexamples
+m_-3 m_-3
+m_open m_open
+m_open1 m_open1
+m_close m_close
+m_- m_-
+m_savetodatabase m_savetodatabase
+m_-2 m_-2
+m_activate m_activate
+m_-4 m_-4
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.MergeOption=FileMenu!
+this.m_openoleexamples=create m_openoleexamples
+this.m_-3=create m_-3
+this.m_open=create m_open
+this.m_open1=create m_open1
+this.m_close=create m_close
+this.m_-=create m_-
+this.m_savetodatabase=create m_savetodatabase
+this.m_-2=create m_-2
+this.m_activate=create m_activate
+this.m_-4=create m_-4
+this.m_exit=create m_exit
+this.Item[]={this.m_openoleexamples, &
+this.m_-3, &
+this.m_open, &
+this.m_open1, &
+this.m_close, &
+this.m_-, &
+this.m_savetodatabase, &
+this.m_-2, &
+this.m_activate, &
+this.m_-4, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_openoleexamples)
+destroy(this.m_-3)
+destroy(this.m_open)
+destroy(this.m_open1)
+destroy(this.m_close)
+destroy(this.m_-)
+destroy(this.m_savetodatabase)
+destroy(this.m_-2)
+destroy(this.m_activate)
+destroy(this.m_-4)
+destroy(this.m_exit)
+end on
+
+type m_openoleexamples from menu within m_file
+end type
+
+on clicked;w_ole_example win_temp
+opensheet(win_temp,"w_ole_example",parentwindow,0,layered!)
+end on
+
+on m_openoleexamples.create
+this.Text="Open OLE Examples Sheet"
+this.Microhelp="Open New Sheet"
+end on
+
+type m_-3 from menu within m_file
+end type
+
+on m_-3.create
+this.Text="-"
+end on
+
+type m_open from menu within m_file
+end type
+
+on clicked;
+window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_loadobj")
+	end if
+end if
+end on
+
+on m_open.create
+this.Text="&New Object..."
+this.Microhelp="Create A New OLE Object"
+this.ToolBarItemText="Create,Create OLE 2.0 Object"
+this.ToolBarItemSpace=1
+this.Enabled=false
+end on
+
+on m_open.destroy
+end on
+
+type m_open1 from menu within m_file
+end type
+
+on clicked;window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_loadfile")
+	end if
+end if
+end on
+
+on m_open1.create
+this.Text="Open File..."
+this.Microhelp="Open a OLE object From a File"
+this.ToolBarItemText="Open File,Open OLE from a file"
+this.ToolBarItemSpace=1
+this.Enabled=false
+end on
+
+type m_close from menu within m_file
+end type
+
+on clicked;Close (parentwindow)
+end on
+
+on m_close.create
+this.Text="&Close sheet~tCtrl+F4"
+this.Microhelp="Close Sheet"
+this.ToolBarItemText="Close, Close Sheet"
+this.ToolBarItemOrder=99
+this.ToolBarItemSpace=3
+this.Enabled=false
+this.Shortcut=371
+end on
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_savetodatabase from menu within m_file
+end type
+
+on clicked;window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_savetodb")
+	end if
+end if
+end on
+
+on m_savetodatabase.create
+this.Text="&Save to Database"
+this.Microhelp="Save Changes to Database"
+this.ToolBarItemText="Save, Save Changes to Database"
+this.ToolBarItemSpace=1
+this.Enabled=false
+end on
+
+type m_-2 from menu within m_file
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_activate from menu within m_file
+m_inplace m_inplace
+m_offsite m_offsite
+end type
+
+on m_activate.create
+this.Text="&Activate"
+this.Enabled=false
+this.m_inplace=create m_inplace
+this.m_offsite=create m_offsite
+this.Item[]={this.m_inplace, &
+this.m_offsite}
+end on
+
+on m_activate.destroy
+destroy(this.m_inplace)
+destroy(this.m_offsite)
+end on
+
+type m_inplace from menu within m_activate
+end type
+
+event clicked;ParentWindow.Post Dynamic wf_activate(inplace!)
+
+end event
+
+on m_inplace.create
+this.Text="&Inplace"
+end on
+
+type m_offsite from menu within m_activate
+end type
+
+event clicked;ParentWindow.Post Dynamic wf_activate(offsite!)
+
+end event
+
+on m_offsite.create
+this.Text="&Off Site"
+end on
+
+type m_-4 from menu within m_file
+end type
+
+on m_-4.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+on clicked;// close the frame
+window win
+win = getactivesheet(parentwindow)
+if isvalid(win) then  // if there is a sheet then get it's parent
+	win = parentwindow(win)
+else  // otherwise close the frame
+	win = parentwindow
+end if
+close(win)
+
+end on
+
+on m_exit.create
+this.Text="E&xit"
+this.Microhelp="Exit the Example"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=99
+this.ToolBarItemSpace=3
+end on
+
+type m_edit from menu within m_ole_frame
+m_copy m_copy
+m_paste m_paste
+m_pastespecial m_pastespecial
+m_pastelink m_pastelink
+end type
+
+on m_edit.create
+this.Text="&Edit"
+this.MergeOption=EditMenu!
+this.m_copy=create m_copy
+this.m_paste=create m_paste
+this.m_pastespecial=create m_pastespecial
+this.m_pastelink=create m_pastelink
+this.Item[]={this.m_copy, &
+this.m_paste, &
+this.m_pastespecial, &
+this.m_pastelink}
+end on
+
+on m_edit.destroy
+destroy(this.m_copy)
+destroy(this.m_paste)
+destroy(this.m_pastespecial)
+destroy(this.m_pastelink)
+end on
+
+type m_copy from menu within m_edit
+end type
+
+on clicked;window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_copy")
+	end if
+end if
+end on
+
+on m_copy.create
+this.Text="&Copy~tCtrl+C"
+this.Microhelp="Copy Object to Clipboard"
+this.ToolBarItemText="Copy"
+this.ToolBarItemSpace=3
+this.Enabled=false
+this.Shortcut=323
+end on
+
+type m_paste from menu within m_edit
+end type
+
+on clicked;window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_paste")
+	end if
+end if
+end on
+
+on m_paste.create
+this.Text="&Paste~tCtrl+V"
+this.Microhelp="Paste"
+this.ToolBarItemText="Paste"
+this.ToolBarItemSpace=1
+this.Enabled=false
+this.Shortcut=342
+end on
+
+type m_pastespecial from menu within m_edit
+end type
+
+on clicked;window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_pastespecial")
+	end if
+end if
+end on
+
+on m_pastespecial.create
+this.Text="Paste Special..."
+this.Microhelp="Paste Special"
+this.Enabled=false
+end on
+
+type m_pastelink from menu within m_edit
+end type
+
+on clicked;window	lw_frame, &
+		lw_sheet
+
+lw_frame = ParentWindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()	
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_pastelink")
+	end if
+end if
+end on
+
+on m_pastelink.create
+this.Text="Paste Li&nk"
+this.Microhelp="Paste Link"
+this.Enabled=false
+end on
+
+type m_window from menu within m_ole_frame
+m_win m_win
+m_tilehorizontal m_tilehorizontal
+m_layer m_layer
+m_cascade m_cascade
+m_-1 m_-1
+m_arrangeicons m_arrangeicons
+end type
+
+on m_window.create
+this.Text="&Window"
+this.MergeOption=WindowMenu!
+this.m_win=create m_win
+this.m_tilehorizontal=create m_tilehorizontal
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_-1=create m_-1
+this.m_arrangeicons=create m_arrangeicons
+this.Item[]={this.m_win, &
+this.m_tilehorizontal, &
+this.m_layer, &
+this.m_cascade, &
+this.m_-1, &
+this.m_arrangeicons}
+end on
+
+on m_window.destroy
+destroy(this.m_win)
+destroy(this.m_tilehorizontal)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_-1)
+destroy(this.m_arrangeicons)
+end on
+
+type m_win from menu within m_window
+end type
+
+on clicked;//click script for m_tile
+
+ParentWindow.ArrangeSheets(Tile!)
+end on
+
+on m_win.create
+this.Text="&Tile Vertical"
+end on
+
+type m_tilehorizontal from menu within m_window
+end type
+
+on clicked;ParentWindow.ArrangeSheets (TileHorizontal!)
+end on
+
+on m_tilehorizontal.create
+this.Text="Tile &Horizontal"
+end on
+
+type m_layer from menu within m_window
+end type
+
+on clicked;//click script for m_layer
+ParentWindow.ArrangeSheets(Layer!)
+end on
+
+on m_layer.create
+this.Text="&Layer"
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on clicked;//clicked script for m_cascade
+ParentWindow.ArrangeSheets(Cascade!)
+end on
+
+on m_cascade.create
+this.Text="&Cascade"
+end on
+
+type m_-1 from menu within m_window
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_arrangeicons from menu within m_window
+end type
+
+on clicked;//Arrange any minimized icons in mdi frame
+ParentWindow.ArrangeSheets(Icons!)
+end on
+
+on m_arrangeicons.create
+this.Text="Arrange &Icons"
+end on
+
+type m_help from menu within m_ole_frame
+m_contents m_contents
+m_-5 m_-5
+m_aboutoleexamples m_aboutoleexamples
+end type
+
+on m_help.create
+this.Text="&Help"
+this.MergeOption=HelpMenu!
+this.m_contents=create m_contents
+this.m_-5=create m_-5
+this.m_aboutoleexamples=create m_aboutoleexamples
+this.Item[]={this.m_contents, &
+this.m_-5, &
+this.m_aboutoleexamples}
+end on
+
+on m_help.destroy
+destroy(this.m_contents)
+destroy(this.m_-5)
+destroy(this.m_aboutoleexamples)
+end on
+
+type m_contents from menu within m_help
+end type
+
+on clicked;f_open_help ('w_ole_example_frame')
+end on
+
+on m_contents.create
+this.Text="&Contents~tF1"
+this.Shortcut=112
+end on
+
+type m_-5 from menu within m_help
+end type
+
+on m_-5.create
+this.Text="-"
+end on
+
+type m_aboutoleexamples from menu within m_help
+end type
+
+on clicked;OpenWithParm(w_about_with_parm, "OLE EXAMPLES")
+end on
+
+on m_aboutoleexamples.create
+this.Text="&About OLE Examples"
+end on
+

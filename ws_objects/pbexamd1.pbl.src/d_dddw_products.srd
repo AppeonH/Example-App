@@ -1,0 +1,20 @@
+﻿$PBExportHeader$d_dddw_products.srd
+$PBExportComments$Products DropDownDataWindow
+release 9;
+datawindow(units=0 timer_interval=0 color=1073774592 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 107 print.margin.right = 107 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=id dbname="product.id" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=name dbname="product.name" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=description dbname="product.description" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"product~" ) COLUMN(NAME=~"product.id~") COLUMN(NAME=~"product.name~") COLUMN(NAME=~"product.description~")) " update="product" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="41943040" x="5" y="4" height="60" width="201" format="[general]" html.valueishtml="0"  name=id  tag="Unique Identification Code of the product" visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="41943040" x="681" y="4" height="60" width="754" format="[general]" html.valueishtml="0"  name=description  tag="Describes what the product is" visible="1" edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="41943040" x="238" y="4" height="60" width="411" format="[general]" html.valueishtml="0"  name=name  tag="Name of the product" visible="1" edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

@@ -1,0 +1,238 @@
+﻿$PBExportHeader$m_date_ancestor.srm
+$PBExportComments$Ancestor menu for Year 2000 example
+forward
+global type m_date_ancestor from menu
+end type
+type m_file from menu within m_date_ancestor
+end type
+type m_datesorting from menu within m_file
+end type
+type m_datesindatawindows from menu within m_file
+end type
+type m_datesinwindows from menu within m_file
+end type
+type m_-1 from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_exit2 from menu within m_file
+end type
+type m_file from menu within m_date_ancestor
+m_datesorting m_datesorting
+m_datesindatawindows m_datesindatawindows
+m_datesinwindows m_datesinwindows
+m_-1 m_-1
+m_close m_close
+m_exit2 m_exit2
+end type
+type m_action from menu within m_date_ancestor
+end type
+type m_action from menu within m_date_ancestor
+end type
+type m_exit from menu within m_date_ancestor
+end type
+type m_help from menu within m_exit
+end type
+type m_- from menu within m_exit
+end type
+type m_about from menu within m_exit
+end type
+type m_exit from menu within m_date_ancestor
+m_help m_help
+m_- m_-
+m_about m_about
+end type
+end forward
+
+global type m_date_ancestor from menu
+m_file m_file
+m_action m_action
+m_exit m_exit
+end type
+global m_date_ancestor m_date_ancestor
+
+on m_date_ancestor.create
+m_date_ancestor=this
+this.m_file=create m_file
+this.m_action=create m_action
+this.m_exit=create m_exit
+this.Item[]={this.m_file, &
+this.m_action, &
+this.m_exit}
+end on
+
+on m_date_ancestor.destroy
+destroy(this.m_file)
+destroy(this.m_action)
+destroy(this.m_exit)
+end on
+
+type m_file from menu within m_date_ancestor
+m_datesorting m_datesorting
+m_datesindatawindows m_datesindatawindows
+m_datesinwindows m_datesinwindows
+m_-1 m_-1
+m_close m_close
+m_exit2 m_exit2
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_datesorting=create m_datesorting
+this.m_datesindatawindows=create m_datesindatawindows
+this.m_datesinwindows=create m_datesinwindows
+this.m_-1=create m_-1
+this.m_close=create m_close
+this.m_exit2=create m_exit2
+this.Item[]={this.m_datesorting, &
+this.m_datesindatawindows, &
+this.m_datesinwindows, &
+this.m_-1, &
+this.m_close, &
+this.m_exit2}
+end on
+
+on m_file.destroy
+destroy(this.m_datesorting)
+destroy(this.m_datesindatawindows)
+destroy(this.m_datesinwindows)
+destroy(this.m_-1)
+destroy(this.m_close)
+destroy(this.m_exit2)
+end on
+
+type m_datesorting from menu within m_file
+end type
+
+event clicked;OpenSheet(w_date_sort, ParentWindow, 1, Original!)
+
+end event
+
+on m_datesorting.create
+this.Text="Date &Sorting"
+this.ToolBarItemName="Sort!"
+this.ToolBarItemText="Date Sorting"
+this.ToolBarItemOrder=1
+end on
+
+type m_datesindatawindows from menu within m_file
+end type
+
+event clicked;OpenSheet(w_date_datawindow, ParentWindow, 1, Original!)
+
+end event
+
+on m_datesindatawindows.create
+this.Text="Dates in &DataWindows"
+this.ToolBarItemName="DataWindow5!"
+this.ToolBarItemText="Dates in DataWindows"
+this.ToolBarItemOrder=2
+end on
+
+type m_datesinwindows from menu within m_file
+end type
+
+event clicked;OpenSheet(w_date_window, ParentWindow, 1, Original!)
+
+end event
+
+on m_datesinwindows.create
+this.Text="Dates in &Windows"
+this.ToolBarItemName="Window!"
+this.ToolBarItemText="Dates in Windows"
+this.ToolBarItemOrder=3
+end on
+
+type m_-1 from menu within m_file
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_close from menu within m_file
+end type
+
+on m_close.create
+this.Text="&Close"
+this.ToolBarItemVisible=false
+end on
+
+event clicked;Close(ParentWindow)
+
+end event
+
+type m_exit2 from menu within m_file
+end type
+
+event clicked;close(parentwindow)
+end event
+
+on m_exit2.create
+this.Text="E&xit"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=99
+this.ToolBarItemSpace=1
+end on
+
+type m_action from menu within m_date_ancestor
+end type
+
+on m_action.create
+this.Text="&Action"
+end on
+
+on m_action.destroy
+end on
+
+type m_exit from menu within m_date_ancestor
+m_help m_help
+m_- m_-
+m_about m_about
+end type
+
+on m_exit.create
+this.Text="&Help"
+this.m_help=create m_help
+this.m_-=create m_-
+this.m_about=create m_about
+this.Item[]={this.m_help, &
+this.m_-, &
+this.m_about}
+end on
+
+on m_exit.destroy
+destroy(this.m_help)
+destroy(this.m_-)
+destroy(this.m_about)
+end on
+
+type m_help from menu within m_exit
+end type
+
+on m_help.create
+this.Text="&Help"
+this.ToolBarItemName="Help!"
+this.ToolBarItemText="Help"
+this.ToolBarItemOrder=20
+this.ToolBarItemSpace=1
+end on
+
+type m_- from menu within m_exit
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_about from menu within m_exit
+end type
+
+event clicked;Open(w_about)
+end event
+
+on m_about.create
+this.Text="&About..."
+end on
+

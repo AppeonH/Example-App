@@ -1,0 +1,30 @@
+﻿$PBExportHeader$f_char_to_boolean.srf
+$PBExportComments$Converts a character to a boolean value (y = true, n = false)
+global type f_char_to_boolean from function_object
+end type
+
+forward prototypes
+global function boolean f_char_to_boolean (char ach_char)
+end prototypes
+
+global function boolean f_char_to_boolean (char ach_char);//////////////////////////////////////////////////////////////////////
+//
+// Function: f_char_to_boolean
+//
+// Purpose: returns the 'boolean representation' of a character
+//
+//	Scope: public
+//
+//	Arguments: ach_char
+//
+//	Returns: boolean		true when ach_char is 'Y'
+//								false when ach_char is 'N'
+//////////////////////////////////////////////////////////////////////
+
+if Upper (ach_char) = 'Y' then
+	return true
+else
+	return false
+end if
+end function
+

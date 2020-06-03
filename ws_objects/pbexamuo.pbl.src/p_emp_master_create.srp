@@ -1,0 +1,18 @@
+﻿$PBExportHeader$p_emp_master_create.srp
+$PBExportComments$Creates a copy of the employee table to emp_pipe_master
+PIPELINE(source_connect=PB Demo DB V2019,destination_connect=PB Demo DB V2019,type=replace,commit=100,errors=10,keyname="emp_pipe_master_x")
+SOURCE(name="employee",COLUMN(type=long,name="emp_id",dbtype="integer",key=yes,nulls_allowed=no)
+ COLUMN(type=varchar,name="emp_fname",dbtype="char(20)",nulls_allowed=no)
+ COLUMN(type=varchar,name="emp_lname",dbtype="char(20)",nulls_allowed=no)
+ COLUMN(type=long,name="dept_id",dbtype="integer",nulls_allowed=no)
+ COLUMN(type=varchar,name="bene_health_ins",dbtype="char(1)",nulls_allowed=yes)
+ COLUMN(type=varchar,name="bene_life_ins",dbtype="char(1)",nulls_allowed=yes)
+ COLUMN(type=varchar,name="bene_day_care",dbtype="char(1)",nulls_allowed=yes))
+RETRIEVE(statement="PBSELECT(TABLE(NAME=~"employee~" ) COLUMN(NAME=~"employee.emp_id~") COLUMN(NAME=~"employee.emp_fname~") COLUMN(NAME=~"employee.emp_lname~") COLUMN(NAME=~"employee.dept_id~") COLUMN(NAME=~"employee.bene_health_ins~") COLUMN(NAME=~"employee.bene_life_ins~") COLUMN(NAME=~"employee.bene_day_care~"))")
+DESTINATION(name="emp_pipe_master",COLUMN(type=long,name="emp_id",dbtype="integer",key=yes,nulls_allowed=no,initial_value="0")
+ COLUMN(type=varchar,name="emp_fname",dbtype="char(20)",nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=varchar,name="emp_lname",dbtype="char(20)",nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=long,name="dept_id",dbtype="integer",nulls_allowed=no,initial_value="0")
+ COLUMN(type=varchar,name="bene_health_ins",dbtype="char(1)",nulls_allowed=yes)
+ COLUMN(type=varchar,name="bene_life_ins",dbtype="char(1)",nulls_allowed=yes)
+ COLUMN(type=varchar,name="bene_day_care",dbtype="char(1)",nulls_allowed=yes))

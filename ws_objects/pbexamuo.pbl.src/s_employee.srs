@@ -1,0 +1,13 @@
+﻿$PBExportHeader$s_employee.srs
+$PBExportComments$Structure used to pass information between windows in the employee information system
+global type s_employee from structure
+    int department
+    string dept_name
+    int manager_id
+    int employee_id
+    boolean auto_new
+    w_eis_dept dept_win
+    w_eis_emp emp_win
+    boolean no_edit
+end type
+

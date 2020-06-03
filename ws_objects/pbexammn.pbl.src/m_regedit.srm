@@ -1,0 +1,291 @@
+﻿$PBExportHeader$m_regedit.srm
+$PBExportComments$Menu for Registry Editor example
+forward
+global type m_regedit from menu
+end type
+type m_registry from menu within m_regedit
+end type
+type m_new from menu within m_registry
+end type
+type m_key from menu within m_new
+end type
+type m_value from menu within m_new
+end type
+type m_new from menu within m_registry
+m_key m_key
+m_value m_value
+end type
+type m_modifyvalue from menu within m_registry
+end type
+type m_rename from menu within m_registry
+end type
+type m_delete from menu within m_registry
+end type
+type m_- from menu within m_registry
+end type
+type m_exit from menu within m_registry
+end type
+type m_registry from menu within m_regedit
+m_new m_new
+m_modifyvalue m_modifyvalue
+m_rename m_rename
+m_delete m_delete
+m_- m_-
+m_exit m_exit
+end type
+type m_view from menu within m_regedit
+end type
+type m_refresh from menu within m_view
+end type
+type m_view from menu within m_regedit
+m_refresh m_refresh
+end type
+type m_help from menu within m_regedit
+end type
+type m_help1 from menu within m_help
+end type
+type m_help from menu within m_regedit
+m_help1 m_help1
+end type
+end forward
+
+global type m_regedit from menu
+m_registry m_registry
+m_view m_view
+m_help m_help
+end type
+global m_regedit m_regedit
+
+on m_regedit.create
+m_regedit=this
+this.m_registry=create m_registry
+this.m_view=create m_view
+this.m_help=create m_help
+this.Item[]={this.m_registry, &
+this.m_view, &
+this.m_help}
+end on
+
+on m_regedit.destroy
+destroy(this.m_registry)
+destroy(this.m_view)
+destroy(this.m_help)
+end on
+
+type m_registry from menu within m_regedit
+m_new m_new
+m_modifyvalue m_modifyvalue
+m_rename m_rename
+m_delete m_delete
+m_- m_-
+m_exit m_exit
+end type
+
+on m_registry.create
+this.Text="&Registry"
+this.m_new=create m_new
+this.m_modifyvalue=create m_modifyvalue
+this.m_rename=create m_rename
+this.m_delete=create m_delete
+this.m_-=create m_-
+this.m_exit=create m_exit
+this.Item[]={this.m_new, &
+this.m_modifyvalue, &
+this.m_rename, &
+this.m_delete, &
+this.m_-, &
+this.m_exit}
+end on
+
+on m_registry.destroy
+destroy(this.m_new)
+destroy(this.m_modifyvalue)
+destroy(this.m_rename)
+destroy(this.m_delete)
+destroy(this.m_-)
+destroy(this.m_exit)
+end on
+
+event clicked;GraphicObject	lgo_Focus
+
+lgo_Focus = GetFocus()
+
+Choose Case TypeOf(lgo_Focus)
+	Case TreeView!
+		m_regedit.m_registry.m_modifyvalue.Enabled = False
+		m_regedit.m_registry.m_delete.Enabled = True
+		m_regedit.m_registry.m_rename.Enabled = True
+	Case ListView!
+		m_regedit.m_registry.m_modifyvalue.Enabled = True
+		m_regedit.m_registry.m_delete.Enabled = True
+		m_regedit.m_registry.m_rename.Enabled = True
+	Case Else
+		m_regedit.m_registry.m_modifyvalue.Enabled = False
+		m_regedit.m_registry.m_delete.Enabled = False
+		m_regedit.m_registry.m_rename.Enabled = False
+End Choose
+
+end event
+
+type m_new from menu within m_registry
+m_key m_key
+m_value m_value
+end type
+
+on m_new.create
+this.Text="&New"
+this.m_key=create m_key
+this.m_value=create m_value
+this.Item[]={this.m_key, &
+this.m_value}
+end on
+
+on m_new.destroy
+destroy(this.m_key)
+destroy(this.m_value)
+end on
+
+type m_key from menu within m_new
+end type
+
+on m_key.create
+this.Text="&Key"
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_addkey()
+
+end event
+
+on m_key.destroy
+end on
+
+type m_value from menu within m_new
+end type
+
+on m_value.create
+this.Text="&Value"
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_addvalue()
+
+end event
+
+type m_modifyvalue from menu within m_registry
+end type
+
+on m_modifyvalue.create
+this.Text="&Modify Value"
+end on
+
+event clicked;Integer		li_Current
+ListView	llv_Values
+
+llv_Values = GetFocus()
+li_Current = llv_Values.SelectedIndex()
+
+If li_Current > 0 Then
+	llv_Values.Post Event DoubleClicked(li_Current)
+End if
+
+end event
+
+type m_rename from menu within m_registry
+end type
+
+on m_rename.create
+this.Text="&Rename"
+end on
+
+event clicked;GraphicObject	lgo_Focus
+
+lgo_Focus = GetFocus()
+
+lgo_Focus.Post Dynamic Event ue_rename()
+
+end event
+
+type m_delete from menu within m_registry
+end type
+
+on m_delete.create
+this.Text="&Delete~tDel"
+this.Shortcut=46
+end on
+
+event clicked;GraphicObject	lgo_Focus
+
+lgo_Focus = GetFocus()
+
+lgo_Focus.Post Dynamic Event ue_delete()
+
+end event
+
+type m_- from menu within m_registry
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_registry
+end type
+
+event clicked;Close(ParentWindow)
+
+end event
+
+on m_exit.create
+this.Text="E&xit"
+end on
+
+type m_view from menu within m_regedit
+m_refresh m_refresh
+end type
+
+on m_view.create
+this.Text="&View"
+this.m_refresh=create m_refresh
+this.Item[]={this.m_refresh}
+end on
+
+on m_view.destroy
+destroy(this.m_refresh)
+end on
+
+type m_refresh from menu within m_view
+end type
+
+on m_refresh.create
+this.Text="&Refresh~tF5"
+this.Shortcut=116
+end on
+
+event clicked;ParentWindow.Post Dynamic Event ue_refresh()
+
+end event
+
+type m_help from menu within m_regedit
+m_help1 m_help1
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_help1=create m_help1
+this.Item[]={this.m_help1}
+end on
+
+on m_help.destroy
+destroy(this.m_help1)
+end on
+
+type m_help1 from menu within m_help
+end type
+
+on m_help1.create
+this.Text="&Help"
+end on
+
+event clicked;f_open_help ("w_regedit")
+
+end event
+

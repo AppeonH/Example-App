@@ -1,0 +1,31 @@
+﻿$PBExportHeader$d_emp_managed_by.srd
+$PBExportComments$Tabular:  Department ID, Manager ID, Employee Last Name & First Name
+release 9;
+datawindow(units=0 timer_interval=0 color=78682240 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=124 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=dept_id dbname="employee.dept_id" )
+ column=(type=char(20) updatewhereclause=yes name=emp_lname dbname="employee.emp_lname" )
+ column=(type=char(20) updatewhereclause=yes name=emp_fname dbname="employee.emp_fname" )
+ column=(type=number updatewhereclause=yes name=manager_id dbname="employee.manager_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"employee~" ) COLUMN(NAME=~"employee.dept_id~") COLUMN(NAME=~"employee.emp_lname~") COLUMN(NAME=~"employee.emp_fname~") COLUMN(NAME=~"employee.manager_id~")WHERE( EXP1 =~"employee.dept_id~" OP =~"=~" EXP2 =~":dept_id~" ) ) ORDER(NAME=~"employee.emp_lname~" ASC=yes ) ORDER(NAME=~"employee.emp_fname~" ASC=yes ) ARG(NAME = ~"dept_id~" TYPE = number) " arguments=(("dept_id", number)) )
+text(band=header alignment="2" text="Department
+ID" border="6" color="33554592" x="9" y="8" height="100" width="329" html.valueishtml="0"  name=dept_id_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Manager
+ID" border="6" color="33554592" x="370" y="8" height="100" width="247" html.valueishtml="0"  name=manager_id_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Employee
+Last Name" border="6" color="33554592" x="649" y="8" height="100" width="398" html.valueishtml="0"  name=emp_lname_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Employee
+First Name" border="6" color="33554592" x="1079" y="8" height="100" width="393" html.valueishtml="0"  name=emp_fname_t visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="5" color="33554592" x="9" y="8" height="56" width="329" format="[general]" html.valueishtml="0"  name=dept_id  tag="The department id is a 3 digit code. It is the key field for the Department table." visible="1" edit.name="Department List" dddw.name=d_dddw_dept dddw.displaycolumn=dept_id dddw.datacolumn=dept_id dddw.percentwidth=300 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="5" color="33554592" x="370" y="8" height="56" width="247" format="[general]" html.valueishtml="0"  name=manager_id  tag="The manager's employee id." visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="33554592" x="649" y="8" height="56" width="398" format="[general]" html.valueishtml="0"  name=emp_lname visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="33554592" x="1079" y="8" height="56" width="393" format="[general]" html.valueishtml="0"  name=emp_fname visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

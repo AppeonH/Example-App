@@ -1,0 +1,83 @@
+﻿$PBExportHeader$f_get_toolbar_profile.srf
+$PBExportComments$Read in toolbar preferences from the registry or the example.ini file
+global type f_get_toolbar_profile from function_object
+end type
+
+forward prototypes
+global subroutine f_get_toolbar_profile (window aw_window, integer ai_defaultrow)
+end prototypes
+
+global subroutine f_get_toolbar_profile (window aw_window, integer ai_defaultrow);//////////////////////////////////////////////////////////////////////////////
+//
+//	Function:  		f_get_toolbar_profile
+//
+//	Access:  		public
+//
+//	Arguments:
+//	aw_Window			The window whose toolbars are being set.
+//	ai_DefaultRow		The row to place the toolbar on if no entry is found in
+//								the registry or ini file.
+//
+//	Returns:  		None.
+//
+//	Description: 	Set the current toolbar information.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+String		ls_WindowName, ls_Visible, ls_Align, ls_X, ls_Y, ls_Width, ls_Height
+Integer		li_Indexes, li_Cnt, li_Index[]
+Boolean		lb_Visible, lb_Return
+ToolbarAlignment	lta_Alignment
+
+ls_WindowName = aw_Window.ClassName()
+
+// Get all the indexes for this window's menu
+li_Indexes = f_get_toolbar_indexes(aw_Window.Menuid, li_Index)
+
+// Set the values for each toolbar
+For li_Cnt = 1 To li_Indexes
+	lb_Return = True
+	If f_get_profile(ls_WindowName, "toolbarvisible" + String(li_Index[li_Cnt]), ls_Visible) = -1 Then lb_Return = False
+	If f_get_profile(ls_WindowName,"toolbaralignment" + String(li_Index[li_Cnt]), ls_Align) = -1 Then lb_Return = False
+	If f_get_profile(ls_WindowName,"toolbarx" + String(li_Index[li_Cnt]), ls_X) = -1 Then lb_Return = False
+	If f_get_profile(ls_WindowName,"toolbary" + String(li_Index[li_Cnt]), ls_Y) = -1 Then lb_Return = False
+	If f_get_profile(ls_WindowName,"toolbarwidth" + String(li_Index[li_Cnt]), ls_Width) = -1 Then lb_Return = False
+	If f_get_profile(ls_WindowName,"toolbarheight" + String(li_Index[li_Cnt]), ls_Height) = -1 Then lb_Return = False
+	
+	If Not lb_Return Then
+		// Entry was not in the registry or ini file, set defaults
+		aw_Window.SetToolbar(li_Index[li_Cnt], True, AlignAtTop!, ls_WindowName + String(li_Index[li_Cnt]))
+		aw_Window.SetToolbarPos(li_Index[li_Cnt], ai_DefaultRow, 1, False)
+		
+	Else
+		If ls_Visible = "yes" Then
+			lb_Visible = True
+		Else
+			lb_Visible = False
+		End If
+
+		Choose Case ls_Align
+			Case "bottom"
+				lta_Alignment = alignatbottom!
+			Case "left"
+				lta_Alignment = alignatleft!
+			Case "right"
+				lta_Alignment = alignatright!
+			Case "top"
+				lta_Alignment = alignattop!
+			Case "floating"
+				lta_Alignment = floating!
+		End Choose
+	
+		aw_Window.SetToolbar(li_Index[li_Cnt], lb_Visible, lta_Alignment, ls_WindowName + String(li_Index[li_Cnt]))
+	
+		If ls_Align = "floating" Then
+			aw_Window.SetToolbarPos(li_Index[li_Cnt], Integer(ls_X), Integer(ls_Y), Integer(ls_Width), Integer(ls_Height))
+		Else
+			aw_Window.SetToolbarPos(li_Index[li_Cnt], Integer(ls_X), Integer(ls_Y), False)
+		End If
+	End If
+Next
+
+end subroutine
+

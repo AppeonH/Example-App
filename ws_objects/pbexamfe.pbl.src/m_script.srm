@@ -1,0 +1,166 @@
+﻿$PBExportHeader$m_script.srm
+$PBExportComments$Menu for Script Display
+forward
+global type m_script from menu
+end type
+type m_file from menu within m_script
+end type
+type m_printersetup from menu within m_file
+end type
+type m_print from menu within m_file
+end type
+type m_- from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_script
+m_printersetup m_printersetup
+m_print m_print
+m_- m_-
+m_exit m_exit
+end type
+type m_edit from menu within m_script
+end type
+type m_selectall from menu within m_edit
+end type
+type m_copy from menu within m_edit
+end type
+type m_edit from menu within m_script
+m_selectall m_selectall
+m_copy m_copy
+end type
+end forward
+
+global type m_script from menu
+m_file m_file
+m_edit m_edit
+end type
+global m_script m_script
+
+on m_script.create
+m_script=this
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.Item[]={this.m_file, &
+this.m_edit}
+end on
+
+on m_script.destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+end on
+
+type m_file from menu within m_script
+m_printersetup m_printersetup
+m_print m_print
+m_- m_-
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_printersetup=create m_printersetup
+this.m_print=create m_print
+this.m_-=create m_-
+this.m_exit=create m_exit
+this.Item[]={this.m_printersetup, &
+this.m_print, &
+this.m_-, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_printersetup)
+destroy(this.m_print)
+destroy(this.m_-)
+destroy(this.m_exit)
+end on
+
+type m_printersetup from menu within m_file
+end type
+
+on m_printersetup.create
+this.Text="Printer &Setup..."
+end on
+
+event clicked;PrintSetup()
+
+end event
+
+type m_print from menu within m_file
+end type
+
+on m_print.create
+this.Text="&Print..."
+this.ToolBarItemVisible=false
+this.ToolBarItemBarIndex=0
+end on
+
+event clicked;ParentWindow.Post Dynamic of_print()
+
+end event
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+on m_exit.create
+this.Text="E&xit"
+this.ToolBarItemVisible=false
+this.ToolBarItemBarIndex=0
+end on
+
+event clicked;Close(ParentWindow)
+
+end event
+
+type m_edit from menu within m_script
+m_selectall m_selectall
+m_copy m_copy
+end type
+
+on m_edit.create
+this.Text="&Edit"
+this.m_selectall=create m_selectall
+this.m_copy=create m_copy
+this.Item[]={this.m_selectall, &
+this.m_copy}
+end on
+
+on m_edit.destroy
+destroy(this.m_selectall)
+destroy(this.m_copy)
+end on
+
+type m_selectall from menu within m_edit
+end type
+
+on m_selectall.create
+this.Text="Select &All"
+this.ToolBarItemVisible=false
+this.ToolBarItemBarIndex=0
+end on
+
+event clicked;ParentWindow.Post Dynamic of_select_all()
+
+end event
+
+type m_copy from menu within m_edit
+end type
+
+on m_copy.create
+this.Text="&Copy"
+this.ToolBarItemVisible=false
+this.ToolBarItemBarIndex=0
+end on
+
+event clicked;ParentWindow.Post Dynamic of_copy()
+
+end event
+

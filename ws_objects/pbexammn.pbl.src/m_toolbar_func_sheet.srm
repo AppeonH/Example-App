@@ -1,0 +1,45 @@
+﻿$PBExportHeader$m_toolbar_func_sheet.srm
+$PBExportComments$Sheet menu to test new toolbar functionality
+forward
+global type m_toolbar_func_sheet from m_toolbar_func
+end type
+end forward
+
+global type m_toolbar_func_sheet from m_toolbar_func
+end type
+global m_toolbar_func_sheet m_toolbar_func_sheet
+
+on m_toolbar_func_sheet.create
+m_toolbar_func_sheet=this
+call m_toolbar_func::create
+end on
+
+on m_toolbar_func_sheet.destroy
+call m_toolbar_func::destroy
+end on
+
+on m_opensheet.create
+call m_toolbar_func`m_opensheet::create
+this.ToolBarItemBarIndex=0
+end on
+
+on m_exit.create
+call m_toolbar_func`m_exit::create
+this.ToolBarItemBarIndex=0
+end on
+
+on m_toolbars.create
+call m_toolbar_func`m_toolbars::create
+this.ToolBarItemBarIndex=0
+end on
+
+on m_examplehelp.create
+call m_toolbar_func`m_examplehelp::create
+this.ToolBarItemBarIndex=0
+end on
+
+on m_aboutthisexample.create
+call m_toolbar_func`m_aboutthisexample::create
+this.ToolBarItemBarIndex=0
+end on
+

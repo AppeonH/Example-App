@@ -1,0 +1,24 @@
+﻿$PBExportHeader$f_right_adjust_dec.srf
+$PBExportComments$User Function to right adjust a number, based on a passed format; useful in aligning numbers on a printed report
+global type f_right_adjust_dec from function_object
+end type
+
+forward prototypes
+global function string f_right_adjust_dec (decimal arg_amt, string arg_format)
+end prototypes
+
+global function string f_right_adjust_dec (decimal arg_amt, string arg_format);// Function f_right_adjust_dec(dec arg_amt, string arg_format)
+
+// Right-adjusts arg_amount in a string whose length is
+// the same as that of arg_format
+
+string	right_string
+
+right_string = String(arg_amt,arg_format)
+right_string = Left("     ",Len(arg_format)-Len(right_string)) &
+					 + right_string
+
+return right_string
+
+end function
+

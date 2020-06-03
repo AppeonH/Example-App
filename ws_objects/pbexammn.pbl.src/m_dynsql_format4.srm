@@ -1,0 +1,228 @@
+﻿$PBExportHeader$m_dynsql_format4.srm
+$PBExportComments$Menu for Dynamic SQL Example
+forward
+global type m_dynsql_format4 from m_dynsql_frame
+end type
+type m_describe from menu within m_dynamicsql
+end type
+type m_execute from menu within m_dynamicsql
+end type
+end forward
+
+global type m_dynsql_format4 from m_dynsql_frame
+end type
+global m_dynsql_format4 m_dynsql_format4
+
+on m_dynsql_format4.create
+m_dynsql_format4=this
+call m_dynsql_frame::create
+end on
+
+on m_dynsql_format4.destroy
+call m_dynsql_frame::destroy
+end on
+
+on m_file.create
+call m_dynsql_frame`m_file::create
+end on
+
+on m_openformat1example.create
+call m_dynsql_frame`m_openformat1example::create
+end on
+
+on m_openformat2example.create
+call m_dynsql_frame`m_openformat2example::create
+end on
+
+on m_openformat3example.create
+call m_dynsql_frame`m_openformat3example::create
+end on
+
+on m_openformat4example.create
+call m_dynsql_frame`m_openformat4example::create
+end on
+
+on m_close.create
+call m_dynsql_frame`m_close::create
+this.ToolBarItemName="Custom039!"
+this.ToolBarItemText="Close"
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_-.create
+call m_dynsql_frame`m_-::create
+end on
+
+on m_exit::clicked;//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Close the MDI Frame Window
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_frame
+
+
+lw_frame = parentwindow.ParentWindow()
+if IsValid (lw_frame) then
+	close (lw_frame)
+end if
+end on
+
+on m_exit.create
+call m_dynsql_frame`m_exit::create
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=50
+end on
+
+type m_dynamicsql from m_dynsql_frame`m_dynamicsql within m_dynsql_format4
+m_describe m_describe
+m_execute m_execute
+end type
+
+on m_dynamicsql.create
+call m_dynsql_frame`m_dynamicsql::create
+this.Visible=true
+this.Enabled=true
+this.m_describe=create m_describe
+this.m_execute=create m_execute
+this.Item[UpperBound(this.item)+1]=m_describe
+this.Item[UpperBound(this.item)+1]=m_execute
+end on
+
+on m_dynamicsql.destroy
+destroy(this.m_describe)
+destroy(this.m_execute)
+end on
+
+on m_createtablelocations.create
+call m_dynsql_frame`m_createtablelocations::create
+this.Visible=false
+this.Enabled=false
+end on
+
+on m_altertablelocations.create
+call m_dynsql_frame`m_altertablelocations::create
+this.Visible=false
+end on
+
+on m_droptable.create
+call m_dynsql_frame`m_droptable::create
+this.Visible=false
+end on
+
+on m_window.create
+call m_dynsql_frame`m_window::create
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_tilevertical.create
+call m_dynsql_frame`m_tilevertical::create
+this.ToolBarItemName="Tile!"
+this.ToolBarItemText="Tile Vertical"
+end on
+
+on m_tilehorizontal.create
+call m_dynsql_frame`m_tilehorizontal::create
+this.ToolBarItemName="Horizontal!"
+this.ToolBarItemText="Tile Horizontal"
+end on
+
+on m_cascade.create
+call m_dynsql_frame`m_cascade::create
+this.ToolBarItemName="Cascade!"
+this.ToolBarItemText="Cascade"
+end on
+
+on m_layer.create
+call m_dynsql_frame`m_layer::create
+this.ToolBarItemName="Layer!"
+this.ToolBarItemText="Layer"
+end on
+
+on m_-1.create
+call m_dynsql_frame`m_-1::create
+end on
+
+on m_arrangeicons.create
+call m_dynsql_frame`m_arrangeicons::create
+this.ToolBarItemName="ArrangeIcons!"
+this.ToolBarItemText="Arrange Icons"
+end on
+
+on m_-2.create
+call m_dynsql_frame`m_-2::create
+end on
+
+on m_toolbar.create
+call m_dynsql_frame`m_toolbar::create
+end on
+
+on m_help.create
+call m_dynsql_frame`m_help::create
+end on
+
+on m_contents.create
+call m_dynsql_frame`m_contents::create
+this.ToolBarItemName="Help!"
+this.ToolBarItemText="Help"
+end on
+
+on m_-3.create
+call m_dynsql_frame`m_-3::create
+end on
+
+on m_aboutdynamicsql4formats.create
+call m_dynsql_frame`m_aboutdynamicsql4formats::create
+end on
+
+type m_describe from menu within m_dynamicsql
+end type
+
+on clicked;window	lw_frame, &
+		lw_sheet
+
+
+lw_frame = parentwindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_describe")
+	end if
+end if
+end on
+
+on m_describe.create
+this.Text="D&ESCRIBE"
+this.Microhelp="Describe the dynamic staging area into the dynamic description area"
+this.ToolBarItemName="CheckStatus!"
+this.ToolBarItemText="DESCRIBE"
+this.ToolBarItemOrder=7
+this.ToolBarItemSpace=2
+end on
+
+type m_execute from menu within m_dynamicsql
+end type
+
+on clicked;window	lw_frame, &
+		lw_sheet
+
+
+lw_frame = parentwindow.ParentWindow()
+if IsValid (lw_frame) then
+	lw_sheet = lw_frame.GetActiveSheet()
+	if IsValid (lw_sheet) then
+		lw_sheet.TriggerEvent ("ue_execute")
+	end if
+end if
+end on
+
+on m_execute.create
+this.Text="E&XECUTE"
+this.Microhelp="Execute dynamic SQL"
+this.ToolBarItemName="ExecuteSQL!"
+this.ToolBarItemText="Execute dynamic SQL"
+this.ToolBarItemOrder=8
+this.Enabled=false
+end on
+

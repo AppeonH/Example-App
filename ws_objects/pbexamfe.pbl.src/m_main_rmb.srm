@@ -1,0 +1,90 @@
+﻿$PBExportHeader$m_main_rmb.srm
+$PBExportComments$RMB popup menu
+forward
+global type m_main_rmb from menu
+end type
+type m_rmb from menu within m_main_rmb
+end type
+type m_runexample from menu within m_rmb
+end type
+type m_examplereport from menu within m_rmb
+end type
+type m_helpforexample from menu within m_rmb
+end type
+type m_rmb from menu within m_main_rmb
+m_runexample m_runexample
+m_examplereport m_examplereport
+m_helpforexample m_helpforexample
+end type
+end forward
+
+global type m_main_rmb from menu
+m_rmb m_rmb
+end type
+global m_main_rmb m_main_rmb
+
+on m_main_rmb.create
+m_main_rmb=this
+this.m_rmb=create m_rmb
+this.Item[]={this.m_rmb}
+end on
+
+on m_main_rmb.destroy
+destroy(this.m_rmb)
+end on
+
+type m_rmb from menu within m_main_rmb
+m_runexample m_runexample
+m_examplereport m_examplereport
+m_helpforexample m_helpforexample
+end type
+
+on m_rmb.create
+this.Text="rmb"
+this.m_runexample=create m_runexample
+this.m_examplereport=create m_examplereport
+this.m_helpforexample=create m_helpforexample
+this.Item[]={this.m_runexample, &
+this.m_examplereport, &
+this.m_helpforexample}
+end on
+
+on m_rmb.destroy
+destroy(this.m_runexample)
+destroy(this.m_examplereport)
+destroy(this.m_helpforexample)
+end on
+
+type m_runexample from menu within m_rmb
+end type
+
+event clicked;ParentWindow.Dynamic Post of_run_window("")
+
+end event
+
+on m_runexample.create
+this.Text="Run Example"
+end on
+
+type m_examplereport from menu within m_rmb
+end type
+
+event clicked;ParentWindow.Dynamic Post of_run_report()
+
+end event
+
+on m_examplereport.create
+this.Text="Example Report"
+end on
+
+type m_helpforexample from menu within m_rmb
+end type
+
+event clicked;ParentWindow.Dynamic Post of_open_help("")
+
+end event
+
+on m_helpforexample.create
+this.Text="Help for Example"
+end on
+

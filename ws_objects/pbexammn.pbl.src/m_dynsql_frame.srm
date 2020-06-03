@@ -1,0 +1,511 @@
+﻿$PBExportHeader$m_dynsql_frame.srm
+$PBExportComments$MDI Frame menu for Dynamic SQL example
+forward
+global type m_dynsql_frame from menu
+end type
+type m_file from menu within m_dynsql_frame
+end type
+type m_openformat1example from menu within m_file
+end type
+type m_openformat2example from menu within m_file
+end type
+type m_openformat3example from menu within m_file
+end type
+type m_openformat4example from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_- from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_dynsql_frame
+m_openformat1example m_openformat1example
+m_openformat2example m_openformat2example
+m_openformat3example m_openformat3example
+m_openformat4example m_openformat4example
+m_close m_close
+m_- m_-
+m_exit m_exit
+end type
+type m_dynamicsql from menu within m_dynsql_frame
+end type
+type m_createtablelocations from menu within m_dynamicsql
+end type
+type m_altertablelocations from menu within m_dynamicsql
+end type
+type m_droptable from menu within m_dynamicsql
+end type
+type m_dynamicsql from menu within m_dynsql_frame
+m_createtablelocations m_createtablelocations
+m_altertablelocations m_altertablelocations
+m_droptable m_droptable
+end type
+type m_window from menu within m_dynsql_frame
+end type
+type m_tilevertical from menu within m_window
+end type
+type m_tilehorizontal from menu within m_window
+end type
+type m_cascade from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_-1 from menu within m_window
+end type
+type m_arrangeicons from menu within m_window
+end type
+type m_-2 from menu within m_window
+end type
+type m_toolbar from menu within m_window
+end type
+type m_window from menu within m_dynsql_frame
+m_tilevertical m_tilevertical
+m_tilehorizontal m_tilehorizontal
+m_cascade m_cascade
+m_layer m_layer
+m_-1 m_-1
+m_arrangeicons m_arrangeicons
+m_-2 m_-2
+m_toolbar m_toolbar
+end type
+type m_help from menu within m_dynsql_frame
+end type
+type m_contents from menu within m_help
+end type
+type m_-3 from menu within m_help
+end type
+type m_aboutdynamicsql4formats from menu within m_help
+end type
+type m_help from menu within m_dynsql_frame
+m_contents m_contents
+m_-3 m_-3
+m_aboutdynamicsql4formats m_aboutdynamicsql4formats
+end type
+end forward
+
+global type m_dynsql_frame from menu
+m_file m_file
+m_dynamicsql m_dynamicsql
+m_window m_window
+m_help m_help
+end type
+global m_dynsql_frame m_dynsql_frame
+
+on m_dynsql_frame.create
+m_dynsql_frame=this
+this.m_file=create m_file
+this.m_dynamicsql=create m_dynamicsql
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_dynamicsql, &
+this.m_window, &
+this.m_help}
+end on
+
+on m_dynsql_frame.destroy
+destroy(this.m_file)
+destroy(this.m_dynamicsql)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_dynsql_frame
+m_openformat1example m_openformat1example
+m_openformat2example m_openformat2example
+m_openformat3example m_openformat3example
+m_openformat4example m_openformat4example
+m_close m_close
+m_- m_-
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_openformat1example=create m_openformat1example
+this.m_openformat2example=create m_openformat2example
+this.m_openformat3example=create m_openformat3example
+this.m_openformat4example=create m_openformat4example
+this.m_close=create m_close
+this.m_-=create m_-
+this.m_exit=create m_exit
+this.Item[]={this.m_openformat1example, &
+this.m_openformat2example, &
+this.m_openformat3example, &
+this.m_openformat4example, &
+this.m_close, &
+this.m_-, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_openformat1example)
+destroy(this.m_openformat2example)
+destroy(this.m_openformat3example)
+destroy(this.m_openformat4example)
+destroy(this.m_close)
+destroy(this.m_-)
+destroy(this.m_exit)
+end on
+
+type m_openformat1example from menu within m_file
+end type
+
+on clicked;///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Open Dynamic SQL: Format 1 Example
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+OpenSheet (w_dynsql_format1, parentwindow, 0, original!)
+end on
+
+on m_openformat1example.create
+this.Text="Open Format &1 Example"
+this.Microhelp="Opens an example of Dynamic SQL, Format 1:  Non-Result Statements, No Input Parameters"
+end on
+
+type m_openformat2example from menu within m_file
+end type
+
+on clicked;///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Open Dynamic SQL: Format 2 Example
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+OpenSheet (w_dynsql_format2, parentwindow, 0, original!)
+end on
+
+on m_openformat2example.create
+this.Text="Open Format &2 Example"
+this.Microhelp="Opens an example of Dynamic SQL, Format 2:  Non-Result Statements, Known Input Parameters"
+end on
+
+type m_openformat3example from menu within m_file
+end type
+
+on clicked;///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Open Dynamic SQL: Format 3 Example
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+OpenSheet (w_dynsql_format3, parentwindow, 0, original!)
+end on
+
+on m_openformat3example.create
+this.Text="Open Format &3 Example"
+this.Microhelp="Opens an example of Dynamic SQL, Format 3:  Result Set Statements, Known Input Parameters, and Result Columns"
+end on
+
+type m_openformat4example from menu within m_file
+end type
+
+on clicked;///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Open Dynamic SQL: Format 4 Example
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+OpenSheet (w_dynsql_format4, parentwindow, 0, original!)
+end on
+
+on m_openformat4example.create
+this.Text="Open Format &4 Example"
+this.Microhelp="Opens an example of Dynamic SQL, Format 4:  Result Set Statements, Unknown Input Parameters, and/or Result Set Columns"
+end on
+
+type m_close from menu within m_file
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Close the active sheet
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window	lw_sheet
+
+
+lw_sheet = parentwindow.GetActiveSheet()
+if IsValid (lw_sheet) then
+	Close (lw_sheet)
+end if
+end on
+
+on m_close.create
+this.Text="&Close~tCtrl+F4"
+this.Microhelp="Close window"
+this.Visible=false
+this.ToolBarItemOrder=5
+this.Enabled=false
+this.Shortcut=371
+end on
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+on clicked;close (parentwindow)
+end on
+
+on m_exit.create
+this.Text="E&xit"
+this.Microhelp="Exit from this example"
+this.ToolBarItemOrder=100
+this.ToolBarItemSpace=2
+end on
+
+type m_dynamicsql from menu within m_dynsql_frame
+m_createtablelocations m_createtablelocations
+m_altertablelocations m_altertablelocations
+m_droptable m_droptable
+end type
+
+on m_dynamicsql.create
+this.Text="&DynamicSQL"
+this.Visible=false
+this.Enabled=false
+this.m_createtablelocations=create m_createtablelocations
+this.m_altertablelocations=create m_altertablelocations
+this.m_droptable=create m_droptable
+this.Item[]={this.m_createtablelocations, &
+this.m_altertablelocations, &
+this.m_droptable}
+end on
+
+on m_dynamicsql.destroy
+destroy(this.m_createtablelocations)
+destroy(this.m_altertablelocations)
+destroy(this.m_droptable)
+end on
+
+type m_createtablelocations from menu within m_dynamicsql
+end type
+
+on m_createtablelocations.create
+this.Text="&CREATE TABLE Locations"
+this.Microhelp="Executes an SQL statement to create a table named Locations"
+end on
+
+type m_altertablelocations from menu within m_dynamicsql
+end type
+
+on m_altertablelocations.create
+this.Text="&ALTER TABLE Locations"
+this.Microhelp="Executes an SQL statement to add a fax column to the Locations table"
+this.Enabled=false
+end on
+
+type m_droptable from menu within m_dynamicsql
+end type
+
+on m_droptable.create
+this.Text="&DROP TABLE Locations"
+this.Microhelp="Executes an SQL statement which will drop the Locations table from the database"
+this.Enabled=false
+end on
+
+type m_window from menu within m_dynsql_frame
+m_tilevertical m_tilevertical
+m_tilehorizontal m_tilehorizontal
+m_cascade m_cascade
+m_layer m_layer
+m_-1 m_-1
+m_arrangeicons m_arrangeicons
+m_-2 m_-2
+m_toolbar m_toolbar
+end type
+
+on m_window.create
+this.Text="&Window"
+this.Visible=false
+this.Enabled=false
+this.m_tilevertical=create m_tilevertical
+this.m_tilehorizontal=create m_tilehorizontal
+this.m_cascade=create m_cascade
+this.m_layer=create m_layer
+this.m_-1=create m_-1
+this.m_arrangeicons=create m_arrangeicons
+this.m_-2=create m_-2
+this.m_toolbar=create m_toolbar
+this.Item[]={this.m_tilevertical, &
+this.m_tilehorizontal, &
+this.m_cascade, &
+this.m_layer, &
+this.m_-1, &
+this.m_arrangeicons, &
+this.m_-2, &
+this.m_toolbar}
+end on
+
+on m_window.destroy
+destroy(this.m_tilevertical)
+destroy(this.m_tilehorizontal)
+destroy(this.m_cascade)
+destroy(this.m_layer)
+destroy(this.m_-1)
+destroy(this.m_arrangeicons)
+destroy(this.m_-2)
+destroy(this.m_toolbar)
+end on
+
+type m_tilevertical from menu within m_window
+end type
+
+on clicked;///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Tile open sheets vertically
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+parentwindow.ArrangeSheets (tile!)
+end on
+
+on m_tilevertical.create
+this.Text="&Tile Vertical"
+this.Microhelp="Arrange all as vertically tiled"
+this.ToolBarItemOrder=10
+this.ToolBarItemSpace=2
+end on
+
+type m_tilehorizontal from menu within m_window
+end type
+
+on clicked;///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Tile open sheets horizontally
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+parentwindow.ArrangeSheets (TileHorizontal!)
+end on
+
+on m_tilehorizontal.create
+this.Text="Tile &Horizontal"
+this.Microhelp="Arrange all as horizontally tiled"
+this.ToolBarItemOrder=15
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on clicked;///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Cascade open sheets
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+parentwindow.ArrangeSheets (cascade!)
+end on
+
+on m_cascade.create
+this.Text="&Cascade"
+this.Microhelp="Arrange all as cascaded"
+this.ToolBarItemOrder=20
+end on
+
+type m_layer from menu within m_window
+end type
+
+on clicked;///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Layer open sheets
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+parentwindow.ArrangeSheets (layer!)
+end on
+
+on m_layer.create
+this.Text="&Layer"
+this.Microhelp="Arrange all as layered"
+this.ToolBarItemOrder=25
+end on
+
+type m_-1 from menu within m_window
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_arrangeicons from menu within m_window
+end type
+
+on clicked;///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Arrange minimized icons
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+parentwindow.ArrangeSheets (icons!)
+end on
+
+on m_arrangeicons.create
+this.Text="Arrange &Icons"
+this.Microhelp="Arrange all icons"
+this.ToolBarItemOrder=30
+this.ToolBarItemSpace=1
+end on
+
+type m_-2 from menu within m_window
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_toolbar from menu within m_window
+end type
+
+on clicked;OpenWithParm (w_set_toolbars, parentwindow)
+end on
+
+on m_toolbar.create
+this.Text="Tool&bar..."
+this.Microhelp="Configure toolbars"
+end on
+
+type m_help from menu within m_dynsql_frame
+m_contents m_contents
+m_-3 m_-3
+m_aboutdynamicsql4formats m_aboutdynamicsql4formats
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_contents=create m_contents
+this.m_-3=create m_-3
+this.m_aboutdynamicsql4formats=create m_aboutdynamicsql4formats
+this.Item[]={this.m_contents, &
+this.m_-3, &
+this.m_aboutdynamicsql4formats}
+end on
+
+on m_help.destroy
+destroy(this.m_contents)
+destroy(this.m_-3)
+destroy(this.m_aboutdynamicsql4formats)
+end on
+
+type m_contents from menu within m_help
+end type
+
+on clicked;f_open_help ("w_dynsql_frame")
+end on
+
+on m_contents.create
+this.Text="&Contents...~tF1"
+this.Microhelp="Display help"
+this.ToolBarItemOrder=40
+this.ToolBarItemSpace=2
+this.Shortcut=112
+end on
+
+type m_-3 from menu within m_help
+end type
+
+on m_-3.create
+this.Text="-"
+end on
+
+type m_aboutdynamicsql4formats from menu within m_help
+end type
+
+on clicked;OpenWithParm (w_about_with_parm, "Dynamic SQL: 4 Formats@")
+end on
+
+on m_aboutdynamicsql4formats.create
+this.Text="&About Dynamic SQL: 4 Formats..."
+this.Microhelp="Display copyright notice"
+end on
+

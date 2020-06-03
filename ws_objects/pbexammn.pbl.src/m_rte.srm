@@ -1,0 +1,722 @@
+﻿$PBExportHeader$m_rte.srm
+$PBExportComments$RichPad menu
+forward
+global type m_rte from menu
+end type
+type m_file from menu within m_rte
+end type
+type m_new from menu within m_file
+end type
+type m_file1 from menu within m_file
+end type
+type m_save from menu within m_file
+end type
+type m_saveas from menu within m_file
+end type
+type m_--- from menu within m_file
+end type
+type m_print from menu within m_file
+end type
+type m_printpreview from menu within m_file
+end type
+type m_printsetup from menu within m_file
+end type
+type m_send from menu within m_file
+end type
+type m_---1 from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_rte
+m_new m_new
+m_file1 m_file1
+m_save m_save
+m_saveas m_saveas
+m_--- m_---
+m_print m_print
+m_printpreview m_printpreview
+m_printsetup m_printsetup
+m_send m_send
+m_---1 m_---1
+m_exit m_exit
+end type
+type m_edit from menu within m_rte
+end type
+type m_undo from menu within m_edit
+end type
+type m_undo1 from menu within m_edit
+end type
+type m_edit11 from menu within m_edit
+end type
+type m_edit111 from menu within m_edit
+end type
+type m_paste from menu within m_edit
+end type
+type m_delete from menu within m_edit
+end type
+type m_--1 from menu within m_edit
+end type
+type m_showheadfoot from menu within m_edit
+end type
+type m_selectall from menu within m_edit
+end type
+type m_timedate from menu within m_edit
+end type
+type m_insertdatafield from menu within m_edit
+end type
+type m_id from menu within m_insertdatafield
+end type
+type m_companyname from menu within m_insertdatafield
+end type
+type m_lastname from menu within m_insertdatafield
+end type
+type m_firstname from menu within m_insertdatafield
+end type
+type m_phone from menu within m_insertdatafield
+end type
+type m_address from menu within m_insertdatafield
+end type
+type m_city from menu within m_insertdatafield
+end type
+type m_state from menu within m_insertdatafield
+end type
+type m_zip from menu within m_insertdatafield
+end type
+type m_insertdatafield from menu within m_edit
+m_id m_id
+m_companyname m_companyname
+m_lastname m_lastname
+m_firstname m_firstname
+m_phone m_phone
+m_address m_address
+m_city m_city
+m_state m_state
+m_zip m_zip
+end type
+type m_edit from menu within m_rte
+m_undo m_undo
+m_undo1 m_undo1
+m_edit11 m_edit11
+m_edit111 m_edit111
+m_paste m_paste
+m_delete m_delete
+m_--1 m_--1
+m_showheadfoot m_showheadfoot
+m_selectall m_selectall
+m_timedate m_timedate
+m_insertdatafield m_insertdatafield
+end type
+type m_search from menu within m_rte
+end type
+type m_find from menu within m_search
+end type
+type m_findnext from menu within m_search
+end type
+type m_replace from menu within m_search
+end type
+type m_search from menu within m_rte
+m_find m_find
+m_findnext m_findnext
+m_replace m_replace
+end type
+type m_help from menu within m_rte
+end type
+type m_helptopics from menu within m_help
+end type
+type m_aboutrichpad from menu within m_help
+end type
+type m_help from menu within m_rte
+m_helptopics m_helptopics
+m_aboutrichpad m_aboutrichpad
+end type
+end forward
+
+global type m_rte from menu
+m_file m_file
+m_edit m_edit
+m_search m_search
+m_help m_help
+end type
+global m_rte m_rte
+
+on m_rte.create
+m_rte=this
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.m_search=create m_search
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_edit, &
+this.m_search, &
+this.m_help}
+end on
+
+on m_rte.destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+destroy(this.m_search)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_rte
+m_new m_new
+m_file1 m_file1
+m_save m_save
+m_saveas m_saveas
+m_--- m_---
+m_print m_print
+m_printpreview m_printpreview
+m_printsetup m_printsetup
+m_send m_send
+m_---1 m_---1
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_new=create m_new
+this.m_file1=create m_file1
+this.m_save=create m_save
+this.m_saveas=create m_saveas
+this.m_---=create m_---
+this.m_print=create m_print
+this.m_printpreview=create m_printpreview
+this.m_printsetup=create m_printsetup
+this.m_send=create m_send
+this.m_---1=create m_---1
+this.m_exit=create m_exit
+this.Item[]={this.m_new, &
+this.m_file1, &
+this.m_save, &
+this.m_saveas, &
+this.m_---, &
+this.m_print, &
+this.m_printpreview, &
+this.m_printsetup, &
+this.m_send, &
+this.m_---1, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_new)
+destroy(this.m_file1)
+destroy(this.m_save)
+destroy(this.m_saveas)
+destroy(this.m_---)
+destroy(this.m_print)
+destroy(this.m_printpreview)
+destroy(this.m_printsetup)
+destroy(this.m_send)
+destroy(this.m_---1)
+destroy(this.m_exit)
+end on
+
+event selected;Boolean	lb_Preview
+lb_Preview = ParentWindow.Dynamic of_isprintpreview()
+m_printpreview.Checked = lb_Preview
+
+end event
+
+type m_new from menu within m_file
+end type
+
+on m_new.create
+this.Text="&New"
+end on
+
+event clicked;ParentWindow.Post Dynamic of_new()
+end event
+
+type m_file1 from menu within m_file
+end type
+
+on m_file1.create
+this.Text="&Open..."
+end on
+
+event clicked;ParentWindow.Post Dynamic of_open()
+end event
+
+type m_save from menu within m_file
+end type
+
+on m_save.create
+this.Text="&Save"
+end on
+
+event clicked;ParentWindow.Post Dynamic of_save()
+end event
+
+type m_saveas from menu within m_file
+end type
+
+on m_saveas.create
+this.Text="Save &As..."
+end on
+
+event clicked;ParentWindow.Post Dynamic of_saveas()
+end event
+
+type m_--- from menu within m_file
+end type
+
+on m_---.create
+this.Text="-"
+end on
+
+type m_print from menu within m_file
+end type
+
+on m_print.create
+this.Text="&Print"
+end on
+
+event clicked;ParentWindow.Post Dynamic of_print()
+end event
+
+type m_printpreview from menu within m_file
+end type
+
+event clicked;ParentWindow.Post Dynamic of_printpreview()
+end event
+
+on m_printpreview.create
+this.Text="Print Preview"
+end on
+
+type m_printsetup from menu within m_file
+end type
+
+event clicked;PrintSetup()
+end event
+
+on m_printsetup.create
+this.Text="Print Setup..."
+end on
+
+type m_send from menu within m_file
+end type
+
+event clicked;ParentWindow.Post Dynamic of_send()
+end event
+
+on m_send.create
+this.Text="Send"
+end on
+
+type m_---1 from menu within m_file
+end type
+
+on m_---1.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+on m_exit.create
+this.Text="E&xit"
+this.MenuItemType=MenuItemTypeExit!
+end on
+
+event clicked;close(ParentWindow)
+end event
+
+type m_edit from menu within m_rte
+m_undo m_undo
+m_undo1 m_undo1
+m_edit11 m_edit11
+m_edit111 m_edit111
+m_paste m_paste
+m_delete m_delete
+m_--1 m_--1
+m_showheadfoot m_showheadfoot
+m_selectall m_selectall
+m_timedate m_timedate
+m_insertdatafield m_insertdatafield
+end type
+
+on m_edit.create
+this.Text="&Edit"
+this.m_undo=create m_undo
+this.m_undo1=create m_undo1
+this.m_edit11=create m_edit11
+this.m_edit111=create m_edit111
+this.m_paste=create m_paste
+this.m_delete=create m_delete
+this.m_--1=create m_--1
+this.m_showheadfoot=create m_showheadfoot
+this.m_selectall=create m_selectall
+this.m_timedate=create m_timedate
+this.m_insertdatafield=create m_insertdatafield
+this.Item[]={this.m_undo, &
+this.m_undo1, &
+this.m_edit11, &
+this.m_edit111, &
+this.m_paste, &
+this.m_delete, &
+this.m_--1, &
+this.m_showheadfoot, &
+this.m_selectall, &
+this.m_timedate, &
+this.m_insertdatafield}
+end on
+
+on m_edit.destroy
+destroy(this.m_undo)
+destroy(this.m_undo1)
+destroy(this.m_edit11)
+destroy(this.m_edit111)
+destroy(this.m_paste)
+destroy(this.m_delete)
+destroy(this.m_--1)
+destroy(this.m_showheadfoot)
+destroy(this.m_selectall)
+destroy(this.m_timedate)
+destroy(this.m_insertdatafield)
+end on
+
+event selected;Boolean	lb_CanUndo, lb_ShowHF
+lb_CanUndo = ParentWindow.Dynamic of_canundo()
+m_undo.Enabled = lb_CanUndo
+
+lb_ShowHF = ParentWindow.Dynamic of_showhf(True)
+m_showheadfoot.Checked = lb_ShowHF
+
+end event
+
+type m_undo from menu within m_edit
+end type
+
+on m_undo.create
+this.Text="&Undo"
+this.ToolBarItemName="Undo!"
+end on
+
+event clicked;ParentWindow.Post Dynamic of_undo()
+end event
+
+type m_undo1 from menu within m_edit
+end type
+
+on m_undo1.create
+this.Text="-"
+end on
+
+type m_edit11 from menu within m_edit
+end type
+
+on m_edit11.create
+this.Text="Cu&t"
+end on
+
+event clicked;ParentWindow.Post Dynamic of_cut()
+end event
+
+type m_edit111 from menu within m_edit
+end type
+
+on m_edit111.create
+this.Text="&Copy"
+end on
+
+event clicked;ParentWindow.Post Dynamic of_copy()
+end event
+
+type m_paste from menu within m_edit
+end type
+
+on m_paste.create
+this.Text="&Paste"
+end on
+
+event clicked;ParentWindow.Post Dynamic of_paste()
+end event
+
+type m_delete from menu within m_edit
+end type
+
+on m_delete.create
+this.Text="&Delete"
+end on
+
+event clicked;ParentWindow.Post Dynamic of_delete()
+end event
+
+type m_--1 from menu within m_edit
+end type
+
+on m_--1.create
+this.Text="-"
+end on
+
+type m_showheadfoot from menu within m_edit
+end type
+
+event clicked;ParentWindow.Post Dynamic of_showhf(False)
+end event
+
+on m_showheadfoot.create
+this.Text="&Show Head/Foot"
+end on
+
+type m_selectall from menu within m_edit
+end type
+
+on m_selectall.create
+this.Text="Select &All"
+end on
+
+event clicked;ParentWindow.Post Dynamic of_selectall()
+end event
+
+type m_timedate from menu within m_edit
+end type
+
+on m_timedate.create
+this.Text="Time/&Date"
+end on
+
+event clicked;ParentWindow.Post Dynamic of_timedate()
+end event
+
+type m_insertdatafield from menu within m_edit
+m_id m_id
+m_companyname m_companyname
+m_lastname m_lastname
+m_firstname m_firstname
+m_phone m_phone
+m_address m_address
+m_city m_city
+m_state m_state
+m_zip m_zip
+end type
+
+on m_insertdatafield.create
+this.Text="&Insert Customer Datafield"
+this.m_id=create m_id
+this.m_companyname=create m_companyname
+this.m_lastname=create m_lastname
+this.m_firstname=create m_firstname
+this.m_phone=create m_phone
+this.m_address=create m_address
+this.m_city=create m_city
+this.m_state=create m_state
+this.m_zip=create m_zip
+this.Item[]={this.m_id, &
+this.m_companyname, &
+this.m_lastname, &
+this.m_firstname, &
+this.m_phone, &
+this.m_address, &
+this.m_city, &
+this.m_state, &
+this.m_zip}
+end on
+
+on m_insertdatafield.destroy
+destroy(this.m_id)
+destroy(this.m_companyname)
+destroy(this.m_lastname)
+destroy(this.m_firstname)
+destroy(this.m_phone)
+destroy(this.m_address)
+destroy(this.m_city)
+destroy(this.m_state)
+destroy(this.m_zip)
+end on
+
+type m_id from menu within m_insertdatafield
+end type
+
+event clicked;ParentWindow.Post Dynamic of_insert_datafield("id")
+
+end event
+
+on m_id.create
+this.Text="&ID"
+end on
+
+type m_companyname from menu within m_insertdatafield
+end type
+
+event clicked;ParentWindow.Post Dynamic of_insert_datafield("company_name")
+
+end event
+
+on m_companyname.create
+this.Text="&Company Name"
+end on
+
+type m_lastname from menu within m_insertdatafield
+end type
+
+event clicked;ParentWindow.Post Dynamic of_insert_datafield("last_name")
+
+end event
+
+on m_lastname.create
+this.Text="&Last Name"
+end on
+
+type m_firstname from menu within m_insertdatafield
+end type
+
+event clicked;ParentWindow.Post Dynamic of_insert_datafield("first_name")
+
+end event
+
+on m_firstname.create
+this.Text="&First Name"
+end on
+
+type m_phone from menu within m_insertdatafield
+end type
+
+event clicked;ParentWindow.Post Dynamic of_insert_datafield("phone")
+
+end event
+
+on m_phone.create
+this.Text="&Phone"
+end on
+
+type m_address from menu within m_insertdatafield
+end type
+
+event clicked;ParentWindow.Post Dynamic of_insert_datafield("address")
+
+end event
+
+on m_address.create
+this.Text="&Address"
+end on
+
+type m_city from menu within m_insertdatafield
+end type
+
+event clicked;ParentWindow.Post Dynamic of_insert_datafield("city")
+
+end event
+
+on m_city.create
+this.Text="Ci&ty"
+end on
+
+type m_state from menu within m_insertdatafield
+end type
+
+event clicked;ParentWindow.Post Dynamic of_insert_datafield("state")
+
+end event
+
+on m_state.create
+this.Text="&State"
+end on
+
+type m_zip from menu within m_insertdatafield
+end type
+
+event clicked;ParentWindow.Post Dynamic of_insert_datafield("zip")
+
+end event
+
+on m_zip.create
+this.Text="&Zip"
+end on
+
+type m_search from menu within m_rte
+m_find m_find
+m_findnext m_findnext
+m_replace m_replace
+end type
+
+on m_search.create
+this.Text="&Search"
+this.m_find=create m_find
+this.m_findnext=create m_findnext
+this.m_replace=create m_replace
+this.Item[]={this.m_find, &
+this.m_findnext, &
+this.m_replace}
+end on
+
+on m_search.destroy
+destroy(this.m_find)
+destroy(this.m_findnext)
+destroy(this.m_replace)
+end on
+
+type m_find from menu within m_search
+end type
+
+on m_find.create
+this.Text="&Find..."
+end on
+
+event clicked;ParentWindow.Post Dynamic of_find()
+end event
+
+type m_findnext from menu within m_search
+end type
+
+on m_findnext.create
+this.Text="Find &Next"
+end on
+
+event clicked;ParentWindow.Post Dynamic of_findnext()
+end event
+
+type m_replace from menu within m_search
+end type
+
+event clicked;ParentWindow.Post Dynamic of_replace()
+end event
+
+on m_replace.create
+this.Text="&Replace..."
+end on
+
+type m_help from menu within m_rte
+m_helptopics m_helptopics
+m_aboutrichpad m_aboutrichpad
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_helptopics=create m_helptopics
+this.m_aboutrichpad=create m_aboutrichpad
+this.Item[]={this.m_helptopics, &
+this.m_aboutrichpad}
+end on
+
+on m_help.destroy
+destroy(this.m_helptopics)
+destroy(this.m_aboutrichpad)
+end on
+
+type m_helptopics from menu within m_help
+end type
+
+on m_helptopics.create
+this.Text="Example &Help"
+end on
+
+event clicked;f_open_help ("w_rte")
+
+end event
+
+type m_aboutrichpad from menu within m_help
+end type
+
+on m_aboutrichpad.create
+this.Text="&About RichPad"
+end on
+
+event clicked;OpenWithParm(w_about_with_parm, "RichPad@" + &
+						"This example demonstrates using the PowerBuilder " + &
+						"Rich Text Edit (RTE) control. ")
+
+end event
+

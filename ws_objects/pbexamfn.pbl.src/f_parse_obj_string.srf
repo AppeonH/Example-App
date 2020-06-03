@@ -1,0 +1,35 @@
+﻿$PBExportHeader$f_parse_obj_string.srf
+$PBExportComments$Used by the Quick Select Example.
+global type f_parse_obj_string from function_object
+end type
+
+forward prototypes
+global function integer f_parse_obj_string (ref datawindow dw_arg, ref string obj_list[], string obj_type, string band)
+end prototypes
+
+global function integer f_parse_obj_string (ref datawindow dw_arg, ref string obj_list[], string obj_type, string band);string obj_string, obj_holder
+int obj_count, start_pos=1, tab_pos, count = 0
+
+obj_string = dw_arg.Describe("datawindow.objects")
+
+tab_pos =  Pos(obj_string,"~t",start_pos)
+DO WHILE tab_pos > 0
+	obj_holder = Mid(obj_string,start_pos,(tab_pos - start_pos))
+	IF (dw_arg.Describe(obj_holder+".type") = obj_type or obj_type = "*") AND &
+		 (dw_arg.Describe(obj_holder+".band") = band or band = "*") THEN
+			count = count + 1
+			obj_list[count] = obj_holder
+	END IF
+start_pos = tab_pos + 1
+tab_pos =  Pos(obj_string,"~t",start_pos)	
+LOOP 
+obj_holder = Mid(obj_string,start_pos,Len(obj_string))
+IF (dw_arg.Describe(obj_holder+".type") = obj_type or obj_type = "*") AND &
+		 (dw_arg.Describe(obj_holder+".band") = band or band = "*") THEN
+	count = count + 1
+	obj_list[count] = obj_holder
+END IF
+
+Return count
+end function
+

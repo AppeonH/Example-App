@@ -1,0 +1,38 @@
+﻿$PBExportHeader$m_date_frame.srm
+$PBExportComments$MDI Frame menu for Year 2000 example
+forward
+global type m_date_frame from m_date_ancestor
+end type
+end forward
+
+global type m_date_frame from m_date_ancestor
+end type
+global m_date_frame m_date_frame
+
+on m_date_frame.create
+m_date_frame=this
+call super::create
+end on
+
+on m_date_frame.destroy
+call super::destroy
+end on
+
+on m_close.create
+call super::create
+this.Visible=false
+this.Enabled=false
+end on
+
+on m_action.create
+call super::create
+this.Visible=false
+end on
+
+on m_help.clicked
+string	ls_win
+ls_win = ParentWindow.ClassName()
+
+f_open_help(ls_win)
+end on
+

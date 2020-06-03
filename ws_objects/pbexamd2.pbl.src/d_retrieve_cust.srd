@@ -1,0 +1,31 @@
+﻿$PBExportHeader$d_retrieve_cust.srd
+$PBExportComments$Tabular: customer list with city and address
+release 9;
+datawindow(units=0 timer_interval=0 color=78682240 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 0 print.margin.right = 0 print.margin.top = 0 print.margin.bottom = 0 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=112 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=84 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=number update=yes updatewhereclause=yes key=yes name=id dbname="customer.id" )
+ column=(type=char(20) updatewhereclause=yes name=lname dbname="customer.lname" )
+ column=(type=char(15) updatewhereclause=yes name=fname dbname="customer.fname" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=address dbname="customer.address" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=city dbname="customer.city" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"customer~" ) COLUMN(NAME=~"customer.id~") COLUMN(NAME=~"customer.lname~") COLUMN(NAME=~"customer.fname~") COLUMN(NAME=~"customer.address~") COLUMN(NAME=~"customer.city~")) " update="customer" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text="Customer
+Number" border="6" color="33554592" x="23" y="4" height="104" width="320" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Address" border="6" color="33554592" x="1015" y="4" height="104" width="709" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="City" border="6" color="33554592" x="1737" y="4" height="104" width="325" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+text(band=header alignment="2" text="Name" border="6" color="33554592" x="361" y="4" height="104" width="635" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="33554592" x="23" y="8" height="60" width="320" format="[general]" html.valueishtml="0"  name=id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+compute(band=detail alignment="0" expression=" lname + ~", ~" +  fname "border="5" color="33554592" x="361" y="8" height="60" width="635" format="[GENERAL]" html.valueishtml="0"  name=cust_name visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="5" color="33554592" x="1015" y="8" height="60" width="709" format="[general]" html.valueishtml="0"  name=address visible="1" edit.limit=35 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+column(band=detail id=5 alignment="0" tabsequence=40 border="5" color="33554592" x="1737" y="8" height="60" width="325" format="[general]" html.valueishtml="0"  name=city visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1083244543" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="33554592" x="23" y="8" height="64" width="411" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+compute(band=footer alignment="0" expression="~"Number of Rows Retrieved:  ~"+string(rowcount())"border="0" color="33554592" x="1161" y="8" height="64" width="901" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78682240" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

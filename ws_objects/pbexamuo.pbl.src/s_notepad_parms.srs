@@ -1,0 +1,10 @@
+﻿$PBExportHeader$s_notepad_parms.srs
+$PBExportComments$Structure to be used for passing and receiving parameters by the Notepad application
+global type s_notepad_parms from structure
+    string find_string
+    string replace_string
+    string replace_event
+    integer find_loc
+    boolean uplow
+end type
+

@@ -1,0 +1,565 @@
+﻿$PBExportHeader$m_toolbar_func.srm
+$PBExportComments$Menu to test new toolbar functionality
+forward
+global type m_toolbar_func from menu
+end type
+type m_file from menu within m_toolbar_func
+end type
+type m_opensheet from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_- from menu within m_file
+end type
+type m_save from menu within m_file
+end type
+type m_delete from menu within m_file
+end type
+type m_-1 from menu within m_file
+end type
+type m_print from menu within m_file
+end type
+type m_printersetup from menu within m_file
+end type
+type m_-2 from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_toolbar_func
+m_opensheet m_opensheet
+m_close m_close
+m_- m_-
+m_save m_save
+m_delete m_delete
+m_-1 m_-1
+m_print m_print
+m_printersetup m_printersetup
+m_-2 m_-2
+m_exit m_exit
+end type
+type m_edit from menucascade within m_toolbar_func
+end type
+type m_cut from menu within m_edit
+end type
+type m_copy from menu within m_edit
+end type
+type m_paste from menu within m_edit
+end type
+type m_edit from menucascade within m_toolbar_func
+m_cut m_cut
+m_copy m_copy
+m_paste m_paste
+end type
+type m_window from menu within m_toolbar_func
+end type
+type m_tilehorizontal from menu within m_window
+end type
+type m_tilevertical from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_cascade from menu within m_window
+end type
+type m_-3 from menu within m_window
+end type
+type m_toolbars from menu within m_window
+end type
+type m_window from menu within m_toolbar_func
+m_tilehorizontal m_tilehorizontal
+m_tilevertical m_tilevertical
+m_layer m_layer
+m_cascade m_cascade
+m_-3 m_-3
+m_toolbars m_toolbars
+end type
+type m_help from menu within m_toolbar_func
+end type
+type m_examplehelp from menu within m_help
+end type
+type m_-4 from menu within m_help
+end type
+type m_aboutthisexample from menu within m_help
+end type
+type m_help from menu within m_toolbar_func
+m_examplehelp m_examplehelp
+m_-4 m_-4
+m_aboutthisexample m_aboutthisexample
+end type
+end forward
+
+global type m_toolbar_func from menu
+m_file m_file
+m_edit m_edit
+m_window m_window
+m_help m_help
+end type
+global m_toolbar_func m_toolbar_func
+
+type variables
+w_toolbar_func iw_Frame
+end variables
+
+on m_toolbar_func.create
+m_toolbar_func=this
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_edit, &
+this.m_window, &
+this.m_help}
+end on
+
+on m_toolbar_func.destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_toolbar_func
+m_opensheet m_opensheet
+m_close m_close
+m_- m_-
+m_save m_save
+m_delete m_delete
+m_-1 m_-1
+m_print m_print
+m_printersetup m_printersetup
+m_-2 m_-2
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.m_opensheet=create m_opensheet
+this.m_close=create m_close
+this.m_-=create m_-
+this.m_save=create m_save
+this.m_delete=create m_delete
+this.m_-1=create m_-1
+this.m_print=create m_print
+this.m_printersetup=create m_printersetup
+this.m_-2=create m_-2
+this.m_exit=create m_exit
+this.Item[]={this.m_opensheet, &
+this.m_close, &
+this.m_-, &
+this.m_save, &
+this.m_delete, &
+this.m_-1, &
+this.m_print, &
+this.m_printersetup, &
+this.m_-2, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_opensheet)
+destroy(this.m_close)
+destroy(this.m_-)
+destroy(this.m_save)
+destroy(this.m_delete)
+destroy(this.m_-1)
+destroy(this.m_print)
+destroy(this.m_printersetup)
+destroy(this.m_-2)
+destroy(this.m_exit)
+end on
+
+type m_opensheet from menu within m_file
+end type
+
+on m_opensheet.create
+this.Text="&Open Sheet"
+this.ToolBarItemName="Custom050!"
+this.ToolBarItemText="Open"
+this.ToolBarItemOrder=1
+end on
+
+on m_opensheet.destroy
+end on
+
+event clicked;iw_Frame.Post Event ue_opensheet()
+
+end event
+
+type m_close from menu within m_file
+end type
+
+on m_close.create
+this.Text="&Close"
+this.ToolBarItemName="Custom039!"
+this.ToolBarItemText="Close"
+this.ToolBarItemOrder=5
+this.ToolBarItemBarIndex=5
+this.ToolBarItemSpace=1
+end on
+
+event clicked;Close(ParentWindow)
+
+end event
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_save from menu within m_file
+end type
+
+on m_save.create
+this.Text="&Save Toolbar Settings"
+this.ToolBarItemName="Save!"
+this.ToolBarItemText="Save"
+this.ToolBarItemOrder=1
+this.ToolBarItemBarIndex=5
+end on
+
+event clicked;w_toolbar_func_sheet	lw_Sheet
+
+// Save Frame toolbars
+f_save_toolbar_profile(iw_Frame)
+
+lw_Sheet = iw_Frame.GetActiveSheet()
+If IsValid(lw_Sheet) Then
+	// Save Sheet toolbars
+	f_save_toolbar_profile(lw_Sheet)
+End If
+
+end event
+
+type m_delete from menu within m_file
+end type
+
+on m_delete.create
+this.Text="&Delete Toolbar Settings"
+this.ToolBarItemName="Clear!"
+this.ToolBarItemText="Delete"
+this.ToolBarItemOrder=2
+this.ToolBarItemBarIndex=5
+end on
+
+event clicked;// Delete saved positions for the frame toolbar
+f_delete_profile("w_toolbar_func", "")
+
+
+If Not IsNull(iw_Frame.GetActiveSheet()) Then
+	// Delete saved positions for the sheet toolbar
+	f_delete_profile("w_toolbar_func_sheet", "")
+End If
+
+end event
+
+type m_-1 from menu within m_file
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_print from menu within m_file
+end type
+
+on m_print.create
+this.Text="&Print"
+this.ToolBarItemName="Print!"
+this.ToolBarItemText="Print"
+this.ToolBarItemOrder=3
+this.ToolBarItemBarIndex=5
+this.ToolBarItemSpace=1
+end on
+
+event clicked;MessageBox("Toolbar Functionality", "Data Printed.", Information!)
+
+end event
+
+type m_printersetup from menu within m_file
+end type
+
+on m_printersetup.create
+this.Text="Printer Set&up..."
+this.ToolBarItemName="Custom074!"
+this.ToolBarItemText="Printer Setup"
+this.ToolBarItemOrder=4
+this.ToolBarItemBarIndex=5
+end on
+
+event clicked;PrintSetup()
+
+end event
+
+type m_-2 from menu within m_file
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_exit from menu within m_file
+end type
+
+on m_exit.create
+this.Text="E&xit"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ToolBarItemOrder=1
+this.ToolBarItemBarIndex=4
+end on
+
+event clicked;Close(iw_Frame)
+
+end event
+
+type m_edit from menucascade within m_toolbar_func
+m_cut m_cut
+m_copy m_copy
+m_paste m_paste
+end type
+
+on m_edit.create
+this.Text="&Edit"
+this.ToolBarItemText="Edit"
+this.ToolBarItemOrder=1
+this.ToolBarItemBarIndex=6
+this.Columns=3
+this.m_cut=create m_cut
+this.m_copy=create m_copy
+this.m_paste=create m_paste
+this.Item[]={this.m_cut, &
+this.m_copy, &
+this.m_paste}
+end on
+
+on m_edit.destroy
+destroy(this.m_cut)
+destroy(this.m_copy)
+destroy(this.m_paste)
+end on
+
+type m_cut from menu within m_edit
+end type
+
+on m_cut.create
+this.Text="&Cut"
+this.ToolBarItemName="Cut!"
+this.ToolBarItemText="Cut"
+this.ToolBarItemOrder=1
+this.ToolBarItemBarIndex=6
+end on
+
+event clicked;MessageBox("Toolbar Functionality", "Data Cut.", Information!)
+
+end event
+
+type m_copy from menu within m_edit
+end type
+
+on m_copy.create
+this.Text="C&opy"
+this.ToolBarItemName="Copy!"
+this.ToolBarItemText="Copy"
+this.ToolBarItemOrder=2
+this.ToolBarItemBarIndex=6
+end on
+
+event clicked;MessageBox("Toolbar Functionality", "Data Copied.", Information!)
+
+end event
+
+type m_paste from menu within m_edit
+end type
+
+on m_paste.create
+this.Text="&Paste"
+this.ToolBarItemName="Paste!"
+this.ToolBarItemText="Paste"
+this.ToolBarItemOrder=3
+this.ToolBarItemBarIndex=6
+end on
+
+event clicked;MessageBox("Toolbar Functionality", "Data Pasted.", Information!)
+
+end event
+
+type m_window from menu within m_toolbar_func
+m_tilehorizontal m_tilehorizontal
+m_tilevertical m_tilevertical
+m_layer m_layer
+m_cascade m_cascade
+m_-3 m_-3
+m_toolbars m_toolbars
+end type
+
+on m_window.create
+this.Text="&Window"
+this.m_tilehorizontal=create m_tilehorizontal
+this.m_tilevertical=create m_tilevertical
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_-3=create m_-3
+this.m_toolbars=create m_toolbars
+this.Item[]={this.m_tilehorizontal, &
+this.m_tilevertical, &
+this.m_layer, &
+this.m_cascade, &
+this.m_-3, &
+this.m_toolbars}
+end on
+
+on m_window.destroy
+destroy(this.m_tilehorizontal)
+destroy(this.m_tilevertical)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_-3)
+destroy(this.m_toolbars)
+end on
+
+type m_tilehorizontal from menu within m_window
+end type
+
+on m_tilehorizontal.create
+this.Text="Tile &Horizontal"
+this.ToolBarItemName="Horizontal!"
+this.ToolBarItemText="Horizontal"
+this.ToolBarItemOrder=1
+this.ToolBarItemBarIndex=7
+end on
+
+event clicked;iw_Frame.ArrangeSheets(TileHorizontal!)
+
+end event
+
+type m_tilevertical from menu within m_window
+end type
+
+on m_tilevertical.create
+this.Text="Tile &Vertical"
+this.ToolBarItemName="Tile!"
+this.ToolBarItemText="Vertical"
+this.ToolBarItemOrder=2
+this.ToolBarItemBarIndex=7
+end on
+
+event clicked;iw_Frame.ArrangeSheets(Tile!)
+
+end event
+
+type m_layer from menu within m_window
+end type
+
+on m_layer.create
+this.Text="&Layer"
+this.ToolBarItemName="Layer!"
+this.ToolBarItemText="Layer"
+this.ToolBarItemOrder=3
+this.ToolBarItemBarIndex=7
+end on
+
+event clicked;iw_Frame.ArrangeSheets(Layer!)
+
+end event
+
+type m_cascade from menu within m_window
+end type
+
+on m_cascade.create
+this.Text="&Cascade"
+this.ToolBarItemName="Cascade!"
+this.ToolBarItemText="Cascade"
+this.ToolBarItemOrder=4
+this.ToolBarItemBarIndex=7
+end on
+
+event clicked;iw_Frame.ArrangeSheets(Cascade!)
+
+end event
+
+type m_-3 from menu within m_window
+end type
+
+on m_-3.create
+this.Text="-"
+end on
+
+type m_toolbars from menu within m_window
+end type
+
+on m_toolbars.create
+this.Text="&Toolbars..."
+this.ToolBarItemName="Menu5!"
+this.ToolBarItemText="Toolbars"
+this.ToolBarItemOrder=1
+this.ToolBarItemBarIndex=2
+end on
+
+event clicked;OpenWithParm(w_set_toolbars, iw_Frame)
+
+end event
+
+type m_help from menu within m_toolbar_func
+m_examplehelp m_examplehelp
+m_-4 m_-4
+m_aboutthisexample m_aboutthisexample
+end type
+
+on m_help.create
+this.Text="&Help"
+this.m_examplehelp=create m_examplehelp
+this.m_-4=create m_-4
+this.m_aboutthisexample=create m_aboutthisexample
+this.Item[]={this.m_examplehelp, &
+this.m_-4, &
+this.m_aboutthisexample}
+end on
+
+on m_help.destroy
+destroy(this.m_examplehelp)
+destroy(this.m_-4)
+destroy(this.m_aboutthisexample)
+end on
+
+type m_examplehelp from menu within m_help
+end type
+
+on m_examplehelp.create
+this.Text="Example &Help"
+this.ToolBarItemName="Help!"
+this.ToolBarItemText="Help"
+this.ToolBarItemOrder=1
+this.ToolBarItemBarIndex=3
+end on
+
+event clicked;f_open_help ("w_toolbar_func")
+
+end event
+
+type m_-4 from menu within m_help
+end type
+
+on m_-4.create
+this.Text="-"
+end on
+
+type m_aboutthisexample from menu within m_help
+end type
+
+on m_aboutthisexample.create
+this.Text="&About this example"
+this.ToolBarItemName="ScriptYes!"
+this.ToolBarItemText="About"
+this.ToolBarItemOrder=2
+this.ToolBarItemBarIndex=3
+end on
+
+event clicked;OpenWithParm(w_about_with_parm, "Toolbar Functionality Test@" + &
+						"This example shows how to break a toolbar into " + &
+						"multiple toolbars and give the user the ability to move " + &
+						"them and saves their positions.")
+
+end event
+
