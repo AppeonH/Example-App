@@ -3,6 +3,8 @@ $PBExportComments$Print Zoom Dialog
 forward
 global type w_zoom from w_center
 end type
+type cb_1 from commandbutton within w_zoom
+end type
 type cb_cancel from commandbutton within w_zoom
 end type
 type cb_ok from commandbutton within w_zoom
@@ -26,16 +28,15 @@ end type
 end forward
 
 global type w_zoom from w_center
-int X=836
-int Y=385
-int Width=993
-int Height=733
-boolean TitleBar=true
-string Title="Zoom"
-long BackColor=74481808
-boolean ControlMenu=true
-ToolBarAlignment ToolBarAlignment=AlignAtLeft!
-WindowType WindowType=response!
+integer x = 837
+integer y = 384
+integer width = 992
+integer height = 732
+string title = "Zoom"
+windowtype windowtype = response!
+long backcolor = 74481808
+toolbaralignment toolbaralignment = alignatleft!
+cb_1 cb_1
 cb_cancel cb_cancel
 cb_ok cb_ok
 st_1 st_1
@@ -50,6 +51,9 @@ end type
 global w_zoom w_zoom
 
 on w_zoom.create
+int iCurrent
+call super::create
+this.cb_1=create cb_1
 this.cb_cancel=create cb_cancel
 this.cb_ok=create cb_ok
 this.st_1=create st_1
@@ -60,19 +64,23 @@ this.rb_65=create rb_65
 this.rb_100=create rb_100
 this.rb_200=create rb_200
 this.gb_1=create gb_1
-this.Control[]={ this.cb_cancel,&
-this.cb_ok,&
-this.st_1,&
-this.sle_custom,&
-this.rb_custom,&
-this.rb_30,&
-this.rb_65,&
-this.rb_100,&
-this.rb_200,&
-this.gb_1}
+iCurrent=UpperBound(this.Control)
+this.Control[iCurrent+1]=this.cb_1
+this.Control[iCurrent+2]=this.cb_cancel
+this.Control[iCurrent+3]=this.cb_ok
+this.Control[iCurrent+4]=this.st_1
+this.Control[iCurrent+5]=this.sle_custom
+this.Control[iCurrent+6]=this.rb_custom
+this.Control[iCurrent+7]=this.rb_30
+this.Control[iCurrent+8]=this.rb_65
+this.Control[iCurrent+9]=this.rb_100
+this.Control[iCurrent+10]=this.rb_200
+this.Control[iCurrent+11]=this.gb_1
 end on
 
 on w_zoom.destroy
+call super::destroy
+destroy(this.cb_1)
 destroy(this.cb_cancel)
 destroy(this.cb_ok)
 destroy(this.st_1)
@@ -104,37 +112,52 @@ Choose Case li_Zoom
 End Choose
 end event
 
+type cb_1 from commandbutton within w_zoom
+integer x = 631
+integer y = 376
+integer width = 402
+integer height = 92
+integer taborder = 40
+integer textsize = -8
+integer weight = 700
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+string text = "none"
+end type
+
 type cb_cancel from commandbutton within w_zoom
-int X=626
-int Y=202
-int Width=310
-int Height=93
-int TabOrder=30
-string Text="Cancel"
-boolean Cancel=true
-int TextSize=-8
-int Weight=400
-string FaceName="MS Sans Serif"
-FontFamily FontFamily=Swiss!
-FontPitch FontPitch=Variable!
+integer x = 626
+integer y = 204
+integer width = 311
+integer height = 92
+integer taborder = 30
+integer textsize = -8
+integer weight = 400
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+string text = "Cancel"
+boolean cancel = true
 end type
 
 event clicked;CloseWithReturn(Parent, -1)
 end event
 
 type cb_ok from commandbutton within w_zoom
-int X=626
-int Y=61
-int Width=310
-int Height=93
-int TabOrder=20
-string Text="OK"
-boolean Default=true
-int TextSize=-8
-int Weight=400
-string FaceName="MS Sans Serif"
-FontFamily FontFamily=Swiss!
-FontPitch FontPitch=Variable!
+integer x = 626
+integer y = 60
+integer width = 311
+integer height = 92
+integer taborder = 20
+integer textsize = -8
+integer weight = 400
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+string text = "OK"
+boolean default = true
 end type
 
 event clicked;Integer	li_Zoom
@@ -160,130 +183,128 @@ CloseWithReturn(Parent, li_Zoom)
 end event
 
 type st_1 from statictext within w_zoom
-int X=466
-int Y=490
-int Width=50
-int Height=58
-boolean Enabled=false
-string Text="%"
-Alignment Alignment=Right!
-boolean FocusRectangle=false
-long TextColor=41943040
-long BackColor=74481808
-long BorderColor=8388608
-int TextSize=-8
-int Weight=400
-string FaceName="MS Sans Serif"
-FontFamily FontFamily=Swiss!
-FontPitch FontPitch=Variable!
+integer x = 466
+integer y = 492
+integer width = 50
+integer height = 60
+integer textsize = -8
+integer weight = 400
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+long textcolor = 41943040
+long backcolor = 74481808
+boolean enabled = false
+string text = "%"
+alignment alignment = right!
+long bordercolor = 8388608
+boolean focusrectangle = false
 end type
 
 type sle_custom from singlelineedit within w_zoom
-int X=342
-int Y=484
-int Width=121
-int Height=74
-BorderStyle BorderStyle=StyleLowered!
-boolean AutoHScroll=false
-string Text="100"
-long TextColor=41943040
-int TextSize=-8
-int Weight=400
-string FaceName="MS Sans Serif"
-
-FontFamily FontFamily=Swiss!
-FontPitch FontPitch=Variable!
+integer x = 343
+integer y = 484
+integer width = 119
+integer height = 76
+integer textsize = -8
+integer weight = 400
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+long textcolor = 41943040
+string text = "100"
+boolean autohscroll = false
+borderstyle borderstyle = stylelowered!
 end type
 
 type rb_custom from radiobutton within w_zoom
-int X=89
-int Y=487
-int Width=235
-int Height=65
-string Text="Custom"
-long TextColor=41943040
-long BackColor=74481808
-int TextSize=-8
-int Weight=400
-string FaceName="MS Sans Serif"
-FontFamily FontFamily=Swiss!
-FontPitch FontPitch=Variable!
+integer x = 87
+integer y = 488
+integer width = 233
+integer height = 64
+integer textsize = -8
+integer weight = 400
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+long textcolor = 41943040
+long backcolor = 74481808
+string text = "Custom"
 end type
 
 type rb_30 from radiobutton within w_zoom
-int X=89
-int Y=391
-int Width=193
-int Height=65
-string Text="30%"
-long TextColor=41943040
-long BackColor=74481808
-int TextSize=-8
-int Weight=400
-string FaceName="MS Sans Serif"
-FontFamily FontFamily=Swiss!
-FontPitch FontPitch=Variable!
+integer x = 87
+integer y = 392
+integer width = 192
+integer height = 64
+integer textsize = -8
+integer weight = 400
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+long textcolor = 41943040
+long backcolor = 74481808
+string text = "30%"
 end type
 
 type rb_65 from radiobutton within w_zoom
-int X=89
-int Y=295
-int Width=193
-int Height=65
-string Text="65%"
-long TextColor=41943040
-long BackColor=74481808
-int TextSize=-8
-int Weight=400
-string FaceName="MS Sans Serif"
-FontFamily FontFamily=Swiss!
-FontPitch FontPitch=Variable!
+integer x = 87
+integer y = 296
+integer width = 192
+integer height = 64
+integer textsize = -8
+integer weight = 400
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+long textcolor = 41943040
+long backcolor = 74481808
+string text = "65%"
 end type
 
 type rb_100 from radiobutton within w_zoom
-int X=89
-int Y=199
-int Width=193
-int Height=65
-string Text="100%"
-long TextColor=41943040
-long BackColor=74481808
-int TextSize=-8
-int Weight=400
-string FaceName="MS Sans Serif"
-FontFamily FontFamily=Swiss!
-FontPitch FontPitch=Variable!
+integer x = 87
+integer y = 200
+integer width = 192
+integer height = 64
+integer textsize = -8
+integer weight = 400
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+long textcolor = 41943040
+long backcolor = 74481808
+string text = "100%"
 end type
 
 type rb_200 from radiobutton within w_zoom
-int X=89
-int Y=103
-int Width=193
-int Height=65
-string Text="200%"
-long TextColor=41943040
-long BackColor=74481808
-int TextSize=-8
-int Weight=400
-string FaceName="MS Sans Serif"
-FontFamily FontFamily=Swiss!
-FontPitch FontPitch=Variable!
+integer x = 87
+integer y = 104
+integer width = 192
+integer height = 64
+integer textsize = -8
+integer weight = 400
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+long textcolor = 41943040
+long backcolor = 74481808
+string text = "200%"
 end type
 
 type gb_1 from groupbox within w_zoom
-int X=43
-int Y=36
-int Width=527
-int Height=573
-int TabOrder=10
-string Text="Magnification"
-BorderStyle BorderStyle=StyleLowered!
-long TextColor=41943040
-long BackColor=74481808
-int TextSize=-8
-int Weight=400
-string FaceName="MS Sans Serif"
-FontFamily FontFamily=Swiss!
-FontPitch FontPitch=Variable!
+integer x = 41
+integer y = 36
+integer width = 526
+integer height = 572
+integer taborder = 10
+integer textsize = -8
+integer weight = 400
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+long textcolor = 41943040
+long backcolor = 74481808
+string text = "Magnification"
 end type
 
