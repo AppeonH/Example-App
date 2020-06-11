@@ -5,5 +5,6 @@ global type s_parms from structure
 	string		s_clientnotes
 	string		s_server
 	string		s_servernotes
+	boolean		b_test
 end type
 
