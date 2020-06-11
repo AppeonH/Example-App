@@ -36,7 +36,10 @@ string title = "Zoom"
 windowtype windowtype = response!
 long backcolor = 74481808
 toolbaralignment toolbaralignment = alignatleft!
+//<<<<<<< HEAD
 cb_1 cb_1
+//=======
+//>>>>>>> master
 cb_cancel cb_cancel
 cb_ok cb_ok
 st_1 st_1
@@ -53,7 +56,10 @@ global w_zoom w_zoom
 on w_zoom.create
 int iCurrent
 call super::create
+//<<<<<<< HEAD
 this.cb_1=create cb_1
+//=======
+//>>>>>>> master
 this.cb_cancel=create cb_cancel
 this.cb_ok=create cb_ok
 this.st_1=create st_1
@@ -65,6 +71,7 @@ this.rb_100=create rb_100
 this.rb_200=create rb_200
 this.gb_1=create gb_1
 iCurrent=UpperBound(this.Control)
+//<<<<<<< HEAD
 this.Control[iCurrent+1]=this.cb_1
 this.Control[iCurrent+2]=this.cb_cancel
 this.Control[iCurrent+3]=this.cb_ok
@@ -76,11 +83,26 @@ this.Control[iCurrent+8]=this.rb_65
 this.Control[iCurrent+9]=this.rb_100
 this.Control[iCurrent+10]=this.rb_200
 this.Control[iCurrent+11]=this.gb_1
+//=======
+this.Control[iCurrent+1]=this.cb_cancel
+this.Control[iCurrent+2]=this.cb_ok
+this.Control[iCurrent+3]=this.st_1
+this.Control[iCurrent+4]=this.sle_custom
+this.Control[iCurrent+5]=this.rb_custom
+this.Control[iCurrent+6]=this.rb_30
+this.Control[iCurrent+7]=this.rb_65
+this.Control[iCurrent+8]=this.rb_100
+this.Control[iCurrent+9]=this.rb_200
+this.Control[iCurrent+10]=this.gb_1
+//>>>>>>> master
 end on
 
 on w_zoom.destroy
 call super::destroy
+//<<<<<<< HEAD
 destroy(this.cb_1)
+//=======
+//>>>>>>> master
 destroy(this.cb_cancel)
 destroy(this.cb_ok)
 destroy(this.st_1)
